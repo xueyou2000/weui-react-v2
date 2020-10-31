@@ -8,17 +8,19 @@
 
 .@{btn-prefix-cls} {
   display: inline-block;
-  padding: @btn-padding-UD @btn-padding-LR;
   box-sizing: border-box;
-  font-size: @text-size;
-  font-weight: @btn-font-weight;
+  padding: @btn-padding-UD @btn-padding-LR;
+
+  font-size: @text-size; // 24px
+  font-weight: @btn-font-weight; // 400
   text-align: center;
-  border-radius: @btn-border-radius-base;
-  border: none;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  border-radius: @btn-border-radius-base; // 8px
+
   overflow: hidden;
   user-select: none;
   -webkit-user-select: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  border: none;
   outline: none;
   cursor: pointer;
 
@@ -34,12 +36,10 @@
   }
 
   &-default {
-    .button-color(rgb(0,0,0);
-    @btn-default-bg;
-    @btn-default-bg );
+    .button-color(#000; @btn-default-bg; @btn-default-bg);
 
     &:active {
-      background-color: rgb(220 220 220);
+      background-color: @btn-default-active-bg;
     }
 
     .button-disabled();
@@ -47,20 +47,21 @@
 
   &-primary {
     .button-color(#fff; @btn-primary-bg; @btn-primary-bg);
-    text-shadow: @btn-text-shadow;
-    box-shadow: @btn-primary-shadow;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
 
     &:active {
-      background-color: ~`colorPalette('@{btn-primary-bg}', 7.5) `;
+      background-color: darken(@btn-primary-bg, 10%);
     }
 
     .button-disabled();
   }
 
   &-dashed {
+    // border-color: #d9d9d9;
     .button-color(@text-color; transparent; @btn-default-border);
     border-style: dashed;
-    border-width: @btn-border-width;
+    border-width: 1px;
     padding: calc(@btn-padding-UD - @btn-border-width) @btn-padding-LR;
 
     &:active {
@@ -76,7 +77,7 @@
 
     &:active {
       color: @text-color;
-      background: fadein(@btn-text-hover-bg, 1%);
+      background: rgba(0, 0, 0, 0.028);
       border-color: transparent;
     }
 
@@ -87,7 +88,7 @@
     .button-color(@btn-primary-bg; transparent; transparent);
 
     &:active {
-      color: ~`colorPalette('@{btn-primary-bg}', 6.5) `;
+      color: darken(@btn-primary-bg, 10%);
     }
 
     .button-disabled();
@@ -97,7 +98,7 @@
     .button-color(@error-color, @btn-default-bg, @error-color);
 
     &:active {
-      .button-color(~`colorPalette('@{error-color}', 7) `, @btn-default-bg, ~`colorPalette('@{error-color}', 7) `);
+      .button-color(darken(@error-color, 20%), @btn-default-bg, darken(@error-color, 20%));
     }
 
     .button-disabled();
@@ -120,7 +121,7 @@
     left: -1px;
     z-index: 1;
     display: none;
-    background: @component-background;
+    background: #fff;
     border-radius: inherit;
     opacity: 0.35;
     transition: opacity 0.2s;

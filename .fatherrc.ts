@@ -1,10 +1,11 @@
 import px2rem from 'postcss-plugin-px2rem';
 
 export default {
-  esm: 'rollup',
-  cjs: 'rollup',
+  cjs: {
+    type: 'rollup',
+    minify: true,
+  },
   extractCSS: true,
-  file: 'weui-react-v2',
   extraPostCSSPlugins: [
     px2rem({
       rootValue: 100,

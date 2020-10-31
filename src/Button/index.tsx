@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React from 'react';
-import './style';
 import LoadingIcon from './LoadingIcon';
+import './style';
 
 export type ButtonType = 'primary' | 'default' | 'dashed' | 'link' | 'text';
 
