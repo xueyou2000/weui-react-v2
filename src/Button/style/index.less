@@ -1,0 +1,155 @@
+@import '../../style/themes/index.less';
+@import './mixin.less';
+
+@btn-prefix-cls: ~'@{prefix}-btn';
+@btn-border-width: 2px;
+@btn-padding-UD: 16px;
+@btn-padding-LR: 55px;
+
+.@{btn-prefix-cls} {
+  display: inline-block;
+  padding: @btn-padding-UD @btn-padding-LR;
+  box-sizing: border-box;
+  font-size: @text-size;
+  font-weight: @btn-font-weight;
+  text-align: center;
+  border-radius: @btn-border-radius-base;
+  border: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  outline: none;
+  cursor: pointer;
+
+  > span {
+    display: inline-block;
+  }
+
+  &-block {
+    padding: @btn-padding-UD + 5 0;
+    padding-right: 0;
+    width: 100%;
+    display: block;
+  }
+
+  &-default {
+    .button-color(rgb(0,0,0);
+    @btn-default-bg;
+    @btn-default-bg );
+
+    &:active {
+      background-color: rgb(220 220 220);
+    }
+
+    .button-disabled();
+  }
+
+  &-primary {
+    .button-color(#fff; @btn-primary-bg; @btn-primary-bg);
+    text-shadow: @btn-text-shadow;
+    box-shadow: @btn-primary-shadow;
+
+    &:active {
+      background-color: ~`colorPalette('@{btn-primary-bg}', 7.5) `;
+    }
+
+    .button-disabled();
+  }
+
+  &-dashed {
+    .button-color(@text-color; transparent; @btn-default-border);
+    border-style: dashed;
+    border-width: @btn-border-width;
+    padding: calc(@btn-padding-UD - @btn-border-width) @btn-padding-LR;
+
+    &:active {
+      border-color: @btn-primary-bg;
+      color: @btn-primary-bg;
+    }
+
+    .button-disabled();
+  }
+
+  &-text {
+    .button-color(@text-color; transparent; transparent);
+
+    &:active {
+      color: @text-color;
+      background: fadein(@btn-text-hover-bg, 1%);
+      border-color: transparent;
+    }
+
+    .button-disabled();
+  }
+
+  &-link {
+    .button-color(@btn-primary-bg; transparent; transparent);
+
+    &:active {
+      color: ~`colorPalette('@{btn-primary-bg}', 6.5) `;
+    }
+
+    .button-disabled();
+  }
+
+  &-dangerous {
+    .button-color(@error-color, @btn-default-bg, @error-color);
+
+    &:active {
+      .button-color(~`colorPalette('@{error-color}', 7) `, @btn-default-bg, ~`colorPalette('@{error-color}', 7) `);
+    }
+
+    .button-disabled();
+  }
+
+  &-dangerous&-link,
+  &-dangerous&-text {
+    background-color: transparent;
+    &:active,
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  &::before {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    z-index: 1;
+    display: none;
+    background: @component-background;
+    border-radius: inherit;
+    opacity: 0.35;
+    transition: opacity 0.2s;
+    content: '';
+    pointer-events: none;
+  }
+
+  &-loading {
+    position: relative;
+    &:not([disabled]) {
+      pointer-events: none;
+    }
+
+    &::before {
+      display: block;
+    }
+  }
+
+  & > &-loading-icon {
+    transition: all 0.3s @ease-in-out;
+
+    .anticon {
+      padding-right: 16px;
+    }
+
+    &:only-child {
+      .anticon {
+        padding-right: 0;
+      }
+    }
+  }
+}
