@@ -53,7 +53,8 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "umi-hd": "^5.0.1",
-    "xy-grid": "^0.1.0"
+    "xy-grid": "^0.1.0",
+    "xy-spin": "^0.1.0"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.11",

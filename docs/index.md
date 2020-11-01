@@ -88,4 +88,4 @@ footer: Open-source MIT Licensed | Copyright © 2020<br />Powered by [dumi](http
 - [ ] `Toast`
 - [ ] `Tooptips`
 - [ ] `Keyboard`
-- [ ] `Spin`，可用`xy-spin`代替
+- [x] `Spin` 加载中

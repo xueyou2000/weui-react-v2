@@ -53,7 +53,7 @@ export interface ButtonProps {
   onClick?: (event: React.MouseEvent<HTMLElement>) => void;
 }
 
-function Button(props: ButtonProps) {
+export default function Button(props: ButtonProps) {
   const {
     prefixCls = 'weui-btn',
     className,
@@ -87,5 +87,3 @@ function Button(props: ButtonProps) {
     </button>
   );
 }
-
-export default Button;
