@@ -53,6 +53,8 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "umi-hd": "^5.0.1",
+    "use-merge-value": "^1.0.2",
+    "utils-hooks": "^0.0.78",
     "xy-grid": "^0.1.0",
     "xy-spin": "^0.1.0"
   },

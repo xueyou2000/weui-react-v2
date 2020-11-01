@@ -18,13 +18,63 @@ features:
 footer: Open-source MIT Licensed | Copyright © 2020<br />Powered by [dumi](https://d.umijs.org)
 ---
 
+## 使用指南
+
+### 安装
+
+```bash
+yarn add weui-react-v2
+```
+
+### 使用
+
+`weui-react-v2`无缝贴合`umi`生态，在`umi`项目中直接运行就支持树摇，不用显示引入样式，非常方便。而且可基于`umi`的主题配置定义主题样式.
+
+```ts
+// umi配置
+import { defineConfig } from 'umi';
+export default defineConfig({
+  theme: {
+    '@primary-color': '#CDDC39',
+  },
+  routes: [{ path: '/', component: '@/pages/index' }],
+});
+```
+
+在非`umi`项目中, 也只需要配置`less-loader`的`modifyVars`选项，也能换肤.
+
+```js
+{
+  module: {
+    rules: [
+      test: /\.less$/,
+      loaders: [
+        "style-loader",
+        "css-loader",
+        {
+            loader: "less-loader",
+            options: {
+              lessOptions: {
+                javascriptEnabled: true,
+                modifyVars: {
+                  "@primary-color": "#CDDC39",
+                },
+              },
+            },
+          },
+      ]
+    ]
+  }
+}
+```
+
 ## 路线图
 
-## 现有问题
+### 现有问题
 
 - 设计的是通过树摇，只打包使用的组件和样式。实际上必须在 main.ts 里引入所有样式，并且写空表达式来防止生产打包样式被优化掉
 
-## 从需求出发
+### 从需求出发
 
 目的是打造一套轻快上手的移动端组件，组件样式参照`weui`最新规范。
 
@@ -86,6 +136,6 @@ footer: Open-source MIT Licensed | Copyright © 2020<br />Powered by [dumi](http
 - [ ] `Model`
 - [ ] `HalfScreenDialog`
 - [ ] `Toast`
-- [ ] `Tooptips`
+- [x] `Toptips`
 - [ ] `Keyboard`
 - [x] `Spin` 加载中

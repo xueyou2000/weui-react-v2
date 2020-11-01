@@ -20,8 +20,8 @@ export default defineConfig({
   navs: [
     null,
     {
-      title: 'Github',
-      path: 'https://github.com/umijs/dumi',
+      title: 'Gitee',
+      path: 'https://gitee.com/xueyou2000/weui-react-v2',
     },
   ],
   // more config: https://d.umijs.org/config
