@@ -17,7 +17,7 @@
 
 # weui-react-v2
 
-`weui`的`React`实现, 快速编写移动端页面, 包含很多常用组件。[在线例子](https://xueyou2000.github.io/weui-react/site-dest)
+`weui`的`React`实现, 快速编写移动端页面, 包含很多常用组件。[在线例子](http://xueyou2000.gitee.io/weui-react-v2)
 
 基于`umi-hd`做高清适应，将`px`编译成`rem`运行，设计稿是 750px
 

@@ -45,7 +45,7 @@
     (n.o = function (e, t) {
       return Object.prototype.hasOwnProperty.call(e, t);
     }),
-    (n.p = '/'),
+    (n.p = '/weui-react-v2/'),
     n((n.s = 0));
 })({
   '+EWC': function (e, t, n) {
