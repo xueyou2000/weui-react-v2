@@ -14,7 +14,6 @@ _roadhog-api-doc
 /dist
 /lib
 /es
-/docs-dist
 /.vscode
 
 # misc
