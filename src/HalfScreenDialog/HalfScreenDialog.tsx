@@ -93,6 +93,9 @@ export default function HalfScreenDialog(props: HalfScreenDialogProps) {
   }
 
   function handleConfirm() {
+    if (loading) {
+      return;
+    }
     if (onConfirm) {
       setLoading(true);
       onConfirm()
