@@ -1,5 +1,5 @@
 ---
-title: Toptips 提示
+title: Toptips 顶部提示
 order: 1
 nav:
   title: 组件
@@ -25,39 +25,22 @@ group:
  * desc: 内置成功和失败两种提示 设置 `type` 属性为 `success`, `fail`。
  */
 import React, { useState } from 'react';
-import { Toptips, ToptipsPop, Button } from 'weui-react-v2';
+import { Toptips, Button } from 'weui-react-v2';
 
 export default () => {
-  const [v1, setV1] = useState(false);
-  const [v2, setV2] = useState(false);
-
-  function changeV1() {
-    setV1(true);
-    setTimeout(() => {
-      setV1(false);
-    }, 2000);
-  }
-
-  function changeV2() {
-    setV2(true);
-    setTimeout(() => {
-      setV2(false);
-    }, 2000);
-  }
-
-  function pop() {
-    ToptipsPop({ tips: '成功', duration: 1500 });
-  }
-
   return (
     <>
-      <Toptips type="success" visible={v1} tips="提交成功" />
-      <Button onClick={changeV1}>成功提示</Button>
+      <Button block={true} onClick={() => Toptips('提交成功', 'success')}>
+        成功提示
+      </Button>
       <br />
-      <Toptips type="fail" visible={v2} tips="请填写手机号" />
-      <Button onClick={changeV2}>失败提示</Button>
+      <Button block={true} onClick={() => Toptips('请填写手机号', 'fail')}>
+        失败提示
+      </Button>
       <br />
-      <Button onClick={pop}>js操作</Button>
+      <Button block={true} onClick={() => Toptips('请填写手机号', 'default', 0)}>
+        普通类型
+      </Button>
     </>
   );
 };

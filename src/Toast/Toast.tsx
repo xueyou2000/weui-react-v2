@@ -60,6 +60,7 @@ export default function Toast(props: ToastProps) {
       duration={duration}
       mask={mask}
       maskClose={maskClose}
+      animateClassName="fade-scale"
       popupClassName={`${prefixCls}-popup`}
       popupContentClassName={`${prefixCls}-wrapper`}
     >

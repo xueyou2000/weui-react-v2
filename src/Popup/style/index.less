@@ -69,6 +69,40 @@
   }
 }
 
+/** 渐入渐出动画并缩放 **/
+.fade-scale {
+  display: flex;
+  animation: fadeScaleOut ease 0.3s forwards;
+
+  &.fade-scale-open {
+    display: flex;
+    animation: fadeScaleIn ease 0.3s forwards;
+  }
+  &.fade-scale-state-unmounted {
+    display: none;
+  }
+}
+@keyframes fadeScaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes fadeScaleOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
 /** 底部拉出动画 **/
 .drill {
   display: block;

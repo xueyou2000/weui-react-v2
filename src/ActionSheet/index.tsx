@@ -1,8 +1,6 @@
 import { PopupToBody } from '../Popup';
-import ActionSheet, { ActionSheetProps } from './ActionSheet';
+import ActionSheetComponent, { ActionSheetProps } from './ActionSheet';
 
-export function ActionSheetPop(props: ActionSheetProps) {
-  return PopupToBody(ActionSheet, props);
+export default function ActionSheet(props: ActionSheetProps) {
+  return PopupToBody(ActionSheetComponent, props);
 }
-
-export { ActionSheet };

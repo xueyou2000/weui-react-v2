@@ -4,5 +4,6 @@ import { SpinProps } from 'xy-spin/es/interface';
 import './style';
 
 export default function (props: SpinProps) {
-  return <Spin {...props} prefixCls="weui-spin" />;
+  const { inline = true, ...rest } = props;
+  return <Spin {...rest} inline={inline} prefixCls="weui-spin" />;
 }

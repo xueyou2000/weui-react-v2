@@ -19,9 +19,8 @@ export interface ToptipsProps extends PopupProps {
   style?: React.CSSProperties;
   /**
    * 类型
-   * @default 'success'
    */
-  type?: 'success' | 'fail' | string;
+  type?: 'success' | 'fail' | 'default' | string;
   /**
    * 提示内容
    */
@@ -29,7 +28,7 @@ export interface ToptipsProps extends PopupProps {
 }
 
 export default function Toptips(props: ToptipsProps) {
-  const { prefixCls = 'weui-toptips', className, style, type = 'success', tips, duration = 3000, ...rest } = props;
+  const { prefixCls = 'weui-toptips', className, style, type = 'default', tips, duration = 3000, ...rest } = props;
 
   return (
     <Popup

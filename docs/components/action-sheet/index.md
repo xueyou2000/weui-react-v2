@@ -20,10 +20,10 @@ group:
  * desc: 设置`menus`属性来配置菜单，`onClick`监听菜单点击事件
  */
 import React from 'react';
-import { ActionSheetPop, Button } from 'weui-react-v2';
+import { ActionSheet, Button } from 'weui-react-v2';
 
 function pop() {
-  ActionSheetPop({
+  ActionSheet({
     title: '请选择喜欢的水果?',
     menus: ['苹果', '西瓜', '梨子'],
     onClick: (index) => {

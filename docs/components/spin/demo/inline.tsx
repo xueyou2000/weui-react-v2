@@ -7,7 +7,7 @@ import { Spin } from 'weui-react-v2';
 import './index.less';
 
 export default () => {
-  const [inline, setInline] = useState(true);
+  const [inline, setInline] = useState(false);
 
   return (
     <div className="spin-demo">

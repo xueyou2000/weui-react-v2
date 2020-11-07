@@ -1,8 +1,9 @@
 import { PopupToBody } from '../Popup';
-import Toptips, { ToptipsProps } from './Toptips';
+import ToptipsComponent, { ToptipsProps } from './Toptips';
 
-export function ToptipsPop(props: ToptipsProps) {
-  return PopupToBody(Toptips, props);
+/**
+ * 顶部提示
+ */
+export default function Toptips(tips: React.ReactNode, type = 'default', duration = 2500) {
+  return PopupToBody<ToptipsProps>(ToptipsComponent, { tips, type, duration });
 }
-
-export { Toptips };

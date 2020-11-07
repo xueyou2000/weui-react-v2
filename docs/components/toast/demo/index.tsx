@@ -18,7 +18,7 @@ export default () => {
       <Button block={true} onClick={() => Toast.fail('提交失败')}>
         失败提示
       </Button>
-      <Button block={true} onClick={() => Toast.loading('正在加载...', 0)}>
+      <Button block={true} onClick={() => Toast.loading('正在加载...')}>
         加载中
       </Button>
     </div>

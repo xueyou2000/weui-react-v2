@@ -1,4 +1,3 @@
-import { CloseOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
 import React, { useRef, useState } from 'react';
 import Button from '../Button';
@@ -6,7 +5,7 @@ import { Popup } from '../Popup';
 import { PopupProps } from '../Popup/Popup';
 import './style';
 
-export interface HalfScreenDialogProps extends PopupProps {
+export interface DialogProps extends PopupProps {
   /**
    * 附加类名
    */
@@ -22,23 +21,11 @@ export interface HalfScreenDialogProps extends PopupProps {
   /**
    * 标题
    */
-  title: React.ReactNode;
-  /**
-   * 子标题
-   */
-  subTitle?: React.ReactNode;
+  title?: React.ReactNode;
   /**
    * 内容
    */
-  children?: React.ReactNode;
-  /**
-   * 右上角扩展内容
-   */
-  exted?: React.ReactNode;
-  /**
-   * 右上角扩展点击事件
-   */
-  onExtedClick?: (close: Function) => void;
+  children: React.ReactNode;
   /**
    * 取消按钮
    */
@@ -61,21 +48,19 @@ export interface HalfScreenDialogProps extends PopupProps {
   hideFooter?: boolean;
 }
 
-export default function HalfScreenDialog(props: HalfScreenDialogProps) {
+export default function Dialog(props: DialogProps) {
   const {
-    prefixCls = 'weui-half-screen-dialog',
+    prefixCls = 'weui-dialog',
     className,
     style,
     title,
-    subTitle,
     children,
-    exted,
-    onExtedClick,
     cancel = '取消',
     onCancel,
     confirm = '确定',
     onConfirm,
     hideFooter = false,
+    maskClose = false,
     ...rest
   } = props;
   const closeRef = useRef<Function | null>(null);
@@ -111,28 +96,17 @@ export default function HalfScreenDialog(props: HalfScreenDialogProps) {
     close();
   }
 
-  function handleExted() {
-    if (onExtedClick) {
-      onExtedClick(close);
-    }
-  }
-
   return (
-    <Popup {...rest} closeFuncRef={closeRef} animateClassName="drill" popupContentClassName={`${prefixCls}-wrapper`}>
+    <Popup
+      {...rest}
+      maskClose={maskClose}
+      closeFuncRef={closeRef}
+      animateClassName="fade-scale"
+      popupContentClassName={`${prefixCls}-wrapper`}
+    >
       <div className={classNames(prefixCls, className)} style={style}>
         <div className={`${prefixCls}-hd`}>
-          <div className={`${prefixCls}-hd_side`} onClick={close}>
-            <CloseOutlined className="side-btn" />
-          </div>
-          <div className={`${prefixCls}-hd_main`}>
-            <strong className={`${prefixCls}-hd_title`}>{title}</strong>
-            {subTitle && <p className={`${prefixCls}-hd_subtitle`}>{title}</p>}
-          </div>
-          {exted && (
-            <div className={`${prefixCls}-hd_side`} onClick={handleExted}>
-              {exted}
-            </div>
-          )}
+          <div className={`${prefixCls}-title`}>{title}</div>
         </div>
         <div className={`${prefixCls}-bd`}>{children}</div>
         {!hideFooter && (

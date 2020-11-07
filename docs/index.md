@@ -133,7 +133,7 @@ export default defineConfig({
 ### 操作反馈
 
 - [x] `ActionSheet`
-- [ ] `Model`
+- [x] `Model`
 - [x] `HalfScreenDialog`
 - [x] `Toast`
 - [x] `Toptips`
