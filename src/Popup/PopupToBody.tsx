@@ -9,7 +9,7 @@ type FCComponent = (props: PopupProps) => JSX.Element;
 /**
  * 渲染到body外部
  */
-export default function PopupComponent(Component: React.FC<PopupProps> | FCComponent, props: PopupProps) {
+export default function PopupComponent<T extends PopupProps>(Component: React.FC<T> | FCComponent, props: T) {
   var closeFunc: Function = loop;
   const div = document.createElement('div');
   document.body.appendChild(div);

@@ -38,6 +38,8 @@ yarn run start
 
 > Tips: 由于 `dumi`有点小 bug, 打包会丢失样式， 是`package.json`中`sideEffects`引起的，所以编译文档请先把这一行删除
 
+[see issues](https://github.com/umijs/dumi/issues/225)
+
 ```bash
 yarn run docs:build
 ```

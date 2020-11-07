@@ -22,7 +22,7 @@ export interface PopupProps {
   /**
    * 弹出框内容元素类名
    */
-  popupContentCLassName?: string;
+  popupContentClassName?: string;
   /**
    * 持续时间（毫秒）
    * @description 持续时间（毫秒）, 默认 3000 毫秒后关闭
@@ -77,7 +77,7 @@ export default function Popup(props: PopupProps) {
     prefixCls = 'weui-popup',
     animateClassName = 'fade',
     popupClassName,
-    popupContentCLassName,
+    popupContentClassName,
     duration,
     onUnmount,
     defaultVisible = false,
@@ -134,7 +134,7 @@ export default function Popup(props: PopupProps) {
         className={classNames(`${prefixCls}-mask`, { 'hidden-mask': !mask })}
         onClick={() => maskClose && setVisible(false)}
       ></div>
-      <div className={classNames(`${prefixCls}-content`, popupContentCLassName, animateclassString)} ref={ref as any}>
+      <div className={classNames(`${prefixCls}-content`, popupContentClassName, animateclassString)} ref={ref as any}>
         {children}
       </div>
     </div>,

@@ -38,7 +38,7 @@ export default function Toptips(props: ToptipsProps) {
       maskClose={false}
       duration={duration}
       animateClassName="drillUp"
-      popupContentCLassName={`${prefixCls}-wrapper`}
+      popupContentClassName={`${prefixCls}-wrapper`}
     >
       <div className={classNames(prefixCls, className, `${prefixCls}-type-${type}`)} style={style}>
         {tips}
