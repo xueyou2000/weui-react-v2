@@ -135,7 +135,7 @@ export default defineConfig({
 - [x] `ActionSheet`
 - [ ] `Model`
 - [x] `HalfScreenDialog`
-- [ ] `Toast`
+- [x] `Toast`
 - [x] `Toptips`
 - [ ] `Keyboard`
 - [x] `Spin` 加载中

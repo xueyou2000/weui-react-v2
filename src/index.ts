@@ -5,3 +5,4 @@ export * from './Popup';
 export * from './Toptips';
 export * from './HalfScreenDialog';
 export * from './ActionSheet';
+export { default as Toast } from './Toast';
