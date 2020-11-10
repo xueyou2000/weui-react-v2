@@ -3,7 +3,7 @@
  * desc: 确定按钮事件是一个`Promise`, 在返回之前按钮会处于加载状态
  */
 import React, { useState } from 'react';
-import { HalfScreenDialog, Button } from 'weui-react-v2';
+import { HalfScreenDialog, Button, Grid, GridItem } from 'weui-react-v2';
 import './demo.less';
 
 export default () => {

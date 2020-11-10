@@ -108,6 +108,7 @@ export default defineConfig({
 - [ ] `ImagePicker` 图片选择
 - [ ] `SearchBar` 搜索栏
 - [ ] `Rate`评级
+- [x] `AmountKeyboard` 金额键盘
 
 ### 布局
 
@@ -123,19 +124,17 @@ export default defineConfig({
 
 - [ ] `List` 列表
 - [ ] `FormItem` 可以包裹表单组件
-- [ ] `Panel`
+- [ ] `Panel` 面板
 - [ ] `Swiper` 轮播
 - [ ] `xy-pull-refresh` 上滑加载，下拉刷新
 - [ ] `ImageView` 图片预览
-- [ ] `CountDown` 倒计时
-- [ ] `Skeleton`
+- [ ] `Skeleton` 骨架屏
 
 ### 操作反馈
 
-- [x] `ActionSheet`
-- [x] `Model`
-- [x] `HalfScreenDialog`
-- [x] `Toast`
-- [x] `Toptips`
-- [x] `AmountKeyboard`
+- [x] `ActionSheet` 弹出式菜单
+- [x] `Model` 模态对话框
+- [x] `HalfScreenDialog` 半屏对话框
+- [x] `Toast` 轻提示
+- [x] `Toptips` 顶部提示
 - [x] `Spin` 加载中
