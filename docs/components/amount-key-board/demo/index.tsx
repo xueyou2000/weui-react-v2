@@ -1,6 +1,6 @@
 /**
  * title: 金额键盘
- * desc: 一般默认用Input组件唤起, 请在移动端查看。
+ * desc: 一般默认用Input组件唤起。
  */
 import React, { useState } from 'react';
 import { AmountKeyBoard, Toast } from 'weui-react-v2';

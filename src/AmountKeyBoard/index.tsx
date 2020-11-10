@@ -160,6 +160,8 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
           <a
             className={classNames(`${prefixCls}-key`, 'left-0 top-0')}
             data-code="1"
+            onMouseDown={handleKeyTouchStart as any}
+            onMouseUp={handleKeyTouchEnd as any}
             onTouchStart={handleKeyTouchStart}
             onTouchEnd={handleKeyTouchEnd}
           >
@@ -168,6 +170,8 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
           <a
             className={classNames(`${prefixCls}-key`, 'left-1 top-0')}
             data-code="2"
+            onMouseDown={handleKeyTouchStart as any}
+            onMouseUp={handleKeyTouchEnd as any}
             onTouchStart={handleKeyTouchStart}
             onTouchEnd={handleKeyTouchEnd}
           >
@@ -176,6 +180,8 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
           <a
             className={classNames(`${prefixCls}-key`, 'left-2 top-0')}
             data-code="3"
+            onMouseDown={handleKeyTouchStart as any}
+            onMouseUp={handleKeyTouchEnd as any}
             onTouchStart={handleKeyTouchStart}
             onTouchEnd={handleKeyTouchEnd}
           >
@@ -184,6 +190,8 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
           <a
             className={classNames(`${prefixCls}-key`, 'left-0 top-1')}
             data-code="4"
+            onMouseDown={handleKeyTouchStart as any}
+            onMouseUp={handleKeyTouchEnd as any}
             onTouchStart={handleKeyTouchStart}
             onTouchEnd={handleKeyTouchEnd}
           >
@@ -192,6 +200,8 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
           <a
             className={classNames(`${prefixCls}-key`, 'left-1 top-1')}
             data-code="5"
+            onMouseDown={handleKeyTouchStart as any}
+            onMouseUp={handleKeyTouchEnd as any}
             onTouchStart={handleKeyTouchStart}
             onTouchEnd={handleKeyTouchEnd}
           >
@@ -200,6 +210,8 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
           <a
             className={classNames(`${prefixCls}-key`, 'left-2 top-1')}
             data-code="6"
+            onMouseDown={handleKeyTouchStart as any}
+            onMouseUp={handleKeyTouchEnd as any}
             onTouchStart={handleKeyTouchStart}
             onTouchEnd={handleKeyTouchEnd}
           >
@@ -208,6 +220,8 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
           <a
             className={classNames(`${prefixCls}-key`, 'left-0 top-2')}
             data-code="7"
+            onMouseDown={handleKeyTouchStart as any}
+            onMouseUp={handleKeyTouchEnd as any}
             onTouchStart={handleKeyTouchStart}
             onTouchEnd={handleKeyTouchEnd}
           >
@@ -216,6 +230,8 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
           <a
             className={classNames(`${prefixCls}-key`, 'left-1 top-2')}
             data-code="8"
+            onMouseDown={handleKeyTouchStart as any}
+            onMouseUp={handleKeyTouchEnd as any}
             onTouchStart={handleKeyTouchStart}
             onTouchEnd={handleKeyTouchEnd}
           >
@@ -224,6 +240,8 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
           <a
             className={classNames(`${prefixCls}-key`, 'left-2 top-2')}
             data-code="9"
+            onMouseDown={handleKeyTouchStart as any}
+            onMouseUp={handleKeyTouchEnd as any}
             onTouchStart={handleKeyTouchStart}
             onTouchEnd={handleKeyTouchEnd}
           >
@@ -232,6 +250,8 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
           <a
             className={classNames(`${prefixCls}-key`, 'left-0 top-3')}
             data-code="clear"
+            onMouseDown={handleKeyTouchStart as any}
+            onMouseUp={handleKeyTouchEnd as any}
             onTouchStart={handleKeyTouchStart}
             onTouchEnd={handleKeyTouchEnd}
           >
@@ -240,6 +260,8 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
           <a
             className={classNames(`${prefixCls}-key`, 'left-1 top-3')}
             data-code="0"
+            onMouseDown={handleKeyTouchStart as any}
+            onMouseUp={handleKeyTouchEnd as any}
             onTouchStart={handleKeyTouchStart}
             onTouchEnd={handleKeyTouchEnd}
           >
@@ -248,6 +270,8 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
           <a
             className={classNames(`${prefixCls}-key`, 'left-2 top-3')}
             data-code="."
+            onMouseDown={handleKeyTouchStart as any}
+            onMouseUp={handleKeyTouchEnd as any}
             onTouchStart={handleKeyTouchStart}
             onTouchEnd={handleKeyTouchEnd}
           >
@@ -256,6 +280,8 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
           <a
             className={classNames(`${prefixCls}-key`, 'left-3 top-0')}
             data-code="backspace"
+            onMouseDown={handleKeyTouchStart as any}
+            onMouseUp={handleKeyTouchEnd as any}
             onTouchStart={handleKeyTouchStart}
             onTouchEnd={handleKeyTouchEnd}
           >
