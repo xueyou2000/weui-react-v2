@@ -138,3 +138,4 @@ export default defineConfig({
 - [x] `Toast` 轻提示
 - [x] `Toptips` 顶部提示
 - [x] `Spin` 加载中
+- [x] `Loading` 加载中

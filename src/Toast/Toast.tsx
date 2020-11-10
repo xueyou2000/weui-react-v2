@@ -1,6 +1,6 @@
-import {} from '@ant-design/icons';
 import classNames from 'classnames';
 import React from 'react';
+import { CircleLoading } from '../Loading';
 import { Popup } from '../Popup';
 import { PopupProps } from '../Popup/Popup';
 import './style';
@@ -35,7 +35,7 @@ function getIcon(type: 'text' | 'success' | 'fail' | 'loading') {
     case 'fail':
       return <i className="weui-icon weui-icon-warn"></i>;
     case 'loading':
-      return <i className="weui-loading"></i>;
+      return <CircleLoading className="weui-loading" />;
     default:
       return null;
   }
