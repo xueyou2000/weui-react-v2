@@ -137,5 +137,5 @@ export default defineConfig({
 - [x] `HalfScreenDialog`
 - [x] `Toast`
 - [x] `Toptips`
-- [ ] `Keyboard`
+- [x] `AmountKeyboard`
 - [x] `Spin` 加载中
