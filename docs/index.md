@@ -122,7 +122,7 @@ export default defineConfig({
 
 ### 数据展示
 
-- [ ] `List` 列表
+- [x] `List` 列表
 - [ ] `FormItem` 可以包裹表单组件
 - [ ] `Panel` 面板
 - [ ] `Swiper` 轮播
