@@ -115,7 +115,7 @@ export default defineConfig({
 - [x] `Flex` 弹性布局
 - [ ] `WingBlank` 两翼留白
 - [ ] `WhiteSpace` 上下留白
-- [ ] `SafeArea` 安全空间
+- [x] `SafeArea` 安全空间
 
 ### 导航
 

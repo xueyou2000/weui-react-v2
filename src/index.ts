@@ -3,6 +3,7 @@ export { default as Button } from './Button';
 
 // 布局
 export * from './Flex';
+export { default as SafeArea } from './SafeArea';
 
 // 操作反馈
 export * from './Loading';
