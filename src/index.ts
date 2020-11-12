@@ -17,6 +17,7 @@ export { default as ActionSheet } from './ActionSheet';
 export { default as Dialog } from './Dialog';
 export { default as Toast } from './Toast';
 export { default as Loadmore } from './Loadmore';
+export * from './Skeleton';
 
 // 数据展示
 export * from './Grid';

@@ -8,7 +8,7 @@ import './flex-demo.less';
 
 export default () => {
   return (
-    <div>
+    <div className="flex-demo">
       <p className="title">左对齐</p>
       <Flex type="flex" justify="start">
         <FlexItem span={4}>4</FlexItem>

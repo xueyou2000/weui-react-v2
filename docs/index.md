@@ -137,7 +137,7 @@ export default defineConfig({
 - [x] `Spin` 加载中
 - [x] `Loading` 加载中
 - [x] `loadmore` 加载更多
-- [ ] `Skeleton` 骨架屏
+- [x] `Skeleton` 骨架屏
 - [ ] `Gesture` 手势操作, 包裹后，可以监听页面下拉刷新，上滑加载等操作
 - [ ] `Swiper` 轮播
 - [ ] `xy-pull-refresh` 上滑加载，下拉刷新
