@@ -35,3 +35,5 @@ export default () => (
   </SafeArea>
 );
 ```
+
+<API src="../../../src/SafeArea/index.tsx"></API>

@@ -4,6 +4,8 @@ export { default as Button } from './Button';
 // 布局
 export * from './Flex';
 export { default as SafeArea } from './SafeArea';
+export { default as WingBlank } from './WingBlank';
+export { default as WhiteSpace } from './WhiteSpace';
 
 // 操作反馈
 export * from './Loading';
