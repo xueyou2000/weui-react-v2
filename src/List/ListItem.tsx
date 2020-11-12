@@ -26,7 +26,7 @@ export interface ListItemProps {
   /**
    * 箭头方向
    */
-  arrow?: 'horizontal' | 'up' | 'down';
+  arrow?: 'horizontal' | 'up' | 'down' | boolean;
   /**
    * 列表点击事件
    */

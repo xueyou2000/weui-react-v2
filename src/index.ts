@@ -18,6 +18,7 @@ export { default as Loadmore } from './Loadmore';
 // 数据展示
 export * from './Grid';
 export * from './List';
+export * from './Panel';
 
 // 数据输入
 export { default as AmountKeyBoard } from './AmountKeyBoard';
