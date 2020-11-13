@@ -3,18 +3,32 @@
 @actionsheet-prefix-cls: ~'@{prefix}-actionsheet';
 
 .@{actionsheet-prefix-cls} {
-  &-wrapper {
+  z-index: 100;
+  position: fixed;
+  left: 2%;
+  height: 100vh;
+  width: 96%;
+  border-radius: 24px 24px 0px;
+  background: #fff;
+  touch-action: none;
+  z-index: 1000;
+  overflow: hidden;
+
+  &-mask {
     position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
     left: 0;
     bottom: 0;
-    z-index: 1001;
-    width: 100%;
-    background-color: #eae7e8;
-    border-top-left-radius: 24px;
-    border-top-right-radius: 24px;
-    overflow: hidden;
+    background: rgba(0, 0, 0, 0.4);
     user-select: none;
-    -webkit-user-select: none;
+    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
+  }
+
+  &-inner {
+    background-color: #eae7e8;
   }
 
   &-title {

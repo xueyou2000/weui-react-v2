@@ -99,6 +99,7 @@ export default defineConfig({
 > 表单组件基于`rc-form`
 
 - [ ] `Form` 表单组件，可有可无。提供封装`label`宽度，等通用样式和验证，onSubmit 等功能。
+- [ ] `FormItem` 可以包裹表单组件
 - [ ] `Input` 输入框， 支持多种类型，比如手机号，身份证，银行卡的格式化
 - [ ] `TextArea` 文本域
 - [ ] `Checkbox` 复选框
@@ -124,7 +125,6 @@ export default defineConfig({
 ### 数据展示
 
 - [x] `List` 列表
-- [ ] `FormItem` 可以包裹表单组件
 - [x] `Panel` 面板
 
 ### 操作反馈

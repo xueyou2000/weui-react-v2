@@ -4,7 +4,7 @@ import useMergeValue from 'use-merge-value';
 import { ENTERED, EXITED, useMount, usePortal, useTranstion } from 'utils-hooks';
 import './style';
 
-type GetContainerFun = () => HTMLElement;
+export type GetContainerFun = () => HTMLElement;
 
 export interface PopupProps {
   /**
