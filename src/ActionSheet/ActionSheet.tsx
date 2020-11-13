@@ -78,7 +78,7 @@ function calcHeight(div: HTMLDivElement | null, menuSize: number) {
   }
   return height;
 }
-// TODO: BUG#1 使用了 onUnmount 后，获取ref元素就延迟了
+
 export default function ActionSheet(props: ActionSheetProps) {
   const {
     prefixCls = 'weui-actionsheet',

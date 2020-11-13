@@ -25,12 +25,19 @@ group:
  * desc: 内置成功和失败两种提示 设置 `type` 属性为 `success`, `fail`。
  */
 import React, { useState } from 'react';
-import { Toptips, Button } from 'weui-react-v2';
+import { Toptips, Button, WhiteSpace } from 'weui-react-v2';
 
 export default () => {
   return (
     <>
-      <Button block={true} onClick={() => Toptips('提交成功', 'success')}>
+      <WhiteSpace size="lg" />
+      <Button
+        block={true}
+        onClick={() => {
+          console.log('打开成提示');
+          Toptips('提交成功', 'success');
+        }}
+      >
         成功提示
       </Button>
       <br />
@@ -38,7 +45,7 @@ export default () => {
         失败提示
       </Button>
       <br />
-      <Button block={true} onClick={() => Toptips('请填写手机号', 'default', 0)}>
+      <Button block={true} onClick={() => Toptips('请填写手机号', 'default')}>
         普通类型
       </Button>
     </>
