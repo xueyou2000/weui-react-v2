@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { animated, config, useSpring } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 import useMergeValue from 'use-merge-value';
@@ -58,6 +58,10 @@ export interface ActionSheetProps extends PopupProps {
    * @description 默认为body内创建一个div作为容器
    */
   getContainer?: HTMLElement | GetContainerFun;
+  /**
+   * 根选择器, 让此节点样式变化. 一般是`#root`
+   */
+  rootSelector?: string;
 }
 
 /**
@@ -91,12 +95,14 @@ export default function ActionSheet(props: ActionSheetProps) {
     getCloseFunc,
     getContainer,
     onUnmount,
+    rootSelector,
   } = props;
 
   const [renderPortal] = usePortal('', getContainer);
   const [loadingIndex, setLoadingIndex] = useState(-1);
   const [height, setheight] = useState(menus.length * 200);
   const [{ y }, set] = useSpring(() => ({ y: height }));
+  const root = useRef(rootSelector ? (document.querySelector(rootSelector) as HTMLElement) : null);
   const [visible, setVisible] = useMergeValue<boolean>(defaultVisible, {
     value: props.visible,
     onChange: props.onVisibleChange,
@@ -113,16 +119,31 @@ export default function ActionSheet(props: ActionSheetProps) {
   }
 
   const open = ({ canceled }: { canceled?: boolean }) => {
+    if (root.current) {
+      root.current.style.transition = '0.3s';
+      root.current.style.transform = 'translateY(-8%) scale(1.16)';
+      root.current.style.filter = 'blur(5px)';
+    }
     set({ y: 0, immediate: false, config: canceled ? config.wobbly : config.stiff });
     setVisible(true);
   };
   const close = (velocity = 0) => {
+    if (root.current) {
+      root.current.style.transform = 'translateY(0%) scale(1)';
+      root.current.style.filter = 'blur(0px)';
+    }
+
     set({
       y: height,
       immediate: false,
       config: { ...config.stiff, velocity },
       onRest: (result) => {
         if (result.finished && result.value.y !== 0) {
+          if (root.current) {
+            root.current.style.transition = '';
+            root.current.style.transform = '';
+            root.current.style.filter = '';
+          }
           // 关闭过渡执行完毕
           if (onUnmount) {
             onUnmount();
@@ -180,8 +201,7 @@ export default function ActionSheet(props: ActionSheetProps) {
   };
 
   return renderPortal(
-    <div className={`${prefixCls}-wrapper`}>
-      <div style={{ opacity: 1 }}></div>
+    <div className={classNames(`${prefixCls}-wrapper`, { 'with-root': root.current })}>
       <animated.div
         className={classNames(`${prefixCls}-mask`)}
         style={bgStyle as any}
