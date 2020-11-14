@@ -16,4 +16,6 @@ group:
 
 <code src="./demo/index.tsx" />
 
+<code src="./demo/input.tsx" />
+
 <API src="../../../src/Dialog/Dialog.tsx"></API>

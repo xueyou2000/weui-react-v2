@@ -3,11 +3,11 @@
  * desc: 属性基本与`HalfScreenDialog`保持一致
  */
 import React from 'react';
-import { Button, Dialog } from 'weui-react-v2';
+import { Button, DialogPop } from 'weui-react-v2';
 
 export default function () {
   function pop() {
-    Dialog({
+    DialogPop({
       title: '对话框标题',
       children: '弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内',
       onConfirm: () => {

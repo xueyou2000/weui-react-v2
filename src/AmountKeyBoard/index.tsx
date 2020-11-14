@@ -79,6 +79,7 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
   const lastBtn = useRef<HTMLElement | null>(null);
   const closeRef = useRef<Function | null>(null);
   const [amountStr, setAmountStr] = useState(DefineDefaultValue(props, 'value', 'defaultValue') + '' || '');
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   function changeAmount(amountStr: string) {
     let _realAmount = parseFloat(amountStr);
@@ -104,7 +105,11 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
   function handleKeyTouchStart(e: React.TouchEvent<HTMLAnchorElement>) {
     if (lastBtn.current) {
       lastBtn.current.classList.remove('down');
-      lastBtn.current.scrollLeft;
+    }
+    lastBtn.current = e.currentTarget;
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play();
     }
     const key = e.currentTarget as HTMLElement;
     const code = key.getAttribute('data-code');
@@ -116,7 +121,6 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
 
   function handleKeyTouchEnd(e: React.TouchEvent<HTMLAnchorElement>) {
     const key = e.currentTarget as HTMLElement;
-    lastBtn.current = key;
     const code = key.getAttribute('data-code');
     if (code !== undefined && code !== null) {
       const navigator = window.navigator as any;
@@ -124,13 +128,10 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
       if (navigator.vibrate) {
         window.navigator.vibrate(300);
       }
-      console.log('amountStr', amountStr, 'code', code);
       changeAmount(keyboradDown(amountStr, code));
-
       setTimeout(() => {
         if (lastBtn.current) {
           lastBtn.current.classList.remove('down');
-          lastBtn.current.scrollLeft;
         }
       }, 100);
     }
@@ -155,6 +156,7 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
       animateClassName="drill"
       popupContentClassName={`${prefixCls}-wrapper`}
     >
+      <audio ref={audioRef} src={require('./tink.wav')}></audio>
       <div className={classNames(prefixCls, className)} style={style}>
         <div className={`${prefixCls}-inner`}>
           <a

@@ -102,6 +102,7 @@ export default function Dialog(props: DialogProps) {
       maskClose={maskClose}
       closeFuncRef={closeRef}
       animateClassName="fade-scale"
+      popupClassName={`${prefixCls}-popup`}
       popupContentClassName={`${prefixCls}-wrapper`}
     >
       <div className={classNames(prefixCls, className)} style={style}>

@@ -1,6 +1,8 @@
 import { PopupToBody } from '../Popup';
-import DialogComponent, { DialogProps } from './Dialog';
+import Dialog, { DialogProps } from './Dialog';
 
-export default function Dialog(props: DialogProps) {
-  return PopupToBody(DialogComponent, props);
+export function DialogPop(props: DialogProps) {
+  return PopupToBody(Dialog, props);
 }
+
+export { Dialog };

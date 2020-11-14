@@ -120,6 +120,7 @@ export default function ActionSheet(props: ActionSheetProps) {
 
   const open = ({ canceled }: { canceled?: boolean }) => {
     if (root.current) {
+      document.body.style.overflow = 'hidden';
       root.current.style.transition = '0.3s';
       root.current.style.transform = 'translateY(-8%) scale(1.16)';
       root.current.style.filter = 'blur(5px)';
@@ -131,6 +132,7 @@ export default function ActionSheet(props: ActionSheetProps) {
     if (root.current) {
       root.current.style.transform = 'translateY(0%) scale(1)';
       root.current.style.filter = 'blur(0px)';
+      document.body.style.overflow = '';
     }
 
     set({
