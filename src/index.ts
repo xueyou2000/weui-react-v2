@@ -19,6 +19,7 @@ export { default as ActionSheet } from './ActionSheet';
 export { default as Toast } from './Toast';
 export { default as Loadmore } from './Loadmore';
 export { default as SwipeAction } from './SwipeAction';
+export { default as Swiper } from './Swiper';
 
 // 数据展示
 export * from './Grid';
