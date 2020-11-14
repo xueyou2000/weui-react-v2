@@ -30,6 +30,10 @@ yarn add weui-react-v2
 
 `weui-react-v2`无缝贴合`umi`生态，在`umi`项目中直接运行就支持树摇，不用显示引入样式，非常方便。而且可基于`umi`的主题配置定义主题样式.
 
+> Tips: 请注意，此库组件基于 750px 设计稿, 请使用`post-css`等后处理起，将此库的`px`转换为`rem`或`vw`， 具体看你自己的适配方案.
+
+> Tips: 项目引入了音效文件，所以请配置`file-loader`
+
 ```ts
 // umi配置
 import { defineConfig } from 'umi';
@@ -80,12 +84,11 @@ export default defineConfig({
 
 - [x] 轻便，去除非常复杂的功能，只保留经常用的功能
 - [x] 使用 umi-hd 的 rem 方案
-- [ ] 每个组件的编写都按照 git flow 工作流，切分支
 - [x] 可覆盖的主题风格, 编译 bundle.css 和直接引入.less 同时支持
 - [x] 易于使用的 api
-- [ ] 组件的动效清爽
+- [x] 组件的动效清爽
 - [x] 支持树摇
-- [ ] 触摸友好, 支持多手势操作
+- [x] 触摸友好, 支持多手势操作
 - [ ] 每个组件编写测试和文档
 
 ## 组件
@@ -138,7 +141,7 @@ export default defineConfig({
 - [x] `Loading` 加载中
 - [x] `loadmore` 加载更多
 - [x] `Skeleton` 骨架屏
-- [ ] `Gesture` 手势操作, 包裹后，可以监听页面下拉刷新，上滑加载等操作
+- [x] `SwiperAction` 滑动操作
 - [ ] `Swiper` 轮播
 - [ ] `xy-pull-refresh` 上滑加载，下拉刷新
 - [ ] `ImageView` 图片预览

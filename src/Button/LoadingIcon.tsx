@@ -19,7 +19,7 @@ export default function LoadingIcon({ prefixCls, loading }: LoadingIconProps) {
   });
 
   return (
-    <animated.span className={`${prefixCls}-loading-icon`} style={props}>
+    <animated.span className={`${prefixCls}-loading-icon`} style={props as any}>
       <LoadingOutlined ref={ref} />
     </animated.span>
   );

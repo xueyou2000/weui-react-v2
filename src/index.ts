@@ -12,12 +12,13 @@ export * from './Loading';
 export * from './Popup';
 export * from './HalfScreenDialog';
 export * from './Dialog';
+export * from './Skeleton';
 export { default as Spin } from './Spin';
 export { default as Toptips } from './Toptips';
 export { default as ActionSheet } from './ActionSheet';
 export { default as Toast } from './Toast';
 export { default as Loadmore } from './Loadmore';
-export * from './Skeleton';
+export { default as SwipeAction } from './SwipeAction';
 
 // 数据展示
 export * from './Grid';

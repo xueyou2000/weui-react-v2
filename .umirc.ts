@@ -25,31 +25,6 @@ export default defineConfig({
         esModule: false,
         name: 'media/[name].[ext]',
       });
-
-    // webpack.module.rules.push({
-    //   test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-    //   loader: 'file-loader',
-    //   options: {
-    //     limit: 100,
-    //     name: 'media/[name].[ext]',
-    //   },
-    // });
-    // return config;
-
-    // config.merge({
-    //   module: {
-    //     rules: [
-    //       {
-    //         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-    //         loader: 'file-loader',
-    //         options: {
-    //           limit: 100,
-    //           name: 'media/[name].[ext]',
-    //         },
-    //       },
-    //     ],
-    //   },
-    // });
   },
   extraPostCSSPlugins: [
     px2rem({
