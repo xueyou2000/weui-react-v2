@@ -28,3 +28,6 @@ export * from './Panel';
 
 // 数据输入
 export { default as AmountKeyBoard } from './AmountKeyBoard';
+
+// 导航
+export * from './Tabs';

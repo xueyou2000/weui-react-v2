@@ -123,7 +123,7 @@ export default defineConfig({
 
 ### 导航
 
-- [ ] `Tabs` , 滑动基于`swiper`
+- [x] `Tabs` , 滑动基于`swiper`
 
 ### 数据展示
 
@@ -142,6 +142,6 @@ export default defineConfig({
 - [x] `loadmore` 加载更多
 - [x] `Skeleton` 骨架屏
 - [x] `SwiperAction` 滑动操作
-- [ ] `Swiper` 轮播
+- [x] `Swiper` 轮播
 - [ ] `xy-pull-refresh` 上滑加载，下拉刷新
 - [ ] `ImageView` 图片预览

@@ -1,6 +1,6 @@
 import { clamp } from '@/utils/number-utils';
 import classNames from 'classnames';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { animated, useSpring, useSprings } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 import useMergeValue from 'use-merge-value';
@@ -59,6 +59,14 @@ export interface SwiperProps {
    * 是否显示面板指示点
    */
   dots?: boolean;
+  /**
+   * 拖拽比例, 默认0.5, 比如拖拽了屏幕的一半，就切换下一个
+   */
+  distanceRatio?: number;
+  /**
+   * 是否禁用触摸切换
+   */
+  disabled?: boolean;
 }
 
 export default function Swiper(props: SwiperProps) {
@@ -74,6 +82,8 @@ export default function Swiper(props: SwiperProps) {
     scaleMode = true,
     audoHeight,
     dots = true,
+    distanceRatio = 0.5,
+    disabled,
   } = props;
   const items = React.Children.toArray(children);
   const [index, setIndex] = useMergeValue<number>(defaultIndex, {
@@ -89,30 +99,45 @@ export default function Swiper(props: SwiperProps) {
     top: 0,
   }));
   const cacheOffset = useRef(offset.get());
+  const first = useRef(true);
+  const insRef = useRef<HTMLDivElement | null>(null);
 
   function saveSize(ins: HTMLDivElement | null) {
     if (ins) {
+      insRef.current = ins;
       sizeRef.current = { width: ins.clientWidth, height: ins.clientHeight };
     }
   }
 
   useEffect(() => {
     var itemSize = vertical ? sizeRef.current.height : sizeRef.current.width;
-    cacheOffset.current = -(index * itemSize);
-    set({
-      offset: cacheOffset.current,
-      immediate: false,
-      onRest: () => {
-        if (!isMove.current) {
+    var nextOffset = -(index * itemSize);
+    if (!first.current || vertical) {
+      setDisplays((i) => ({ display: 'block', top: i * sizeRef.current.height, immediate: true }));
+    } else {
+      first.current = false;
+    }
+
+    function complete() {
+      if (!isMove.current) {
+        if (audoHeight && !vertical) {
           set({ offset: 0, immediate: true });
-          setDisplays((i) => ({
-            display: index === i ? 'block' : 'none',
-            top: i * itemSize,
-            immediate: true,
-          }));
         }
-      },
+        setDisplays((i) => ({
+          display: index === i ? 'block' : 'none',
+          top: i * itemSize,
+          immediate: true,
+        }));
+      }
+    }
+
+    set({
+      offset: nextOffset,
+      immediate: false,
+      onRest: complete,
+      from: { offset: cacheOffset.current },
     });
+    cacheOffset.current = -(index * itemSize);
   }, [index]);
 
   useEffect(() => {
@@ -120,7 +145,6 @@ export default function Swiper(props: SwiperProps) {
     if (autoplay) {
       handler = window.setInterval(() => {
         if (!isMove.current) {
-          setDisplays((i) => ({ display: 'block', top: i * sizeRef.current.height, immediate: true }));
           setIndex(index + 1 >= items.length ? 0 : index + 1);
         }
       }, autoplayInterval);
@@ -129,18 +153,20 @@ export default function Swiper(props: SwiperProps) {
   }, [index, autoplay]);
 
   const bind = useDrag(
-    ({ down, first, last, movement: [mx, my], direction: [xDir, yDir], distance, cancel }) => {
+    ({ down, first, last, vxvy: [vx, vy], movement: [mx, my], direction: [xDir, yDir], distance, cancel }) => {
       var size = sizeRef.current;
       var itemSize = vertical ? size.height : size.width;
       var mv = vertical ? my : mx;
       var dir = vertical ? yDir : xDir;
+      var v = vertical ? vy : vx;
 
       if (first) {
         start.current = cacheOffset.current;
         setDisplays((i) => ({ display: 'block', top: i * sizeRef.current.height, immediate: true }));
       }
       isMove.current = true;
-      if (down && distance > itemSize / 2) {
+
+      if (down && distance > itemSize * distanceRatio) {
         isMove.current = false;
         setIndex(clamp(index + (dir > 0 ? -1 : 1), 0, items.length - 1));
         cancel();
@@ -156,8 +182,21 @@ export default function Swiper(props: SwiperProps) {
         set({ offset: -(index * itemSize), scale: 1, immediate: false });
       }
     },
-    { axis: vertical ? 'y' : 'x' },
+    { axis: vertical ? 'y' : 'x', enabled: !disabled },
   );
+
+  // 修复有时候内容突然尺寸变化，初次渲染时距离不对的问题
+  useLayoutEffect(() => {
+    const time = window.setTimeout(() => {
+      // 内容变化重新计算
+      if (audoHeight) {
+        saveSize(insRef.current);
+        setDisplays((i) => ({ display: 'block', top: i * sizeRef.current.height, immediate: true }));
+      }
+    }, 100);
+
+    return () => window.clearTimeout(time);
+  }, []);
 
   return (
     <div className={classNames(prefixCls, className, { [`${prefixCls}-vertical`]: vertical })} style={style}>
