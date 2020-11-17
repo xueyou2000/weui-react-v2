@@ -154,13 +154,19 @@ export default function Swiper(props: SwiperProps) {
 
   const bind = useDrag(
     ({ down, first, last, vxvy: [vx, vy], movement: [mx, my], direction: [xDir, yDir], distance, cancel }) => {
+      if (disabled) {
+        return;
+      }
       var size = sizeRef.current;
       var itemSize = vertical ? size.height : size.width;
       var mv = vertical ? my : mx;
       var dir = vertical ? yDir : xDir;
-      var v = vertical ? vy : vx;
 
-      if (first) {
+      if (mv === 0) {
+        return;
+      }
+
+      if (down && first) {
         start.current = cacheOffset.current;
         setDisplays((i) => ({ display: 'block', top: i * sizeRef.current.height, immediate: true }));
       }
@@ -182,7 +188,12 @@ export default function Swiper(props: SwiperProps) {
         set({ offset: -(index * itemSize), scale: 1, immediate: false });
       }
     },
-    { axis: vertical ? 'y' : 'x', enabled: !disabled },
+    {
+      axis: vertical ? 'y' : 'x',
+      filterTaps: true,
+      enabled: !disabled,
+      eventOptions: { passive: true, capture: true },
+    },
   );
 
   // 修复有时候内容突然尺寸变化，初次渲染时距离不对的问题

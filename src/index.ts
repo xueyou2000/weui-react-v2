@@ -13,6 +13,7 @@ export * from './Popup';
 export * from './HalfScreenDialog';
 export * from './Dialog';
 export * from './Skeleton';
+export * from './ImageView';
 export { default as Spin } from './Spin';
 export { default as Toptips } from './Toptips';
 export { default as ActionSheet } from './ActionSheet';
