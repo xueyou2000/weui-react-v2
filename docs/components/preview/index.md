@@ -16,7 +16,7 @@ group:
 
 ```tsx
 /**
- * title: 图文组合面板
+ * title: 预览内容
  */
 import React from 'react';
 import { Preview, PreviewItem, PreviewButton, WhiteSpace } from 'weui-react-v2';

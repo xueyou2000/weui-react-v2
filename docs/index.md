@@ -111,7 +111,7 @@ export default defineConfig({
 - [ ] `DatePicker` 日期选择
 - [ ] `ImagePicker` 图片选择
 - [ ] `SearchBar` 搜索栏
-- [ ] `Rate`评级
+- [x] `Rate`评级
 - [x] `AmountKeyboard` 金额键盘
 
 ### 布局
