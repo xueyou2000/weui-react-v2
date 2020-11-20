@@ -129,6 +129,8 @@ export default defineConfig({
 
 - [x] `List` 列表
 - [x] `Panel` 面板
+- [x] `Grid` 九宫格
+- [x] `Preview` 表单预览
 
 ### 操作反馈
 

@@ -23,7 +23,7 @@ import { List, ListItem } from 'weui-react-v2';
 import { CheckCircleFilled } from '@ant-design/icons';
 
 export default () => (
-  <>
+  <div style={{ minHeight: '100vh', backgroundColor: '#f4f4f4', padding: '30px', margin: '-28px' }}>
     <List title="带说明的列表">
       <ListItem extra="说明文字">标题文字</ListItem>
       <ListItem extra="说明文字">标题文字</ListItem>
@@ -55,7 +55,7 @@ export default () => (
         标题文字
       </ListItem>
     </List>
-  </>
+  </div>
 );
 ```
 

@@ -28,6 +28,7 @@ export { PullRefreshAction } from './PullRefresh';
 export * from './Grid';
 export * from './List';
 export * from './Panel';
+export * from './Preview';
 
 // 数据输入
 export { default as AmountKeyBoard } from './AmountKeyBoard';

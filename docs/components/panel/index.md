@@ -23,7 +23,10 @@ import { Panel, PanelItem, Brief, ListItem } from 'weui-react-v2';
 import './index.less';
 
 export default () => (
-  <div className="panel-demo">
+  <div
+    className="panel-demo"
+    style={{ minHeight: '100vh', backgroundColor: '#f4f4f4', padding: '30px', margin: '-28px' }}
+  >
     <Panel title="图文组合列表">
       <PanelItem title="标题一" thumb={require('./icon_tabbar.png')}>
         由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。

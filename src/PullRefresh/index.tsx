@@ -189,8 +189,16 @@ export default function PullRefresh(props: PullRefreshProps) {
       if (tempActionRef.current === PullRefreshAction.enough) {
         changeAction(PullRefreshAction.refreshing);
       } else {
-        changeAction(PullRefreshAction.reset);
-        set({ y: 0, immediate: false });
+        set({
+          y: 0,
+          immediate: false,
+          reset: true,
+          onRest: ({ value: { y } }) => {
+            if (y === 0) {
+              changeAction(PullRefreshAction.reset);
+            }
+          },
+        });
       }
     } else {
       if (tempActionRef.current !== PullRefreshAction.loading) {

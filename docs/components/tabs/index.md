@@ -87,6 +87,7 @@ export default () => {
   }
 
   function removeTab() {
+    setKey(0);
     setTabs(tabs.slice(0, tabs.length - 1));
   }
 

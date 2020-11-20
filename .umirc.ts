@@ -1,6 +1,7 @@
 import { defineConfig } from 'dumi';
 import px2rem from 'postcss-plugin-px2rem';
 import path from 'path';
+var pxtoviewport = require('postcss-px-to-viewport');
 
 export default defineConfig({
   title: 'weui-react-v2',
@@ -27,13 +28,23 @@ export default defineConfig({
       });
   },
   extraPostCSSPlugins: [
-    px2rem({
-      rootValue: 100,
-      unitPrecision: 2,
-      exclude: /dumi/,
+    pxtoviewport({
+      viewportWidth: 750,
+      viewportHeight: 4925,
+      unitPrecision: 5,
+      viewportUnit: 'vw',
+      selectorBlackList: [],
+      minPixelValue: 1,
       mediaQuery: false,
-      minPixelValue: 2,
+      exclude: [/dumi/],
     }),
+    // px2rem({
+    //   rootValue: 100,
+    //   unitPrecision: 2,
+    //   exclude: /dumi/,
+    //   mediaQuery: false,
+    //   minPixelValue: 2,
+    // }),
   ],
   navs: [
     null,

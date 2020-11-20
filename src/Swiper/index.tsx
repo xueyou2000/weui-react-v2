@@ -82,7 +82,7 @@ export default function Swiper(props: SwiperProps) {
     scaleMode = true,
     audoHeight,
     dots = true,
-    distanceRatio = 0.5,
+    distanceRatio = 0.4,
     disabled,
   } = props;
   const items = React.Children.toArray(children);

@@ -77,7 +77,7 @@ export default function SwiperAction(props: SwiperActionProps) {
   }
 
   const bind = useDrag(
-    ({ first, last, down, direction: _d, vxvy: [vx], movement: [mx], cancel }) => {
+    ({ first, last, down, direction: _d, movement: [mx], cancel, event }) => {
       let dc = directionRef.current;
       if (first) {
         // x轴方向值为-1, 则代表左滑动，想展示右侧操作按钮
