@@ -27,6 +27,14 @@ export default defineConfig({
         name: 'media/[name].[ext]',
       });
   },
+  externals: {
+    react: 'window.React',
+    'react-dom': 'window.ReactDOM',
+  },
+  scripts: [
+    'https://gw.alipayobjects.com/os/lib/react/17.0.1/umd/react.development.js',
+    'https://gw.alipayobjects.com/os/lib/react-dom/17.0.1/umd/react-dom.development.js',
+  ],
   extraPostCSSPlugins: [
     pxtoviewport({
       viewportWidth: 750,
