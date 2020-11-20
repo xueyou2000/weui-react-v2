@@ -143,5 +143,5 @@ export default defineConfig({
 - [x] `Skeleton` 骨架屏
 - [x] `SwiperAction` 滑动操作
 - [x] `Swiper` 轮播
-- [ ] `xy-pull-refresh` 上滑加载，下拉刷新
+- [x] `PullRefresh` 上滑加载，下拉刷新
 - [x] `Gallery` 图片查看器

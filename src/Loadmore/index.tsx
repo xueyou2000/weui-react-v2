@@ -32,10 +32,14 @@ export interface LoadmoreProps {
    * 提示文本
    */
   tips?: string;
+  /**
+   * 自定义图标
+   */
+  icon?: React.ReactNode;
 }
 
 export default function Loadmore(props: LoadmoreProps) {
-  const { prefixCls = 'weui-loadmore', className, style, loading, line, dot, tips } = props;
+  const { prefixCls = 'weui-loadmore', className, style, loading, line, dot, tips, icon } = props;
   const classString = classNames(prefixCls, className, {
     [`${prefixCls}-dot`]: dot || !tips,
     [`${prefixCls}-line`]: dot || line || !loading,
@@ -44,7 +48,7 @@ export default function Loadmore(props: LoadmoreProps) {
 
   return (
     <div className={classString} style={style}>
-      {loading && <MultistageLoading />}
+      {loading && <MultistageLoading />} {icon}
       <span className={`${prefixCls}-tips`}>{tips}</span>
     </div>
   );
