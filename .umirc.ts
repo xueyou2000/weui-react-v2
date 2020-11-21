@@ -8,6 +8,10 @@ export default defineConfig({
   favicon: 'https://weui.io/favicon.ico',
   logo: 'https://user-images.githubusercontent.com/9554297/83762004-a0761b00-a6a9-11ea-83b4-9c8ff721d4b8.png',
   outputPath: 'docs-dist',
+  nodeModulesTransform: {
+    type: 'none',
+    exclude: [],
+  },
   base: '/weui-react-v2/',
   publicPath: '/weui-react-v2/',
   mode: 'site',
@@ -26,14 +30,39 @@ export default defineConfig({
         esModule: false,
         name: 'media/[name].[ext]',
       });
+    config.merge({
+      optimization: {
+        minimize: true,
+        splitChunks: {
+          chunks: 'all',
+          minSize: 30000,
+          minChunks: 3,
+          automaticNameDelimiter: '.',
+          cacheGroups: {
+            vendor: {
+              name: 'vendors',
+              test({ resource }) {
+                return /[\\/]node_modules[\\/]/.test(resource);
+              },
+              priority: 10,
+            },
+          },
+        },
+      },
+    });
   },
   externals: {
     react: 'window.React',
     'react-dom': 'window.ReactDOM',
+    'react-spring': 'window.ReactSpring',
+  },
+  dynamicImport: {
+    loading: '@/Spin/index',
   },
   scripts: [
     'https://gw.alipayobjects.com/os/lib/react/17.0.1/umd/react.development.js',
     'https://gw.alipayobjects.com/os/lib/react-dom/17.0.1/umd/react-dom.development.js',
+    'https://cdn.jsdelivr.net/npm/@react-spring/web@9.0.0-rc.3/index.umd.min.js',
   ],
   extraPostCSSPlugins: [
     pxtoviewport({
