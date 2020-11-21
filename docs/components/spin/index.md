@@ -26,15 +26,22 @@ group:
  * desc: 内置3种不同尺寸， 设置 `size` 属性为 `small`, `large`, `default`。
  */
 import React from 'react';
-import { Spin } from 'weui-react-v2';
+import { Spin, Flex, WhiteSpace } from 'weui-react-v2';
 
 export default () => (
   <>
-    <Spin spinning={true} size="small" />
-    <br />
-    <Spin spinning={true} />
-    <br />
-    <Spin spinning={true} size="large" />
+    <Flex justify="center">
+      <Spin spinning={true} size="small" />
+    </Flex>
+    <WhiteSpace size="sm" />
+    <Flex justify="center">
+      <Spin spinning={true} />
+    </Flex>
+
+    <WhiteSpace size="sm" />
+    <Flex justify="center">
+      <Spin spinning={true} size="large" />
+    </Flex>
   </>
 );
 ```
@@ -47,16 +54,24 @@ export default () => (
  * desc: 设置 indicator 属性，自定义加载指示符。
  */
 import React from 'react';
-import { Spin } from 'weui-react-v2';
-import { LoadingOutlined } from '@ant-design/icons';
+import { Spin, Flex, WhiteSpace } from 'weui-react-v2';
+import { Loading3QuartersOutlined, SyncOutlined, StarOutlined } from '@ant-design/icons';
 
 export default () => (
   <div>
-    <Spin size="small" spinning={true} indicator={<LoadingOutlined spin={true} />} />
-    <br />
-    <Spin spinning={true} indicator={<LoadingOutlined spin={true} />} />
-    <br />
-    <Spin size="large" spinning={true} indicator={<LoadingOutlined spin={true} />} />
+    <Flex justify="center">
+      <Spin size="small" spinning={true} indicator={<StarOutlined spin={true} />} />
+    </Flex>
+
+    <WhiteSpace size="sm" />
+    <Flex justify="center">
+      <Spin spinning={true} indicator={<SyncOutlined spin={true} />} />
+    </Flex>
+
+    <WhiteSpace size="sm" />
+    <Flex justify="center">
+      <Spin size="large" spinning={true} indicator={<Loading3QuartersOutlined spin={true} />} />
+    </Flex>
   </div>
 );
 ```

@@ -3,7 +3,7 @@
  * desc: 默认是内联模式，`Spin`不会宽度100%
  */
 import React, { useState } from 'react';
-import { Spin } from 'weui-react-v2';
+import { Spin, Button } from 'weui-react-v2';
 import './index.less';
 
 export default () => {
@@ -32,7 +32,9 @@ export default () => {
         </div>
       </Spin>
       <br />
-      <button onClick={() => setInline((pre) => !pre)}>切换内联状态</button>
+      <Button type="primary" onClick={() => setInline((pre) => !pre)}>
+        切换内联状态
+      </Button>
     </div>
   );
 };

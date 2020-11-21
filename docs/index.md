@@ -107,7 +107,7 @@ export default defineConfig({
 - [ ] `FormItem` 可以包裹表单组件
 - [ ] `Input` 输入框， 支持多种类型，比如手机号，身份证，银行卡的格式化
 - [ ] `TextArea` 文本域
-- [ ] `Checkbox` 复选框
+- [x] `Checkbox` 复选框
 - [x] `Switch` 切换开关
 - [ ] `Picker` 选择器
 - [ ] `DatePicker` 日期选择

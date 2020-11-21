@@ -34,6 +34,7 @@ export * from './Preview';
 export { default as AmountKeyBoard } from './AmountKeyBoard';
 export { default as Rate } from './Rate';
 export { default as Switch } from './Switch';
+export { default as Checkbox } from './Checkbox';
 
 // 导航
 export * from './Tabs';
