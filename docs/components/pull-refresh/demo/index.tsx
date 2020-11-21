@@ -75,7 +75,7 @@ export default () => {
       <div>
         <p className="tips">我是头部</p>
       </div>
-      <PullRefresh action={action} handleAction={handleAction} scrollTarget={document.querySelector('#root')}>
+      <PullRefresh action={action} handleAction={handleAction}>
         <ul className="fake-list">
           {data.length === 0 ? <Skeleton loading={true}></Skeleton> : data.map((x, i) => <li key={i}>列表{i}</li>)}
           {nomore && <Loadmore tips="暂无更多" />}

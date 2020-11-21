@@ -4,8 +4,8 @@ order: 1
 nav:
   title: 组件
 group:
-  title: 操作反馈
-  path: /components/feedback
+  title: 数据展示
+  path: /components/data-display
 ---
 
 # ImageView 图片查看

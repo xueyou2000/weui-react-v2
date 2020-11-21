@@ -33,6 +33,7 @@ export * from './Preview';
 // 数据输入
 export { default as AmountKeyBoard } from './AmountKeyBoard';
 export { default as Rate } from './Rate';
+export { default as Switch } from './Switch';
 
 // 导航
 export * from './Tabs';

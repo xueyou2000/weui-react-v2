@@ -30,26 +30,26 @@ export default defineConfig({
         esModule: false,
         name: 'media/[name].[ext]',
       });
-    config.merge({
-      optimization: {
-        minimize: true,
-        splitChunks: {
-          chunks: 'all',
-          minSize: 30000,
-          minChunks: 3,
-          automaticNameDelimiter: '.',
-          cacheGroups: {
-            vendor: {
-              name: 'vendors',
-              test({ resource }) {
-                return /[\\/]node_modules[\\/]/.test(resource);
-              },
-              priority: 10,
-            },
-          },
-        },
-      },
-    });
+    // config.merge({
+    //   optimization: {
+    //     minimize: true,
+    //     splitChunks: {
+    //       chunks: 'all',
+    //       minSize: 30000,
+    //       minChunks: 3,
+    //       automaticNameDelimiter: '.',
+    //       cacheGroups: {
+    //         vendor: {
+    //           name: 'vendors',
+    //           test({ resource }) {
+    //             return /[\\/]node_modules[\\/]/.test(resource);
+    //           },
+    //           priority: 10,
+    //         },
+    //       },
+    //     },
+    //   },
+    // });
   },
   externals: {
     react: 'window.React',
