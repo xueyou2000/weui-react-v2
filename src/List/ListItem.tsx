@@ -16,6 +16,10 @@ export interface ListItemProps {
    */
   style?: React.CSSProperties;
   /**
+   * 头部
+   */
+  hd?: React.ReactNode;
+  /**
    * 缩略图(当为 string 类型时作为 img src)
    */
   thumb?: string | React.ReactNode;
@@ -42,7 +46,7 @@ export interface ListItemProps {
 }
 
 export default function ListItem(props: ListItemProps) {
-  const { prefixCls = 'weui-item', className, style, thumb, extra, arrow, onClick, error, children } = props;
+  const { prefixCls = 'weui-item', className, style, thumb, hd, extra, arrow, onClick, error, children } = props;
   const classString = classNames(prefixCls, className, {
     [`${prefixCls}-error`]: error,
     [`${prefixCls}-arrow-${arrow}`]: arrow,
@@ -51,6 +55,7 @@ export default function ListItem(props: ListItemProps) {
 
   return (
     <div className={classString} style={style}>
+      {hd && <div className={`${prefixCls}-hd`}>{hd}</div>}
       {thumb && <div className={`${prefixCls}-thumb`}>{typeof thumb === 'string' ? <img src={thumb} /> : thumb}</div>}
       <div className={`${prefixCls}-bd`}>{children}</div>
       {(extra || arrow) && <div className={`${prefixCls}-ft`}>{extra}</div>}

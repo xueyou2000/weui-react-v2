@@ -3,7 +3,7 @@ import React from 'react';
 import LoadingIcon from './LoadingIcon';
 import './style';
 
-export type ButtonType = 'primary' | 'default' | 'dashed' | 'link' | 'text';
+export type ButtonType = 'primary' | 'default' | 'dashed' | 'link' | 'text' | 'vcode';
 
 export interface ButtonProps {
   /**

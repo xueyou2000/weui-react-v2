@@ -88,6 +88,22 @@
     .button-disabled();
   }
 
+  &-vcode {
+    .button-color(@primary-color; @btn-default-bg; transparent);
+    line-height: 2.5em;
+    width: 160px;
+    box-sizing: border-box;
+    padding: 0;
+
+    &:active {
+      color: @primary-color;
+      background: #d9d9d9;
+      border-color: transparent;
+    }
+
+    .button-disabled();
+  }
+
   &-link {
     .button-color(@btn-primary-bg; transparent; transparent);
 

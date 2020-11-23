@@ -24,7 +24,7 @@ export default () => {
       <br />
       <Button type="text">文本按钮</Button>
       <Button type="link">链接按钮</Button>
-
+      <Button type="vcode">验证码按钮</Button>
       <br />
       <Button type="primary" loading={loading} onClick={handleClick}>
         点击加载
