@@ -51,6 +51,10 @@ export interface FormItemProps extends Pick<Partial<UseFieldConfig>, Exclude<key
    * 是否精简模式，不显示List样式
    */
   simple?: boolean;
+  /**
+   * 标签位置
+   */
+  labelPostion?: 'left' | 'top';
 }
 
 export default function FormItem(props: FormItemProps) {
@@ -66,14 +70,16 @@ export default function FormItem(props: FormItemProps) {
     clickShowError = true,
     align,
     simple = false,
+    labelPostion,
     ...rest
   } = props;
+  const formContext = useContext(FormContext);
   const [validateResult, setValidateResult] = useState<ValidateResult>({ status: true, msg: undefined });
-  const classString = classNames(prefixCls, className, {
+  const classString = classNames(prefixCls, className, `${prefixCls}-pos-${labelPostion || formContext.labelPostion}`, {
     [`${prefixCls}-error`]: !validateResult.status,
     [`${prefixCls}-disabled`]: props.disabled,
   });
-  const formContext = useContext(FormContext);
+
   const child = React.Children.only(children) as any;
 
   function handleValidateChange(value: any, res: ValidateResult) {

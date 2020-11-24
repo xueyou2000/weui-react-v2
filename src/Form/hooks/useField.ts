@@ -215,6 +215,5 @@ export default function useField(config: UseFieldConfig) {
     disabled,
     onBlur: handleBlur,
     onChange: handleChange,
-    error: !validateResult.status,
   };
 }

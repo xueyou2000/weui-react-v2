@@ -58,6 +58,7 @@ export default function Form<T = any>(props: FormProps<T>) {
     disabled = false,
     trigger = ValidateTrigger.blur,
     labelWidth = '15vw',
+    labelPostion = 'left',
     defaultModel,
     getFormMethods,
   } = props;
@@ -74,8 +75,6 @@ export default function Form<T = any>(props: FormProps<T>) {
       console.warn('存在重复字段', prop);
     }
     mapper.set(prop, itemState);
-
-    console.log(mapper);
   }
 
   function remove(prop: string) {
@@ -108,7 +107,18 @@ export default function Form<T = any>(props: FormProps<T>) {
       autoComplete="off"
     >
       <FormContext.Provider
-        value={{ disabled, methods, trigger, labelWidth, defaultModel, add, remove, fieldChange, fieldValidate }}
+        value={{
+          disabled,
+          methods,
+          trigger,
+          labelWidth,
+          labelPostion,
+          defaultModel,
+          add,
+          remove,
+          fieldChange,
+          fieldValidate,
+        }}
       >
         {children}
       </FormContext.Provider>

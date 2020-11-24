@@ -1,4 +1,4 @@
-import { clamp } from '@/utils/number-utils';
+import { clamp } from '../utils/number-utils';
 import { DownOutlined, LeftOutlined, RightOutlined, UpOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';

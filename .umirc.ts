@@ -17,19 +17,19 @@ export default defineConfig({
   mode: 'site',
   exportStatic: {},
   chainWebpack(config, { webpack }) {
-    config.module
-      .rule('file-loader')
-      .test(/\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/)
-      .include.add(path.resolve(__dirname, 'src'))
-      .add(path.resolve(__dirname, 'docs'))
-      .end()
-      .use('file-loader')
-      .loader('file-loader')
-      .options({
-        limit: 100,
-        esModule: false,
-        name: 'media/[name].[ext]',
-      });
+    // config.module
+    //   .rule('file-loader')
+    //   .test(/\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/)
+    //   .include.add(path.resolve(__dirname, 'src'))
+    //   .add(path.resolve(__dirname, 'docs'))
+    //   .end()
+    //   .use('file-loader')
+    //   .loader('file-loader')
+    //   .options({
+    //     limit: 100,
+    //     esModule: false,
+    //     name: 'media/[name].[ext]',
+    //   });
     // config.merge({
     //   optimization: {
     //     minimize: true,

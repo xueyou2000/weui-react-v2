@@ -6,7 +6,19 @@ import { FormMethods } from '@/Form/hooks/useFormMethods';
 import { ValidateConfig } from '@/Form/utils/validate';
 import { PhoneOutlined } from '@ant-design/icons';
 import React, { useRef, useState } from 'react';
-import { Input, Button, Flex, WhiteSpace, List, Form, FormItem, Checkbox, SubmitButton, useField } from 'weui-react-v2';
+import {
+  Input,
+  NumberInput,
+  Button,
+  Flex,
+  WhiteSpace,
+  List,
+  Form,
+  FormItem,
+  Checkbox,
+  SubmitButton,
+  useField,
+} from 'weui-react-v2';
 import './index.less';
 
 interface Model {
@@ -14,12 +26,16 @@ interface Model {
   vcode: string;
   name: string;
   loginType: string;
+  age: number;
+  amount: number;
 }
 
 const validConfig: ValidateConfig<Model> = {
   phone: [{ name: 'Required' }, { name: 'Pattern', params: [/^1\d{10}$/] }],
   vcode: [{ name: 'Required' }, { name: 'EqualLength', params: [6] }],
   name: [{ name: 'Required' }],
+  age: [{ name: 'Required' }],
+  amount: [{ name: 'Required' }, { name: 'Amount' }],
   loginType: [{ name: 'Required' }],
 };
 
@@ -60,6 +76,12 @@ export default function () {
             <FormItem prop="name" label="姓名">
               <Input placeholder="请输入真实姓名" maxlength={10} />
             </FormItem>
+            <FormItem prop="age" label="年龄">
+              <NumberInput placeholder="请输入年龄" maxlength={3} pattern="[0-9]*" />
+            </FormItem>
+            <FormItem prop="amount" label="金额">
+              <NumberInput type="amount" placeholder="请输入金额" precision={2} />
+            </FormItem>
           </List>
           <List title="原生选择框">
             <FormItem prop="loginType" defaultValue="2" arrow="horizontal">
@@ -73,7 +95,7 @@ export default function () {
             <FormItem
               className="virtual-select"
               label={
-                <FormItem prop="zoneCode" labelString="区号" simple={true}>
+                <FormItem prop="zoneCode" labelString="区号" simple={true} defaultValue="86">
                   <select>
                     <option value="86">+86</option>
                     <option value="80">+80</option>
@@ -86,7 +108,7 @@ export default function () {
                 <Input placeholder="请输入手机号" type="phone" pattern="[0-9]*" maxlength={13} />
               </FormItem>
             </FormItem>
-            <FormItem prop="country" label="国家" arrow="horizontal">
+            <FormItem prop="country" label="国家" arrow="horizontal" defaultValue="2">
               <select>
                 <option value="1">中国</option>
                 <option value="2">美国</option>

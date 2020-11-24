@@ -4,6 +4,8 @@ import useMergeValue from 'use-merge-value';
 import { useDebounceCallback } from 'utils-hooks';
 import './style';
 
+export type InputParser = (value: any) => string;
+
 export interface InputProps {
   /**
    * 附加类名
@@ -21,6 +23,10 @@ export interface InputProps {
    * 是否禁用
    */
   disabled?: boolean;
+  /**
+   * 是否只读
+   */
+  readOnly?: boolean;
   /**
    * 值
    */
@@ -56,19 +62,19 @@ export interface InputProps {
   /**
    * 输入框焦点事件
    */
-  onFocus?: (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
   /**
    * 输入框失去焦点事件
    */
-  onBlur?: (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   /**
    * 开始输入中文
    */
-  onCompositionStart?: (e: React.CompositionEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onCompositionStart?: (e: React.CompositionEvent<HTMLInputElement>) => void;
   /**
    * 输入中文完毕
    */
-  onCompositionEnd?: (e: React.CompositionEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+  onCompositionEnd?: (e: React.CompositionEvent<HTMLInputElement>) => void;
   /**
    * 搜索回调, 配合delay防抖
    */
@@ -89,6 +95,14 @@ export interface InputProps {
    * 后置图标
    */
   suffix?: React.ReactNode;
+  /**
+   * 输入框展示值的格式化
+   */
+  formatter?: InputParser;
+  /**
+   * 从formatter里转换回来, 配合 formatter使用
+   */
+  parser?: InputParser;
 }
 
 const formatters = {
@@ -143,6 +157,9 @@ const Input = React.forwardRef<HTMLDivElement, InputProps>((props, ref) => {
     onCompositionEnd,
     onSearch,
     delay = 500,
+    formatter,
+    parser,
+    readOnly,
   } = props;
   const [value, setValue] = useMergeValue<string>(defaultValue, {
     value: props.value,
@@ -155,6 +172,8 @@ const Input = React.forwardRef<HTMLDivElement, InputProps>((props, ref) => {
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     if (type in formatters) {
       setValue((formatters as any)[type].out(e.target.value));
+    } else if (formatter && parser) {
+      setValue(parser(e.target.value));
     } else {
       setValue(e.target.value);
     }
@@ -163,12 +182,14 @@ const Input = React.forwardRef<HTMLDivElement, InputProps>((props, ref) => {
   function format() {
     if (type in formatters) {
       return (formatters as any)[type].in(value);
+    } else if (formatter && parser) {
+      return formatter(value);
     } else {
       return value;
     }
   }
 
-  function handleBlur(e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  function handleBlur(e: React.FocusEvent<HTMLInputElement>) {
     setTimeout(() => {
       setFocus(false);
       if (onBlur) {
@@ -184,7 +205,7 @@ const Input = React.forwardRef<HTMLDivElement, InputProps>((props, ref) => {
     }, 100);
   }
 
-  function handleFocus(e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  function handleFocus(e: React.FocusEvent<HTMLInputElement>) {
     scrollTopRef.current = window.pageYOffset;
     setFocus(true);
     if (onFocus) {
@@ -192,14 +213,14 @@ const Input = React.forwardRef<HTMLDivElement, InputProps>((props, ref) => {
     }
   }
 
-  function handleCompositionStart(e: React.CompositionEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  function handleCompositionStart(e: React.CompositionEvent<HTMLInputElement>) {
     typing.current = true;
     if (onCompositionStart) {
       onCompositionStart(e);
     }
   }
 
-  function handleCompositionEnd(e: React.CompositionEvent<HTMLInputElement | HTMLTextAreaElement>) {
+  function handleCompositionEnd(e: React.CompositionEvent<HTMLInputElement>) {
     typing.current = false;
     if (onCompositionEnd) {
       onCompositionEnd(e);
@@ -239,6 +260,7 @@ const Input = React.forwardRef<HTMLDivElement, InputProps>((props, ref) => {
           autoFocus={autoFocus}
           onChange={handleChange}
           disabled={disabled}
+          readOnly={readOnly}
           placeholder={placeholder}
           onFocus={handleFocus}
           onBlur={handleBlur}

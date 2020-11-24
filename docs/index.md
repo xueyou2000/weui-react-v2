@@ -36,8 +36,6 @@ yarn add weui-react-v2
 
 > Tips: 请注意，此库组件基于 750px 设计稿, 请使用`post-css`等后处理起，将此库的`px`转换为`rem`或`vw`， 具体看你自己的适配方案.
 
-> Tips: 项目引入了音效文件，所以请配置`file-loader`
-
 ```ts
 // umi配置
 import { defineConfig } from 'umi';
@@ -107,7 +105,7 @@ export default defineConfig({
 - [x] `FormItem` 可以包裹表单组件
 - [x] `Input` 输入框， 支持多种类型，比如手机号，身份证，银行卡的格式化
 - [ ] `TextArea` 文本域
-- [ ] `NumberInput` 数值输入框
+- [x] `NumberInput` 数值输入框
 - [x] `Checkbox` 复选框
 - [x] `Switch` 切换开关
 - [ ] `Picker` 选择器

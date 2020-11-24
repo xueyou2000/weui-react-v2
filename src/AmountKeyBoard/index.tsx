@@ -1,11 +1,10 @@
 import classNames from 'classnames';
 import React, { useEffect, useRef, useState } from 'react';
-import useMergeValue from 'use-merge-value';
+import { DefineDefaultValue } from 'utils-hooks';
 import { Popup } from '../Popup';
 import { PopupProps } from '../Popup/Popup';
-import { keyboradDown } from './utils';
 import './style';
-import { DefineDefaultValue } from 'utils-hooks';
+import { keyboradDown } from './utils';
 
 export interface AmountKeyBoardProps extends PopupProps {
   /**
@@ -58,7 +57,7 @@ export interface AmountKeyBoardProps extends PopupProps {
   onConfirm?: (amount: number, amountStr: string) => void;
 }
 
-export default function AmountKeyBoard(props: AmountKeyBoardProps) {
+const AmountKeyBoard = React.forwardRef<HTMLDivElement, AmountKeyBoardProps>((props, ref) => {
   const {
     prefixCls = 'weui-keyboard',
     className,
@@ -79,7 +78,6 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
   const lastBtn = useRef<HTMLElement | null>(null);
   const closeRef = useRef<Function | null>(null);
   const [amountStr, setAmountStr] = useState(DefineDefaultValue(props, 'value', 'defaultValue') + '' || '');
-  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   function changeAmount(amountStr: string) {
     let _realAmount = parseFloat(amountStr);
@@ -107,10 +105,6 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
       lastBtn.current.classList.remove('down');
     }
     lastBtn.current = e.currentTarget;
-    if (audioRef.current) {
-      audioRef.current.currentTime = 0;
-      audioRef.current.play();
-    }
     const key = e.currentTarget as HTMLElement;
     const code = key.getAttribute('data-code');
     if (code === undefined) {
@@ -156,14 +150,11 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
       animateClassName="drill"
       popupContentClassName={`${prefixCls}-wrapper`}
     >
-      <audio ref={audioRef} src={require('./tink.wav')}></audio>
-      <div className={classNames(prefixCls, className)} style={style}>
+      <div className={classNames(prefixCls, className)} style={style} ref={ref}>
         <div className={`${prefixCls}-inner`}>
           <a
             className={classNames(`${prefixCls}-key`, 'left-0 top-0')}
             data-code="1"
-            onMouseDown={handleKeyTouchStart as any}
-            onMouseUp={handleKeyTouchEnd as any}
             onTouchStart={handleKeyTouchStart}
             onTouchEnd={handleKeyTouchEnd}
           >
@@ -172,8 +163,6 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
           <a
             className={classNames(`${prefixCls}-key`, 'left-1 top-0')}
             data-code="2"
-            onMouseDown={handleKeyTouchStart as any}
-            onMouseUp={handleKeyTouchEnd as any}
             onTouchStart={handleKeyTouchStart}
             onTouchEnd={handleKeyTouchEnd}
           >
@@ -182,8 +171,6 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
           <a
             className={classNames(`${prefixCls}-key`, 'left-2 top-0')}
             data-code="3"
-            onMouseDown={handleKeyTouchStart as any}
-            onMouseUp={handleKeyTouchEnd as any}
             onTouchStart={handleKeyTouchStart}
             onTouchEnd={handleKeyTouchEnd}
           >
@@ -192,8 +179,6 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
           <a
             className={classNames(`${prefixCls}-key`, 'left-0 top-1')}
             data-code="4"
-            onMouseDown={handleKeyTouchStart as any}
-            onMouseUp={handleKeyTouchEnd as any}
             onTouchStart={handleKeyTouchStart}
             onTouchEnd={handleKeyTouchEnd}
           >
@@ -202,8 +187,6 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
           <a
             className={classNames(`${prefixCls}-key`, 'left-1 top-1')}
             data-code="5"
-            onMouseDown={handleKeyTouchStart as any}
-            onMouseUp={handleKeyTouchEnd as any}
             onTouchStart={handleKeyTouchStart}
             onTouchEnd={handleKeyTouchEnd}
           >
@@ -212,8 +195,6 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
           <a
             className={classNames(`${prefixCls}-key`, 'left-2 top-1')}
             data-code="6"
-            onMouseDown={handleKeyTouchStart as any}
-            onMouseUp={handleKeyTouchEnd as any}
             onTouchStart={handleKeyTouchStart}
             onTouchEnd={handleKeyTouchEnd}
           >
@@ -222,8 +203,6 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
           <a
             className={classNames(`${prefixCls}-key`, 'left-0 top-2')}
             data-code="7"
-            onMouseDown={handleKeyTouchStart as any}
-            onMouseUp={handleKeyTouchEnd as any}
             onTouchStart={handleKeyTouchStart}
             onTouchEnd={handleKeyTouchEnd}
           >
@@ -232,8 +211,6 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
           <a
             className={classNames(`${prefixCls}-key`, 'left-1 top-2')}
             data-code="8"
-            onMouseDown={handleKeyTouchStart as any}
-            onMouseUp={handleKeyTouchEnd as any}
             onTouchStart={handleKeyTouchStart}
             onTouchEnd={handleKeyTouchEnd}
           >
@@ -242,8 +219,6 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
           <a
             className={classNames(`${prefixCls}-key`, 'left-2 top-2')}
             data-code="9"
-            onMouseDown={handleKeyTouchStart as any}
-            onMouseUp={handleKeyTouchEnd as any}
             onTouchStart={handleKeyTouchStart}
             onTouchEnd={handleKeyTouchEnd}
           >
@@ -252,8 +227,6 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
           <a
             className={classNames(`${prefixCls}-key`, 'left-0 top-3')}
             data-code="clear"
-            onMouseDown={handleKeyTouchStart as any}
-            onMouseUp={handleKeyTouchEnd as any}
             onTouchStart={handleKeyTouchStart}
             onTouchEnd={handleKeyTouchEnd}
           >
@@ -262,8 +235,6 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
           <a
             className={classNames(`${prefixCls}-key`, 'left-1 top-3')}
             data-code="0"
-            onMouseDown={handleKeyTouchStart as any}
-            onMouseUp={handleKeyTouchEnd as any}
             onTouchStart={handleKeyTouchStart}
             onTouchEnd={handleKeyTouchEnd}
           >
@@ -272,8 +243,6 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
           <a
             className={classNames(`${prefixCls}-key`, 'left-2 top-3')}
             data-code="."
-            onMouseDown={handleKeyTouchStart as any}
-            onMouseUp={handleKeyTouchEnd as any}
             onTouchStart={handleKeyTouchStart}
             onTouchEnd={handleKeyTouchEnd}
           >
@@ -282,8 +251,6 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
           <a
             className={classNames(`${prefixCls}-key`, 'left-3 top-0')}
             data-code="backspace"
-            onMouseDown={handleKeyTouchStart as any}
-            onMouseUp={handleKeyTouchEnd as any}
             onTouchStart={handleKeyTouchStart}
             onTouchEnd={handleKeyTouchEnd}
           >
@@ -296,4 +263,6 @@ export default function AmountKeyBoard(props: AmountKeyBoardProps) {
       </div>
     </Popup>
   );
-}
+});
+
+export default AmountKeyBoard;

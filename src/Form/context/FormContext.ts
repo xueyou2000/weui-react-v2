@@ -59,6 +59,10 @@ export interface FormContextState {
    */
   labelWidth: string;
   /**
+   * 标签位置
+   */
+  labelPostion: 'left' | 'top';
+  /**
    * 默认模型
    */
   defaultModel?: any;
@@ -86,6 +90,7 @@ const FormContext = React.createContext<FormContextState>({
   disabled: false,
   trigger: ValidateTrigger.change,
   labelWidth: '90px',
+  labelPostion: 'left',
   add: loop,
   methods: {} as any,
   remove: loop,
