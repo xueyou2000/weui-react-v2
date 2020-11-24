@@ -47,6 +47,10 @@ export interface FormItemProps extends Pick<Partial<UseFieldConfig>, Exclude<key
    * 内容对齐方式
    */
   align?: 'left' | 'center' | 'right';
+  /**
+   * 是否精简模式，不显示List样式
+   */
+  simple?: boolean;
 }
 
 export default function FormItem(props: FormItemProps) {
@@ -61,6 +65,7 @@ export default function FormItem(props: FormItemProps) {
     access = true,
     clickShowError = true,
     align,
+    simple = false,
     ...rest
   } = props;
   const [validateResult, setValidateResult] = useState<ValidateResult>({ status: true, msg: undefined });
@@ -84,37 +89,43 @@ export default function FormItem(props: FormItemProps) {
     }
   }
 
-  return (
-    <ListItem
-      className={classString}
-      style={style}
-      arrow={arrow}
-      extra={extra}
-      align={align}
-      hd={
-        label && (
-          <span className={`${prefixCls}-label`} style={{ width: formContext.labelWidth }} onClick={showError}>
-            {label}
-          </span>
-        )
-      }
-      access={props.disabled ? false : access}
-    >
-      {rest.prop
-        ? React.cloneElement(
-            child,
-            Object.assign(
-              {},
-              child.props,
-              useField(
-                Object.assign(rest, {
-                  onValidateChange: handleValidateChange,
-                  labelString: props.labelString || typeof label === 'string' ? label : null,
-                }) as UseFieldConfig,
-              ),
-            ),
+  const proxyInput = rest.prop
+    ? React.cloneElement(
+        child,
+        Object.assign(
+          {},
+          child.props,
+          useField(
+            Object.assign(rest, {
+              onValidateChange: handleValidateChange,
+              labelString: props.labelString || typeof label === 'string' ? label : null,
+            }) as UseFieldConfig,
+          ),
+        ),
+      )
+    : children;
+
+  if (simple) {
+    return proxyInput as any;
+  } else {
+    return (
+      <ListItem
+        className={classString}
+        style={style}
+        arrow={arrow}
+        extra={extra}
+        align={align}
+        hd={
+          label && (
+            <span className={`${prefixCls}-label`} style={{ width: formContext.labelWidth }} onClick={showError}>
+              {label}
+            </span>
           )
-        : children}
-    </ListItem>
-  );
+        }
+        access={props.disabled ? false : access}
+      >
+        {proxyInput}
+      </ListItem>
+    );
+  }
 }

@@ -97,13 +97,13 @@ export default function useFormMethods<T>(
     }
 
     const configs: FieldConfig[] = validConfig ? get(validConfig, prop) : [];
-    const itemRule = state.getRule() || [];
+    const rules = merge(configs, state.getRule() || []);
     const value = state.getValue();
     const input = state.ref.current;
     const label = state.getLabel();
 
-    if (state.getCanValidate()) {
-      return Validate(value, [...configs, ...itemRule], { label, input, trigger });
+    if (rules.length > 0 && state.getCanValidate()) {
+      return Validate(value, rules, { label, input, trigger });
     } else {
       return Promise.resolve();
     }

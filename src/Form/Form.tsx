@@ -74,6 +74,8 @@ export default function Form<T = any>(props: FormProps<T>) {
       console.warn('存在重复字段', prop);
     }
     mapper.set(prop, itemState);
+
+    console.log(mapper);
   }
 
   function remove(prop: string) {

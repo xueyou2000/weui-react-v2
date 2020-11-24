@@ -185,7 +185,7 @@ const Input = React.forwardRef<HTMLDivElement, InputProps>((props, ref) => {
   }
 
   function handleFocus(e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    scrollTopRef.current = document.body.scrollTop;
+    scrollTopRef.current = window.pageYOffset;
     setFocus(true);
     if (onFocus) {
       onFocus(e);

@@ -6,19 +6,21 @@ import { FormMethods } from '@/Form/hooks/useFormMethods';
 import { ValidateConfig } from '@/Form/utils/validate';
 import { PhoneOutlined } from '@ant-design/icons';
 import React, { useRef, useState } from 'react';
-import { Input, Button, Flex, WhiteSpace, List, Form, FormItem, Checkbox, SubmitButton } from 'weui-react-v2';
+import { Input, Button, Flex, WhiteSpace, List, Form, FormItem, Checkbox, SubmitButton, useField } from 'weui-react-v2';
 import './index.less';
 
 interface Model {
   phone: string;
   vcode: string;
   name: string;
+  loginType: string;
 }
 
 const validConfig: ValidateConfig<Model> = {
   phone: [{ name: 'Required' }, { name: 'Pattern', params: [/^1\d{10}$/] }],
   vcode: [{ name: 'Required' }, { name: 'EqualLength', params: [6] }],
   name: [{ name: 'Required' }],
+  loginType: [{ name: 'Required' }],
 };
 
 export default function () {
@@ -41,7 +43,12 @@ export default function () {
           展示表单页面的信息结构样式, 分别由头部区域/控件区域/提示区域/操作区域和底部信息区域组成。
         </div>
       </div>
-      <Form validConfig={validConfig} getFormMethods={(methods) => (formMethods.current = methods)} onSubmit={subamit}>
+      <Form
+        labelWidth="20vw"
+        validConfig={validConfig}
+        getFormMethods={(methods) => (formMethods.current = methods)}
+        onSubmit={subamit}
+      >
         <div className="form-margin">
           <List title="表单组标题">
             <FormItem prop="phone" label="手机号">
@@ -52,6 +59,39 @@ export default function () {
             </FormItem>
             <FormItem prop="name" label="姓名">
               <Input placeholder="请输入真实姓名" maxlength={10} />
+            </FormItem>
+          </List>
+          <List title="原生选择框">
+            <FormItem prop="loginType" defaultValue="2" arrow="horizontal">
+              <select>
+                <option value="">不选</option>
+                <option value="1">微信号</option>
+                <option value="2">QQ号</option>
+                <option value="3">Email</option>
+              </select>
+            </FormItem>
+            <FormItem
+              className="virtual-select"
+              label={
+                <FormItem prop="zoneCode" labelString="区号" simple={true}>
+                  <select>
+                    <option value="86">+86</option>
+                    <option value="80">+80</option>
+                    <option value="87">+87</option>
+                  </select>
+                </FormItem>
+              }
+            >
+              <FormItem prop="zonePhone" labelString="区域手机号" simple={true}>
+                <Input placeholder="请输入手机号" type="phone" pattern="[0-9]*" maxlength={13} />
+              </FormItem>
+            </FormItem>
+            <FormItem prop="country" label="国家" arrow="horizontal">
+              <select>
+                <option value="1">中国</option>
+                <option value="2">美国</option>
+                <option value="3">英国</option>
+              </select>
             </FormItem>
           </List>
         </div>
