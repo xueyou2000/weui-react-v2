@@ -1,6 +1,6 @@
 ---
 title: Panel 面板
-order: 1
+order: 2
 nav:
   title: 组件
 group:

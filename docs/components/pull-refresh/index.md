@@ -1,6 +1,6 @@
 ---
 title: PullRefresh 下拉刷新
-order: 1
+order: 3
 nav:
   title: 组件
 group:

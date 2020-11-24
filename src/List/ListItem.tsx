@@ -47,6 +47,10 @@ export interface ListItemProps {
    * 内容
    */
   children?: React.ReactNode;
+  /**
+   * 内容对齐方式
+   */
+  align?: 'left' | 'center' | 'right';
 }
 
 export default function ListItem(props: ListItemProps) {
@@ -62,8 +66,9 @@ export default function ListItem(props: ListItemProps) {
     error,
     access,
     children,
+    align = 'left',
   } = props;
-  const classString = classNames(prefixCls, className, {
+  const classString = classNames(prefixCls, className, `${prefixCls}-align-${align}`, {
     [`${prefixCls}-error`]: error,
     [`${prefixCls}-arrow-${arrow}`]: arrow,
     [`${prefixCls}-access`]: access || !!onClick || arrow,

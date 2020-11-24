@@ -1,6 +1,6 @@
 ---
 title: Loadmore 加载更多
-order: 1
+order: 2
 nav:
   title: 组件
 group:

@@ -1,6 +1,6 @@
 ---
 title: Toptips 顶部提示
-order: 1
+order: 9
 nav:
   title: 组件
 group:

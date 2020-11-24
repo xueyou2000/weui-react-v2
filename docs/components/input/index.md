@@ -1,6 +1,6 @@
 ---
 title: Input 输入框
-order: 1
+order: 2
 nav:
   title: 组件
 group:

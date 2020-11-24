@@ -1,6 +1,6 @@
 ---
 title: Rate 评级
-order: 1
+order: 8
 nav:
   title: 组件
 group:

@@ -47,10 +47,30 @@ export interface GalleryProps extends PopupProps {
    * 自定义工具条
    */
   tool?: React.ReactNode;
+  /**
+   * 拖拽切换距离, 默认0.35
+   * 如果为0.5这样的百分比，则以元素尺寸的百分比计算
+   */
+  swiperDistance?: number;
+  /**
+   * 拖拽切换加速度, 默认4
+   * 加速度越快，即可切换
+   */
+  swiperSpeed?: number;
 }
 
 export default function Gallery(props: GalleryProps) {
-  const { prefixCls = 'weui-gallery', className, style, data = [], defaultIndex = 0, tool, ...rest } = props;
+  const {
+    prefixCls = 'weui-gallery',
+    className,
+    style,
+    data = [],
+    defaultIndex = 0,
+    tool,
+    swiperDistance = 0.35,
+    swiperSpeed,
+    ...rest
+  } = props;
   const [index, setIndex] = useMergeValue<number>(defaultIndex, {
     value: props.index,
     onChange: props.onChange,
@@ -124,6 +144,8 @@ export default function Gallery(props: GalleryProps) {
             dots={false}
             index={index}
             onChange={setIndex}
+            swiperDistance={swiperDistance}
+            swiperSpeed={swiperSpeed}
             disabled={disabledSwiper}
           >
             {data.map((x, i) => (

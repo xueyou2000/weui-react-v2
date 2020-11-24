@@ -37,10 +37,29 @@
   }
 
   .@{list-prefix-cls} {
+    &:before {
+      display: none;
+    }
+
     &:before,
     &:after {
       left: @padding-cross;
       right: @padding-cross;
+    }
+  }
+
+  .@{item-prefix-cls}-bd > .weui-checkbox {
+    display: flex;
+    align-items: center;
+    margin: -@padding-cross;
+    padding: @padding-cross;
+
+    .weui-checkbox-box {
+      top: 0;
+    }
+
+    .weui-checkbox-label {
+      flex: 1;
     }
   }
 }

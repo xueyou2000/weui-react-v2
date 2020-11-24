@@ -43,6 +43,10 @@ export interface FormItemProps extends Pick<Partial<UseFieldConfig>, Exclude<key
    * 点击label是否显示验证失败原因
    */
   clickShowError?: boolean;
+  /**
+   * 内容对齐方式
+   */
+  align?: 'left' | 'center' | 'right';
 }
 
 export default function FormItem(props: FormItemProps) {
@@ -56,6 +60,7 @@ export default function FormItem(props: FormItemProps) {
     arrow,
     access = true,
     clickShowError = true,
+    align,
     ...rest
   } = props;
   const [validateResult, setValidateResult] = useState<ValidateResult>({ status: true, msg: undefined });
@@ -85,12 +90,15 @@ export default function FormItem(props: FormItemProps) {
       style={style}
       arrow={arrow}
       extra={extra}
+      align={align}
       hd={
-        <span className={`${prefixCls}-label`} style={{ width: formContext.labelWidth }} onClick={showError}>
-          {label}
-        </span>
+        label && (
+          <span className={`${prefixCls}-label`} style={{ width: formContext.labelWidth }} onClick={showError}>
+            {label}
+          </span>
+        )
       }
-      access={access}
+      access={props.disabled ? false : access}
     >
       {rest.prop
         ? React.cloneElement(

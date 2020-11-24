@@ -1,6 +1,6 @@
 ---
 title: AmountKeyBoard 金额键盘
-order: 1
+order: 8
 nav:
   title: 组件
 group:

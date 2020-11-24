@@ -1,6 +1,6 @@
 ---
 title: Swiper 轮播
-order: 1
+order: 4
 nav:
   title: 组件
 group:

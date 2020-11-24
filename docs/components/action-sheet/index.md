@@ -1,6 +1,6 @@
 ---
 title: ActionSheet 弹出式菜单
-order: 1
+order: 6
 nav:
   title: 组件
 group:

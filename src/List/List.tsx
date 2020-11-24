@@ -29,11 +29,9 @@ export default function List(props: ListProps) {
   const { prefixCls = 'weui-list', className, style, title, children } = props;
 
   return (
-    <React.Fragment>
+    <div className={classNames(prefixCls, className)} style={style}>
       {title && <div className={`${prefixCls}-title`}>{title}</div>}
-      <div className={classNames(prefixCls, className)} style={style} tabIndex={1}>
-        {children}
-      </div>
-    </React.Fragment>
+      <div className={`${prefixCls}-inner`}>{children}</div>
+    </div>
   );
 }

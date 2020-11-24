@@ -1,6 +1,6 @@
 ---
 title: HalfScreenDialog 半屏对话框
-order: 1
+order: 7
 nav:
   title: 组件
 group:

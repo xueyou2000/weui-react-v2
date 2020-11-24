@@ -1,6 +1,6 @@
 ---
 title: Dialog 模态对话框
-order: 1
+order: 8
 nav:
   title: 组件
 group:

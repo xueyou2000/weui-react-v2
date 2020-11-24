@@ -1,6 +1,6 @@
 ---
 title: ImageView 图片查看
-order: 1
+order: 4
 nav:
   title: 组件
 group:

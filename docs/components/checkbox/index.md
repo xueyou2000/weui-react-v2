@@ -1,6 +1,6 @@
 ---
 title: Checkbox 复选框
-order: 1
+order: 3
 nav:
   title: 组件
 group:
@@ -19,52 +19,36 @@ group:
  * title: 不同尺寸
  */
 import React from 'react';
-import { Checkbox, Flex, WhiteSpace } from 'weui-react-v2';
+import { Checkbox, Flex, WhiteSpace, Form, FormItem, List, ListItem } from 'weui-react-v2';
 
 export default () => (
-  <>
-    <WhiteSpace size="lg" />
-    <Flex justify="center">
-      <Checkbox defaultChecked={true} size="small">
-        薯片
-      </Checkbox>
-    </Flex>
-    <WhiteSpace size="sm" />
-    <Flex justify="center">
-      <Checkbox defaultChecked={true} size="default">
-        西瓜
-      </Checkbox>
-    </Flex>
-    <WhiteSpace size="sm" />
-    <Flex justify="center">
-      <Checkbox defaultChecked={true} size="large">
-        菠萝
-      </Checkbox>
-    </Flex>
-  </>
-);
-```
-
-```tsx
-/**
- * title: 禁用状态
- */
-import React from 'react';
-import { Checkbox, Flex, WhiteSpace } from 'weui-react-v2';
-
-export default () => (
-  <div>
-    <WhiteSpace size="lg" />
-    <Flex justify="center">
-      <Checkbox defaultChecked={true} disabled={true}>
-        选中禁用
-      </Checkbox>
-    </Flex>
-    <WhiteSpace size="sm" />
-    <Flex justify="center">
-      <Checkbox disabled={true}>未选中禁用</Checkbox>
-    </Flex>
-  </div>
+  <Form>
+    <List title="不同尺寸">
+      <FormItem access={true}>
+        <Checkbox defaultChecked={true} size="small">
+          (small) standard is dealt for u.
+        </Checkbox>
+      </FormItem>
+      <FormItem access={true}>
+        <Checkbox defaultChecked={true} size="default">
+          (default) standard is dealicient for u.
+        </Checkbox>
+      </FormItem>
+      <FormItem access={true}>
+        <Checkbox defaultChecked={true} size="large">
+          (big) standard is dealicient for u.
+        </Checkbox>
+      </FormItem>
+    </List>
+    <List title="禁用样式">
+      <FormItem prop="a" disabled={true} valueKey="checked" defaultValue={true}>
+        <Checkbox>选中禁用</Checkbox>
+      </FormItem>
+      <FormItem prop="b" disabled={true} valueKey="checked">
+        <Checkbox>未选中禁用</Checkbox>
+      </FormItem>
+    </List>
+  </Form>
 );
 ```
 

@@ -51,9 +51,15 @@ export interface TabContentProps {
    */
   vertical?: boolean;
   /**
-   * 拖拽比例, 默认0.5, 比如拖拽了屏幕的一半，就切换下一个
+   * 拖拽切换距离, 默认0.5
+   * 如果为0.5这样的百分比，则以元素尺寸的百分比计算
    */
-  distanceRatio?: number;
+  swiperDistance?: number;
+  /**
+   * 拖拽切换加速度, 默认4
+   * 加速度越快，即可切换
+   */
+  swiperSpeed?: number;
   /**
    * 是否禁用触摸切换
    */
@@ -73,7 +79,8 @@ export default function SwipeableTabContent(props: TabContentProps) {
     audoHeight,
     vertical,
     onTabClick,
-    distanceRatio = 0.2,
+    swiperDistance,
+    swiperSpeed,
     disabled,
   } = props;
   const [index, setIndex] = useState(tabsInfo.findIndex((x) => x.tabKey === activeKey));
@@ -100,7 +107,8 @@ export default function SwipeableTabContent(props: TabContentProps) {
         vertical={vertical}
         scaleMode={false}
         dots={false}
-        distanceRatio={distanceRatio}
+        swiperDistance={swiperDistance}
+        swiperSpeed={swiperSpeed}
         index={index}
         onChange={handleSwiper}
         disabled={disabled}

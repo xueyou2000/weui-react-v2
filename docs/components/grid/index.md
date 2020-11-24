@@ -1,6 +1,6 @@
 ---
 title: Grid 九宫格
-order: 1
+order: 6
 nav:
   title: 组件
 group:

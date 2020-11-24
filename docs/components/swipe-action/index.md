@@ -1,6 +1,6 @@
 ---
 title: SwipeAction 滑动操作
-order: 1
+order: 5
 nav:
   title: 组件
 group:

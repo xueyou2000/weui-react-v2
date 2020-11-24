@@ -60,9 +60,15 @@ export interface SwiperProps {
    */
   dots?: boolean;
   /**
-   * 拖拽比例, 默认0.5, 比如拖拽了屏幕的一半，就切换下一个
+   * 拖拽切换距离, 默认0.5
+   * 如果为0.5这样的百分比，则以元素尺寸的百分比计算
    */
-  distanceRatio?: number;
+  swiperDistance?: number;
+  /**
+   * 拖拽切换加速度, 默认4
+   * 加速度越快，即可切换
+   */
+  swiperSpeed?: number;
   /**
    * 是否禁用触摸切换
    */
@@ -82,7 +88,8 @@ export default function Swiper(props: SwiperProps) {
     scaleMode = true,
     audoHeight,
     dots = true,
-    distanceRatio = 0.4,
+    swiperDistance = 0.5,
+    swiperSpeed = 5,
     disabled,
   } = props;
   const items = React.Children.toArray(children);
@@ -161,6 +168,7 @@ export default function Swiper(props: SwiperProps) {
       var itemSize = vertical ? size.height : size.width;
       var mv = vertical ? my : mx;
       var dir = vertical ? yDir : xDir;
+      var v = vertical ? vy : vx;
 
       if (mv === 0) {
         return;
@@ -172,7 +180,10 @@ export default function Swiper(props: SwiperProps) {
       }
       isMove.current = true;
 
-      if (down && distance > itemSize * distanceRatio) {
+      if (
+        (down && Math.abs(v) > swiperSpeed) ||
+        (down && distance > (swiperDistance <= 1 ? itemSize * swiperDistance : swiperDistance))
+      ) {
         isMove.current = false;
         setIndex(clamp(index + (dir > 0 ? -1 : 1), 0, items.length - 1));
         cancel();
@@ -199,9 +210,9 @@ export default function Swiper(props: SwiperProps) {
   // 修复有时候内容突然尺寸变化，初次渲染时距离不对的问题
   useLayoutEffect(() => {
     const time = window.setTimeout(() => {
+      saveSize(insRef.current);
       // 内容变化重新计算
       if (audoHeight) {
-        saveSize(insRef.current);
         setDisplays((i) => ({ display: 'block', top: i * sizeRef.current.height, immediate: true }));
       }
     }, 100);

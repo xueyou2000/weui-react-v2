@@ -150,6 +150,7 @@ const Input = React.forwardRef<HTMLDivElement, InputProps>((props, ref) => {
   });
   const [focus, setFocus] = useState(autoFocus);
   const typing = useRef(false);
+  const scrollTopRef = useRef(0);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     if (type in formatters) {
@@ -176,14 +177,15 @@ const Input = React.forwardRef<HTMLDivElement, InputProps>((props, ref) => {
       if (/webOS|iPhone|iPod/i.test(navigator.userAgent)) {
         if (document.activeElement?.nodeName !== 'INPUT') {
           // 移动端, 防止ios键盘底部突出
-          document.body.scrollTop = 0;
-          document.documentElement.scrollTop = 0;
+          document.body.scrollTop = scrollTopRef.current;
+          document.documentElement.scrollTop = scrollTopRef.current;
         }
       }
     }, 100);
   }
 
   function handleFocus(e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    scrollTopRef.current = document.body.scrollTop;
     setFocus(true);
     if (onFocus) {
       onFocus(e);

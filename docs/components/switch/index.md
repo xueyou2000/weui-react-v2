@@ -1,6 +1,6 @@
 ---
 title: Switch 开关
-order: 1
+order: 4
 nav:
   title: 组件
 group:
@@ -19,61 +19,43 @@ group:
  * title: 不同尺寸
  */
 import React from 'react';
-import { Switch, Flex, WhiteSpace } from 'weui-react-v2';
+import { Switch, Flex, WhiteSpace, Form, FormItem, List, ListItem } from 'weui-react-v2';
 
 export default () => (
-  <>
-    <WhiteSpace size="lg" />
-    <Flex justify="center">
-      <Switch defaultChecked={true} size="small" />
-    </Flex>
-    <WhiteSpace size="sm" />
-    <Flex justify="center">
-      <Switch defaultChecked={true} size="default" />
-    </Flex>
-    <WhiteSpace size="sm" />
-    <Flex justify="center">
-      <Switch defaultChecked={true} size="large" />
-    </Flex>
-  </>
-);
-```
-
-```tsx
-/**
- * title: 禁用状态
- */
-import React from 'react';
-import { Switch, Flex, WhiteSpace } from 'weui-react-v2';
-
-export default () => (
-  <div>
-    <WhiteSpace size="lg" />
-    <Flex justify="center">
-      <Switch defaultChecked={true} disabled={true} />
-    </Flex>
-    <WhiteSpace size="sm" />
-    <Flex justify="center">
-      <Switch disabled={true} />
-    </Flex>
-  </div>
-);
-```
-
-```tsx
-/**
- * title: 自定义显示标签
- */
-import React from 'react';
-import { Switch, Flex, WhiteSpace } from 'weui-react-v2';
-
-export default () => (
-  <>
-    <WhiteSpace size="lg" />
-    <Flex justify="center">
-      <Switch checkedNode="开" unCheckedNode="关" />
-    </Flex>
-  </>
+  <Form labelWidth="20vw">
+    <List title="不同尺寸">
+      <FormItem label="小尺寸" access={false} align="right">
+        <Switch defaultChecked={true} size="small" />
+      </FormItem>
+      <FormItem label="中等尺寸" access={false} align="right">
+        <Switch defaultChecked={true} size="default" />
+      </FormItem>
+      <FormItem label="大尺寸" access={false} align="right">
+        <Switch defaultChecked={true} size="large" />
+      </FormItem>
+    </List>
+    <List title="禁用样式">
+      <FormItem
+        label="开禁用"
+        prop="a"
+        disabled={true}
+        valueKey="checked"
+        defaultValue={true}
+        access={false}
+        align="right"
+      >
+        <Switch />
+      </FormItem>
+      <FormItem label="关禁用" prop="c" disabled={true} valueKey="checked" access={false} align="right">
+        <Switch />
+      </FormItem>
+    </List>
+    <List title="自定义标识符">
+      <FormItem label="中文提示" access={false} align="right">
+        <Switch checkedNode="开" unCheckedNode="关" />
+      </FormItem>
+    </List>
+  </Form>
 );
 ```
 

@@ -1,6 +1,6 @@
 /**
- * title: 基本表单样式
- * desc: 不同表单元素，样式略微不同
+ * title: 表单验证
+ * desc: 表单验证非常自然，挂接了原生的表单
  */
 import { FormMethods } from '@/Form/hooks/useFormMethods';
 import { ValidateConfig } from '@/Form/utils/validate';
