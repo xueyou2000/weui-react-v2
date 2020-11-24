@@ -3,7 +3,7 @@ import React from 'react';
 import LoadingIcon from './LoadingIcon';
 import './style';
 
-export type ButtonType = 'primary' | 'default' | 'dashed' | 'link' | 'text' | 'vcode';
+export type ButtonType = 'primary' | 'default' | 'dashed' | 'link' | 'text';
 
 export interface ButtonProps {
   /**
@@ -51,6 +51,14 @@ export interface ButtonProps {
    * click事件
    */
   onClick?: (event: React.MouseEvent<HTMLElement>) => void;
+  /**
+   * 类型
+   */
+  formType?: 'button' | 'submit' | 'reset';
+  /**
+   * 尺寸
+   */
+  size?: 'default' | 'small' | 'large';
 }
 
 export default function Button(props: ButtonProps) {
@@ -66,8 +74,10 @@ export default function Button(props: ButtonProps) {
     disabled,
     danger,
     onClick,
+    formType = 'button',
+    size = 'default',
   } = props;
-  const classString = classNames(prefixCls, className, `${prefixCls}-${type}`, {
+  const classString = classNames(prefixCls, className, `${prefixCls}-${type}`, `${prefixCls}-size-${size}`, {
     [`${prefixCls}-loading`]: loading,
     [`${prefixCls}-block`]: block,
     [`${prefixCls}-dangerous`]: !!danger,
@@ -81,7 +91,7 @@ export default function Button(props: ButtonProps) {
 
   const iconNode = icon && !loading ? icon : <LoadingIcon prefixCls={prefixCls} loading={loading} />;
   return (
-    <button className={classString} style={style} onClick={handleClick} disabled={disabled}>
+    <button className={classString} style={style} onClick={handleClick} disabled={disabled} type={formType}>
       {iconNode}
       <span>{children}</span>
     </button>

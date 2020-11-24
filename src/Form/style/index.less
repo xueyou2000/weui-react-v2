@@ -1,0 +1,46 @@
+@import '../../style/themes/index.less';
+
+@form-prefix-cls: ~'@{prefix}-form';
+@item-prefix-cls: ~'@{prefix}-item';
+@list-prefix-cls: ~'@{prefix}-list';
+@padding-cross: 40px;
+
+.@{form-prefix-cls} {
+  &-item-label {
+    display: block;
+    font-size: 32px;
+    word-wrap: break-word;
+    word-break: break-all;
+  }
+
+  .@{item-prefix-cls} {
+    padding: 36px @padding-cross;
+    color: rgba(0, 0, 0, 0.9);
+
+    &:before {
+      left: @padding-cross;
+      right: @padding-cross;
+    }
+  }
+
+  &-item-error {
+    .weui-form-item-label {
+      color: @error-color;
+    }
+    .@{item-prefix-cls}-bd > * {
+      color: @error-color;
+    }
+  }
+
+  .@{item-prefix-cls}-hd {
+    // padding-right: 15px;
+  }
+
+  .@{list-prefix-cls} {
+    &:before,
+    &:after {
+      left: @padding-cross;
+      right: @padding-cross;
+    }
+  }
+}

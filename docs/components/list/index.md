@@ -20,7 +20,7 @@ group:
  */
 import React from 'react';
 import { List, ListItem } from 'weui-react-v2';
-import { CheckCircleFilled } from '@ant-design/icons';
+import { WeiboOutlined } from '@ant-design/icons';
 
 export default () => (
   <div style={{ minHeight: '100vh', backgroundColor: '#f4f4f4', padding: '30px', margin: '-28px' }}>
@@ -29,10 +29,10 @@ export default () => (
       <ListItem extra="说明文字">标题文字</ListItem>
     </List>
     <List title="带图标，说明的列表">
-      <ListItem thumb={<CheckCircleFilled style={{ color: '#07c160' }} />} extra="说明文字">
+      <ListItem thumb={<WeiboOutlined style={{ color: '#07c160', fontSize: '28px' }} />} extra="说明文字">
         标题文字
       </ListItem>
-      <ListItem thumb={<CheckCircleFilled style={{ color: '#07c160' }} />} extra="说明文字">
+      <ListItem thumb={<WeiboOutlined style={{ color: '#07c160', fontSize: '28px' }} />} extra="说明文字">
         标题文字
       </ListItem>
     </List>
@@ -48,10 +48,10 @@ export default () => (
       </ListItem>
     </List>
     <List title="带图标，说明, 跳转的列表">
-      <ListItem arrow={true} thumb={<CheckCircleFilled style={{ color: '#07c160' }} />} extra="说明文字">
+      <ListItem arrow={true} thumb={<WeiboOutlined style={{ color: '#07c160', fontSize: '28px' }} />} extra="说明文字">
         标题文字
       </ListItem>
-      <ListItem arrow={true} thumb={<CheckCircleFilled style={{ color: '#07c160' }} />} extra="说明文字">
+      <ListItem arrow={true} thumb={<WeiboOutlined style={{ color: '#07c160', fontSize: '28px' }} />} extra="说明文字">
         标题文字
       </ListItem>
     </List>

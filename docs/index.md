@@ -103,8 +103,8 @@ export default defineConfig({
 
 ### 数据输入
 
-- [ ] `Form` 表单组件，可有可无。提供封装`label`宽度，等通用样式和验证，onSubmit 等功能。
-- [ ] `FormItem` 可以包裹表单组件
+- [x] `Form` 表单组件。提供封装`label`宽度和验证，onSubmit 等功能。
+- [x] `FormItem` 可以包裹表单组件
 - [x] `Input` 输入框， 支持多种类型，比如手机号，身份证，银行卡的格式化
 - [ ] `TextArea` 文本域
 - [ ] `NumberInput` 数值输入框

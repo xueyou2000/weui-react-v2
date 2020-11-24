@@ -32,6 +32,10 @@ export interface ListItemProps {
    */
   arrow?: 'horizontal' | 'up' | 'down' | boolean;
   /**
+   * 是否点击交互样式
+   */
+  access?: boolean;
+  /**
    * 列表点击事件
    */
   onClick?: () => void;
@@ -46,19 +50,33 @@ export interface ListItemProps {
 }
 
 export default function ListItem(props: ListItemProps) {
-  const { prefixCls = 'weui-item', className, style, thumb, hd, extra, arrow, onClick, error, children } = props;
+  const {
+    prefixCls = 'weui-item',
+    className,
+    style,
+    thumb,
+    hd,
+    extra,
+    arrow,
+    onClick,
+    error,
+    access,
+    children,
+  } = props;
   const classString = classNames(prefixCls, className, {
     [`${prefixCls}-error`]: error,
     [`${prefixCls}-arrow-${arrow}`]: arrow,
-    [`${prefixCls}-access`]: !!onClick || arrow,
+    [`${prefixCls}-access`]: access || !!onClick || arrow,
   });
 
   return (
     <div className={classString} style={style}>
-      {hd && <div className={`${prefixCls}-hd`}>{hd}</div>}
-      {thumb && <div className={`${prefixCls}-thumb`}>{typeof thumb === 'string' ? <img src={thumb} /> : thumb}</div>}
-      <div className={`${prefixCls}-bd`}>{children}</div>
-      {(extra || arrow) && <div className={`${prefixCls}-ft`}>{extra}</div>}
+      <div className={`${prefixCls}-inner`}>
+        {hd && <div className={`${prefixCls}-hd`}>{hd}</div>}
+        {thumb && <div className={`${prefixCls}-thumb`}>{typeof thumb === 'string' ? <img src={thumb} /> : thumb}</div>}
+        <div className={`${prefixCls}-bd`}>{children}</div>
+        {(extra || arrow) && <div className={`${prefixCls}-ft`}>{extra}</div>}
+      </div>
     </div>
   );
 }

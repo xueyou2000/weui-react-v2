@@ -30,7 +30,13 @@
     box-sizing: border-box;
   }
 
+  &-outter {
+    overflow: hidden;
+    width: 100%;
+  }
+
   &-inner {
+    width: 100%;
     flex: 1;
     position: relative;
     text-align: inherit;
@@ -45,9 +51,11 @@
     background-color: transparent;
     font-size: 32px;
     box-sizing: border-box;
+    color: inherit;
   }
 
   &-clear {
+    visibility: hidden;
     flex-shrink: 0;
     display: inline-block;
     vertical-align: middle;
@@ -67,6 +75,16 @@
     border: 0;
     padding: 0;
     outline: 0;
+
+    &.visible {
+      visibility: visible;
+    }
+  }
+
+  &-disabled {
+    .@{input-prefix-cls}-inner {
+      color: @placeholder-color;
+    }
   }
 }
 

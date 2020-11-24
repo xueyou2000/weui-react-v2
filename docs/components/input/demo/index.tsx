@@ -19,6 +19,12 @@ export default function () {
         <ListItem hd="搜索事件">
           <Input placeholder="输入完毕后触发搜索事件" onSearch={(val) => console.log('onSearch', val)} />
         </ListItem>
+        <ListItem hd="禁用样式">
+          <Input placeholder="未输入禁用" disabled={true} />
+        </ListItem>
+        <ListItem hd="禁用样式">
+          <Input value="输入禁用" disabled={true} />
+        </ListItem>
       </List>
     </div>
   );

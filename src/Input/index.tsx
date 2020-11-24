@@ -169,15 +169,16 @@ const Input = React.forwardRef<HTMLDivElement, InputProps>((props, ref) => {
 
   function handleBlur(e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setTimeout(() => {
-      console.log('失去焦点');
       setFocus(false);
       if (onBlur) {
         onBlur(e);
       }
       if (/webOS|iPhone|iPod/i.test(navigator.userAgent)) {
-        // 移动端, 防止ios键盘底部突出
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
+        if (document.activeElement?.nodeName !== 'INPUT') {
+          // 移动端, 防止ios键盘底部突出
+          document.body.scrollTop = 0;
+          document.documentElement.scrollTop = 0;
+        }
       }
     }, 100);
   }
@@ -204,7 +205,6 @@ const Input = React.forwardRef<HTMLDivElement, InputProps>((props, ref) => {
   }
 
   function clear(e: React.MouseEvent<HTMLDivElement>) {
-    console.log('点击了');
     setValue('');
     e.stopPropagation();
   }
@@ -229,22 +229,24 @@ const Input = React.forwardRef<HTMLDivElement, InputProps>((props, ref) => {
       ref={ref}
     >
       {prefix && <div className={`${prefixCls}-prefix`}>{prefix}</div>}
-      <input
-        className={`${prefixCls}-inner`}
-        type={type}
-        value={format()}
-        autoFocus={autoFocus}
-        onChange={handleChange}
-        disabled={disabled}
-        placeholder={placeholder}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        pattern={pattern}
-        maxLength={maxlength}
-        onCompositionStart={handleCompositionStart}
-        onCompositionEnd={handleCompositionEnd}
-      />
-      {focus && clearable && value && <div className={`${prefixCls}-clear`} onClick={clear}></div>}
+      <div className={`${prefixCls}-outter`}>
+        <input
+          className={`${prefixCls}-inner`}
+          type={type in formatters ? 'text' : type}
+          value={format() || ''}
+          autoFocus={autoFocus}
+          onChange={handleChange}
+          disabled={disabled}
+          placeholder={placeholder}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          pattern={focus ? pattern : undefined} // tips: 变通方式，为了不影响pattern调起数字键盘，但又不想格式化后影响表单验证
+          maxLength={maxlength}
+          onCompositionStart={handleCompositionStart}
+          onCompositionEnd={handleCompositionEnd}
+        />
+      </div>
+      <div className={classNames(`${prefixCls}-clear`, { visible: focus && clearable && value })} onClick={clear}></div>
       {suffix && <div className={`${prefixCls}-suffix`}>{suffix}</div>}
     </div>
   );
