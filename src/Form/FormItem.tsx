@@ -55,6 +55,10 @@ export interface FormItemProps extends Pick<Partial<UseFieldConfig>, Exclude<key
    * 标签位置
    */
   labelPostion?: 'left' | 'top';
+  /**
+   * 垂直对齐方式
+   */
+  alignItems?: 'center' | 'flex-end' | 'flex-start';
 }
 
 export default function FormItem(props: FormItemProps) {
@@ -71,6 +75,7 @@ export default function FormItem(props: FormItemProps) {
     align,
     simple = false,
     labelPostion,
+    alignItems,
     ...rest
   } = props;
   const formContext = useContext(FormContext);
@@ -121,6 +126,7 @@ export default function FormItem(props: FormItemProps) {
         arrow={arrow}
         extra={extra}
         align={align}
+        alignItems={alignItems}
         hd={
           label && (
             <span className={`${prefixCls}-label`} style={{ width: formContext.labelWidth }} onClick={showError}>

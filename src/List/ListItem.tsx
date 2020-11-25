@@ -51,6 +51,10 @@ export interface ListItemProps {
    * 内容对齐方式
    */
   align?: 'left' | 'center' | 'right';
+  /**
+   * 垂直对齐方式
+   */
+  alignItems?: 'center' | 'flex-end' | 'flex-start';
 }
 
 export default function ListItem(props: ListItemProps) {
@@ -67,6 +71,7 @@ export default function ListItem(props: ListItemProps) {
     access,
     children,
     align = 'left',
+    alignItems = 'center',
   } = props;
   const classString = classNames(prefixCls, className, `${prefixCls}-align-${align}`, {
     [`${prefixCls}-error`]: error,
@@ -76,7 +81,7 @@ export default function ListItem(props: ListItemProps) {
 
   return (
     <div className={classString} style={style}>
-      <div className={`${prefixCls}-inner`}>
+      <div className={`${prefixCls}-inner`} style={{ alignItems }}>
         {hd && <div className={`${prefixCls}-hd`}>{hd}</div>}
         {thumb && <div className={`${prefixCls}-thumb`}>{typeof thumb === 'string' ? <img src={thumb} /> : thumb}</div>}
         <div className={`${prefixCls}-bd`}>{children}</div>

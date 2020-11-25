@@ -4,7 +4,6 @@
  */
 import { FormMethods } from '@/Form/hooks/useFormMethods';
 import { ValidateConfig } from '@/Form/utils/validate';
-import { PhoneOutlined } from '@ant-design/icons';
 import React, { useRef, useState } from 'react';
 import {
   Input,
@@ -17,6 +16,7 @@ import {
   FormItem,
   Checkbox,
   SubmitButton,
+  TextArea,
   useField,
 } from 'weui-react-v2';
 import './index.less';
@@ -88,6 +88,9 @@ export default function () {
             </FormItem>
             <FormItem prop="amount" label="金额">
               <NumberInput type="amount" placeholder="请输入金额" precision={2} />
+            </FormItem>
+            <FormItem prop="feedback" label="问题反馈" alignItems="flex-start">
+              <TextArea placeholder="请输入您遇到的问题" />
             </FormItem>
           </List>
           <List title="原生选择框">
