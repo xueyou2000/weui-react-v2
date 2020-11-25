@@ -1,10 +1,11 @@
+import { MinusOutlined, PlusOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
 import React, { useEffect, useRef, useState } from 'react';
 import { DefineDefaultValue, useOutsideClick } from 'utils-hooks';
 import AmountKeyBoard from '../AmountKeyBoard';
 import Input, { InputParser } from '../Input';
 import './style';
-import { defaultFormatter, defaultParser, isEmpy, keepPrecision, toNumber } from './utils';
+import { add, defaultFormatter, defaultParser, isEmpy, keepPrecision, sub, toNumber } from './utils';
 
 export interface NumberInputProps {
   /**
@@ -96,6 +97,10 @@ export interface NumberInputProps {
    * 输入框类型
    */
   type?: 'amount' | 'number';
+  /**
+   * 是否显示控制按钮
+   */
+  showControl?: boolean;
 }
 
 const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, ref) => {
@@ -109,12 +114,13 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
     precision,
     max,
     min,
-    step,
+    step = 1,
     value,
     defaultValue,
     onChange,
     onBlur,
     onFocus,
+    showControl,
     ...inputProps
   } = props;
   const inputRef = useRef<HTMLDivElement | null>(null);
@@ -148,14 +154,12 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
         number = max;
       }
     }
-
     if (getNumberString(val) === '') {
       number = null;
     }
-
     setNumber(number === undefined ? null : number);
 
-    if (!isControll) {
+    if (!isControll || (isEmpy(number) && isControll)) {
       if (number === null) {
         setInputValue('');
       } else if (number === undefined) {
@@ -163,14 +167,16 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
       } else {
         setInputValue(getFormatterInputValue(number));
       }
-    } else if (isEmpy(number) && props.value === null) {
-      setInputValue('');
+    }
+    if (onChange) {
+      // tips: 修复受控模式下，输入不正确，则还原成最后一次正确输入造成的useEffect不触发问题
+      if (isEmpy(number) && isControll) {
+        onChange(lastRef.current === undefined ? null : lastRef.current);
+      } else {
+        onChange(number === undefined ? null : number);
+      }
     }
     lastRef.current = number;
-
-    if (onChange) {
-      onChange(number === undefined ? null : number);
-    }
   }
 
   // 受控组件时从外部更新输入框的值
@@ -193,6 +199,66 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
   function getFormatterInputValue(val: number | string) {
     const numberString = getNumberString(val);
     return formatter(isEmpy(numberString) ? '' : numberString + '');
+  }
+
+  function getLastNumber() {
+    return (
+      toNumber(getNumberString(lastRef.current === null || lastRef.current === undefined ? '' : lastRef.current)) || 0
+    );
+  }
+
+  function canIncrease() {
+    const numberValue = getLastNumber();
+    if (max !== undefined && numberValue !== undefined) {
+      return numberValue < max;
+    } else {
+      return true;
+    }
+  }
+
+  function canDecrease() {
+    const numberValue = getLastNumber();
+    if (min !== undefined && numberValue !== undefined) {
+      return numberValue > min;
+    } else {
+      return true;
+    }
+  }
+
+  function increase() {
+    if (!canIncrease()) {
+      return;
+    }
+    const numberValue = getLastNumber();
+    let next: number;
+    if (max !== undefined) {
+      if (add(numberValue, step) > max) {
+        next = max;
+      } else {
+        next = add(numberValue, step);
+      }
+    } else {
+      next = add(numberValue, step);
+    }
+    changeNumber(next + '');
+  }
+
+  function decrease() {
+    if (!canDecrease()) {
+      return;
+    }
+    const numberValue = getLastNumber();
+    let next: number;
+    if (min !== undefined) {
+      if (sub(numberValue, step) < min) {
+        next = min;
+      } else {
+        next = sub(numberValue, step);
+      }
+    } else {
+      next = sub(numberValue, step);
+    }
+    changeNumber(next + '');
   }
 
   function handleChange(val: string) {
@@ -222,8 +288,30 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
     setFocus(false);
   });
 
+  useEffect(() => {
+    if (type === 'amount' && props.autoFocus) {
+      setFocus(true);
+    }
+  }, []);
+
   return (
-    <div className={classNames(prefixCls, className)} style={style} ref={ref}>
+    <div
+      className={classNames(prefixCls, className, {
+        [`${prefixCls}-disabled`]: inputProps.disabled,
+        [`${prefixCls}-show-control`]: showControl,
+      })}
+      style={style}
+      ref={ref}
+    >
+      {showControl && (
+        <span
+          className={classNames(`${prefixCls}-control control-down`, { disabled: !canDecrease() })}
+          onClick={decrease}
+        >
+          <MinusOutlined />
+        </span>
+      )}
+
       <Input
         {...inputProps}
         ref={inputRef}
@@ -234,6 +322,15 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
         readOnly={type === 'amount'}
         clearable={false}
       />
+      {showControl && (
+        <span
+          className={classNames(`${prefixCls}-control control-up`, { disabled: !canIncrease() })}
+          onClick={increase}
+        >
+          <PlusOutlined />
+        </span>
+      )}
+
       {type === 'amount' && (
         <AmountKeyBoard
           ref={keyboardRef}

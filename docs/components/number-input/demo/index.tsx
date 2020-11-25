@@ -40,6 +40,9 @@ export default function () {
         <ListItem hd="禁用样式">
           <NumberInput value={123} disabled={true} />
         </ListItem>
+        <ListItem hd="显示控制按钮">
+          <NumberInput defaultValue={1} min={1} max={10} showControl={true} />
+        </ListItem>
       </List>
     </div>
   );

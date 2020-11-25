@@ -68,7 +68,7 @@ export default function () {
         <div className="form-margin">
           <List title="表单组标题">
             <FormItem prop="phone" label="手机号">
-              <Input placeholder="请输入手机号" type="phone" pattern="[0-9]*" maxlength={13} />
+              <Input placeholder="请输入手机号" type="phone" pattern="[0-9]*" maxlength={13} autoFocus={true} />
             </FormItem>
             <FormItem prop="vcode" label="验证码" extra={<Button size="small">获取验证码</Button>}>
               <Input placeholder="请输入验证码" pattern="[0-9]*" maxlength={6} />
@@ -76,8 +76,15 @@ export default function () {
             <FormItem prop="name" label="姓名">
               <Input placeholder="请输入真实姓名" maxlength={10} />
             </FormItem>
-            <FormItem prop="age" label="年龄">
-              <NumberInput placeholder="请输入年龄" maxlength={3} pattern="[0-9]*" />
+            <FormItem prop="age" label="年龄" defaultValue={22}>
+              <NumberInput
+                style={{ width: '50%' }}
+                min={1}
+                max={120}
+                maxlength={3}
+                pattern="[0-9]*"
+                showControl={true}
+              />
             </FormItem>
             <FormItem prop="amount" label="金额">
               <NumberInput type="amount" placeholder="请输入金额" precision={2} />

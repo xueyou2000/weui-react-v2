@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import useMergeValue from 'use-merge-value';
 import { useDebounceCallback } from 'utils-hooks';
 import './style';
@@ -168,6 +168,7 @@ const Input = React.forwardRef<HTMLDivElement, InputProps>((props, ref) => {
   const [focus, setFocus] = useState(autoFocus);
   const typing = useRef(false);
   const scrollTopRef = useRef(0);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     if (type in formatters) {
@@ -242,6 +243,16 @@ const Input = React.forwardRef<HTMLDivElement, InputProps>((props, ref) => {
     [value],
   );
 
+  useEffect(() => {
+    const input = inputRef.current;
+    if (autoFocus && input) {
+      // 由于移动端autoFocus无法拉起键盘，则模拟触发事件
+      const evt = document.createEvent('MouseEvent');
+      evt.initEvent('click', true, true);
+      input.dispatchEvent(evt);
+    }
+  }, []);
+
   return (
     <div
       className={classNames(prefixCls, className, {
@@ -254,6 +265,7 @@ const Input = React.forwardRef<HTMLDivElement, InputProps>((props, ref) => {
       {prefix && <div className={`${prefixCls}-prefix`}>{prefix}</div>}
       <div className={`${prefixCls}-outter`}>
         <input
+          ref={inputRef}
           className={`${prefixCls}-inner`}
           type={type in formatters ? 'text' : type}
           value={format() || ''}
