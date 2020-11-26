@@ -108,8 +108,19 @@ export default function SingleUpload<T>(props: SingleUploadProps<T>) {
       onImageView(fileInfo);
     } else {
       if (fileInfo.thumbnail) {
-        GalleryPop({
+        var close = GalleryPop({
           data: [{ src: fileInfo.thumbnail }],
+          bottom: !disabled && (
+            <div
+              className="upload-image-view__delete"
+              onClick={() => {
+                handleImageRemove();
+                close();
+              }}
+            >
+              删除
+            </div>
+          ),
         });
       }
     }

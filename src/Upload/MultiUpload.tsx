@@ -66,6 +66,13 @@ export default function MultiUpload<T>(props: MultiUploadProps<T>) {
   const [fileInfos, setFileInfos] = useState<FileInfo[]>([]);
   // 由于Upload的回调事件是原生的，导致state不会是最新的
   const fileInfosRef = useRef(fileInfos);
+  const closeRef = useRef<Function | null>(null);
+
+  function close() {
+    if (closeRef.current) {
+      closeRef.current();
+    }
+  }
 
   function changeFileInfos(infos: FileInfo[]) {
     fileInfosRef.current = infos;
@@ -133,9 +140,20 @@ export default function MultiUpload<T>(props: MultiUploadProps<T>) {
       onImageView(index, files);
     } else {
       const images = files.map((file) => ({ src: file.thumbnail })).filter((x) => x.src !== null) as ImageOption[];
-      GalleryPop({
+      closeRef.current = GalleryPop({
         data: images,
         defaultIndex: index,
+        bottom: !disabled && (
+          <div
+            className="upload-image-view__delete"
+            onClick={() => {
+              handleImageRemove(index);
+              close();
+            }}
+          >
+            删除
+          </div>
+        ),
       });
     }
   }

@@ -166,6 +166,21 @@
       color: #bbb;
     }
   }
+
+  &-bottom {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    min-height: 44px;
+    transition: opacity 333ms cubic-bezier(0.4, 0, 0.22, 1);
+    background: #0d0d0d;
+    box-sizing: border-box;
+    z-index: 10;
+    color: #fff;
+    font-size: 28px;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
 }
 
 .@{image-view-prefix-cls} {

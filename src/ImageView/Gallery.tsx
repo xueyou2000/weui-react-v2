@@ -48,6 +48,10 @@ export interface GalleryProps extends PopupProps {
    */
   tool?: React.ReactNode;
   /**
+   * 自定义底部节点
+   */
+  bottom?: React.ReactNode;
+  /**
    * 拖拽切换距离, 默认0.35
    * 如果为0.5这样的百分比，则以元素尺寸的百分比计算
    */
@@ -69,6 +73,7 @@ export default function Gallery(props: GalleryProps) {
     tool,
     swiperDistance = 0.35,
     swiperSpeed,
+    bottom,
     ...rest
   } = props;
   const [index, setIndex] = useMergeValue<number>(defaultIndex, {
@@ -167,6 +172,8 @@ export default function Gallery(props: GalleryProps) {
 
           <button className={`${prefixCls}-skin-btn btn-arrow-left`} onClick={prev}></button>
           <button className={`${prefixCls}-skin-btn btn-arrow-right`} onClick={next}></button>
+
+          {bottom && <div className={`${prefixCls}-bottom`}>{bottom}</div>}
 
           <div className={`${prefixCls}-caption`}>
             <div className={`${prefixCls}-caption-inner`}>
