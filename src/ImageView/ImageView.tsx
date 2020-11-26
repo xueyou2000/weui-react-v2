@@ -1,7 +1,7 @@
 import { clamp } from '../utils/number-utils';
 import classNames from 'classnames';
 import React, { useContext, useEffect, useRef } from 'react';
-import { animated, useSpring } from 'react-spring';
+import { animated, config, useSpring } from 'react-spring';
 import { useGesture } from 'react-use-gesture';
 import GalleryContext from './context';
 import './style';
@@ -57,9 +57,6 @@ export default function ImageView(props: ImageViewProps) {
     var _scale = spring.scale.get();
     switch (_scale) {
       case 1:
-        _scale = 1.5;
-        break;
-      case 1.5:
         _scale = 2.5;
         break;
       default:
@@ -97,29 +94,29 @@ export default function ImageView(props: ImageViewProps) {
 
   const bind = useGesture(
     {
-      onDrag: ({ movement: [mx, my], pinching, dragging, event }) => {
+      onDrag: ({ movement: [mx, my], pinching, vxvy: [vx, vy], dragging, event }) => {
         if (pinching) {
           return;
         }
+
         if (spring.scale.get() <= 1) {
           setSpring({ x: 0, y: 0, immediate: false });
         } else {
-          setSpring({ x: mx, y: my, immediate: true });
+          setSpring({ x: mx, y: my, immediate: false, config: config.wobbly });
         }
       },
-      onPinch: ({ movement: [x], pinching, event }) => {
-        const scale = spring.scale.get() + x / window.innerWidth;
-        if (pinching) {
-          var attr: any = {
-            scale: clamp(scale, 1, 2.5),
-          };
-          if (scale <= 1) {
-            attr.x = 0;
-            attr.y = 0;
-          }
-          setSpring({ ...attr, immediate: true });
+      onPinch: ({ movement: [x], pinching, event, last, down, offset, lastOffset, direction: [dx] }) => {
+        const lastScale = spring.scale.get();
+        if (pinching && dx !== 0) {
+          // 缩放时，越接近最大或最小，阻尼就越大
+          const damp = Math.round(dx) === 1 ? Math.abs(6 - lastScale) * 0.08 : 1;
+          // const scale = (lastScale * window.innerWidth + x * 0.5) / window.innerWidth;
+          const scale = clamp(lastScale + (x * damp) / window.innerWidth, 1, 6);
+
+          // TODO: 根据缩放比例，计算偏移
+          setSpring({ scale, x: 0, y: 0, immediate: true, config: config.wobbly });
           if (onScaleChange) {
-            onScaleChange(attr.scale);
+            onScaleChange(scale);
           }
           event.stopPropagation();
           event.preventDefault();

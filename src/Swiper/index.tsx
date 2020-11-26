@@ -85,11 +85,11 @@ export default function Swiper(props: SwiperProps) {
     autoplay,
     autoplayInterval = 3000,
     vertical,
-    scaleMode = true,
+    scaleMode = false,
     audoHeight,
     dots = true,
     swiperDistance = 0.5,
-    swiperSpeed = 5,
+    swiperSpeed = 3,
     disabled,
   } = props;
   const items = React.Children.toArray(children);
@@ -142,10 +142,16 @@ export default function Swiper(props: SwiperProps) {
       offset: nextOffset,
       immediate,
       onRest: complete,
-      from: { offset: cacheOffset.current },
+      from: { offset: offset.get() },
     });
     cacheOffset.current = -(index * itemSize);
   }
+
+  useEffect(() => {
+    if (disabled) {
+      toIndex(index, true);
+    }
+  }, [disabled, index]);
 
   useEffect(() => {
     toIndex(index);
@@ -184,10 +190,7 @@ export default function Swiper(props: SwiperProps) {
       }
       isMove.current = true;
 
-      if (
-        (down && Math.abs(v) > swiperSpeed) ||
-        (down && distance > (swiperDistance <= 1 ? itemSize * swiperDistance : swiperDistance))
-      ) {
+      if (down && Math.abs(v) > swiperSpeed) {
         isMove.current = false;
         setIndex(clamp(index + (dir > 0 ? -1 : 1), 0, items.length - 1));
         cancel();
@@ -196,11 +199,16 @@ export default function Swiper(props: SwiperProps) {
       set({
         offset: clamp(start.current + mv, -(items.length - 1) * itemSize, 0),
         scale: down ? 1 - distance / size.width / 2 : 1,
+        immediate: true,
       });
 
       if (last) {
         isMove.current = false;
-        set({ offset: -(index * itemSize), scale: 1, immediate: false });
+        if (distance > (swiperDistance <= 1 ? itemSize * swiperDistance : swiperDistance)) {
+          setIndex(clamp(index + (dir > 0 ? -1 : 1), 0, items.length - 1));
+        } else {
+          set({ offset: -(index * itemSize), scale: 1, immediate: false });
+        }
       }
     },
     {
