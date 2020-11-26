@@ -104,7 +104,7 @@ export default function ImageView(props: ImageViewProps) {
         if (spring.scale.get() <= 1) {
           setSpring({ x: 0, y: 0, immediate: false });
         } else {
-          setSpring({ x: mx, y: my, immediate: false });
+          setSpring({ x: mx, y: my, immediate: true });
         }
       },
       onPinch: ({ movement: [x], pinching, event }) => {
@@ -117,7 +117,7 @@ export default function ImageView(props: ImageViewProps) {
             attr.x = 0;
             attr.y = 0;
           }
-          setSpring({ ...attr, config: { duration: 200 } });
+          setSpring({ ...attr, immediate: true });
           if (onScaleChange) {
             onScaleChange(attr.scale);
           }

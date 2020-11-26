@@ -116,7 +116,7 @@ export default function Swiper(props: SwiperProps) {
     }
   }
 
-  useEffect(() => {
+  function toIndex(index: number, immediate = false) {
     var itemSize = vertical ? sizeRef.current.height : sizeRef.current.width;
     var nextOffset = -(index * itemSize);
     if (!first.current || vertical) {
@@ -140,11 +140,15 @@ export default function Swiper(props: SwiperProps) {
 
     set({
       offset: nextOffset,
-      immediate: false,
+      immediate,
       onRest: complete,
       from: { offset: cacheOffset.current },
     });
     cacheOffset.current = -(index * itemSize);
+  }
+
+  useEffect(() => {
+    toIndex(index);
   }, [index]);
 
   useEffect(() => {
@@ -215,6 +219,7 @@ export default function Swiper(props: SwiperProps) {
       if (audoHeight) {
         setDisplays((i) => ({ display: 'block', top: i * sizeRef.current.height, immediate: true }));
       }
+      toIndex(index, true);
     }, 100);
 
     return () => window.clearTimeout(time);

@@ -108,9 +108,9 @@ export default defineConfig({
 - [x] `NumberInput` 数值输入框
 - [x] `Checkbox` 复选框
 - [x] `Switch` 切换开关
+- [x] `Upload` 图片上传
 - [ ] `Picker` 选择器
 - [ ] `DatePicker` 日期选择
-- [ ] `ImagePicker` 图片选择
 - [ ] `SearchBar` 搜索栏
 - [x] `Rate`评级
 - [x] `AmountKeyboard` 金额键盘

@@ -39,6 +39,7 @@ export { default as Input } from './Input';
 export { default as NumberInput } from './NumberInput';
 export { default as TextArea } from './TextArea';
 export * from './Form';
+export * from './Upload';
 
 // 导航
 export * from './Tabs';
