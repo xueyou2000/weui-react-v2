@@ -30,6 +30,21 @@ export function findScrollHeight(targetDom: any) {
 }
 
 /**
+ * 获取Client高度
+ */
+export function findClientHeight(targetDom: any) {
+  if (targetDom === targetDom.window) {
+    return getViewportSize(false)[1];
+  } else if ('clientHeight' in targetDom) {
+    return targetDom.clientHeight;
+  } else if (targetDom.current) {
+    return targetDom.current.clientHeight;
+  } else {
+    return 0;
+  }
+}
+
+/**
  * 获取视窗大小
  * @returns [viewportWidth, viewportHeight]
  */

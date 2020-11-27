@@ -29,7 +29,7 @@ export default function List(props: ListProps) {
   const { prefixCls = 'weui-list', className, style, title, children } = props;
 
   return (
-    <div className={classNames(prefixCls, className)} style={style}>
+    <div className={classNames(prefixCls, className, { title: !!title })} style={style}>
       {title && <div className={`${prefixCls}-title`}>{title}</div>}
       <div className={`${prefixCls}-inner`}>{children}</div>
     </div>

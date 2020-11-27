@@ -17,3 +17,5 @@ group:
 <code src="./demo/index.tsx" />
 
 <API src="../../../src/Upload/SingleUpload.tsx"></API>
+
+<API src="../../../src/Upload/MultiUpload.tsx"></API>

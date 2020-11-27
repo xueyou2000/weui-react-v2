@@ -59,6 +59,10 @@ export interface FormItemProps extends Pick<Partial<UseFieldConfig>, Exclude<key
    * 垂直对齐方式
    */
   alignItems?: 'center' | 'flex-end' | 'flex-start';
+  /**
+   * 列表点击事件
+   */
+  onClick?: () => void;
 }
 
 export default function FormItem(props: FormItemProps) {
@@ -76,16 +80,20 @@ export default function FormItem(props: FormItemProps) {
     simple = false,
     labelPostion,
     alignItems,
+    onChange,
+    onClick,
     ...rest
   } = props;
-  const formContext = useContext(FormContext);
-  const [validateResult, setValidateResult] = useState<ValidateResult>({ status: true, msg: undefined });
-  const classString = classNames(prefixCls, className, `${prefixCls}-pos-${labelPostion || formContext.labelPostion}`, {
-    [`${prefixCls}-error`]: !validateResult.status,
-    [`${prefixCls}-disabled`]: props.disabled,
-  });
 
   const child = React.Children.only(children) as any;
+  const formContext = useContext(FormContext);
+  const [validateResult, setValidateResult] = useState<ValidateResult>({ status: true, msg: undefined });
+  const disabled =
+    'disabled' in child.props ? child.props.disabled : 'disabled' in props ? props.disabled : formContext.disabled;
+  const classString = classNames(prefixCls, className, `${prefixCls}-pos-${labelPostion || formContext.labelPostion}`, {
+    [`${prefixCls}-error`]: !validateResult.status,
+    [`${prefixCls}-disabled`]: disabled,
+  });
 
   function handleValidateChange(value: any, res: ValidateResult) {
     setValidateResult(res);
@@ -109,6 +117,15 @@ export default function FormItem(props: FormItemProps) {
           useField(
             Object.assign(rest, {
               onValidateChange: handleValidateChange,
+              disabled,
+              onChange: (val: any) => {
+                if (onChange) {
+                  onChange(val);
+                }
+                if (child.props.onChange) {
+                  child.props.onChange(val);
+                }
+              },
               labelString: props.labelString || typeof label === 'string' ? label : null,
             }) as UseFieldConfig,
           ),
@@ -126,6 +143,7 @@ export default function FormItem(props: FormItemProps) {
         arrow={arrow}
         extra={extra}
         align={align}
+        onClick={onClick}
         alignItems={alignItems}
         hd={
           label && (

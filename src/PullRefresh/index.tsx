@@ -2,10 +2,11 @@ import { ArrowDownOutlined, CheckCircleOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
 import React, { useEffect, useRef } from 'react';
 import { animated, useSpring } from 'react-spring';
+import { useScroll } from 'react-use-gesture';
 import useMergeValue from 'use-merge-value';
 import Loadmore from '../Loadmore';
 import './style';
-import { findScrollHeight, findScrollTop, getViewportSize, isBound } from './utils';
+import { findClientHeight, findScrollHeight, findScrollTop, getViewportSize, isBound } from './utils';
 
 export interface PullRefreshProps {
   /**
@@ -51,7 +52,7 @@ export interface PullRefreshProps {
   /**
    * 滚动元素, 默认为window
    */
-  scrollTarget?: any;
+  scrollTarget?: any | 'self';
   /**
    * 是否自动刷新
    */
@@ -101,18 +102,19 @@ export default function PullRefresh(props: PullRefreshProps) {
     autoRefresh = true,
     idleTime = 2000,
     threshold = 200,
-    scrollTarget = window,
   } = props;
   const [action, setAction] = useMergeValue<PullRefreshAction>(PullRefreshAction.init, {
     value: props.action,
     onChange: props.handleAction,
   });
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
   const tempActionRef = useRef(action);
   const headerRef = useRef<HTMLDivElement | null>(null);
   const lastYRef = useRef(0);
   const touchYRef = useRef(0);
   const directionRef = useRef(Direction.middle);
   const [{ y }, set] = useSpring(() => ({ y: 0 }));
+  const scrollTarget = props.scrollTarget === 'self' ? wrapperRef : props.scrollTarget || window;
 
   function changeAction(act: PullRefreshAction) {
     tempActionRef.current = act;
@@ -134,7 +136,7 @@ export default function PullRefresh(props: PullRefreshProps) {
     const target = event.target as any;
     target.stopScroll = false;
     const touchY = event.touches[0].clientY;
-    const viewportHeight = getViewportSize(false)[1];
+    const clientHeight = findClientHeight(scrollTarget);
     const scrollTop = findScrollTop(scrollTarget);
     // 当前触摸方向, delta > 0 = 下滑刷新, delta < 0 = 上滑加载
     const delta = touchY - lastYRef.current;
@@ -144,7 +146,7 @@ export default function PullRefresh(props: PullRefreshProps) {
     const direction =
       scrollTop <= 0 && delta > 0
         ? Direction.up
-        : scrollTop >= findScrollHeight(scrollTarget) - viewportHeight && delta < 0
+        : scrollTop >= findScrollHeight(scrollTarget) - clientHeight && delta < 0
         ? Direction.down
         : Direction.middle;
 
@@ -207,6 +209,32 @@ export default function PullRefresh(props: PullRefreshProps) {
       set({ y: 0, immediate: false });
     }
   }
+
+  useScroll(
+    ({ xy: [, scrollTop], event }) => {
+      const clientHeight = findClientHeight(scrollTarget);
+      // 方向
+      const direction =
+        scrollTop <= 0
+          ? Direction.up
+          : scrollTop >= findScrollHeight(scrollTarget) - clientHeight
+          ? Direction.down
+          : Direction.middle;
+
+      if (direction === Direction.down && tempActionRef.current !== PullRefreshAction.loading) {
+        changeAction(PullRefreshAction.loading);
+      }
+
+      if (direction !== Direction.middle) {
+        event.preventDefault();
+      }
+    },
+    {
+      enabled: enableLoadMore,
+      domTarget: scrollTarget,
+      eventOptions: { passive: true },
+    },
+  );
 
   useEffect(() => {
     let timehandle: any;
@@ -280,6 +308,7 @@ export default function PullRefresh(props: PullRefreshProps) {
     <div
       className={classNames(prefixCls, className, 'scroll', `action-${action}`)}
       style={style}
+      ref={wrapperRef}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}

@@ -7,7 +7,7 @@ import { Button, Dialog, Toast } from 'weui-react-v2';
 import './index.less';
 
 export default function () {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
   const [char, setChar] = useState('Luck');
   const [error, setError] = useState<string | null>(null);
 

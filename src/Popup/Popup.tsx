@@ -70,6 +70,14 @@ export interface PopupProps {
    * @description 默认为body内创建一个div作为容器
    */
   getContainer?: HTMLElement | GetContainerFun;
+  /**
+   * 关闭事件 (动画完毕)
+   */
+  onClose?: Function;
+  /**
+   * 打开事件 (动画完毕)
+   */
+  onShow?: Function;
 }
 
 export default function Popup(props: PopupProps) {
@@ -87,6 +95,8 @@ export default function Popup(props: PopupProps) {
     mask = true,
     maskClose = true,
     getContainer,
+    onClose,
+    onShow,
   } = props;
   const [visible, setVisible] = useMergeValue<boolean>(defaultVisible, {
     value: props.visible,
@@ -121,6 +131,12 @@ export default function Popup(props: PopupProps) {
       if (onUnmount) {
         onUnmount();
       }
+    }
+    if (state === EXITED && onClose) {
+      onClose();
+    }
+    if (state === ENTERED && onShow) {
+      onShow();
     }
   }, [state]);
 

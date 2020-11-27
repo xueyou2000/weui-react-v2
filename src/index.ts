@@ -40,6 +40,7 @@ export { default as NumberInput } from './NumberInput';
 export { default as TextArea } from './TextArea';
 export * from './Form';
 export * from './Upload';
+export * from './Picker';
 
 // 导航
 export * from './Tabs';

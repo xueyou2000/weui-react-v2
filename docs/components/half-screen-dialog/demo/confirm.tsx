@@ -7,7 +7,7 @@ import { HalfScreenDialog, Button, Grid, GridItem } from 'weui-react-v2';
 import './demo.less';
 
 export default () => {
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   function handleConfirm() {
     return new Promise((resovle, reject) => {

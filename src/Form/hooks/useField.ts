@@ -54,6 +54,10 @@ export interface UseFieldConfig {
    * 透传属性，为了失去焦点验证，需要代理此事件
    */
   onBlur?: (e: React.FocusEvent<HTMLElement>) => void;
+  /**
+   * 透传属性，
+   */
+  onChange?: (value: any) => void;
 }
 
 export interface FormItemState {
@@ -119,6 +123,7 @@ export default function useField(config: UseFieldConfig) {
     disabledValidate = false,
     valueKey = 'value',
     onBlur,
+    onChange,
     labelString,
     normalize,
     rule = null,
@@ -197,6 +202,9 @@ export default function useField(config: UseFieldConfig) {
 
   function handleChange(value: any) {
     changeValue(converValue(value));
+    if (onChange) {
+      onChange(converValue(value));
+    }
     validate(ValidateTrigger.change);
   }
 

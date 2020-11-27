@@ -4,6 +4,7 @@
  */
 import { FormMethods } from '@/Form/hooks/useFormMethods';
 import { ValidateConfig } from '@/Form/utils/validate';
+import { PickerItem } from '@/Picker/utils';
 import React, { useRef, useState } from 'react';
 import {
   Input,
@@ -17,7 +18,8 @@ import {
   Checkbox,
   SubmitButton,
   TextArea,
-  useField,
+  Picker,
+  ListItem,
 } from 'weui-react-v2';
 import './index.less';
 
@@ -38,6 +40,50 @@ const validConfig: ValidateConfig<Model> = {
   amount: [{ name: 'Required' }, { name: 'Amount' }],
   loginType: [{ name: 'Required' }],
 };
+
+const singlePickerData: PickerItem[] = [
+  {
+    label: '飞机票',
+    value: '飞机票',
+  },
+  {
+    label: '火车票',
+    value: '火车票',
+  },
+  {
+    label: '的士票',
+    value: '的士票',
+  },
+  {
+    label: '住宿费',
+    value: '住宿费',
+  },
+  {
+    label: '礼品费(disabled)',
+    value: '礼品费',
+    disabled: true,
+  },
+  {
+    label: '活动费',
+    value: '活动费',
+  },
+  {
+    label: '通讯费',
+    value: '通讯费',
+  },
+  {
+    label: '补助',
+    value: '补助',
+  },
+  {
+    label: '通讯费',
+    value: '通讯费',
+  },
+  {
+    label: '其他',
+    value: '其他',
+  },
+];
 
 export default function () {
   const formMethods = useRef<FormMethods | null>(null);
@@ -124,6 +170,12 @@ export default function () {
                 <option value="2">美国</option>
                 <option value="3">英国</option>
               </select>
+            </FormItem>
+          </List>
+
+          <List title="Picker选择器">
+            <FormItem prop="piao" label="票据" arrow={true}>
+              <Picker disabled={true} title="请选择" placeholder="请选择" data={singlePickerData} />
             </FormItem>
           </List>
         </div>

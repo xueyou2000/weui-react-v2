@@ -76,7 +76,7 @@ export default function ListItem(props: ListItemProps) {
   const classString = classNames(prefixCls, className, `${prefixCls}-align-${align}`, {
     [`${prefixCls}-error`]: error,
     [`${prefixCls}-arrow-${arrow}`]: arrow,
-    [`${prefixCls}-access`]: access || !!onClick || arrow,
+    [`${prefixCls}-access`]: 'access' in props ? access : !!onClick || arrow,
   });
 
   return (
@@ -84,7 +84,9 @@ export default function ListItem(props: ListItemProps) {
       <div className={`${prefixCls}-inner`} style={{ alignItems }}>
         {hd && <div className={`${prefixCls}-hd`}>{hd}</div>}
         {thumb && <div className={`${prefixCls}-thumb`}>{typeof thumb === 'string' ? <img src={thumb} /> : thumb}</div>}
-        <div className={`${prefixCls}-bd`}>{children}</div>
+        <div className={`${prefixCls}-bd`} onClick={onClick}>
+          {children}
+        </div>
         {(extra || arrow) && <div className={`${prefixCls}-ft`}>{extra}</div>}
       </div>
     </div>
