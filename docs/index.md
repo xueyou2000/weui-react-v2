@@ -110,7 +110,7 @@ export default defineConfig({
 - [x] `Switch` 切换开关
 - [x] `Upload` 图片上传
 - [x] `Picker` 选择器
-- [ ] `DatePicker` 日期选择
+- [x] `DatePicker` 日期选择
 - [ ] `SearchBar` 搜索栏
 - [x] `Rate`评级
 - [x] `AmountKeyboard` 金额键盘

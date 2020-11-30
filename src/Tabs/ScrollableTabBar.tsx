@@ -142,7 +142,6 @@ export default function ScrollableTabBar(props: TabbarProps) {
   }
 
   useEffect(() => {
-    // TODO: 优化监听 window.resize, 并且用节流函数, 封装到hooks库里
     function resize() {
       checkOverflow();
       scrollTo();

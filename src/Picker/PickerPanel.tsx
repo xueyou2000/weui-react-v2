@@ -115,7 +115,7 @@ export default function PickerPanel(props: PickerPanelProps) {
     scrollOffsetRestRef.current = () => {
       scrollOffsetRestsRef.current.forEach((rest) => {
         if (rest) {
-          rest();
+          rest(false);
         }
       });
     };

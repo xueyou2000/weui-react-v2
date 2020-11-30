@@ -41,6 +41,7 @@ export { default as TextArea } from './TextArea';
 export * from './Form';
 export * from './Upload';
 export * from './Picker';
+export * from './DatePicker';
 
 // 导航
 export * from './Tabs';

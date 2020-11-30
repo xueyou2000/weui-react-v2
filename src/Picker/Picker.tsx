@@ -36,21 +36,38 @@ export interface PickerProps
    */
   separator?: string;
   /**
+   * 标签字段, 默认label
+   */
+  labelField?: string;
+  /**
    * 弹出框标题
    */
   title?: React.ReactNode;
+  /**
+   * 当前即时选择的值
+   */
+  pickerValue?: any[];
+  /**
+   * 当前即时选择的值改变
+   */
+  onPickerValueChange?: (pickerValue: any[]) => void;
 }
 
-function defaultFormat(pickerData: PickerItem[], separator: string, singleLabel: boolean) {
+function defaultFormat(
+  pickerData: PickerItem[],
+  separator: string,
+  singleLabel: boolean,
+  labelField: string = 'label',
+) {
   if (singleLabel) {
-    return pickerData[pickerData.length - 1].label;
+    return (pickerData[pickerData.length - 1] as any)[labelField];
   } else {
     const labels = [];
     for (let i = 0; i < pickerData.length; ++i) {
       if (!pickerData[i]) {
         return '';
       }
-      labels.push(pickerData[i].label);
+      labels.push((pickerData[i] as any)[labelField]);
       if (i !== pickerData.length - 1) {
         labels.push(separator);
       }
@@ -86,6 +103,7 @@ const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
     cascade = false,
     disabled,
     defaultVisible = false,
+    labelField = 'label',
     children = <DefaultPickerItem />,
     popup,
     onChange,
@@ -106,9 +124,12 @@ const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
     value: props.visible,
     onChange: props.onVisibleChange,
   });
-
   const dataCols = toDataCols(data, cascade, cols, getValues(cols, props.value));
-  const [pickerValue, setPickerValue] = useState(getDefaultPickerValues(dataCols, saveValue));
+  const [pickerValue, setPickerValue] = useMergeValue<any[]>(getDefaultPickerValues(dataCols, saveValue), {
+    value: props.pickerValue,
+    onChange: props.onPickerValueChange,
+  });
+
   // 临时选择的数据
   const pickerDataRef = useRef<PickerItem[] | null>(findMatchData(dataCols, pickerValue));
   // 实际选择数据
@@ -117,12 +138,12 @@ const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
 
   useEffect(() => {
     // 受控模式下，主动设置pickerData
-    if (props.value) {
+    if (props.value && !('pickerValue' in props)) {
       const vals = getValues(cols, props.value);
       pickerDataRef.current = findMatchData(dataCols, vals);
       setPickerValue(getDefaultPickerValues(dataCols, vals));
     }
-  }, [props.value]);
+  }, [props.value, data]);
 
   function handleConfirm() {
     const pickerData = pickerDataRef.current;
@@ -134,7 +155,9 @@ const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
 
   function handleShow() {
     if (!disabled) {
-      setPickerValue(getDefaultPickerValues(dataCols, value));
+      if (!('pickerValue' in props)) {
+        setPickerValue(getDefaultPickerValues(dataCols, value));
+      }
       setVisible(true);
     }
   }
@@ -164,7 +187,7 @@ const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
                 isEmpty(value) || !actualPickerData ? (
                   <span className={`${prefixCls}-placeholder`}>{placeholder}</span>
                 ) : (
-                  format(actualPickerData, separator, singleLabel)
+                  format(actualPickerData, separator, singleLabel, labelField)
                 ),
               onClick: handleShow,
               access: !disabled,

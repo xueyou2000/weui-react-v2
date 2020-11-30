@@ -76,6 +76,7 @@ export default function HalfScreenDialog(props: HalfScreenDialogProps) {
     confirm = '确定',
     onConfirm,
     hideFooter = false,
+    popupContentClassName,
     ...rest
   } = props;
   const closeRef = useRef<Function | null>(null);
@@ -118,7 +119,12 @@ export default function HalfScreenDialog(props: HalfScreenDialogProps) {
   }
 
   return (
-    <Popup {...rest} closeFuncRef={closeRef} animateClassName="drill" popupContentClassName={`${prefixCls}-wrapper`}>
+    <Popup
+      {...rest}
+      closeFuncRef={closeRef}
+      animateClassName="drill"
+      popupContentClassName={classNames(`${prefixCls}-wrapper`, popupContentClassName)}
+    >
       <div className={classNames(prefixCls, className)} style={style}>
         <div className={`${prefixCls}-hd`}>
           <div className={`${prefixCls}-hd_side`} onClick={close}>

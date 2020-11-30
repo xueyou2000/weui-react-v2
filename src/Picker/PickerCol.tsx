@@ -108,7 +108,7 @@ export default function PickerCol(props: PickerColProps) {
       if (last) {
         const { offsetTop } = getDomsHeight();
         const offset = clamp(my, calcOffset(data.length - 1), offsetTop);
-        const i = calcIndex(offset);
+        const i = clamp(calcIndex(offset), 0, data.length - 1);
         const item = data[i];
         if (item.disabled) {
           rest(false);

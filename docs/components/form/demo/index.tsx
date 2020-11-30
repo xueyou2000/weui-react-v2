@@ -5,6 +5,7 @@
 import { FormMethods } from '@/Form/hooks/useFormMethods';
 import { ValidateConfig } from '@/Form/utils/validate';
 import { PickerItem } from '@/Picker/utils';
+import { formatDate } from '../../../../src/utils/date-utils';
 import React, { useRef, useState } from 'react';
 import {
   Input,
@@ -19,6 +20,7 @@ import {
   SubmitButton,
   TextArea,
   Picker,
+  DatePicker,
   ListItem,
 } from 'weui-react-v2';
 import './index.less';
@@ -135,6 +137,9 @@ export default function () {
             <FormItem prop="amount" label="金额">
               <NumberInput type="amount" placeholder="请输入金额" precision={2} />
             </FormItem>
+            <FormItem prop="date" label="日期" normalize={(d: Date) => (d ? formatDate(d) : null)}>
+              <DatePicker placeholder="请选择生日" useDefaultFormat={false} separator="" />
+            </FormItem>
             <FormItem prop="feedback" label="问题反馈" alignItems="flex-start">
               <TextArea placeholder="请输入您遇到的问题" />
             </FormItem>
@@ -175,7 +180,7 @@ export default function () {
 
           <List title="Picker选择器">
             <FormItem prop="piao" label="票据" arrow={true}>
-              <Picker disabled={true} title="请选择" placeholder="请选择" data={singlePickerData} />
+              <Picker title="请选择" placeholder="请选择" data={singlePickerData} />
             </FormItem>
           </List>
         </div>
