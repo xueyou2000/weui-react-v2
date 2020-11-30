@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.0.0-beta.4 (Mon Nov 30 2020)
+
+- 增加`SearchBar`组件
+
 ## 3.0.0-beta.3 (Mon Nov 30 2020)
 
 - 完善大部分组件
