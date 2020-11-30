@@ -242,6 +242,10 @@ const Input = React.forwardRef<HTMLDivElement, InputProps>((props, ref) => {
     inputFocus();
   }
 
+  function handleClickClear(e: any) {
+    clear(e);
+  }
+
   function inputFocus() {
     const input = inputRef.current;
     if (input) {
@@ -301,6 +305,7 @@ const Input = React.forwardRef<HTMLDivElement, InputProps>((props, ref) => {
       <div
         className={classNames(`${prefixCls}-clear`, { visible: focus && clearable && value })}
         onTouchStart={clear}
+        onClick={handleClickClear}
       ></div>
       {suffix && <div className={`${prefixCls}-suffix`}>{suffix}</div>}
     </div>
