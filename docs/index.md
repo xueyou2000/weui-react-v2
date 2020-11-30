@@ -111,7 +111,7 @@ export default defineConfig({
 - [x] `Upload` 图片上传
 - [x] `Picker` 选择器
 - [x] `DatePicker` 日期选择
-- [ ] `SearchBar` 搜索栏
+- [x] `SearchBar` 搜索栏
 - [x] `Rate`评级
 - [x] `AmountKeyboard` 金额键盘
 

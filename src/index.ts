@@ -45,3 +45,4 @@ export * from './DatePicker';
 
 // 导航
 export * from './Tabs';
+export { default as Search } from './Search';

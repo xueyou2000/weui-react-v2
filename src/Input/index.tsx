@@ -103,6 +103,10 @@ export interface InputProps {
    * 从formatter里转换回来, 配合 formatter使用
    */
   parser?: InputParser;
+  /**
+   * 输入框引用
+   */
+  inputRef?: React.MutableRefObject<HTMLInputElement | null>;
 }
 
 const formatters = {
@@ -169,6 +173,9 @@ const Input = React.forwardRef<HTMLDivElement, InputProps>((props, ref) => {
   const typing = useRef(false);
   const scrollTopRef = useRef(0);
   const inputRef = useRef<HTMLInputElement | null>(null);
+  if (props.inputRef) {
+    props.inputRef.current = inputRef.current;
+  }
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     if (type in formatters) {
@@ -228,9 +235,21 @@ const Input = React.forwardRef<HTMLDivElement, InputProps>((props, ref) => {
     }
   }
 
-  function clear(e: React.MouseEvent<HTMLDivElement>) {
+  function clear(e: React.TouchEvent<HTMLDivElement>) {
     setValue('');
     e.stopPropagation();
+    e.preventDefault();
+    inputFocus();
+  }
+
+  function inputFocus() {
+    const input = inputRef.current;
+    if (input) {
+      // 由于移动端autoFocus无法拉起键盘，则模拟触发事件
+      const evt = document.createEvent('MouseEvent');
+      evt.initEvent('click', true, true);
+      input.dispatchEvent(evt);
+    }
   }
 
   useDebounceCallback(
@@ -244,12 +263,9 @@ const Input = React.forwardRef<HTMLDivElement, InputProps>((props, ref) => {
   );
 
   useEffect(() => {
-    const input = inputRef.current;
-    if (autoFocus && input) {
+    if (autoFocus) {
       // 由于移动端autoFocus无法拉起键盘，则模拟触发事件
-      const evt = document.createEvent('MouseEvent');
-      evt.initEvent('click', true, true);
-      input.dispatchEvent(evt);
+      inputFocus();
     }
   }, []);
 
@@ -282,7 +298,10 @@ const Input = React.forwardRef<HTMLDivElement, InputProps>((props, ref) => {
           onCompositionEnd={handleCompositionEnd}
         />
       </div>
-      <div className={classNames(`${prefixCls}-clear`, { visible: focus && clearable && value })} onClick={clear}></div>
+      <div
+        className={classNames(`${prefixCls}-clear`, { visible: focus && clearable && value })}
+        onTouchStart={clear}
+      ></div>
       {suffix && <div className={`${prefixCls}-suffix`}>{suffix}</div>}
     </div>
   );
