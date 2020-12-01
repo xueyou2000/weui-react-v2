@@ -166,7 +166,14 @@ export default function Search(props: SearchProps) {
           onBlur={handleBlur}
         />
       </form>
-      <a className="cancel-btn" ref={saveBtn} style={{ marginRight: focus ? 0 : -btnWidth }} onClick={handleCancel}>
+      <a
+        className="cancel-btn"
+        ref={saveBtn}
+        style={{
+          marginRight: focus ? 0 : -btnWidth,
+        }}
+        onClick={handleCancel}
+      >
         取消
       </a>
     </div>

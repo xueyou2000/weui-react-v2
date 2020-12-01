@@ -3,7 +3,7 @@
  * desc: 确定按钮事件是一个`Promise`, 在返回之前按钮会处于加载状态
  */
 import React, { useState } from 'react';
-import { HalfScreenDialog, Button, Grid, GridItem } from 'weui-react-v2';
+import { HalfScreenDialog, HalfScreenDialogPop, Button, WhiteSpace } from 'weui-react-v2';
 import './demo.less';
 
 export default () => {
@@ -17,9 +17,25 @@ export default () => {
     });
   }
 
+  function pop() {
+    HalfScreenDialogPop({
+      title: '标题',
+      children: <p style={{ fontSize: '24px' }}>可放入自定义内容</p>,
+    });
+  }
+
   return (
     <div>
-      <Button onClick={() => setVisible(true)}>弹出半屏</Button>
+      <WhiteSpace />
+      <Button block={true} size="large" type="primary" onClick={() => setVisible(true)}>
+        弹出半屏
+      </Button>
+
+      <WhiteSpace />
+
+      <Button block={true} size="large" onClick={pop}>
+        js弹出
+      </Button>
 
       <HalfScreenDialog
         visible={visible}

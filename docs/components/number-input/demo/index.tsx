@@ -1,13 +1,12 @@
 /**
- * title: 数值输入框
+ * title: 组合样式
  */
-import { ExclamationCircleOutlined, FormOutlined, PhoneOutlined, SnippetsOutlined } from '@ant-design/icons';
-import React, { useState } from 'react';
-import { NumberInput, Button, Flex, WhiteSpace, List, ListItem, HalfScreenDialogPop } from 'weui-react-v2';
+import React from 'react';
+import { List, ListItem, NumberInput, SafeArea } from 'weui-react-v2';
 
 export default function () {
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#f4f4f4', padding: '30px', margin: '-28px' }}>
+    <SafeArea style={{ margin: '-0.16rem', minHeight: '100vh', backgroundColor: '#f4f4f4', padding: '5px 0 10px' }}>
       <List title="输入格式">
         <ListItem hd="任意输入">
           <NumberInput placeholder="请输入数值" />
@@ -41,9 +40,9 @@ export default function () {
           <NumberInput value={123} disabled={true} />
         </ListItem>
         <ListItem hd="显示控制按钮">
-          <NumberInput defaultValue={1} min={1} max={10} showControl={true} />
+          <NumberInput defaultValue={1} min={1} max={10} showControl={true} style={{ width: '30vw' }} />
         </ListItem>
       </List>
-    </div>
+    </SafeArea>
   );
 }

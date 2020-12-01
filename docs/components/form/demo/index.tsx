@@ -14,11 +14,11 @@ import {
   List,
   NumberInput,
   Picker,
-  PickerItem,
   SubmitButton,
   TextArea,
   ValidateConfig,
 } from 'weui-react-v2';
+import { singlePickerData } from '../../picker/demo/picker-data';
 import './index.less';
 
 interface Model {
@@ -39,55 +39,11 @@ const validConfig: ValidateConfig<Model> = {
   loginType: [{ name: 'Required' }],
 };
 
-const singlePickerData: PickerItem[] = [
-  {
-    label: '飞机票',
-    value: '飞机票',
-  },
-  {
-    label: '火车票',
-    value: '火车票',
-  },
-  {
-    label: '的士票',
-    value: '的士票',
-  },
-  {
-    label: '住宿费',
-    value: '住宿费',
-  },
-  {
-    label: '礼品费(disabled)',
-    value: '礼品费',
-    disabled: true,
-  },
-  {
-    label: '活动费',
-    value: '活动费',
-  },
-  {
-    label: '通讯费',
-    value: '通讯费',
-  },
-  {
-    label: '补助',
-    value: '补助',
-  },
-  {
-    label: '通讯费',
-    value: '通讯费',
-  },
-  {
-    label: '其他',
-    value: '其他',
-  },
-];
-
 export default function () {
   const formMethods = useRef<FormMethods | null>(null);
 
-  function subamit(data: any) {
-    console.log(data);
+  function subamit(data: Model) {
+    console.log('提交数据为', data);
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve();

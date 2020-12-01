@@ -3,7 +3,8 @@ import React, { useRef } from 'react';
 import useMergeValue from 'use-merge-value';
 import PickerCol from './PickerCol';
 import './style';
-import { findMatchData, getDefaultPickerValues, getValues, PickerItem, toDataCols } from './utils';
+import { findMatchData, getDefaultPickerValues, getValues, toDataCols } from './utils';
+import { PickerItem } from './interface';
 
 export interface PickerPanelProps {
   /**

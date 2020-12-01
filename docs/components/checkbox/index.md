@@ -19,7 +19,7 @@ group:
  * title: 不同尺寸
  */
 import React from 'react';
-import { Checkbox, Flex, WhiteSpace, Form, FormItem, List, ListItem } from 'weui-react-v2';
+import { Checkbox, Form, FormItem, List } from 'weui-react-v2';
 
 export default () => (
   <Form>

@@ -1,8 +1,8 @@
 /**
- * title: 单文件上传
+ * title: 上传组合
  */
 import React from 'react';
-import { List, ListItem, SingleUpload, MultiUpload } from 'weui-react-v2';
+import { SafeArea, List, ListItem, SingleUpload, MultiUpload } from 'weui-react-v2';
 
 interface Res {
   code: number;
@@ -19,9 +19,9 @@ export default function () {
   }
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#f4f4f4', padding: '30px', margin: '-28px' }}>
+    <SafeArea style={{ margin: '-0.16rem', minHeight: '100vh', backgroundColor: '#f4f4f4', padding: '5px 0 10px' }}>
       <List title="单文件上传">
-        <ListItem hd="图片上传" alignItems="flex-start">
+        <ListItem hd="上传成功" alignItems="flex-start">
           <SingleUpload<Res> style={{ marginLeft: '30px' }} action="/upload" getResponse={getResponse} />
         </ListItem>
         <ListItem hd="上传失败" alignItems="flex-start">
@@ -65,6 +65,6 @@ export default function () {
           />
         </ListItem>
       </List>
-    </div>
+    </SafeArea>
   );
 }

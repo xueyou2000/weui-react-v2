@@ -10,7 +10,7 @@ group:
 
 # Loadmore 加载更多
 
-可配合下拉刷新组件
+展示加载状态
 
 ## 代码演示
 
@@ -32,3 +32,5 @@ export default () => (
   </>
 );
 ```
+
+<API src="../../../src/Loadmore/index.tsx"></API>

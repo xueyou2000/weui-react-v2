@@ -19,7 +19,7 @@ group:
  * title: 切换加载状态
  */
 import React, { useState } from 'react';
-import { SafeArea, Skeleton, Stripe, Button, WhiteSpace } from 'weui-react-v2';
+import { SafeArea, Skeleton, Button, WhiteSpace } from 'weui-react-v2';
 import './index.less';
 
 export default function app() {
@@ -42,7 +42,7 @@ export default function app() {
  * title: Stripe用于行内数据
  */
 import React, { useState } from 'react';
-import { SafeArea, Skeleton, Stripe, Button, WhiteSpace, Flex, FlexItem, List, ListItem } from 'weui-react-v2';
+import { SafeArea, Stripe, List, ListItem } from 'weui-react-v2';
 import './index.less';
 
 export default function app() {

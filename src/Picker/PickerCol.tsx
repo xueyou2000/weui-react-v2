@@ -1,10 +1,11 @@
 import { clamp } from '../utils/number-utils';
 import classNames from 'classnames';
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { animated, useSpring } from 'react-spring';
+import { animated, config, useSpring } from 'react-spring';
 import { useDrag } from 'react-use-gesture';
 import './style';
-import { getDefaultPickerValue, PickerItem } from './utils';
+import { getDefaultPickerValue } from './utils';
+import { PickerItem } from './interface';
 
 export interface PickerColProps {
   /**
@@ -113,7 +114,7 @@ export default function PickerCol(props: PickerColProps) {
         if (item.disabled) {
           rest(false);
         } else {
-          set({ y: calcOffset(i), immediate: false });
+          set({ y: calcOffset(i), immediate: false, config: config.stiff });
           if (value !== item.value) {
             setValue(item.value);
             if (onChange) {
@@ -122,7 +123,7 @@ export default function PickerCol(props: PickerColProps) {
           }
         }
       } else if (down) {
-        set({ y: my, immediate: false });
+        set({ y: my, immediate: false, config: config.stiff });
       }
     },
     {

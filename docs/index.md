@@ -28,21 +28,37 @@ yarn add weui-react-v2
 
 ### 重要提醒
 
-> 目前由于`react-spring@9.0.0-rc.2`存在循环依赖问题，会在打包生产代码时造成错误。此问题将在`react-spring@9.0.0-rc.4`后修复。在此之前，请将`react-spring`库增加到`externals`里打包排除
+> 目前由于`react-spring@9.0.0-rc.2`存在循环依赖问题，会在打包生产代码时造成错误。此问题将在`react-spring@9.0.0-rc.4`后修复。在此之前，请将`react-spring`库增加到`externals`里打包排除. [See Issues](https://github.com/pmndrs/react-spring/issues/1078)
 
 ### 使用
 
 `weui-react-v2`无缝贴合`umi`生态，在`umi`项目中直接运行就支持树摇，不用显示引入样式，非常方便。而且可基于`umi`的主题配置定义主题样式.
 
-> Tips: 请注意，此库组件基于 750px 设计稿, 请使用`post-css`等后处理起，将此库的`px`转换为`rem`或`vw`， 具体看你自己的适配方案.
+> Tips: 请注意，此库组件基于 750px 设计稿, 请使用`post-css`等后处理起，将此库的`px`转换为`rem`或`vw`， 具体看你自己的适配方案. 我个人推荐使用`vw`方案, 以下文旦也都是基于此方案，需要安装开发依赖`postcss-px-to-viewport`
 
 ```ts
 // umi配置
 import { defineConfig } from 'umi';
+var pxtoviewport = require('postcss-px-to-viewport');
+
 export default defineConfig({
+  // 【可选】 自定义主题色
   theme: {
     '@primary-color': '#CDDC39',
   },
+  // 推荐使用`postcss-px-to-viewport`将`px`单位转换为`vw`, 设计稿基于`750px`
+  extraPostCSSPlugins: [
+    pxtoviewport({
+      viewportWidth: 750,
+      viewportHeight: 4925,
+      unitPrecision: 5,
+      viewportUnit: 'vw',
+      selectorBlackList: [],
+      minPixelValue: 1,
+      mediaQuery: false,
+      exclude: [/dumi/],
+    }),
+  ],
   routes: [{ path: '/', component: '@/pages/index' }],
 });
 ```
@@ -75,10 +91,6 @@ export default defineConfig({
 ```
 
 ## 路线图
-
-### 现有问题
-
-- 设计的是通过树摇，只打包使用的组件和样式。实际上必须在 main.ts 里引入所有样式，并且写空表达式来防止生产打包样式被优化掉
 
 ### 从需求出发
 

@@ -129,7 +129,7 @@ const formatters = {
       if (!val) {
         return '';
       }
-      return val.replace(/\s/g, '').replace(/(.{4})/g, '$1 ');
+      return val.replace(/\s/g, '').replace(/(.{4})(.)/g, '$1 $2');
     },
     out: (val: string) => {
       if (!val) {

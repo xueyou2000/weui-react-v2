@@ -12,27 +12,30 @@ group:
 
 单个连续模块垂直排列，显示当前的内容、状态和可进行的操作。
 
+- `List` 列表块
+- `ListItem` 列表项， 主要由头部, 内容，尾部组成
+
 ## 代码演示
 
 ```tsx
 /**
- * title: 加载中
+ * title: 列表组合展示
  */
 import React from 'react';
-import { List, ListItem } from 'weui-react-v2';
-import { WeiboOutlined } from '@ant-design/icons';
+import { SafeArea, List, ListItem } from 'weui-react-v2';
+import { GithubOutlined, WechatOutlined } from '@ant-design/icons';
 
 export default () => (
-  <div style={{ minHeight: '100vh', backgroundColor: '#f4f4f4', padding: '30px', margin: '-28px' }}>
+  <SafeArea style={{ margin: '-0.16rem', minHeight: '100vh', backgroundColor: '#f4f4f4', padding: '5px 0 10px' }}>
     <List title="带说明的列表">
       <ListItem extra="说明文字">标题文字</ListItem>
       <ListItem extra="说明文字">标题文字</ListItem>
     </List>
     <List title="带图标，说明的列表">
-      <ListItem thumb={<WeiboOutlined style={{ color: '#07c160', fontSize: '28px' }} />} extra="说明文字">
+      <ListItem thumb={<GithubOutlined style={{ color: '#24292e', fontSize: '8vw' }} />} extra="说明文字">
         标题文字
       </ListItem>
-      <ListItem thumb={<WeiboOutlined style={{ color: '#07c160', fontSize: '28px' }} />} extra="说明文字">
+      <ListItem thumb={<WechatOutlined style={{ color: '#06ad56', fontSize: '8vw' }} />} extra="说明文字">
         标题文字
       </ListItem>
     </List>
@@ -48,15 +51,17 @@ export default () => (
       </ListItem>
     </List>
     <List title="带图标，说明, 跳转的列表">
-      <ListItem arrow={true} thumb={<WeiboOutlined style={{ color: '#07c160', fontSize: '28px' }} />} extra="说明文字">
+      <ListItem arrow={true} thumb={<GithubOutlined style={{ color: '#24292e', fontSize: '8vw' }} />} extra="说明文字">
         标题文字
       </ListItem>
-      <ListItem arrow={true} thumb={<WeiboOutlined style={{ color: '#07c160', fontSize: '28px' }} />} extra="说明文字">
+      <ListItem arrow={true} thumb={<WechatOutlined style={{ color: '#06ad56', fontSize: '8vw' }} />} extra="说明文字">
         标题文字
       </ListItem>
     </List>
-  </div>
+  </SafeArea>
 );
 ```
 
-<API src="../../../src/List/index.tsx"></API>
+<API src="../../../src/List/List.tsx"></API>
+
+<API src="../../../src/List/ListItem.tsx"></API>

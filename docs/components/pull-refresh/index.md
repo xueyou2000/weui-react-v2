@@ -18,4 +18,4 @@ group:
 
 <code src="./demo/index.tsx" />
 
-<API src="../../../src/PullRefresh/index.tsx"></API>
+<API src="../../../src/PullRefresh/PullRefresh.tsx"></API>

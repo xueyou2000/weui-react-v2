@@ -3,7 +3,7 @@
  * desc: 根据业务和样式需要，自行封装
  */
 import React, { useState } from 'react';
-import { Button, Dialog, Toast } from 'weui-react-v2';
+import { Button, Dialog, WhiteSpace } from 'weui-react-v2';
 import './index.less';
 
 export default function () {
@@ -13,7 +13,10 @@ export default function () {
 
   return (
     <div>
-      <Button onClick={() => setVisible(true)}>显示</Button>
+      <WhiteSpace />
+      <Button block={true} size="large" type="primary" onClick={() => setVisible(true)}>
+        显示
+      </Button>
 
       <Dialog
         className="demo-prompt"

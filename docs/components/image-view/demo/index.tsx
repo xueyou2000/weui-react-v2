@@ -1,10 +1,9 @@
 /**
- * title: 多张图片
+ * title: 受控展示
  * desc: 可设置默认查看哪一张图片
  */
 import React, { useState } from 'react';
-import { Gallery, Button } from 'weui-react-v2';
-import './index.less';
+import { Gallery, Button, WhiteSpace } from 'weui-react-v2';
 
 const images = [
   {
@@ -29,7 +28,11 @@ export default () => {
   const [visible, setVisible] = useState(true);
   return (
     <div>
-      <Button onClick={() => setVisible(true)}>打开</Button>
+      <WhiteSpace size="xl" />
+      <WhiteSpace size="xl" />
+      <Button block={true} type="primary" size="large" onClick={() => setVisible(true)}>
+        打开
+      </Button>
       <Gallery className="image-view-demo" data={images} visible={visible} onVisibleChange={setVisible} />
     </div>
   );

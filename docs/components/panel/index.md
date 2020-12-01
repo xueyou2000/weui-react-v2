@@ -19,14 +19,10 @@ group:
  * title: 图文组合面板
  */
 import React from 'react';
-import { Panel, PanelItem, Brief, ListItem } from 'weui-react-v2';
-import './index.less';
+import { Panel, PanelItem, Brief, ListItem, SafeArea } from 'weui-react-v2';
 
 export default () => (
-  <div
-    className="panel-demo"
-    style={{ minHeight: '100vh', backgroundColor: '#f4f4f4', padding: '30px', margin: '-28px' }}
-  >
+  <SafeArea style={{ margin: '-0.16rem', minHeight: '100vh', backgroundColor: '#f4f4f4', padding: '5px 0 10px' }}>
     <Panel title="图文组合列表">
       <PanelItem title="标题一" thumb={require('./icon_tabbar.png')}>
         由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。
@@ -61,7 +57,7 @@ export default () => (
         由各种物质组成的巨型球状天体，叫做星球。星球有一定的形状，有自己的运行轨道。
       </PanelItem>
     </Panel>
-  </div>
+  </SafeArea>
 );
 ```
 

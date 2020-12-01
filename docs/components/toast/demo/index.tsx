@@ -2,8 +2,8 @@
  * title: 轻提示
  * desc: 大部分都是由js弹出操作, `duration`持续事件设为0则不会自动关闭
  */
-import React, { useState } from 'react';
-import { Toast, Button } from 'weui-react-v2';
+import React from 'react';
+import { Button, Toast } from 'weui-react-v2';
 import './demo.less';
 
 export default () => {

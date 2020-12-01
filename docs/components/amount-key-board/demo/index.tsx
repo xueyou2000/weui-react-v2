@@ -37,12 +37,6 @@ export default function AmountKeyBoardDemo() {
         </div>
       </div>
       <AmountKeyBoard
-        // confirmBtn={
-        //   <span className="submit-btn">
-        //     <div>确</div>
-        //     <div>认</div>
-        //   </span>
-        // }
         value={amount}
         visible={visible}
         onVisibleChange={setVisible}

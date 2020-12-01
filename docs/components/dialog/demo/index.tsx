@@ -3,7 +3,7 @@
  * desc: 属性基本与`HalfScreenDialog`保持一致
  */
 import React from 'react';
-import { Button, DialogPop } from 'weui-react-v2';
+import { Button, WhiteSpace, DialogPop } from 'weui-react-v2';
 
 export default function () {
   function pop() {
@@ -22,7 +22,10 @@ export default function () {
 
   return (
     <div>
-      <Button onClick={pop}>显示</Button>
+      <WhiteSpace />
+      <Button block={true} size="large" type="primary" onClick={pop}>
+        显示
+      </Button>
     </div>
   );
 }

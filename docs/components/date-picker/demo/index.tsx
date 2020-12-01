@@ -1,12 +1,13 @@
 /**
  * title: 日期选择器
+ * desc: 默认选中的标签格式化为 (年-月-日 时:分:秒)
  */
-import React, { useState } from 'react';
-import { DatePicker, Button, Flex, WhiteSpace, List, ListItem, HalfScreenDialogPop } from 'weui-react-v2';
+import React from 'react';
+import { DatePicker, List, ListItem, SafeArea } from 'weui-react-v2';
 
 export default function () {
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#f4f4f4', padding: '30px', margin: '-28px' }}>
+    <SafeArea style={{ margin: '-0.16rem', minHeight: '100vh', backgroundColor: '#f4f4f4', padding: '5px 0 10px' }}>
       <List title="不同模式">
         <DatePicker placeholder="请选择" defaultValue={null} useDefaultFormat={false} separator="">
           <ListItem hd="date" arrow={true} />
@@ -24,6 +25,6 @@ export default function () {
           <ListItem hd="month" arrow={true} />
         </DatePicker>
       </List>
-    </div>
+    </SafeArea>
   );
 }

@@ -19,7 +19,7 @@ group:
  * title: 不同尺寸
  */
 import React from 'react';
-import { Switch, Flex, WhiteSpace, Form, FormItem, List, ListItem } from 'weui-react-v2';
+import { Switch, Form, FormItem, List } from 'weui-react-v2';
 
 export default () => (
   <Form labelWidth="20vw">
@@ -35,19 +35,11 @@ export default () => (
       </FormItem>
     </List>
     <List title="禁用样式">
-      <FormItem
-        label="开禁用"
-        prop="a"
-        disabled={true}
-        valueKey="checked"
-        defaultValue={true}
-        access={false}
-        align="right"
-      >
-        <Switch />
+      <FormItem label="开禁用" access={false} align="right">
+        <Switch disabled={true} checked={true} />
       </FormItem>
-      <FormItem label="关禁用" prop="c" disabled={true} valueKey="checked" access={false} align="right">
-        <Switch />
+      <FormItem label="关禁用" access={false} align="right">
+        <Switch disabled={true} />
       </FormItem>
     </List>
     <List title="自定义标识符">

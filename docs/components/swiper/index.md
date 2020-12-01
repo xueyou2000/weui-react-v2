@@ -16,7 +16,8 @@ group:
 
 ```tsx
 /**
- * title: 自动轮播, 并有拖拽缩放效果
+ * title: 自动轮播
+ * desc: scaleMode开启拖拽缩放效果
  */
 import React from 'react';
 import { Swiper } from 'weui-react-v2';
@@ -24,7 +25,7 @@ import './index.less';
 
 export default () => (
   <>
-    <Swiper className="swiper-demo" autoplay={true}>
+    <Swiper className="swiper-demo" autoplay={true} scaleMode={true}>
       <div
         className="fimg"
         style={{
@@ -65,7 +66,14 @@ import './index.less';
 
 export default () => (
   <>
-    <Swiper className="swiper-demo2" autoplay={true} vertical={true} scaleMode={false} style={{ height: '500px' }}>
+    <Swiper
+      className="swiper-demo2"
+      autoplay={true}
+      vertical={true}
+      swiperDistance={0.3}
+      scaleMode={false}
+      style={{ height: '500px' }}
+    >
       <div
         className="fimg"
         style={{

@@ -132,7 +132,7 @@ export default function HalfScreenDialog(props: HalfScreenDialogProps) {
           </div>
           <div className={`${prefixCls}-hd_main`}>
             <strong className={`${prefixCls}-hd_title`}>{title}</strong>
-            {subTitle && <p className={`${prefixCls}-hd_subtitle`}>{title}</p>}
+            {subTitle && <p className={`${prefixCls}-hd_subtitle`}>{subTitle}</p>}
           </div>
           {exted && (
             <div className={`${prefixCls}-hd_side`} onClick={handleExted}>

@@ -1,24 +1,6 @@
 import { makeArray } from '../utils/array-utils';
 import { isArray } from '../utils/object-utils';
-
-export interface PickerItem {
-  /**
-   * 显示文本
-   */
-  label: React.ReactNode;
-  /**
-   * 选中值
-   */
-  value: any;
-  /**
-   * 是否禁用
-   */
-  disabled?: boolean;
-  /**
-   * 子集
-   */
-  children?: PickerItem[];
-}
+import { PickerItem } from './interface';
 
 /**
  * 获取默认选中值(单列默认值)

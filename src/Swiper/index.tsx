@@ -84,7 +84,7 @@ export default function Swiper(props: SwiperProps) {
     defaultIndex = 0,
     autoplay,
     autoplayInterval = 3000,
-    vertical,
+    vertical = false,
     scaleMode = false,
     audoHeight,
     dots = true,
@@ -97,16 +97,19 @@ export default function Swiper(props: SwiperProps) {
     value: props.index,
     onChange: props.onChange,
   });
-  const [{ offset, scale }, set] = useSpring(() => ({ offset: 0, scale: 1 }));
+  const [{ offset, scale }, set] = useSpring(() => ({
+    offset: 0,
+    scale: 1,
+  }));
   const sizeRef = useRef({ width: 0, height: 0 });
   const start = useRef(offset.get());
   const isMove = useRef(false);
+  const hideOther = audoHeight && !vertical;
   const [displays, setDisplays] = useSprings(items.length, (i) => ({
     display: index === i ? 'block' : 'none',
     top: 0,
   }));
   const cacheOffset = useRef(offset.get());
-  const first = useRef(true);
   const insRef = useRef<HTMLDivElement | null>(null);
 
   function saveSize(ins: HTMLDivElement | null) {
@@ -119,15 +122,11 @@ export default function Swiper(props: SwiperProps) {
   function toIndex(index: number, immediate = false) {
     var itemSize = vertical ? sizeRef.current.height : sizeRef.current.width;
     var nextOffset = -(index * itemSize);
-    if (!first.current || vertical) {
-      setDisplays((i) => ({ display: 'block', top: i * sizeRef.current.height, immediate: true }));
-    } else {
-      first.current = false;
-    }
+    setDisplays((i) => ({ display: 'block', top: i * itemSize, immediate: true }));
 
     function complete() {
       if (!isMove.current) {
-        if (audoHeight && !vertical) {
+        if (hideOther) {
           set({ offset: 0, immediate: true });
         }
         setDisplays((i) => ({
@@ -141,17 +140,19 @@ export default function Swiper(props: SwiperProps) {
     set({
       offset: nextOffset,
       immediate,
-      onRest: complete,
-      from: { offset: offset.get() },
+      // onRest: complete,
+      onChange: (res) => {
+        if (res.offset === nextOffset) {
+          complete();
+        }
+      },
+      from: { offset: cacheOffset.current },
     });
     cacheOffset.current = -(index * itemSize);
-  }
-
-  useEffect(() => {
-    if (disabled) {
-      toIndex(index, true);
+    if (immediate || nextOffset === offset.get()) {
+      complete();
     }
-  }, [disabled, index]);
+  }
 
   useEffect(() => {
     toIndex(index);
@@ -188,7 +189,9 @@ export default function Swiper(props: SwiperProps) {
         start.current = cacheOffset.current;
         setDisplays((i) => ({ display: 'block', top: i * sizeRef.current.height, immediate: true }));
       }
-      isMove.current = true;
+      if (down) {
+        isMove.current = true;
+      }
 
       if (down && Math.abs(v) > swiperSpeed) {
         isMove.current = false;
@@ -205,6 +208,7 @@ export default function Swiper(props: SwiperProps) {
       if (last) {
         isMove.current = false;
         if (distance > (swiperDistance <= 1 ? itemSize * swiperDistance : swiperDistance)) {
+          cacheOffset.current = offset.get();
           setIndex(clamp(index + (dir > 0 ? -1 : 1), 0, items.length - 1));
         } else {
           set({ offset: -(index * itemSize), scale: 1, immediate: false });

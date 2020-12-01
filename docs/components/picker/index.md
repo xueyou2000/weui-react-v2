@@ -10,7 +10,7 @@ group:
 
 # Picker 选择器
 
-选择器，支持级连模式
+选择器，支持多列和级联模式
 
 ## 代码演示
 
@@ -18,8 +18,4 @@ group:
 
 <code src="./demo/index.tsx" />
 
-<code src="./demo/multiple.tsx" />
-
-<code src="./demo/cascade.tsx" />
-
-<API src="../../../src/Picker/index.tsx"></API>
+<API src="../../../src/Picker/Picker.tsx"></API>

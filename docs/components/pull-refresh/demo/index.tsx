@@ -2,8 +2,8 @@
  * title: 下拉刷新
  * desc: 设置阈值可以指定下拉多少距离，松开后刷新
  */
-import React, { useEffect, useState } from 'react';
-import { PullRefresh, PullRefreshAction, Loadmore, Skeleton, SafeArea } from 'weui-react-v2';
+import React, { useState } from 'react';
+import { Loadmore, PullRefresh, PullRefreshAction, SafeArea, Skeleton } from 'weui-react-v2';
 import './index.less';
 
 const MAX = 20;
@@ -31,7 +31,7 @@ export default () => {
       // 刷新
       handRefreshing();
     } else if (act === PullRefreshAction.loading) {
-      // 刷新
+      // 加载
       handleLoadmore();
     } else {
       setAction(act);
@@ -48,7 +48,7 @@ export default () => {
       setData(['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']);
       setNomore(false);
       setAction(PullRefreshAction.refreshed);
-    }, 3000);
+    }, 1500);
     setAction(PullRefreshAction.refreshing);
   }
 
@@ -66,7 +66,7 @@ export default () => {
       // console.log('===》 加载完毕', data);
       setData([...data, ...makeArray(5)]);
       setAction(PullRefreshAction.reset);
-    }, 3000);
+    }, 1500);
     setAction(PullRefreshAction.loading);
   }
 

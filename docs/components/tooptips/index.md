@@ -10,7 +10,7 @@ group:
 
 # Toptips 提示
 
-从屏幕顶部弹出提示内容, 由于此功能常用`js`操作的场景，所以提供了`ToptipsPop`方法，直接从`js`使用
+从屏幕顶部弹出提示内容.
 
 ## 何时使用
 
@@ -30,7 +30,7 @@ import { Toptips, Button, WhiteSpace } from 'weui-react-v2';
 export default () => {
   return (
     <>
-      <WhiteSpace size="lg" />
+      <WhiteSpace size="xl" />
       <Button
         block={true}
         onClick={() => {
@@ -40,11 +40,11 @@ export default () => {
       >
         成功提示
       </Button>
-      <br />
+      <WhiteSpace />
       <Button block={true} onClick={() => Toptips('请填写手机号', 'fail')}>
         失败提示
       </Button>
-      <br />
+      <WhiteSpace />
       <Button block={true} onClick={() => Toptips('请填写手机号', 'default')}>
         普通类型
       </Button>

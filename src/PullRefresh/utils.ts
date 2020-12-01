@@ -1,4 +1,4 @@
-import { Direction } from '.';
+import { Direction } from './enums';
 
 /**
  * 获取滚动距离

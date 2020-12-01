@@ -5,7 +5,7 @@
 .@{preview-prefix-cls} {
   position: relative;
   background-color: #ffffff;
-  font-size: 26px;
+  font-size: 28px;
 
   &:before {
     content: ' ';
@@ -58,15 +58,18 @@
       transform: scaleY(0.5);
     }
 
+    .@{preview-prefix-cls}__label {
+      text-align-last: auto;
+    }
     .@{preview-prefix-cls}__value {
       font-style: normal;
-      font-size: 24px;
+      font-size: 32px;
     }
   }
 
   &__bd {
     padding: 32px;
-    font-size: 0.9em;
+    font-size: 28px;
     text-align: right;
     color: rgba(0, 0, 0, 0.5);
     line-height: 2;
@@ -112,6 +115,7 @@
     word-break: normal;
     word-wrap: break-word;
     min-height: 2em;
+    font-size: 28-px;
   }
 
   &__btn {
@@ -168,5 +172,11 @@
   }
   &__btn_primary {
     color: darken(@primary-color, 10%);
+  }
+
+  &-align-left {
+    .@{preview-prefix-cls}__bd {
+      text-align: left;
+    }
   }
 }

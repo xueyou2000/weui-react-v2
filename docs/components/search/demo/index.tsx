@@ -2,8 +2,8 @@
  * title: 搜索栏
  */
 
-import React, { useEffect, useState } from 'react';
-import { Search, SafeArea } from 'weui-react-v2';
+import React from 'react';
+import { SafeArea, Search } from 'weui-react-v2';
 
 export default () => {
   return (

@@ -4,7 +4,8 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import useMergeValue from 'use-merge-value';
 import PickerPanel, { PickerPanelProps } from './PickerPanel';
 import './style';
-import { findMatchData, getDefaultPickerValues, getValues, PickerItem, toDataCols } from './utils';
+import { findMatchData, getDefaultPickerValues, getValues, toDataCols } from './utils';
+import { PickerItem } from './interface';
 
 export interface PickerProps
   extends Pick<HalfScreenDialogProps, Exclude<keyof HalfScreenDialogProps, 'onConfirm' | 'title'>>,

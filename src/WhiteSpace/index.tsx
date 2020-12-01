@@ -18,7 +18,7 @@ export interface WhiteSpaceProps {
   /**
    * 内容
    */
-  children: React.ReactNode;
+  children?: React.ReactNode;
   /**
    * 两翼留白的间距
    */

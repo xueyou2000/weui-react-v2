@@ -132,7 +132,7 @@ export default function SwiperAction(props: SwiperActionProps) {
 
   return (
     <div className={classNames(prefixCls, className)} style={style} ref={warpRef}>
-      <animated.div className={`${prefixCls}-content`} {...bind()} style={{ x }}>
+      <animated.div className={`${prefixCls}-content`} {...bind()} style={{ x }} onClick={hide}>
         {children}
       </animated.div>
       {left && (

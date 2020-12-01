@@ -32,13 +32,18 @@ export interface PreviewProps {
    * 页脚
    */
   footer?: React.ReactNode;
+  /**
+   * 值对齐方式, 默认`right`
+   * @default right
+   */
+  align?: 'right' | 'left';
 }
 
 export default function Preview(props: PreviewProps) {
-  const { prefixCls = 'weui-preview', className, style, title, subTitle, children, footer } = props;
+  const { prefixCls = 'weui-preview', className, style, title, subTitle, children, footer, align = 'right' } = props;
 
   return (
-    <div className={classNames(prefixCls, className)} style={style}>
+    <div className={classNames(prefixCls, className, `${prefixCls}-align-${align}`)} style={style}>
       {(title || subTitle) && (
         <div className={`${prefixCls}__hd`}>
           <PreviewHead prefixCls={prefixCls} title={subTitle}>

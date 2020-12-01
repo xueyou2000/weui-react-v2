@@ -10,7 +10,8 @@ group:
 
 # Upload 图片上传
 
-为了方便结合`Form`表单同步，包含`SingleUpload`单文件上传，和`MultiUpload`多文件上传.
+- `SingleUpload` 单文件上传（受控值为图片字符串）
+- `MultiUpload` 多文件上传（受控值为图片字符串数组）
 
 ## 代码演示
 
