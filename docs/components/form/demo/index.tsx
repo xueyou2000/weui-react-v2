@@ -2,26 +2,22 @@
  * title: 表单验证
  * desc: 表单验证非常自然，挂接了原生的表单
  */
-import { FormMethods } from '@/Form/hooks/useFormMethods';
-import { ValidateConfig } from '@/Form/utils/validate';
-import { PickerItem } from '@/Picker/utils';
-import { formatDate } from '../../../../src/utils/date-utils';
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import {
-  Input,
-  NumberInput,
   Button,
-  Flex,
-  WhiteSpace,
-  List,
+  Checkbox,
+  DatePicker,
   Form,
   FormItem,
-  Checkbox,
+  FormMethods,
+  Input,
+  List,
+  NumberInput,
+  Picker,
+  PickerItem,
   SubmitButton,
   TextArea,
-  Picker,
-  DatePicker,
-  ListItem,
+  ValidateConfig,
 } from 'weui-react-v2';
 import './index.less';
 
@@ -137,7 +133,7 @@ export default function () {
             <FormItem prop="amount" label="金额">
               <NumberInput type="amount" placeholder="请输入金额" precision={2} />
             </FormItem>
-            <FormItem prop="date" label="日期" normalize={(d: Date) => (d ? formatDate(d) : null)}>
+            <FormItem prop="date" label="日期">
               <DatePicker placeholder="请选择生日" useDefaultFormat={false} separator="" />
             </FormItem>
             <FormItem prop="feedback" label="问题反馈" alignItems="flex-start">

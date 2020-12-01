@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.0.0-beta.5 (Mon Nov 30 2020)
+
+- 修复`@/`路径引起的问题
+
 ## 3.0.0-beta.4 (Mon Nov 30 2020)
 
 - 增加`SearchBar`组件

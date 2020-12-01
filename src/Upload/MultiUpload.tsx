@@ -1,4 +1,4 @@
-import { segmentArray } from '@/utils/array-utils';
+import { segmentArray } from '../utils/array-utils';
 import { PlusOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
 import React, { useEffect, useRef, useState } from 'react';

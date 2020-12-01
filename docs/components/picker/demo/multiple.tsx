@@ -1,9 +1,8 @@
 /**
  * title: 多列数据
  */
-import { PickerItem } from '@/Picker/utils';
 import React, { useState } from 'react';
-import { PickerPanel, Button, Flex, WhiteSpace, List, ListItem, HalfScreenDialogPop } from 'weui-react-v2';
+import { Button, PickerItem, PickerPanel } from 'weui-react-v2';
 
 // 双列数据
 const pickerData: PickerItem[][] = [

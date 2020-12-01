@@ -1,4 +1,4 @@
-import HalfScreenDialog, { HalfScreenDialogProps } from '@/HalfScreenDialog/HalfScreenDialog';
+import HalfScreenDialog, { HalfScreenDialogProps } from '../HalfScreenDialog/HalfScreenDialog';
 import classNames from 'classnames';
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import useMergeValue from 'use-merge-value';

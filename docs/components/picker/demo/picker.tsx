@@ -1,9 +1,8 @@
 /**
  * title: Picker选择器，默认/分隔
  */
-import { PickerItem } from '@/Picker/utils';
-import React, { useState } from 'react';
-import { Picker, Button, Flex, WhiteSpace, List, ListItem, HalfScreenDialogPop } from 'weui-react-v2';
+import React from 'react';
+import { List, ListItem, Picker, PickerItem } from 'weui-react-v2';
 
 const singlePickerData: PickerItem[] = [
   {

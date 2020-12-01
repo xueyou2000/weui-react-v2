@@ -1,9 +1,8 @@
 /**
  * title: 级连数据
  */
-import { PickerItem } from '@/Picker/utils';
-import React, { useState } from 'react';
-import { PickerPanel, Button, Flex, WhiteSpace, List, ListItem, HalfScreenDialogPop } from 'weui-react-v2';
+import React from 'react';
+import { PickerItem, PickerPanel } from 'weui-react-v2';
 
 const pickerData: PickerItem[] = [
   {

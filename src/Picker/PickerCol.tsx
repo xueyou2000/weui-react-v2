@@ -1,4 +1,4 @@
-import { clamp } from '@/utils/number-utils';
+import { clamp } from '../utils/number-utils';
 import classNames from 'classnames';
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { animated, useSpring } from 'react-spring';

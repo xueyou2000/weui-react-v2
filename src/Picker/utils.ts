@@ -1,5 +1,5 @@
-import { makeArray } from '@/utils/array-utils';
-import { isArray } from '@/utils/object-utils';
+import { makeArray } from '../utils/array-utils';
+import { isArray } from '../utils/object-utils';
 
 export interface PickerItem {
   /**
