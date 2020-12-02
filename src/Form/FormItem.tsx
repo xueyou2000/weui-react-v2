@@ -147,7 +147,11 @@ export default function FormItem(props: FormItemProps) {
         alignItems={alignItems}
         hd={
           label && (
-            <span className={`${prefixCls}-label`} style={{ width: formContext.labelWidth }} onClick={showError}>
+            <span
+              className={`${prefixCls}-label`}
+              style={{ width: formContext.labelPostion !== 'top' ? formContext.labelWidth : '' }}
+              onClick={showError}
+            >
               {label}
             </span>
           )

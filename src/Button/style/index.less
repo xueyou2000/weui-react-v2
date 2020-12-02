@@ -89,7 +89,7 @@
       border-color: transparent;
     }
 
-    .button-disabled();
+    .button-disabled(@disabled-color, transparent, transparent);
   }
 
   &-link {
@@ -99,7 +99,7 @@
       color: darken(@btn-primary-bg, 10%);
     }
 
-    .button-disabled();
+    .button-disabled(@disabled-color, transparent, transparent);
   }
 
   &-dangerous {
@@ -164,14 +164,14 @@
     &::before {
       display: block;
     }
+
+    &-loading-icon {
+      margin-right: 16px;
+    }
   }
 
   & > &-loading-icon {
     transition: all 0.3s @ease-in-out;
-
-    .anticon {
-      padding-right: 16px;
-    }
 
     &:only-child {
       .anticon {

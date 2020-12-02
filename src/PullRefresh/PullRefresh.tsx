@@ -70,7 +70,7 @@ export default function PullRefresh(props: PullRefreshProps) {
     enablePullRefresh = true,
     autoRefresh = true,
     idleTime = 2000,
-    threshold = 200,
+    threshold = 60,
   } = props;
   const [action, setAction] = useMergeValue<PullRefreshAction>(PullRefreshAction.init, {
     value: props.action,

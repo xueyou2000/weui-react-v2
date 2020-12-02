@@ -113,6 +113,7 @@ const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
     separator = '/',
     format = defaultFormat,
     title = '请选择',
+    onConfirm,
     ...haflDialogProps
   } = props;
   const child = React.Children.only(children) as any;
@@ -149,7 +150,11 @@ const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
   function handleConfirm() {
     const pickerData = pickerDataRef.current;
     if (pickerData) {
-      setValue(pickerData.map((x) => x.value));
+      const vals = pickerData.map((x) => x.value);
+      setValue(vals);
+      if (onConfirm) {
+        onConfirm(vals, pickerData);
+      }
     }
     return Promise.resolve();
   }

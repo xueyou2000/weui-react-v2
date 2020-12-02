@@ -3,8 +3,10 @@
 @toast-prefix-cls: ~'@{prefix}-toast';
 
 .@{toast-prefix-cls} {
+  min-width: 140px;
+
   &[data-type] {
-    padding: 10px 25px 25px;
+    padding: 25px 25px;
   }
 
   &[data-type='text'] {
@@ -40,15 +42,19 @@
   }
 
   &-icon {
+    display: flex;
+    justify-content: center;
     margin-bottom: 10px;
 
     .weui-icon {
       width: 120px;
       height: 120px;
+      box-sizing: border-box;
     }
     .weui-loading {
       width: 80px;
       height: 80px;
+      box-sizing: border-box;
     }
   }
 

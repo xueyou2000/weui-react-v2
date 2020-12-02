@@ -47,7 +47,7 @@ function detectVerticalSquash(img: HTMLImageElement) {
   try {
     data = ctx.getImageData(0, 0, 1, ih).data;
   } catch (err) {
-    console.log('Cannot check verticalSquash: CORS?');
+    console.warn('Cannot check verticalSquash: CORS?');
     return 1;
   }
   var sy = 0;

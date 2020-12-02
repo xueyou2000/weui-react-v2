@@ -1,5 +1,16 @@
 # Change Log
 
+## 3.0.0-beta.7 (Wed Dec 02 2020)
+
+- 修复`Button`加载图标的外边距样式
+- 修复`Button`文本类型禁用样式
+- 修复`FormItem`标签位置为顶部时还设置了固定宽度
+- 表单`submit`方法增加静默参数，静默下表单提交失败不会默认提示
+- 修复`PullRefresh`下拉距离,和行高样式
+- 调整`Toast`样式不一致问题
+- 增加`Footer`页脚组件
+- 增加`SegmentedControl`分段器组件
+
 ## 3.0.0-beta.5 (Mon Nov 30 2020)
 
 - 修复`@/`路径引起的问题

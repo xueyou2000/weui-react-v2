@@ -1,0 +1,43 @@
+@import '../../style/themes/index.less';
+
+@segmented-prefix-cls: ~'@{prefix}-segmented';
+
+.@{segmented-prefix-cls} {
+  display: flex;
+  border-radius: 5px;
+  overflow: hidden;
+  font-size: 28px;
+
+  &-item {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    color: @segmented-color;
+    box-sizing: border-box;
+    border: 1px solid @segmented-color;
+    line-height: 1.5;
+    padding: 3px 0;
+    transition: 0.3s;
+    cursor: pointer;
+
+    &:active {
+      background-color: lighten(@segmented-color, 60%);
+    }
+
+    &:first-child {
+      border-left-width: 1px;
+      border-radius: 10px 0 0 10px;
+    }
+
+    &:last-child {
+      border-radius: 0 10px 10px 0;
+    }
+
+    &.selected {
+      background: @segmented-color;
+      color: #fff;
+    }
+  }
+}

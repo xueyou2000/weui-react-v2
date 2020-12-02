@@ -28,6 +28,7 @@ export * from './Grid';
 export * from './List';
 export * from './Panel';
 export * from './Preview';
+export { default as Footer } from './Footer';
 
 // 数据输入
 export { default as AmountKeyBoard } from './AmountKeyBoard';
@@ -45,6 +46,7 @@ export * from './DatePicker';
 // 导航
 export * from './Tabs';
 export { default as Search } from './Search';
+export { default as SegmentedControl } from './SegmentedControl';
 
 // 导出常用typescript接口类型
 export * from './Form/hooks/useFormMethods';

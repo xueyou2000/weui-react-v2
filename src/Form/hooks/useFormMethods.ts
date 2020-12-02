@@ -56,7 +56,7 @@ export interface FormMethods {
   /**
    * 表单提交
    */
-  submit: <T>(uncaught?: boolean) => Promise<T>;
+  submit: <T>(silent?: boolean) => Promise<T>;
   /**
    * 获取数据
    */
@@ -142,7 +142,7 @@ export default function useFormMethods<T>(
      * 提交表单
      * @description 进行表单验证
      */
-    submit<T>() {
+    submit<T>(silent?: boolean) {
       const data = methods.toData() as T;
       if (disabled) {
         console.error('form disabled, can not submit');
@@ -161,7 +161,7 @@ export default function useFormMethods<T>(
         })
         .then(() => data)
         .catch((error) => {
-          if (onValidateFail) {
+          if (onValidateFail && !silent) {
             onValidateFail(error, data);
           }
           return data;

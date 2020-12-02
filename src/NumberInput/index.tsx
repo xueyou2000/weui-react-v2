@@ -273,7 +273,8 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
   }
 
   function hanldeBlur(event: React.FocusEvent<HTMLInputElement>) {
-    changeNumber(event.target.value);
+    // tips: 由于Input组件模拟了焦点事件，所以target存在空的可能
+    changeNumber(event.target ? event.target.value : inputValue);
     if (onBlur) {
       onBlur(event);
     }
