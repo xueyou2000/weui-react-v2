@@ -60,7 +60,7 @@
     "validate-methods": "^1.1.0",
     "validate-provider": "^1.0.33",
     "validate-runner": "^1.0.22",
-    "xy-grid": "^0.1.0",
+    "xy-grid": "^0.1.1",
     "xy-spin": "^0.1.0"
   },
   "devDependencies": {

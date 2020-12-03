@@ -115,7 +115,7 @@
     word-break: normal;
     word-wrap: break-word;
     min-height: 2em;
-    font-size: 28-px;
+    font-size: 28px;
   }
 
   &__btn {
@@ -178,5 +178,18 @@
     .@{preview-prefix-cls}__bd {
       text-align: left;
     }
+  }
+}
+
+.preview-item {
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+    box-sizing: border-box;
+  }
+
+  &:after {
+    clear: both;
   }
 }

@@ -7,7 +7,7 @@ import useMergeValue from 'use-merge-value';
 import Loadmore from '../Loadmore';
 import { Direction, PullRefreshAction } from './enums';
 import './style';
-import { findClientHeight, findScrollHeight, findScrollTop, isBound } from './utils';
+import { findClientHeight, findScrollHeight, findScrollTop, isBound, setScrollTop } from './utils';
 
 export interface PullRefreshProps {
   /**
@@ -84,6 +84,8 @@ export default function PullRefresh(props: PullRefreshProps) {
   const directionRef = useRef(Direction.middle);
   const [{ y }, set] = useSpring(() => ({ y: 0 }));
   const scrollTarget = props.scrollTarget === 'self' ? wrapperRef : props.scrollTarget || window;
+
+  console.log(action);
 
   function changeAction(act: PullRefreshAction) {
     tempActionRef.current = act;
@@ -208,6 +210,7 @@ export default function PullRefresh(props: PullRefreshProps) {
   useEffect(() => {
     let timehandle: any;
     if (action === PullRefreshAction.refreshing) {
+      setScrollTop(scrollTarget);
       set({ y: headerRef.current?.clientHeight || 0, immediate: false });
     } else if (action === PullRefreshAction.refreshed) {
       set({ y: headerRef.current?.clientHeight || 0, immediate: false });

@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React from 'react';
 import './style';
 
@@ -32,7 +33,7 @@ export default function PreviewItem(props: PreviewItemProps) {
   const { prefixCls = 'weui-preview', className, style, children, title, onClick } = props;
 
   return (
-    <div className={className} style={style} onClick={onClick}>
+    <div className={classNames('preview-item', className)} style={style} onClick={onClick}>
       <label className={`${prefixCls}__label`}>{title}</label>
       <span className={`${prefixCls}__value`}>{children}</span>
     </div>

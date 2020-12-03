@@ -52,7 +52,7 @@ export default function Preview(props: PreviewProps) {
         </div>
       )}
       <div className={`${prefixCls}__bd`}>{children}</div>
-      <div className={`${prefixCls}__ft`}>{footer}</div>
+      {footer && <div className={`${prefixCls}__ft`}>{footer}</div>}
     </div>
   );
 }

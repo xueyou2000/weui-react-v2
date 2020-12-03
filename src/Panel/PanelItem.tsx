@@ -39,10 +39,14 @@ export interface PanelItemProps {
    * 是否显示箭头
    */
   arrow?: boolean;
+  /**
+   * 点击事件
+   */
+  onClick?: () => void;
 }
 
 export default function PanelItem(props: PanelItemProps) {
-  const { prefixCls = 'weui-panel-item', className, style, title, thumb, children, text, info, arrow } = props;
+  const { prefixCls = 'weui-panel-item', className, style, title, thumb, children, text, info, arrow, onClick } = props;
 
   const content = (
     <React.Fragment>
@@ -56,6 +60,7 @@ export default function PanelItem(props: PanelItemProps) {
     <div
       className={classNames(prefixCls, className, { [`${prefixCls}_compact`]: thumb, [`${prefixCls}_arrow`]: arrow })}
       style={style}
+      onClick={onClick}
     >
       {text ? (
         content

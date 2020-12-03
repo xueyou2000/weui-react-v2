@@ -30,7 +30,7 @@ interface Model {
   amount: number;
 }
 
-const validConfig: ValidateConfig<Model> = {
+const validConfig: ValidateConfig<Required<Model>> = {
   phone: [{ name: 'Required' }, { name: 'Pattern', params: [/^1\d{10}$/] }],
   vcode: [{ name: 'Required' }, { name: 'EqualLength', params: [6] }],
   name: [{ name: 'Required' }],

@@ -14,6 +14,20 @@ export function findScrollTop(targetDom: any) {
     return 0;
   }
 }
+
+/**
+ * 设置滚动距离
+ */
+export function setScrollTop(targetDom: any) {
+  if (targetDom === targetDom.window) {
+    window.scroll(0, 0);
+  } else if ('scrollTop' in targetDom) {
+    targetDom.scrollTop = 0;
+  } else if (targetDom.current) {
+    targetDom.current.scrollTop = 0;
+  }
+}
+
 /**
  * 获取滚动高度
  */
