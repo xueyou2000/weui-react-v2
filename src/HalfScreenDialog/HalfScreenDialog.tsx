@@ -143,8 +143,10 @@ export default function HalfScreenDialog(props: HalfScreenDialogProps) {
         <div className={`${prefixCls}-bd`}>{children}</div>
         {!hideFooter && (
           <div className={`${prefixCls}-ft`}>
-            <Button onClick={handleCancel}>{cancel}</Button>
-            <Button onClick={handleConfirm} type="primary" loading={loading}>
+            <Button onClick={handleCancel} size="large">
+              {cancel}
+            </Button>
+            <Button onClick={handleConfirm} size="large" type="primary" loading={loading}>
               {confirm}
             </Button>
           </div>

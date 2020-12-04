@@ -80,13 +80,11 @@ export default function ListItem(props: ListItemProps) {
   });
 
   return (
-    <div className={classString} style={style}>
+    <div className={classString} style={style} onClick={onClick}>
       <div className={`${prefixCls}-inner`} style={{ alignItems }}>
         {hd && <div className={`${prefixCls}-hd`}>{hd}</div>}
         {thumb && <div className={`${prefixCls}-thumb`}>{typeof thumb === 'string' ? <img src={thumb} /> : thumb}</div>}
-        <div className={`${prefixCls}-bd`} onClick={onClick}>
-          {children}
-        </div>
+        <div className={`${prefixCls}-bd`}>{children}</div>
         {(extra || arrow) && <div className={`${prefixCls}-ft`}>{extra}</div>}
       </div>
     </div>

@@ -46,6 +46,14 @@ export interface DialogProps extends PopupProps {
    * 是否隐藏页脚
    */
   hideFooter?: boolean;
+  /**
+   * 自定义页脚按钮
+   */
+  footer?: React.ReactNode[];
+  /**
+   * 自定义页脚按钮选中事件
+   */
+  onClick?: (index: number) => Promise<any>;
 }
 
 export default function Dialog(props: DialogProps) {
@@ -61,12 +69,15 @@ export default function Dialog(props: DialogProps) {
     onConfirm,
     hideFooter = false,
     maskClose = false,
+    footer,
+    onClick,
     ...rest
   } = props;
   const closeRef = useRef<Function | null>(null);
   const [loading, setLoading] = useState(false);
 
   function close() {
+    setLoading(false);
     if (closeRef.current) {
       closeRef.current();
     }
@@ -96,14 +107,23 @@ export default function Dialog(props: DialogProps) {
     close();
   }
 
+  function clickHandle(i: number) {
+    if (onClick) {
+      setLoading(true);
+      onClick(i).then(() => close());
+    } else {
+      close();
+    }
+  }
+
   return (
     <Popup
       {...rest}
       maskClose={maskClose}
       closeFuncRef={closeRef}
       animateClassName="fade-scale"
-      popupClassName={`${prefixCls}-popup`}
-      popupContentClassName={`${prefixCls}-wrapper`}
+      popupClassName={classNames(`${prefixCls}-popup`, props.popupClassName)}
+      popupContentClassName={classNames(`${prefixCls}-wrapper`, props.popupContentClassName)}
     >
       <div className={classNames(prefixCls, className)} style={style}>
         <div className={`${prefixCls}-hd`}>
@@ -112,10 +132,27 @@ export default function Dialog(props: DialogProps) {
         <div className={`${prefixCls}-bd`}>{children}</div>
         {!hideFooter && (
           <div className={`${prefixCls}-ft`}>
-            <Button onClick={handleCancel}>{cancel}</Button>
-            <Button onClick={handleConfirm} type="primary" loading={loading}>
-              {confirm}
-            </Button>
+            {footer ? (
+              footer.map((x, i) => (
+                <Button
+                  key={i}
+                  type={i === 0 && footer.length > 1 ? 'default' : 'primary'}
+                  disabled={loading}
+                  onClick={() => clickHandle(i)}
+                >
+                  {x}
+                </Button>
+              ))
+            ) : (
+              <>
+                <Button onClick={handleCancel} size="large">
+                  {cancel}
+                </Button>
+                <Button onClick={handleConfirm} size="large" type="primary" loading={loading}>
+                  {confirm}
+                </Button>
+              </>
+            )}
           </div>
         )}
       </div>

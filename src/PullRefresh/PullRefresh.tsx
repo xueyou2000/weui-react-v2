@@ -85,8 +85,6 @@ export default function PullRefresh(props: PullRefreshProps) {
   const [{ y }, set] = useSpring(() => ({ y: 0 }));
   const scrollTarget = props.scrollTarget === 'self' ? wrapperRef : props.scrollTarget || window;
 
-  console.log(action);
-
   function changeAction(act: PullRefreshAction) {
     tempActionRef.current = act;
     setAction(act);
