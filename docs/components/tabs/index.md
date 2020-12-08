@@ -22,9 +22,10 @@ group:
 import React from 'react';
 import { Tabs, TabPanel } from 'weui-react-v2';
 import '../swiper/index.less';
+import './index.less';
 
 export default () => (
-  <>
+  <div className="tabs-demo">
     <Tabs className="swiper-demo2" lazy={true}>
       <TabPanel tabKey="a" tab={<span className="tab_point">tab1</span>}>
         <div
@@ -54,7 +55,7 @@ export default () => (
         />
       </TabPanel>
     </Tabs>
-  </>
+  </div>
 );
 ```
 

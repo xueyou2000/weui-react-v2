@@ -2,7 +2,7 @@ import { clamp } from '../utils/number-utils';
 import classNames from 'classnames';
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { animated, useSpring, useSprings } from 'react-spring';
-import { useDrag } from 'react-use-gesture';
+import { useDrag, useGesture } from 'react-use-gesture';
 import useMergeValue from 'use-merge-value';
 import './style';
 
@@ -243,13 +243,17 @@ export default function Swiper(props: SwiperProps) {
         {...bind()}
         ref={saveSize}
         className={`${prefixCls}-carousel`}
-        style={{ [vertical ? 'top' : 'left']: offset }}
+        style={{ [vertical ? 'top' : 'left']: offset, touchAction: vertical ? 'pan-x' : 'pan-y' }}
       >
         {displays.map(({ display, top }: any, i) => (
           <animated.div
-            className={`${prefixCls}-item`}
+            className={classNames(`${prefixCls}-item`, { active: i === index })}
             key={i}
-            style={{ display: audoHeight ? display : 'block', scale: scaleMode ? scale : 1, top: vertical ? top : 0 }}
+            style={{
+              display: audoHeight ? display : 'block',
+              scale: scaleMode ? scale : 1,
+              top: vertical ? top : 0,
+            }}
           >
             {items[i]}
           </animated.div>
