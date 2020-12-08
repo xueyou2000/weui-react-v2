@@ -101,6 +101,10 @@ export interface NumberInputProps {
    * 是否显示控制按钮
    */
   showControl?: boolean;
+  /**
+   * 输入模式(输入事件不设置值，只在移开焦点才设置)
+   */
+  inputMode?: boolean;
 }
 
 const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, ref) => {
@@ -121,6 +125,7 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
     onBlur,
     onFocus,
     showControl,
+    inputMode = false,
     ...inputProps
   } = props;
   const inputRef = useRef<HTMLDivElement | null>(null);
@@ -262,7 +267,11 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
   }
 
   function handleChange(val: string) {
-    setInputValue(getFormatterInputValue(val));
+    if (inputMode) {
+      setInputValue(getFormatterInputValue(val));
+    } else {
+      changeNumber(val);
+    }
   }
 
   function handleFocus(event: React.FocusEvent<HTMLInputElement>) {

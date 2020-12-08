@@ -85,12 +85,18 @@ export default function FormItem(props: FormItemProps) {
     ...rest
   } = props;
 
-  const child = React.Children.only(children) as any;
+  const isControll = 'prop' in props;
+  const child = isControll ? (React.Children.only(children) as any) : children;
   const formContext = useContext(FormContext);
+  const labelPos = labelPostion || formContext.labelPostion;
   const [validateResult, setValidateResult] = useState<ValidateResult>({ status: true, msg: undefined });
   const disabled =
-    'disabled' in child.props ? child.props.disabled : 'disabled' in props ? props.disabled : formContext.disabled;
-  const classString = classNames(prefixCls, className, `${prefixCls}-pos-${labelPostion || formContext.labelPostion}`, {
+    'disabled' in (child.props || {})
+      ? child.props.disabled
+      : 'disabled' in props
+      ? props.disabled
+      : formContext.disabled;
+  const classString = classNames(prefixCls, className, `${prefixCls}-pos-${labelPos}`, {
     [`${prefixCls}-error`]: !validateResult.status,
     [`${prefixCls}-disabled`]: disabled,
   });
@@ -149,7 +155,7 @@ export default function FormItem(props: FormItemProps) {
           label && (
             <span
               className={`${prefixCls}-label`}
-              style={{ width: formContext.labelPostion !== 'top' ? formContext.labelWidth : '' }}
+              style={{ width: labelPos !== 'top' ? formContext.labelWidth : '' }}
               onClick={showError}
             >
               {label}
