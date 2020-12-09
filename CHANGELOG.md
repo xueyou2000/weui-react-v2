@@ -1,5 +1,10 @@
 # Change Log
 
+## 3.0.0-beta.9 (Wed Dec 09 2020)
+
+- 修复`Upload`组件没有同调用`onChange`的问题
+- 已知问题: 由于`React.forwardRef`无法带泛型，所以在配合`FormItem`会报错，但是不影响运行
+
 ## 3.0.0-beta.8 (Tue Dec 08 2020)
 
 - 修复`Swiper`拖拽时会阻止移动端浏览器的页面滚动事件

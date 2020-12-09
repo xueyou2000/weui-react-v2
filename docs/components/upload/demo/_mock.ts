@@ -4,7 +4,7 @@ export default delay(
   {
     'POST /upload': {
       code: 0,
-      filekey: 'abc123456',
+      filekey: 'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg',
     },
     'POST /upload2': {
       code: 999,
@@ -12,7 +12,7 @@ export default delay(
     'POST /upload3': (req: any, res: any) => {
       return res.json({
         code: Math.random() >= 0.6 ? 0 : 999,
-        filekey: 'abc123456',
+        filekey: 'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg',
       });
     },
   },

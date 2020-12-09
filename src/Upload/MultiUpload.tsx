@@ -50,7 +50,6 @@ export default function MultiUpload<T>(props: MultiUploadProps<T>) {
     prefixCls = 'weui-multi-upload',
     className,
     style,
-    ref,
     disabled,
     onChange,
     getResponse,
@@ -77,6 +76,13 @@ export default function MultiUpload<T>(props: MultiUploadProps<T>) {
   function changeFileInfos(infos: FileInfo[]) {
     fileInfosRef.current = infos;
     setFileInfos(infos);
+  }
+
+  function changeValue(urls: string[]) {
+    if (onChange) {
+      onChange(urls);
+    }
+    setValue(urls);
   }
 
   useEffect(() => {
@@ -110,7 +116,7 @@ export default function MultiUpload<T>(props: MultiUploadProps<T>) {
     changeFileInfos(setArrayItem(files, index, { response, percent: 100, status: 'success' }));
     try {
       const url = getResponse(response);
-      setValue((values) => setArrayItem(values, index, url));
+      changeValue(setArrayItem(value, index, url));
     } catch (error) {
       changeFileInfos(setArrayItem(files, index, { percent: 0, status: 'fail' }));
     }
@@ -165,10 +171,7 @@ export default function MultiUpload<T>(props: MultiUploadProps<T>) {
     }
 
     changeFileInfos(files.filter((_, i) => i !== index));
-    setValue((values) => values.filter((_, i) => i !== index));
-    if (onChange) {
-      onChange(value.filter((_, i) => i !== index));
-    }
+    changeValue(value.filter((_, i) => i !== index));
   }
 
   function renderItems() {
@@ -210,7 +213,7 @@ export default function MultiUpload<T>(props: MultiUploadProps<T>) {
   }
 
   return (
-    <div className={classNames(prefixCls, className)} style={style} ref={ref}>
+    <div className={classNames(prefixCls, className)} style={style}>
       <div className={`${prefixCls}-list`}>{renderItems()}</div>
     </div>
   );

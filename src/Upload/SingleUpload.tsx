@@ -45,7 +45,6 @@ export default function SingleUpload<T>(props: SingleUploadProps<T>) {
     prefixCls = 'weui-single-upload',
     className,
     style,
-    ref,
     disableDelete,
     getResponse,
     onSuccess,
@@ -72,6 +71,13 @@ export default function SingleUpload<T>(props: SingleUploadProps<T>) {
     }
   }, [props.value]);
 
+  function changeValue(url: string | null) {
+    if (onChange) {
+      onChange(url);
+    }
+    setValue(url);
+  }
+
   function handleUpload(file: File) {
     setFileInfo({ thumbnail: URL.createObjectURL(file), file, percent: 0, status: 'uploading' });
   }
@@ -83,7 +89,7 @@ export default function SingleUpload<T>(props: SingleUploadProps<T>) {
     setFileInfo((info) => ({ ...info, response, percent: 100, status: 'success' }));
     try {
       const url = getResponse(response);
-      setValue(url);
+      changeValue(url);
     } catch (error) {
       setFileInfo((info) => ({ ...info, percent: 0, status: 'fail' }));
     }
@@ -131,14 +137,11 @@ export default function SingleUpload<T>(props: SingleUploadProps<T>) {
       onImageRemove(fileInfo);
     }
     setFileInfo({ thumbnail: null, file: null, percent: 0, status: 'init' });
-    setValue(null);
-    if (onChange) {
-      onChange(null);
-    }
+    changeValue(null);
   }
 
   return (
-    <div className={classNames(prefixCls, className)} style={style} ref={ref}>
+    <div className={classNames(prefixCls, className)} style={style}>
       {fileInfo.status === 'init' ? (
         <Upload
           {...uploadProps}

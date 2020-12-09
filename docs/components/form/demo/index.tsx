@@ -12,8 +12,10 @@ import {
   FormMethods,
   Input,
   List,
+  MultiUpload,
   NumberInput,
   Picker,
+  SingleUpload,
   SubmitButton,
   TextArea,
   ValidateConfig,
@@ -28,15 +30,30 @@ interface Model {
   loginType: string;
   age: number;
   amount: number;
+  img: string;
+}
+
+interface Res {
+  code: number;
+  filekey: string;
+}
+
+function getResponse(res: Res) {
+  if (res && res.code === 0) {
+    return res.filekey;
+  } else {
+    throw new Error('后台上传错误');
+  }
 }
 
 const validConfig: ValidateConfig<Required<Model>> = {
-  phone: [{ name: 'Required' }, { name: 'Pattern', params: [/^1\d{10}$/] }],
-  vcode: [{ name: 'Required' }, { name: 'EqualLength', params: [6] }],
-  name: [{ name: 'Required' }],
-  age: [{ name: 'Required' }],
-  amount: [{ name: 'Required' }, { name: 'Amount' }],
-  loginType: [{ name: 'Required' }],
+  // phone: [{ name: 'Required' }, { name: 'Pattern', params: [/^1\d{10}$/] }],
+  // vcode: [{ name: 'Required' }, { name: 'EqualLength', params: [6] }],
+  // name: [{ name: 'Required' }],
+  // age: [{ name: 'Required' }],
+  // amount: [{ name: 'Required' }, { name: 'Amount' }],
+  // loginType: [{ name: 'Required' }],
+  img: [{ name: 'Required' }],
 };
 
 export default function () {
@@ -133,6 +150,14 @@ export default function () {
           <List title="Picker选择器">
             <FormItem prop="piao" label="票据" arrow={true}>
               <Picker title="请选择" placeholder="请选择" data={singlePickerData} />
+            </FormItem>
+          </List>
+          <List title="文件">
+            <FormItem prop="img" label="头像">
+              <SingleUpload<Res> action="/upload" getResponse={getResponse} />
+            </FormItem>
+            <FormItem prop="imgs" label="照片墙">
+              <MultiUpload<Res> length={3} action="/upload" getResponse={getResponse} />
             </FormItem>
           </List>
         </div>
