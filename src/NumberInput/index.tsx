@@ -187,7 +187,7 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
   // 受控组件时从外部更新输入框的值
   useEffect(() => {
     if (isControll) {
-      setInputValue(getFormatterInputValue(props.value || ''));
+      setInputValue(getFormatterInputValue(props.value as any));
     }
   }, [props.value]);
 
@@ -231,7 +231,7 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
   }
 
   function increase() {
-    if (!canIncrease()) {
+    if (!canIncrease() || inputProps.disabled) {
       return;
     }
     const numberValue = getLastNumber();
@@ -249,7 +249,7 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
   }
 
   function decrease() {
-    if (!canDecrease()) {
+    if (!canDecrease() || inputProps.disabled) {
       return;
     }
     const numberValue = getLastNumber();
@@ -315,7 +315,9 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
     >
       {showControl && (
         <span
-          className={classNames(`${prefixCls}-control control-down`, { disabled: !canDecrease() })}
+          className={classNames(`${prefixCls}-control control-down`, {
+            disabled: inputProps.disabled || !canDecrease(),
+          })}
           onClick={decrease}
         >
           <MinusOutlined />
@@ -334,7 +336,7 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
       />
       {showControl && (
         <span
-          className={classNames(`${prefixCls}-control control-up`, { disabled: !canIncrease() })}
+          className={classNames(`${prefixCls}-control control-up`, { disabled: inputProps.disabled || !canIncrease() })}
           onClick={increase}
         >
           <PlusOutlined />

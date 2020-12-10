@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.0.0-release.2 (Thu Dec 10 2020)
+
+- 修复`Tabs`内容有无效元素的异常
+- 修复`InputNumber`禁用样式操作按钮还可以点击的问题
+- 修复`InputNumber`受控时传入 0，会显示空白而不是 0 字符串
+
 ## 3.0.0-release.1 (Thu Dec 10 2020)
 
 - `Upload`去除`getResponse`属性的必填

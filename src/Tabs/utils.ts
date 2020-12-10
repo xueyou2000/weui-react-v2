@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { useMount } from 'utils-hooks';
+import { TablePanelProps } from './TabPanel';
 import { TabKey, TabPanelContext, TabsContext } from './TabsContext';
 
 const DEFAULT_KEY = '-1';
@@ -8,7 +8,7 @@ export function findDefaultTabKey(children: React.ReactNode, defaultActiveKey?: 
   let firstTabKey = defaultActiveKey || DEFAULT_KEY;
 
   React.Children.forEach(children, (d: any) => {
-    if (firstTabKey === DEFAULT_KEY) {
+    if (firstTabKey === DEFAULT_KEY && React.isValidElement<TablePanelProps>(d)) {
       firstTabKey = d.props.tabKey;
     }
   });
@@ -19,6 +19,9 @@ export function findDefaultTabKey(children: React.ReactNode, defaultActiveKey?: 
 export function findTabsInfo(children: React.ReactNode, activeKey: TabKey) {
   const tabsInfo =
     React.Children.map(children, (d: any) => {
+      if (!React.isValidElement<TablePanelProps>(d)) {
+        return {};
+      }
       const { tabKey, tab, disabled } = d.props;
       return {
         tabKey,
