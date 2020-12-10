@@ -18,4 +18,6 @@ group:
 
 <code src="./demo/index.tsx" />
 
+<code src="./demo/async.tsx" />
+
 <API src="../../../src/Picker/Picker.tsx"></API>

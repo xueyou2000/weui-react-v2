@@ -140,10 +140,11 @@ const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
 
   useEffect(() => {
     // 受控模式下，主动设置pickerData
-    if (props.value && !('pickerValue' in props)) {
+    if ('value' in props && !('pickerValue' in props)) {
       const vals = getValues(cols, props.value);
-      pickerDataRef.current = findMatchData(dataCols, vals);
-      setPickerValue(getDefaultPickerValues(dataCols, vals));
+      const pickerValue = getDefaultPickerValues(dataCols, vals);
+      pickerDataRef.current = findMatchData(dataCols, pickerValue);
+      setPickerValue(pickerValue);
     }
   }, [props.value, data]);
 

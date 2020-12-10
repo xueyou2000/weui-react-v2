@@ -102,7 +102,7 @@ export function createCascadeData(dataCols: PickerItem[][], cols: number, value?
  * 获取值所在的列数据
  */
 export function findMatchData(dataCols: PickerItem[][], value: any[]) {
-  return dataCols.map((colsData, colIndex) =>
-    colsData.find((d) => colIndex < value.length && d.value === value[colIndex]),
-  ) as PickerItem[];
+  return dataCols
+    .map((colsData, colIndex) => colsData.find((d) => colIndex < value.length && d.value === value[colIndex]))
+    .filter((x) => !!x) as PickerItem[];
 }
