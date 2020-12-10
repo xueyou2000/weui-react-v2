@@ -28,7 +28,7 @@ export function findTabsInfo(children: React.ReactNode, activeKey: TabKey) {
         active: activeKey === tabKey,
       };
     }) || [];
-  return tabsInfo;
+  return tabsInfo.filter((x) => React.isValidElement(x.panel));
 }
 
 /**

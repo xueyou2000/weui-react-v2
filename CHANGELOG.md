@@ -1,5 +1,10 @@
 # Change Log
 
+## 3.0.0-release.1 (Thu Dec 10 2020)
+
+- `Upload`去除`getResponse`属性的必填
+- 修复`FormItem`内容为空时候的异常
+
 ## 3.0.0-beta.9 (Wed Dec 09 2020)
 
 - 修复`Upload`组件没有同调用`onChange`的问题

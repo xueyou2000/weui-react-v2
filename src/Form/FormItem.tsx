@@ -87,11 +87,12 @@ export default function FormItem(props: FormItemProps) {
 
   const isControll = 'prop' in props;
   const child = isControll ? (React.Children.only(children) as any) : children;
+  const validEle = React.isValidElement(child);
   const formContext = useContext(FormContext);
   const labelPos = labelPostion || formContext.labelPostion;
   const [validateResult, setValidateResult] = useState<ValidateResult>({ status: true, msg: undefined });
   const disabled =
-    'disabled' in (child.props || {})
+    validEle && 'disabled' in (child.props || {})
       ? child.props.disabled
       : 'disabled' in props
       ? props.disabled

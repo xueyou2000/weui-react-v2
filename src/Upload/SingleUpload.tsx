@@ -17,7 +17,7 @@ export interface SingleUploadProps<T = any> extends UploadProps<T> {
   /**
    * 从上传的响应中拿到值, 此值将同步到value
    */
-  getResponse: (res: T) => string;
+  getResponse?: (res: T) => string;
   /**
    * 是否禁用
    */
@@ -88,8 +88,10 @@ export default function SingleUpload<T>(props: SingleUploadProps<T>) {
     }
     setFileInfo((info) => ({ ...info, response, percent: 100, status: 'success' }));
     try {
-      const url = getResponse(response);
-      changeValue(url);
+      if (getResponse) {
+        const url = getResponse(response);
+        changeValue(url);
+      }
     } catch (error) {
       setFileInfo((info) => ({ ...info, percent: 0, status: 'fail' }));
     }

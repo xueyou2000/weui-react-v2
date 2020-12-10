@@ -112,11 +112,12 @@ export default function MultiUpload<T>(props: MultiUploadProps<T>) {
     if (index === -1) {
       return;
     }
-
     changeFileInfos(setArrayItem(files, index, { response, percent: 100, status: 'success' }));
     try {
-      const url = getResponse(response);
-      changeValue(setArrayItem(value, index, url));
+      if (getResponse) {
+        const url = getResponse(response);
+        changeValue(setArrayItem(value, index, url));
+      }
     } catch (error) {
       changeFileInfos(setArrayItem(files, index, { percent: 0, status: 'fail' }));
     }
