@@ -27,11 +27,11 @@ export interface NumberInputProps {
   /**
    * 值
    */
-  value?: number;
+  value?: number | null;
   /**
    * 默认值
    */
-  defaultValue?: number;
+  defaultValue?: number | null;
   /**
    * change回调
    */
@@ -101,10 +101,6 @@ export interface NumberInputProps {
    * 是否显示控制按钮
    */
   showControl?: boolean;
-  /**
-   * 输入模式(输入事件不设置值，只在移开焦点才设置)
-   */
-  inputMode?: boolean;
 }
 
 const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, ref) => {
@@ -125,7 +121,6 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
     onBlur,
     onFocus,
     showControl,
-    inputMode = false,
     ...inputProps
   } = props;
   const inputRef = useRef<HTMLDivElement | null>(null);
@@ -163,16 +158,14 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
       number = null;
     }
     setNumber(number === undefined ? null : number);
-
-    if (!isControll || (isEmpy(number) && isControll)) {
-      if (number === null) {
-        setInputValue('');
-      } else if (number === undefined) {
-        setInputValue(getFormatterInputValue(lastRef.current || ''));
-      } else {
-        setInputValue(getFormatterInputValue(number));
-      }
+    if (number === null) {
+      setInputValue('');
+    } else if (number === undefined) {
+      setInputValue(getFormatterInputValue(lastRef.current || ''));
+    } else {
+      setInputValue(getFormatterInputValue(number) + (/\.$/.test(val) ? '.' : ''));
     }
+
     if (onChange) {
       // tips: 修复受控模式下，输入不正确，则还原成最后一次正确输入造成的useEffect不触发问题
       if (isEmpy(number) && isControll) {
@@ -187,8 +180,11 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
   // 受控组件时从外部更新输入框的值
   useEffect(() => {
     if (isControll) {
-      setInputValue(getFormatterInputValue(props.value as any));
-      setNumber(props.value || 0);
+      var newVal = props.value || 0;
+      if (newVal !== lastRef.current) {
+        setInputValue(getFormatterInputValue(newVal as any));
+      }
+      setNumber(newVal);
     }
   }, [props.value]);
 
@@ -268,11 +264,7 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
   }
 
   function handleChange(val: string) {
-    if (inputMode) {
-      setInputValue(getFormatterInputValue(val));
-    } else {
-      changeNumber(val);
-    }
+    changeNumber(val);
   }
 
   function handleFocus(event: React.FocusEvent<HTMLInputElement>) {

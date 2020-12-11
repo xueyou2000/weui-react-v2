@@ -16,4 +16,6 @@ group:
 
 <code src="./demo/index.tsx" />
 
+<code src="./demo/test.tsx" />
+
 <API src="../../../src/NumberInput/index.tsx"></API>

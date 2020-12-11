@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.0.1 (Fri Dec 11 2020)
+
+- 修复`InputNumber`输入小数点 BUG
+
 ## 3.0.0-release.3 (Fri Dec 11 2020)
 
 - `Picker`组件禁用下不显示半屏对话框，避免性能问题
