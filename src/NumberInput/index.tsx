@@ -188,6 +188,7 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
   useEffect(() => {
     if (isControll) {
       setInputValue(getFormatterInputValue(props.value as any));
+      setNumber(props.value || 0);
     }
   }, [props.value]);
 

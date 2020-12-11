@@ -1,5 +1,10 @@
 # Change Log
 
+## 3.0.0-release.3 (Fri Dec 11 2020)
+
+- `Picker`组件禁用下不显示半屏对话框，避免性能问题
+- 修复生产大包样式丢失，去除`sideEffects`属性
+
 ## 3.0.0-release.2 (Thu Dec 10 2020)
 
 - 修复`Tabs`内容有无效元素的异常

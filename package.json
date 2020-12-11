@@ -1,11 +1,10 @@
 {
   "name": "weui-react-v2",
-  "version": "3.0.0-release.2",
+  "version": "3.0.0-release.3",
   "description": "weui的react实现",
   "main": "lib/index.js",
   "module": "es/index.js",
   "typings": "dist/src/index.d.ts",
-  "sideEffects": false,
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",

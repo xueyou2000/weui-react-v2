@@ -203,24 +203,26 @@ const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
         </div>
       )}
 
-      <HalfScreenDialog
-        {...haflDialogProps}
-        title={title}
-        visible={visible}
-        onVisibleChange={setVisible}
-        onConfirm={handleConfirm}
-        onShow={positioningPickerCol}
-      >
-        <PickerPanel
-          data={data}
-          cols={cols}
-          cascade={cascade}
-          disabled={disabled}
-          onPickerChange={handlePickerChange}
-          value={pickerValue}
-          scrollOffsetRestRef={scrollOffsetRestRef}
-        />
-      </HalfScreenDialog>
+      {!disabled && (
+        <HalfScreenDialog
+          {...haflDialogProps}
+          title={title}
+          visible={visible}
+          onVisibleChange={setVisible}
+          onConfirm={handleConfirm}
+          onShow={positioningPickerCol}
+        >
+          <PickerPanel
+            data={data}
+            cols={cols}
+            cascade={cascade}
+            disabled={disabled}
+            onPickerChange={handlePickerChange}
+            value={pickerValue}
+            scrollOffsetRestRef={scrollOffsetRestRef}
+          />
+        </HalfScreenDialog>
+      )}
     </div>
   );
 });
