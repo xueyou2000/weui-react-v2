@@ -1,3 +1,5 @@
+import { toFixed } from '../utils/number-utils';
+
 export function isEmpy(val: any) {
   return val === undefined || val === null;
 }
@@ -36,7 +38,7 @@ export function keepPrecision(precision: number | undefined, val: string | numbe
   if (precision === undefined || val === undefined || val === '') {
     return String(val);
   } else {
-    return parseFloat(val + '').toFixed(precision);
+    return toFixed(parseFloat(val + ''), precision);
   }
 }
 
