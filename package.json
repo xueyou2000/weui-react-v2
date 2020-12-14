@@ -8,7 +8,10 @@
   "sideEffects": [
     "*.css",
     "*.scss",
-    "*.less"
+    "*.less",
+    "dist/*",
+    "lib/**/style/*",
+    "es/**/style/*"
   ],
   "scripts": {
     "start": "dumi dev",
