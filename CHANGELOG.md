@@ -1,8 +1,13 @@
 # Change Log
 
+## 3.0.2 (Mon Dec 14 2020)
+
+- 修复`NumberInput`输入问题，以及无法输入负数
+- 修复`Flex`组件由于引用是外部库的样式，被树摇的问题
+
 ## 3.0.1 (Fri Dec 11 2020)
 
-- 修复`InputNumber`输入小数点 BUG
+- 修复`NumberInput`输入小数点 BUG
 
 ## 3.0.0-release.3 (Fri Dec 11 2020)
 
