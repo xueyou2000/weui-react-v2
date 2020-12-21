@@ -14,15 +14,21 @@
   }
 
   &-popup {
+    position: fixed;
+    z-index: 4020;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     display: flex;
     justify-content: center;
   }
 
   &-wrapper {
-    position: fixed;
+    position: relative;
     z-index: 4020;
     // padding: 0 25px 15px;
-    top: 40%;
+    top: -40px;
     background: hsla(0, 0%, 7%, 0.7);
     text-align: center;
     border-radius: 9px;
@@ -39,6 +45,7 @@
     user-select: none;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
+    max-width: 50%;
   }
 
   &-icon {

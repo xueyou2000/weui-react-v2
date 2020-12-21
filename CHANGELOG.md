@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.0.3 (Mon Dec 21 2020)
+
+- 修复`Toast`样式问题
+
 ## 3.0.2 (Mon Dec 14 2020)
 
 - 修复`NumberInput`输入问题，以及无法输入负数
