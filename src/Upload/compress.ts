@@ -91,7 +91,7 @@ function dataURItoBlob(dataURI: string) {
 }
 
 /**
- * 获取图片的orientation方向
+ * 获取图片的orientation
  * ref to http://stackoverflow.com/questions/7584794/accessing-jpeg-exif-rotation-data-in-javascript-on-the-client-side
  */
 function getOrientation(buffer: ArrayBuffer) {
@@ -145,6 +145,12 @@ function orientationHelper(canvas: HTMLCanvasElement, ctx: CanvasRenderingContex
       ctx.scale(1, -1);
       break;
     case 6:
+      const version = getChromeVersion();
+      if (!version || version > 80) {
+        canvas.width = w;
+        canvas.height = h;
+        break;
+      }
       ctx.rotate(0.5 * Math.PI);
       ctx.translate(0, -h);
       break;
@@ -158,6 +164,18 @@ function orientationHelper(canvas: HTMLCanvasElement, ctx: CanvasRenderingContex
       ctx.translate(-w, 0);
       break;
   }
+}
+
+function getChromeVersion() {
+  const arr = navigator.userAgent.split(' ');
+  let chromeVersion = '';
+
+  for (let i = 0; i < arr.length; ++i) {
+    if (/chrome/i.test(arr[i])) {
+      chromeVersion = arr[i];
+    }
+  }
+  return chromeVersion ? Number(chromeVersion.split('/')[1].split('.')[0]) : false;
 }
 
 const DefaultOptions: CompressOptions = {
