@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.0.5 (Fri Jan 15 2021)
+
+- 修复`MultiUpload`在受控情况下批量上传问题
+
 ## 3.0.4 (Mon Jan 04 2021)
 
 - 修复拍照`IOS`下旋转问题

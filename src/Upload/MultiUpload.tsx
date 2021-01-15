@@ -1,4 +1,4 @@
-import { segmentArray } from '../utils/array-utils';
+import { makeArray, segmentArray } from '../utils/array-utils';
 import { PlusOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
 import React, { useEffect, useRef, useState } from 'react';
@@ -66,6 +66,8 @@ export default function MultiUpload<T>(props: MultiUploadProps<T>) {
   // 由于Upload的回调事件是原生的，导致state不会是最新的
   const fileInfosRef = useRef(fileInfos);
   const closeRef = useRef<Function | null>(null);
+  // 当前批量上传数量，用于判断是否批量上传完毕
+  const batchUploadLength = useRef(0);
 
   function close() {
     if (closeRef.current) {
@@ -87,16 +89,31 @@ export default function MultiUpload<T>(props: MultiUploadProps<T>) {
 
   useEffect(() => {
     if ('value' in props) {
-      // 受控下同步fileInfo
-      setValue(value);
+      // 受控同步
+      setValue(props.value || []);
+      // // 批量上传全部完毕才允许同步.  否则代表没有批量上传完成，或者已经失败了
+      if (batchUploadLength.current !== 0) {
+        return;
+      }
+
       if (props.value) {
-        fileInfosRef.current = props.value.map((x) => ({ thumbnail: x, file: null, percent: 100, status: 'success' }));
+        fileInfosRef.current = props.value.map((x) => ({
+          thumbnail: x,
+          file: null,
+          percent: 100,
+          status: 'success',
+        }));
         setFileInfos(fileInfosRef.current);
       } else {
         setFileInfos([]);
       }
     }
   }, [props.value]);
+
+  function handleBatchUpload(files: File[]) {
+    batchUploadLength.current = files.length;
+    setValue(makeArray(files.length, '') as string[]);
+  }
 
   function handleUpload(file: File) {
     const files = fileInfosRef.current;
@@ -117,9 +134,13 @@ export default function MultiUpload<T>(props: MultiUploadProps<T>) {
       if (getResponse) {
         const url = getResponse(response);
         changeValue(setArrayItem(value, index, url));
+        // 全部批量上传成功，则重置计数
+        if (fileInfosRef.current.every((x) => x.status === 'success')) {
+          batchUploadLength.current = 0;
+        }
       }
     } catch (error) {
-      changeFileInfos(setArrayItem(files, index, { percent: 0, status: 'fail' }));
+      changeFileInfos(setArrayItem(files, index, { percent: 100, status: 'fail' }));
     }
   }
 
@@ -129,7 +150,7 @@ export default function MultiUpload<T>(props: MultiUploadProps<T>) {
     if (index === -1) {
       return;
     }
-    changeFileInfos(setArrayItem(files, index, { percent: 0, status: 'fail' }));
+    changeFileInfos(setArrayItem(files, index, { percent: 100, status: 'fail' }));
   }
 
   function handleProgress(file: File, percent: number, event: ProgressEvent<EventTarget>) {
@@ -188,6 +209,7 @@ export default function MultiUpload<T>(props: MultiUploadProps<T>) {
                     {...uploadProps}
                     multiple={max <= 1 ? false : multiple}
                     disabled={disabled}
+                    onBatchUpload={handleBatchUpload}
                     onUpload={handleUpload}
                     onSuccess={handleSuccess}
                     onProgress={handleProgress}

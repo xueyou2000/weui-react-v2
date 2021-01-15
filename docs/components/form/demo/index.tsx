@@ -63,7 +63,7 @@ export default function () {
     console.log('提交数据为', data);
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        resolve();
+        resolve(data);
       }, 2000);
     });
   }
@@ -79,6 +79,12 @@ export default function () {
       <Form
         labelWidth="20vw"
         validConfig={validConfig}
+        defaultModel={{
+          img: 'http://365wifi.oss-cn-zhangjiakou.aliyuncs.com/cabinet/20210104/97013ff8d05e4c4ab39bc0aa0f7f86bf.jpg',
+          imgs: [
+            'http://365wifi.oss-cn-zhangjiakou.aliyuncs.com/cabinet/20210104/97013ff8d05e4c4ab39bc0aa0f7f86bf.jpg',
+          ],
+        }}
         getFormMethods={(methods) => (formMethods.current = methods)}
         onSubmit={subamit}
       >

@@ -57,6 +57,10 @@ export interface UploadProps<T>
    */
   onUpload?: (file: File) => void;
   /**
+   * 批量开始上传
+   */
+  onBatchUpload?: (files: File[]) => void;
+  /**
    * 是否禁用
    */
   disabled?: boolean;
@@ -100,6 +104,7 @@ export default function Upload<T>(props: UploadProps<T>) {
     onProgress,
     onSuccess,
     onUpload,
+    onBatchUpload,
     disabled,
   } = props;
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -125,7 +130,11 @@ export default function Upload<T>(props: UploadProps<T>) {
       Toptips('上传图片过大!', 'fail');
       return;
     }
-    [].slice.call(files, 0, max).forEach((file) => upload(file));
+    const _files = [].slice.call(files, 0, max);
+    if (onBatchUpload) {
+      onBatchUpload(_files);
+    }
+    _files.forEach((file) => upload(file));
   }
 
   function upload(file: File) {

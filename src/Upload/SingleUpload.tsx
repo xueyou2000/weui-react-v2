@@ -62,7 +62,7 @@ export default function SingleUpload<T>(props: SingleUploadProps<T>) {
   useEffect(() => {
     if ('value' in props) {
       // 受控下同步fileInfo
-      setValue(value);
+      setValue(props.value || null);
       if (props.value) {
         setFileInfo({ thumbnail: props.value, file: null, percent: 100, status: 'success' });
       } else {
@@ -93,7 +93,7 @@ export default function SingleUpload<T>(props: SingleUploadProps<T>) {
         changeValue(url);
       }
     } catch (error) {
-      setFileInfo((info) => ({ ...info, percent: 0, status: 'fail' }));
+      setFileInfo((info) => ({ ...info, percent: 100, status: 'fail' }));
     }
   }
 
@@ -101,7 +101,7 @@ export default function SingleUpload<T>(props: SingleUploadProps<T>) {
     if (onError) {
       onError(file, error, response);
     }
-    setFileInfo((info) => ({ ...info, percent: 0, status: 'fail' }));
+    setFileInfo((info) => ({ ...info, percent: 100, status: 'fail' }));
   }
 
   function handleProgress(file: File, percent: number, event: ProgressEvent<EventTarget>) {
