@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.0.6 (Mon Jan 25 2021)
+
+- 修复`NumberInput`精度不能为 0 的问题
+- 修复`NumberInput`格式化函数问题
+- 新增`DestroyComponent`方法，销毁弹出窗。例如切换路由时会自动关闭当前的所有弹出窗
+
 ## 3.0.5 (Fri Jan 15 2021)
 
 - 修复`MultiUpload`在受控情况下批量上传问题

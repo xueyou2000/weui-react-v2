@@ -15,6 +15,6 @@ function hide() {
  */
 export default function Toptips(tips: React.ReactNode, type = 'default', duration = 2500) {
   hide();
-  lastCloseFun = PopupToBody<ToptipsProps>(ToptipsComponent, { tips, type, duration });
+  lastCloseFun = PopupToBody<ToptipsProps>(ToptipsComponent, { tips, type, duration }, true);
   return hide;
 }

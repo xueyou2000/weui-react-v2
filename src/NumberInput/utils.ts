@@ -29,20 +29,6 @@ export function defaultParser(value: string) {
 }
 
 /**
- * 保留精度
- *
- * @param precision 精度
- * @param val 数值字符串
- */
-export function keepPrecision(precision: number | undefined, val: string | number): string {
-  if (precision === undefined || val === undefined || val === '') {
-    return String(val);
-  } else {
-    return toFixed(parseFloat(val + ''), precision);
-  }
-}
-
-/**
  * 字符串转换为数值
  * @description 返回undefined则不是数值
  */

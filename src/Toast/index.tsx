@@ -5,7 +5,7 @@ var lastCloseFun: Function | null = null;
 
 function popup(props: ToastProps) {
   Toast.hide();
-  lastCloseFun = PopupToBody<ToastProps>(ToastComponent, props);
+  lastCloseFun = PopupToBody<ToastProps>(ToastComponent, props, true);
 }
 
 export default class Toast {

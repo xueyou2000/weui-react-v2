@@ -14,6 +14,9 @@ export default function () {
         <ListItem hd="保留小数点3位">
           <NumberInput placeholder="请输入数值" precision={3} />
         </ListItem>
+        <ListItem hd="只能整数">
+          <NumberInput placeholder="请输入整数" precision={0} />
+        </ListItem>
         <ListItem hd="自定义前缀">
           <NumberInput
             placeholder="前缀加上美元符号"

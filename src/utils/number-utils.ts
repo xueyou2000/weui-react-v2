@@ -18,11 +18,11 @@ export function clamp(i: number, min: number, max: number) {
  * 同Number.toFixed方法，但是不会四舍五入
  */
 export function toFixed(num: number, fixed: number) {
-  var regexp = new RegExp(`\\.([\\d]{1,${fixed}})?$`);
+  var regexp = new RegExp(`\\.([\\d]{0,${fixed}})?$`);
   const str = num + '';
   if (/\./.test(str) && !regexp.test(str)) {
     const dotIndex = str.indexOf('.');
-    return str.slice(0, dotIndex + fixed + 1);
+    return str.slice(0, fixed === 0 ? dotIndex : dotIndex + fixed + 1);
   } else {
     return str;
   }
@@ -50,6 +50,6 @@ export function isAmount(val: string, precision: number = 2) {
   if (val == '') {
     return true;
   }
-  var regexp = new RegExp(`(^-?(?:\\d+|\\d{1,3}(?:,\\d{3})+)(?:\\.\\d{1,${precision}})?$)`);
+  var regexp = new RegExp(`(^-?(?:\\d+|\\d{1,3}(?:,\\d{3})+)(?:\\.\\d{0,${precision}})?$)`);
   return regexp.test(val + '');
 }

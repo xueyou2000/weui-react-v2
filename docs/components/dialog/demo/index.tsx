@@ -13,7 +13,7 @@ export default function () {
       onConfirm: () => {
         return new Promise((resolve) => {
           setTimeout(() => {
-            resolve();
+            resolve(true);
           }, 2000);
         });
       },

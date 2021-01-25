@@ -6,7 +6,7 @@ import { DefineDefaultValue, useOutsideClick } from 'utils-hooks';
 import AmountKeyBoard from '../AmountKeyBoard';
 import Input, { InputParser } from '../Input';
 import './style';
-import { add, defaultFormatter, defaultParser, isEmpy, keepPrecision, sub, toNumber } from './utils';
+import { add, defaultFormatter, defaultParser, isEmpy, sub, toNumber } from './utils';
 
 export interface NumberInputProps {
   /**
@@ -112,7 +112,7 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
     formatter = defaultFormatter,
     parser = defaultParser,
     type = 'number',
-    precision = 6,
+    precision = 2,
     max,
     min,
     step = 1,
@@ -141,7 +141,7 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
    * 改变数值
    */
   function changeNumber(val: string) {
-    let number: number | null | undefined = toNumber(keepPrecision(precision, getNumberString(val)));
+    let number: number | null | undefined = toNumber(toFixed(getNumberString(val) as any, precision));
     // 输入不正确，则还原成最后一次正确输入
     if (number === undefined && !isControll) {
       number = lastRef.current;
@@ -157,17 +157,14 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
     if (getNumberString(val) === '') {
       number = null;
     }
+
     setNumber(number === undefined ? null : number);
     if (number === null) {
       setInputValue('');
     } else if (number === undefined) {
       setInputValue(getFormatterInputValue(lastRef.current || ''));
     } else {
-      if (/^(-?)$|\d+$|^\d*\.\d+$/g.test(val)) {
-        setInputValue(getFormatterInputValue(toFixed(val as any, precision)));
-      } else if (/\.$/.test(val)) {
-        setInputValue(getFormatterInputValue(number) + (/\.$/.test(val) ? '.' : ''));
-      }
+      setInputValue(getFormatterInputValue(number));
     }
 
     if (onChange) {
@@ -268,11 +265,13 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
   }
 
   function handleChange(val: string) {
-    // TODO: 1 有效输入，单无效数值，则不触发changeNumber, 仅更改输入框值. 例如(-), (1.)
-    if (val === '-' || isTailDot(val)) {
-      setInputValue(val);
+    val = getNumberString(val);
+    // 1. 有效输入，单无效数值，则不触发changeNumber, 仅更改输入框值. 例如(-), (1.)
+
+    if ((precision !== 0 && val === '-') || (precision !== 0 && isTailDot(val))) {
+      setInputValue(getFormatterInputValue(val));
     } else if (isAmount(val, precision)) {
-      // TODO: 2 将非法输入通过正则优化掉
+      // 2. 将非法输入通过正则优化掉
       changeNumber(val);
     }
   }
@@ -281,6 +280,16 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
     setFocus(true);
     if (onFocus) {
       onFocus(event);
+    }
+  }
+
+  function handleBlur(event: React.FocusEvent<HTMLInputElement>) {
+    // 如果结尾是小数点，则移除小数点
+    if (inputValue && isTailDot(inputValue)) {
+      setInputValue(toFixed(inputValue as any, 0));
+    }
+    if (onBlur) {
+      onBlur(event);
     }
   }
 
@@ -324,7 +333,7 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
         ref={inputRef}
         value={inputValue}
         onChange={handleChange}
-        onBlur={onBlur}
+        onBlur={handleBlur}
         onFocus={handleFocus}
         readOnly={type === 'amount'}
         clearable={false}
