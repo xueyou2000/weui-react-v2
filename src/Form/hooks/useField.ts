@@ -117,7 +117,6 @@ function DefaultChangeValue(value: any) {
 export default function useField(config: UseFieldConfig) {
   const {
     prop,
-    defaultValue,
     onValidateChange,
     converValue = DefaultChangeValue,
     disabledValidate = false,
@@ -132,7 +131,10 @@ export default function useField(config: UseFieldConfig) {
   const trigger = config.trigger || formContext.trigger;
   const disabled = 'disabled' in config ? config.disabled : formContext.disabled;
   const inputRef = useRef<HTMLElement | null>(null);
-  const initialValueRef = useRef(defaultValue || get(formContext.defaultModel, prop) || null);
+  const formCtxDefault = get(formContext.defaultModel, prop);
+  const initialValueRef = useRef(
+    'defaultValue' in config ? config.defaultValue : formCtxDefault !== undefined ? formCtxDefault : null,
+  );
   const [value, setValue] = useState(initialValueRef.current);
   const lastValue = useRef(value);
   const [validateResult, setValidateResult] = useState<ValidateResult>({ status: true, msg: undefined });

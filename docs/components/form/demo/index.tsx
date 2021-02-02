@@ -10,6 +10,7 @@ import {
   Form,
   FormItem,
   FormMethods,
+  Switch,
   Input,
   List,
   MultiUpload,

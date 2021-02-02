@@ -186,6 +186,7 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
         setInputValue(getFormatterInputValue(newVal as any));
       }
       setNumber(newVal);
+      lastRef.current = newVal;
     }
   }, [props.value]);
 

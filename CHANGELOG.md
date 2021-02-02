@@ -1,5 +1,10 @@
 # Change Log
 
+## 3.0.7 (Tue Feb 02 2021)
+
+- 修复`NumberInput`受控下没有更新缓存值，导致的增/减按钮缓存问题
+- 修复`Switch`在表单受控下，默认值为`false`时，`checked`值是 null
+
 ## 3.0.6 (Mon Jan 25 2021)
 
 - 修复`NumberInput`精度不能为 0 的问题
