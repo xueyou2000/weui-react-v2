@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.0.8 (Thu Feb 25 2021)
+
+- `Form`组件的`getFormMethods`属性支持` React.MutableRefObject`类型
+
 ## 3.0.7 (Tue Feb 02 2021)
 
 - 修复`NumberInput`受控下没有更新缓存值，导致的增/减按钮缓存问题

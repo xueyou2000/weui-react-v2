@@ -8,3 +8,14 @@ export function isArray(obj: any) {
   }
   return /Array/.test(Object.prototype.toString.call(obj));
 }
+
+/**
+ * 检测是否函数
+ * @param obj
+ */
+export function isFunction(obj: any) {
+  if (!obj) {
+    return false;
+  }
+  return /Function/.test(Object.prototype.toString.call(obj));
+}

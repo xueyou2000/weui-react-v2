@@ -1,9 +1,12 @@
+import { isFunction } from '../utils/object-utils';
 import classNames from 'classnames';
 import React, { useRef } from 'react';
 import FormContext, { FormContextState, FormItemState } from './context/FormContext';
 import useFormMethods, { FormMethods } from './hooks/useFormMethods';
 import './style';
 import { ValidateConfig, ValidateTrigger } from './utils/validate';
+
+export type GetMethods = (methods: FormMethods) => void;
 
 export interface FormProps<T> extends Partial<FormContextState> {
   /**
@@ -29,7 +32,7 @@ export interface FormProps<T> extends Partial<FormContextState> {
   /**
    * 获取表单方法
    */
-  getFormMethods?: (methods: FormMethods) => void;
+  getFormMethods?: GetMethods | React.MutableRefObject<FormMethods | null>;
   /**
    * 字段值改变事件
    */
@@ -66,7 +69,11 @@ export default function Form<T = any>(props: FormProps<T>) {
   const { fieldChange, fieldValidate, methods } = useFormMethods<T>(props, fieldMapper);
 
   if (getFormMethods) {
-    getFormMethods(methods);
+    if (getFormMethods instanceof Function) {
+      getFormMethods(methods);
+    } else {
+      getFormMethods.current = methods;
+    }
   }
 
   function add(prop: string, itemState: FormItemState) {
