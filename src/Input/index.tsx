@@ -107,6 +107,10 @@ export interface InputProps {
    * 输入框引用
    */
   inputRef?: React.MutableRefObject<HTMLInputElement | null>;
+  /**
+   * 是否修复input失焦window滚动回弹
+   */
+  fixedKeyboard?: boolean;
 }
 
 const formatters = {
@@ -203,7 +207,8 @@ const Input = React.forwardRef<HTMLDivElement, InputProps>((props, ref) => {
       if (onBlur) {
         onBlur(e);
       }
-      if (/webOS|iPhone|iPod/i.test(navigator.userAgent)) {
+
+      if (!readOnly && /webOS|iPhone|iPod/i.test(navigator.userAgent)) {
         if (document.activeElement?.nodeName !== 'INPUT') {
           // 移动端, 防止ios键盘底部突出
           document.body.scrollTop = scrollTopRef.current;

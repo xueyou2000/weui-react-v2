@@ -1,5 +1,10 @@
 # Change Log
 
+## 3.1.0 (Wed Mar 17 2021)
+
+- 修复`InputNumber`在金额键盘不会弹起问题
+- `AmountKeyBoard`金额键盘支持传入小数点，而不是写死两位小数
+
 ## 3.0.8 (Thu Feb 25 2021)
 
 - `Form`组件的`getFormMethods`属性支持` React.MutableRefObject`类型

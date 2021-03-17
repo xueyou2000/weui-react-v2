@@ -17,6 +17,9 @@ export default function () {
         <ListItem hd="只能整数">
           <NumberInput placeholder="请输入整数" precision={0} />
         </ListItem>
+        <ListItem hd="金额输入">
+          <NumberInput placeholder="弹出金额键盘" type="amount" />
+        </ListItem>
         <ListItem hd="自定义前缀">
           <NumberInput
             placeholder="前缀加上美元符号"

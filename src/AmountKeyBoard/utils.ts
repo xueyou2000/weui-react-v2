@@ -22,11 +22,11 @@ function findDot(amount: string) {
  * 检测是否超过2位小数
  * @param amount 金额字符串
  */
-function testDotBit(amount: string) {
+function testDotBit(amount: string, precision: number) {
   var dotIndex = findDot(amount);
   if (dotIndex !== -1) {
     // 最多输入2位小数
-    if (amount.slice(dotIndex).length > 2) {
+    if (amount.slice(dotIndex).length > precision) {
       return false;
     }
   }
@@ -76,7 +76,7 @@ function removePrefix(amount: string) {
  * @param amount 当前金额字符串
  * @param code 按下的字符
  */
-export function keyboradDown(amount: string, code: string) {
+export function keyboradDown(amount: string, code: string, precision: number) {
   if (amount === undefined || amount === null) {
     amount = '';
   }
@@ -97,7 +97,7 @@ export function keyboradDown(amount: string, code: string) {
       break;
     default:
       // 确保只能输入2未小数
-      if (testDotBit(amount)) {
+      if (testDotBit(amount, precision)) {
         amount = spliceAmount(amount, code);
       }
       break;

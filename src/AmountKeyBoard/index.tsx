@@ -55,6 +55,11 @@ export interface AmountKeyBoardProps extends PopupProps {
    * 确认事件
    */
   onConfirm?: (amount: number, amountStr: string) => void;
+  /**
+   * 保留小数点精度
+   * @description 为整数, 比如2, 就是保留到小数点2位
+   */
+  precision?: number;
 }
 
 const AmountKeyBoard = React.forwardRef<HTMLDivElement, AmountKeyBoardProps>((props, ref) => {
@@ -71,6 +76,7 @@ const AmountKeyBoard = React.forwardRef<HTMLDivElement, AmountKeyBoardProps>((pr
     cleanBtn = '清',
     value,
     defaultVlue = 0,
+    precision = 2,
     onChange,
     onConfirm,
     ...rest
@@ -122,7 +128,7 @@ const AmountKeyBoard = React.forwardRef<HTMLDivElement, AmountKeyBoardProps>((pr
       if (navigator.vibrate) {
         window.navigator.vibrate(300);
       }
-      changeAmount(keyboradDown(amountStr, code));
+      changeAmount(keyboradDown(amountStr, code, precision));
       setTimeout(() => {
         if (lastBtn.current) {
           lastBtn.current.classList.remove('down');

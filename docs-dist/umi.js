@@ -266,8 +266,8 @@
         C = e.type,
         M = void 0 === C ? 'number' : C,
         N = e.precision,
-        A = void 0 === N ? 2 : N,
-        I = e.max,
+        I = void 0 === N ? 2 : N,
+        A = e.max,
         j = e.min,
         H = e.step,
         R = void 0 === H ? 1 : H,
@@ -310,9 +310,9 @@
         te = ee[0],
         ne = ee[1];
       function ae(e) {
-        var t = y(Object(c['d'])(re(e), A));
+        var t = y(Object(c['d'])(re(e), I));
         void 0 !== t || U || (t = $.current),
-          null !== t && void 0 !== t && (void 0 !== j && t < j && (t = j), void 0 !== I && t > I && (t = I)),
+          null !== t && void 0 !== t && (void 0 !== j && t < j && (t = j), void 0 !== A && t > A && (t = A)),
           '' === re(e) && (t = null),
           Z(void 0 === t ? null : t),
           K(null === t ? '' : ie(void 0 === t ? $.current || '' : t)),
@@ -331,7 +331,7 @@
       }
       function oe() {
         var e = ce();
-        return void 0 === I || void 0 === e || e < I;
+        return void 0 === A || void 0 === e || e < A;
       }
       function le() {
         var e = ce();
@@ -341,7 +341,7 @@
         if (oe() && !F.disabled) {
           var e,
             t = ce();
-          (e = void 0 !== I && x(t, R) > I ? I : x(t, R)), ae(e + '');
+          (e = void 0 !== A && x(t, R) > A ? A : x(t, R)), ae(e + '');
         }
       }
       function ue() {
@@ -353,7 +353,7 @@
       }
       function de(e) {
         (e = re(e)),
-          (0 !== A && '-' === e) || (0 !== A && Object(c['c'])(e)) ? K(ie(e)) : Object(c['b'])(e, A) && ae(e);
+          (0 !== I && '-' === e) || (0 !== I && Object(c['c'])(e)) ? K(ie(e)) : Object(c['b'])(e, I) && ae(e);
       }
       function fe(e) {
         ne(!0), T && T(e);
@@ -362,7 +362,7 @@
         W && Object(c['c'])(W) && K(Object(c['d'])(W, 0)), B && B(e);
       }
       function pe(e, t) {
-        ($.current = e), ae(t);
+        ($.current = e), V && V(e), Z(e), K(t);
       }
       return (
         Object(d['useEffect'])(() => {
@@ -377,6 +377,10 @@
         Object(d['useEffect'])(() => {
           'amount' === M && e.autoFocus && ne(!0);
         }, []),
+        Object(d['useEffect'])(() => {
+          var e = D.current;
+          'amount' === M && e && te && e.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        }, [te]),
         f.a.createElement(
           'div',
           {
@@ -412,10 +416,10 @@
             f.a.createElement(p['a'], {
               ref: _,
               value: J || 0,
+              precision: I,
               visible: te,
               onVisibleChange: ne,
               onChange: pe,
-              onConfirm: pe,
             }),
         )
       );
@@ -605,13 +609,13 @@
     n.d(t, 'Checkbox', function () {
       return N['a'];
     });
-    var A = n('RYFT');
+    var I = n('RYFT');
     n.d(t, 'Input', function () {
-      return A['a'];
-    });
-    var I = n('+mpg');
-    n.d(t, 'NumberInput', function () {
       return I['a'];
+    });
+    var A = n('+mpg');
+    n.d(t, 'NumberInput', function () {
+      return A['a'];
     });
     var j = n('mbMY');
     n.d(t, 'TextArea', function () {
@@ -955,14 +959,14 @@
         ]),
         M = Object(s['useRef'])(null),
         N = Object(s['useState'])(!1),
-        A = Object(r['default'])(N, 2),
-        I = A[0],
-        j = A[1];
+        I = Object(r['default'])(N, 2),
+        A = I[0],
+        j = I[1];
       function H() {
         M.current && M.current();
       }
       function R() {
-        I ||
+        A ||
           (k
             ? (j(!0),
               k()
@@ -1010,7 +1014,7 @@
               'div',
               { className: ''.concat(n, '-ft') },
               u.a.createElement(d['a'], { onClick: V, size: 'large' }, w),
-              u.a.createElement(d['a'], { onClick: R, size: 'large', type: 'primary', loading: I }, z),
+              u.a.createElement(d['a'], { onClick: R, size: 'large', type: 'primary', loading: A }, z),
             ),
         ),
       );
@@ -1089,7 +1093,7 @@
               },
               dependencies: {
                 react: { version: '17.0.1' },
-                'weui-react-v2': { version: '3.0.7' },
+                'weui-react-v2': { version: '3.1.0' },
                 '@ant-design/icons': { version: '4.2.2' },
               },
               title: '\u4e5d\u5bab\u683c\u6bcf\u884c3\u5217',
@@ -1236,6 +1240,7 @@
               imgs: [
                 'http://365wifi.oss-cn-zhangjiakou.aliyuncs.com/cabinet/20210104/97013ff8d05e4c4ab39bc0aa0f7f86bf.jpg',
               ],
+              amount: 33.45,
             },
             getFormMethods: (t) => (e.current = t),
             onSubmit: t,
@@ -1296,7 +1301,7 @@
                 r.a.createElement(i['NumberInput'], {
                   type: 'amount',
                   placeholder: '\u8bf7\u8f93\u5165\u91d1\u989d',
-                  precision: 2,
+                  precision: 4,
                 }),
               ),
               r.a.createElement(
@@ -1699,10 +1704,10 @@
             C = Object(r['default'])(L, 2),
             M = C[0],
             N = C[1],
-            A = Object(i['useState'])(),
-            I = Object(r['default'])(A, 2),
-            j = I[0],
-            H = I[1],
+            I = Object(i['useState'])(),
+            A = Object(r['default'])(I, 2),
+            j = A[0],
+            H = A[1],
             R = Object(i['useState'])(Boolean(m.defaultShowCode)),
             V = Object(r['default'])(R, 2),
             B = V[0],
@@ -2599,27 +2604,27 @@
         C = Object(s['useRef'])(null),
         M = Object(s['useState'])(!1),
         N = Object(i['default'])(M, 2),
-        A = N[0],
-        I = N[1];
+        I = N[0],
+        A = N[1];
       function j() {
-        I(!1), C.current && C.current();
+        A(!1), C.current && C.current();
       }
       function H() {
-        A ||
+        I ||
           (w
-            ? (I(!0),
+            ? (A(!0),
               w()
                 .then(() => {
-                  I(!1), j();
+                  A(!1), j();
                 })
-                .catch(() => I(!1)))
+                .catch(() => A(!1)))
             : j());
       }
       function R() {
         g && g(), j();
       }
       function V(e) {
-        S ? (I(!0), S(e).then(() => j())) : j();
+        S ? (A(!0), S(e).then(() => j())) : j();
       }
       return u.a.createElement(
         a['b'],
@@ -2650,7 +2655,7 @@
                       {
                         key: t,
                         type: 0 === t && O.length > 1 ? 'default' : 'primary',
-                        disabled: A,
+                        disabled: I,
                         onClick: () => V(t),
                       },
                       e,
@@ -2660,7 +2665,7 @@
                     u.a.Fragment,
                     null,
                     u.a.createElement(d['a'], { onClick: R, size: 'large' }, v),
-                    u.a.createElement(d['a'], { onClick: H, size: 'large', type: 'primary', loading: A }, y),
+                    u.a.createElement(d['a'], { onClick: H, size: 'large', type: 'primary', loading: I }, y),
                   ),
             ),
         ),
@@ -3014,10 +3019,10 @@
       C = n('8GlL'),
       M = n('5mdu'),
       N = n('afO8'),
-      A = n('lMq5'),
-      I = n('tiKp'),
+      I = n('lMq5'),
+      A = n('tiKp'),
       j = n('LQDL'),
-      H = I('species'),
+      H = A('species'),
       R = 'Promise',
       V = N.get,
       B = N.set,
@@ -3038,7 +3043,7 @@
       $ = 2,
       X = 1,
       ee = 2,
-      te = A(R, function () {
+      te = I(R, function () {
         var e = w(P) !== String(P);
         if (!e) {
           if (66 === j) return !0;
@@ -3387,11 +3392,11 @@
         var t = s(e);
         return 'DataView' === t || l(M, t);
       },
-      A = function (e) {
+      I = function (e) {
         return o(e) && l(M, s(e));
       },
-      I = function (e) {
-        if (A(e)) return e;
+      A = function (e) {
+        if (I(e)) return e;
         throw TypeError('Target is not a typed array');
       },
       j = function (e) {
@@ -3450,12 +3455,12 @@
     e.exports = {
       NATIVE_ARRAY_BUFFER_VIEWS: L,
       TYPED_ARRAY_TAG: C && S,
-      aTypedArray: I,
+      aTypedArray: A,
       aTypedArrayConstructor: j,
       exportTypedArrayMethod: H,
       exportTypedArrayStaticMethod: R,
       isView: N,
-      isTypedArray: A,
+      isTypedArray: I,
       TypedArray: x,
       TypedArrayPrototype: E,
     };
@@ -4205,7 +4210,7 @@
         L(!1, e.value), e.value !== x && E(e.value);
       }, [e.value, x]),
         g && g(L);
-      var A = Object(f['a'])(
+      var I = Object(f['a'])(
         (e) => {
           var t = e.last,
             n = Object(a['default'])(e.vxvy, 2),
@@ -4236,7 +4241,7 @@
         }, []),
         o.a.createElement(
           'div',
-          Object(s['a'])({ className: i()(''.concat(n, '__col'), r), style: l, ref: b }, A()),
+          Object(s['a'])({ className: i()(''.concat(n, '__col'), r), style: l, ref: b }, I()),
           o.a.createElement('div', { className: ''.concat(n, '__mask') }),
           o.a.createElement('div', { className: ''.concat(n, '__indicator') }),
           o.a.createElement(
@@ -4284,7 +4289,7 @@
           (n = Object(m['c'])(r, a)), S(n), b && b(e, n, Object(m['a'])(r, n));
         } else S(a), b && b(e, a, Object(m['a'])(L, a));
       }
-      function A(e, t) {
+      function I(e, t) {
         var n = M.current;
         n[e] = t;
       }
@@ -4302,7 +4307,7 @@
           L.length >= 1 &&
             L.map((e, t) =>
               o.a.createElement(p, {
-                getScrollOffsetRest: (e) => A(t, e),
+                getScrollOffsetRest: (e) => I(t, e),
                 data: e,
                 key: t,
                 value: C[t],
@@ -4446,7 +4451,7 @@
                     'import React from \'react\';\nimport { SafeArea, List, ListItem, SingleUpload, MultiUpload } from \'weui-react-v2\';\n\ninterface Res {\n  code: number;\n  filekey: string;\n}\n\nexport default function () {\n  function getResponse(res: Res) {\n    if (res && res.code === 0) {\n      return res.filekey;\n    } else {\n      throw new Error(\'\u540e\u53f0\u4e0a\u4f20\u9519\u8bef\');\n    }\n  }\n\n  return (\n    <SafeArea style={{ margin: \'-0.16rem\', minHeight: \'100vh\', backgroundColor: \'#f4f4f4\', padding: \'5px 0 10px\' }}>\n      <List title="\u5355\u6587\u4ef6\u4e0a\u4f20">\n        <ListItem hd="\u4e0a\u4f20\u6210\u529f" alignItems="flex-start">\n          <SingleUpload<Res> style={{ marginLeft: \'30px\' }} action="/upload" getResponse={getResponse} />\n        </ListItem>\n        <ListItem hd="\u4e0a\u4f20\u5931\u8d25" alignItems="flex-start">\n          <SingleUpload<Res> style={{ marginLeft: \'30px\' }} action="/upload2" getResponse={getResponse} />\n        </ListItem>\n        <ListItem hd="\u9759\u6001\u663e\u793a" alignItems="flex-start">\n          <SingleUpload<Res>\n            style={{ marginLeft: \'30px\' }}\n            value="https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg"\n            disabled={true}\n            action="/upload2"\n            getResponse={getResponse}\n          />\n        </ListItem>\n      </List>\n      <List title="\u591a\u6587\u4ef6\u4e0a\u4f20">\n        <ListItem hd="\u56fe\u7247\u4e0a\u4f20" alignItems="flex-start">\n          <MultiUpload<Res>\n            style={{ marginLeft: \'30px\' }}\n            action="/upload"\n            maxSize={10}\n            length={3}\n            getResponse={getResponse}\n            max={4}\n          />\n        </ListItem>\n        <ListItem hd="\u9759\u6001\u663e\u793a" alignItems="flex-start">\n          <MultiUpload<Res>\n            style={{ marginLeft: \'30px\' }}\n            disabled={true}\n            value={[\n              \'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg\',\n              \'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg\',\n              \'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg\',\n              \'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg\',\n            ]}\n            action="/upload"\n            length={3}\n            getResponse={getResponse}\n            max={6}\n          />\n        </ListItem>\n      </List>\n    </SafeArea>\n  );\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u4e0a\u4f20\u7ec4\u5408',
               identifier: 'upload-demo',
             },
@@ -5212,8 +5217,8 @@
     }
     var M = C,
       N = M(),
-      A = N,
-      I = n('3/ER'),
+      I = N,
+      A = n('3/ER'),
       j = n('Ju5/'),
       H = j['a'].Uint8Array,
       R = H;
@@ -5319,8 +5324,8 @@
     var Ce = Le,
       Me = '[object Arguments]',
       Ne = '[object Array]',
-      Ae = '[object Boolean]',
-      Ie = '[object Date]',
+      Ie = '[object Boolean]',
+      Ae = '[object Date]',
       je = '[object Error]',
       He = '[object Function]',
       Re = '[object Map]',
@@ -5346,7 +5351,7 @@
       return Object(ne['a'])(e) && he(e.length) && !!Xe[Object(te['a'])(e)];
     }
     (Xe[qe] = Xe[Ge] = Xe[We] = Xe[Ke] = Xe[Qe] = Xe[Ye] = Xe[Je] = Xe[Ze] = Xe[$e] = !0),
-      (Xe[Me] = Xe[Ne] = Xe[_e] = Xe[Ae] = Xe[Ue] = Xe[Ie] = Xe[je] = Xe[He] = Xe[Re] = Xe[Ve] = Xe[Be] = Xe[Te] = Xe[
+      (Xe[Me] = Xe[Ne] = Xe[_e] = Xe[Ie] = Xe[Ue] = Xe[Ae] = Xe[je] = Xe[He] = Xe[Re] = Xe[Ve] = Xe[Be] = Xe[Te] = Xe[
         Pe
       ] = Xe[Fe] = Xe[De] = !1);
     var tt = et;
@@ -5437,11 +5442,11 @@
       for (var a in e) ('constructor' != a || (!t && Mt.call(e, a))) && n.push(a);
       return n;
     }
-    var At = Nt;
-    function It(e) {
-      return ge(e) ? Ot(e, !0) : At(e);
+    var It = Nt;
+    function At(e) {
+      return ge(e) ? Ot(e, !0) : It(e);
     }
-    var jt = It;
+    var jt = At;
     function Ht(e) {
       return ht(e, jt(e));
     }
@@ -5465,7 +5470,7 @@
                 : ye(o)
                 ? (u = D(o))
                 : m
-                ? ((d = !1), (u = Object(I['a'])(l, !0)))
+                ? ((d = !1), (u = Object(A['a'])(l, !0)))
                 : p
                 ? ((d = !1), (u = P(l, !0)))
                 : (u = [])
@@ -5479,7 +5484,7 @@
     var Bt = Vt;
     function Tt(e, t, n, a, r) {
       e !== t &&
-        A(
+        I(
           t,
           function (i, c) {
             if ((r || (r = new y()), Object(_['a'])(i))) Bt(e, t, c, n, Tt, a, r);
@@ -5854,14 +5859,14 @@
         C = S[1],
         M = Object(u['useSpring'])(() => ({ x: 0 })),
         N = Object(i['default'])(M, 2),
-        A = N[0].x,
-        I = N[1],
+        I = N[0].x,
+        A = N[1],
         j = Object(l['useRef'])(a.None);
       function H() {
-        I({ x: j.current === a.Left ? z : -L, immediate: !1, config: u['config'].stiff });
+        A({ x: j.current === a.Left ? z : -L, immediate: !1, config: u['config'].stiff });
       }
       function R() {
-        I({ x: 0, immediate: !1 }), (j.current = a.None);
+        A({ x: 0, immediate: !1 }), (j.current = a.None);
       }
       var V = Object(d['a'])(
         (e) => {
@@ -5883,11 +5888,11 @@
                 ? H()
                 : R()
               : r
-              ? I({ x: l, immediate: !0 })
+              ? A({ x: l, immediate: !0 })
               : y && s();
         },
         {
-          initial: () => [A.get(), 0],
+          initial: () => [I.get(), 0],
           axis: 'x',
           filterTaps: !0,
           rubberband: !0,
@@ -5913,13 +5918,13 @@
           { className: o()(n, c), style: m, ref: w },
           s.a.createElement(
             u['animated'].div,
-            Object(r['a'])({ className: ''.concat(n, '-content') }, V(), { style: { x: A }, onClick: R }),
+            Object(r['a'])({ className: ''.concat(n, '-content') }, V(), { style: { x: I }, onClick: R }),
             p,
           ),
           h &&
             s.a.createElement(
               u['animated'].div,
-              { className: ''.concat(n, '-actions actions-left'), ref: (e) => B(a.Left, e), style: { x: A, left: -z } },
+              { className: ''.concat(n, '-actions actions-left'), ref: (e) => B(a.Left, e), style: { x: I, left: -z } },
               h.map((e, t) =>
                 s.a.cloneElement(e, { className: ''.concat(n, '-btn'), key: t, onClick: (t) => T(e, t) }),
               ),
@@ -5927,7 +5932,7 @@
           v &&
             s.a.createElement(
               u['animated'].div,
-              { className: ''.concat(n, '-actions actions-right'), ref: (e) => B(a.Right, e), style: { x: A } },
+              { className: ''.concat(n, '-actions actions-right'), ref: (e) => B(a.Right, e), style: { x: I } },
               v.map((e, t) =>
                 s.a.cloneElement(e, { className: ''.concat(n, '-btn'), key: t, onClick: (t) => T(e, t) }),
               ),
@@ -6735,13 +6740,13 @@
       );
     })(b.PureComponent);
     g(N, 'defaultProps', E);
-    var A = function (e) {
+    var I = function (e) {
       var t = e.renderAs,
         n = o(e, ['renderAs']),
         a = 'svg' === t ? N : M;
       return b.createElement(a, n);
     };
-    (A.defaultProps = c({ renderAs: 'canvas' }, E)), (e.exports = A);
+    (I.defaultProps = c({ renderAs: 'canvas' }, E)), (e.exports = I);
   },
   D6ik: function (e, t, n) {
     'use strict';
@@ -6795,7 +6800,7 @@
                     'import React from \'react\';\nimport { Panel, PanelItem, Brief, ListItem, SafeArea } from \'weui-react-v2\';\n\nexport default () => (\n  <SafeArea style={{ margin: \'-0.16rem\', minHeight: \'100vh\', backgroundColor: \'#f4f4f4\', padding: \'5px 0 10px\' }}>\n    <Panel title="\u56fe\u6587\u7ec4\u5408\u5217\u8868">\n      <PanelItem title="\u6807\u9898\u4e00" thumb={require(\'./icon_tabbar.png\')}>\n        \u7531\u5404\u79cd\u7269\u8d28\u7ec4\u6210\u7684\u5de8\u578b\u7403\u72b6\u5929\u4f53\uff0c\u53eb\u505a\u661f\u7403\u3002\u661f\u7403\u6709\u4e00\u5b9a\u7684\u5f62\u72b6\uff0c\u6709\u81ea\u5df1\u7684\u8fd0\u884c\u8f68\u9053\u3002\n      </PanelItem>\n      <PanelItem title="\u6807\u9898\u4e8c" thumb={require(\'./icon_tabbar.png\')}>\n        \u7531\u5404\u79cd\u7269\u8d28\u7ec4\u6210\u7684\u5de8\u578b\u7403\u72b6\u5929\u4f53\uff0c\u53eb\u505a\u661f\u7403\u3002\u661f\u7403\u6709\u4e00\u5b9a\u7684\u5f62\u72b6\uff0c\u6709\u81ea\u5df1\u7684\u8fd0\u884c\u8f68\u9053\u3002\n      </PanelItem>\n      <ListItem arrow={true}>\n        <a>\u67e5\u770b\u66f4\u591a</a>\n      </ListItem>\n    </Panel>\n    <Panel title="\u6587\u5b57\u7ec4\u5408\u5217\u8868">\n      <PanelItem title="\u6807\u9898\u4e00" text={true}>\n        \u7531\u5404\u79cd\u7269\u8d28\u7ec4\u6210\u7684\u5de8\u578b\u7403\u72b6\u5929\u4f53\uff0c\u53eb\u505a\u661f\u7403\u3002\u661f\u7403\u6709\u4e00\u5b9a\u7684\u5f62\u72b6\uff0c\u6709\u81ea\u5df1\u7684\u8fd0\u884c\u8f68\u9053\u3002\n      </PanelItem>\n      <PanelItem title="\u6807\u9898\u4e8c" text={true}>\n        \u7531\u5404\u79cd\u7269\u8d28\u7ec4\u6210\u7684\u5de8\u578b\u7403\u72b6\u5929\u4f53\uff0c\u53eb\u505a\u661f\u7403\u3002\u661f\u7403\u6709\u4e00\u5b9a\u7684\u5f62\u72b6\uff0c\u6709\u81ea\u5df1\u7684\u8fd0\u884c\u8f68\u9053\u3002\n      </PanelItem>\n    </Panel>\n    <Panel title="\u6587\u5b57\u5217\u8868\u9644\u52a0\u6e90">\n      <PanelItem\n        title="\u6807\u9898\u4e00"\n        text={true}\n        info={\n          <>\n            <Brief>\u6587\u5b57\u6765\u6e90</Brief>\n            <Brief>\u65f6\u95f4</Brief>\n            <Brief divider={true}>\u5176\u4ed6\u4fe1\u606f</Brief>\n          </>\n        }\n      >\n        \u7531\u5404\u79cd\u7269\u8d28\u7ec4\u6210\u7684\u5de8\u578b\u7403\u72b6\u5929\u4f53\uff0c\u53eb\u505a\u661f\u7403\u3002\u661f\u7403\u6709\u4e00\u5b9a\u7684\u5f62\u72b6\uff0c\u6709\u81ea\u5df1\u7684\u8fd0\u884c\u8f68\u9053\u3002\n      </PanelItem>\n    </Panel>\n  </SafeArea>\n);',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u56fe\u6587\u7ec4\u5408\u9762\u677f',
               identifier: 'components-panel',
             },
@@ -6932,10 +6937,10 @@
         C = Object(a['default'])(L, 2),
         M = C[0],
         N = C[1],
-        A = Object(s['h'])(M),
-        I = Object(a['default'])(A, 2),
-        j = I[0],
-        H = I[1],
+        I = Object(s['h'])(M),
+        A = Object(a['default'])(I, 2),
+        j = A[0],
+        H = A[1],
         R = Object(c['useRef'])(M),
         V = -1 !== H.indexOf('en'),
         B = i()(u, ''.concat(u, '-state-').concat(H), { [''.concat(u, '-open')]: V }),
@@ -7163,7 +7168,7 @@
                     "import React from 'react';\nimport { ActionSheet, Button, WhiteSpace } from 'weui-react-v2';\n\nfunction pop() {\n  ActionSheet({\n    title: '\u8bf7\u9009\u62e9\u559c\u6b22\u7684\u6c34\u679c?',\n    menus: ['\u82f9\u679c', '\u897f\u74dc', '\u68a8\u5b50'],\n    rootSelector: '#root',\n    onClick: (index) => {\n      return new Promise((resolve, reject) => {\n        setTimeout(() => {\n          resolve();\n        }, 2000);\n      });\n    },\n  });\n}\n\nexport default () => (\n  <>\n    <WhiteSpace />\n    <Button block={true} type=\"primary\" size=\"large\" onClick={pop}>\n      \u70b9\u51fb\u9009\u62e9\n    </Button>\n    <WhiteSpace />\n    <img\n      style={{ width: '100%', display: 'block' }}\n      src=\"https://images.pexels.com/photos/1239387/pexels-photo-1239387.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940\"\n      alt=\"\"\n    />\n    <img\n      style={{ width: '100%', display: 'block' }}\n      src=\"https://images.pexels.com/photos/1657110/pexels-photo-1657110.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=650&w=940\"\n      alt=\"\"\n    />\n  </>\n);",
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u914d\u7f6e\u83dc\u5355',
               description:
                 '<div class="markdown"><p>\u8bbe\u7f6e<code>menus</code>\u5c5e\u6027\u6765\u914d\u7f6e\u83dc\u5355\uff0c<code>onClick</code>\u76d1\u542c\u83dc\u5355\u70b9\u51fb\u4e8b\u4ef6</p></div>',
@@ -7280,22 +7285,22 @@
       var n = e.__data__;
       return M(t) ? n['string' == typeof t ? 'string' : 'hash'] : n.map;
     }
-    var A = N;
-    function I(e) {
-      var t = A(this, e)['delete'](e);
+    var I = N;
+    function A(e) {
+      var t = I(this, e)['delete'](e);
       return (this.size -= t ? 1 : 0), t;
     }
-    var j = I;
+    var j = A;
     function H(e) {
-      return A(this, e).get(e);
+      return I(this, e).get(e);
     }
     var R = H;
     function V(e) {
-      return A(this, e).has(e);
+      return I(this, e).has(e);
     }
     var B = V;
     function T(e, t) {
-      var n = A(this, e),
+      var n = I(this, e),
         a = n.size;
       return n.set(e, t), (this.size += n.size == a ? 0 : 1), this;
     }
@@ -7513,7 +7518,7 @@
                   content: '.demo-btn-wrap {\n  .weui-btn + .weui-btn {\n    margin-left: 15px;\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u6309\u94ae\u7c7b\u578b',
               description:
                 '<div class="markdown"><p>\u94ae\u6709\u4e94\u79cd\u7c7b\u578b\uff1a\u4e3b\u6309\u94ae\u3001\u6b21\u6309\u94ae\u3001\u865a\u7ebf\u6309\u94ae\u3001\u6587\u672c\u6309\u94ae\u548c\u94fe\u63a5\u6309\u94ae\u3002\u4e3b\u6309\u94ae\u5728\u540c\u4e00\u4e2a\u64cd\u4f5c\u533a\u57df\u6700\u591a\u51fa\u73b0\u4e00\u6b21\u3002</p></div>',
@@ -7537,7 +7542,7 @@
                   content: '.demo-btn-wrap {\n  .weui-btn + .weui-btn {\n    margin-left: 15px;\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u4e0d\u53ef\u7528\u72b6\u6001',
               description:
                 '<div class="markdown"><p>\u6dfb\u52a0 <code>disabled</code> \u5c5e\u6027\u5373\u53ef\u8ba9\u6309\u94ae\u5904\u4e8e\u4e0d\u53ef\u7528\u72b6\u6001\uff0c\u540c\u65f6\u6309\u94ae\u6837\u5f0f\u4e5f\u4f1a\u6539\u53d8\u3002</p></div>',
@@ -7561,7 +7566,7 @@
                   content: '.demo-btn-wrap {\n  .weui-btn + .weui-btn {\n    margin-left: 15px;\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u957f\u6309\u94ae',
               description:
                 '<div class="markdown"><p>\u6309\u94ae\u5c06<code>100%</code>\u586b\u5145\u7236\u5143\u7d20\u5bbd\u5ea6</p></div>',
@@ -7663,7 +7668,7 @@
                     'import React from \'react\';\nimport { Switch, Form, FormItem, List } from \'weui-react-v2\';\n\nexport default () => (\n  <Form labelWidth="20vw">\n    <List title="\u4e0d\u540c\u5c3a\u5bf8">\n      <FormItem label="\u5c0f\u5c3a\u5bf8" access={false} align="right">\n        <Switch defaultChecked={true} size="small" />\n      </FormItem>\n      <FormItem label="\u4e2d\u7b49\u5c3a\u5bf8" access={false} align="right">\n        <Switch defaultChecked={true} size="default" />\n      </FormItem>\n      <FormItem label="\u5927\u5c3a\u5bf8" access={false} align="right">\n        <Switch defaultChecked={true} size="large" />\n      </FormItem>\n    </List>\n    <List title="\u7981\u7528\u6837\u5f0f">\n      <FormItem label="\u5f00\u7981\u7528" access={false} align="right">\n        <Switch disabled={true} checked={true} />\n      </FormItem>\n      <FormItem label="\u5173\u7981\u7528" access={false} align="right">\n        <Switch disabled={true} />\n      </FormItem>\n    </List>\n    <List title="\u81ea\u5b9a\u4e49\u6807\u8bc6\u7b26">\n      <FormItem label="\u4e2d\u6587\u63d0\u793a" access={false} align="right">\n        <Switch checkedNode="\u5f00" unCheckedNode="\u5173" />\n      </FormItem>\n    </List>\n  </Form>\n);',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u4e0d\u540c\u5c3a\u5bf8',
               identifier: 'components-switch',
             },
@@ -7815,7 +7820,7 @@
                     '.weui-half-screen-dialog__tips {\n  padding-top: 32px;\n  font-size: 28px;\n  color: rgba(0, 0, 0, 0.3);\n  line-height: 1.4;\n  margin: 0;\n}\n.weui-half-screen-dialog__desc {\n  padding-top: 8px;\n  font-size: 34px;\n  font-weight: 700;\n  color: rgba(0, 0, 0, 0.9);\n  line-height: 1.4;\n  margin: 0;\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u786e\u5b9a\u6309\u94ae',
               description:
                 '<div class="markdown"><p>\u786e\u5b9a\u6309\u94ae\u4e8b\u4ef6\u662f\u4e00\u4e2a<code>Promise</code>, \u5728\u8fd4\u56de\u4e4b\u524d\u6309\u94ae\u4f1a\u5904\u4e8e\u52a0\u8f7d\u72b6\u6001</p></div>',
@@ -8860,7 +8865,7 @@
                     "import React from 'react';\nimport { Rate } from 'weui-react-v2';\n\nexport default () => (\n  <>\n    <div style={{ textAlign: 'center' }}>\n      <Rate defaultValue={3} />\n    </div>\n  </>\n);",
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: 'count\u53ef\u4ee5\u81ea\u5b9a\u4e49\u661f\u661f\u6570\u91cf',
               identifier: 'components-rate',
             },
@@ -8982,7 +8987,7 @@
                     'import React from \'react\';\nimport { Spin, Flex, WhiteSpace } from \'weui-react-v2\';\n\nexport default () => (\n  <>\n    <Flex justify="center">\n      <Spin spinning={true} size="small" />\n    </Flex>\n    <WhiteSpace size="sm" />\n    <Flex justify="center">\n      <Spin spinning={true} />\n    </Flex>\n\n    <WhiteSpace size="sm" />\n    <Flex justify="center">\n      <Spin spinning={true} size="large" />\n    </Flex>\n  </>\n);',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u4e0d\u540c\u5c3a\u5bf8',
               description:
                 '<div class="markdown"><p>\u5185\u7f6e3\u79cd\u4e0d\u540c\u5c3a\u5bf8\uff0c \u8bbe\u7f6e <code>size</code> \u5c5e\u6027\u4e3a <code>small</code>, <code>large</code>, <code>default</code>\u3002</p></div>',
@@ -9007,7 +9012,7 @@
                     '.spin-demo {\n  .alert-box {\n    font-family: Monospaced Number, Chinese Quote, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC,\n      Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;\n    font-size: 14px;\n    line-height: 1.5;\n    color: rgba(0, 0, 0, 0.65);\n    -webkit-box-sizing: border-box;\n    box-sizing: border-box;\n    margin: 0;\n    padding: 0;\n    list-style: none;\n    position: relative;\n    padding: 8px 15px 8px 37px;\n    border-radius: 4px;\n    border: 1px solid #91d5ff;\n    background-color: #e6f7ff;\n    padding: 15px 15px 15px 64px;\n    position: relative;\n    border-radius: 4px;\n    color: rgba(0, 0, 0, 0.65);\n    line-height: 1.5;\n    padding: 15px;\n  }\n\n  .xy-spin {\n    margin-right: 16px;\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: 'inline/block\u6a21\u5f0f\u5207\u6362',
               description:
                 '<div class="markdown"><p>\u9ed8\u8ba4\u662f\u5185\u8054\u6a21\u5f0f\uff0c<code>Spin</code>\u4e0d\u4f1a\u5bbd\u5ea6100%</p></div>',
@@ -9029,7 +9034,7 @@
               },
               dependencies: {
                 react: { version: '17.0.1' },
-                'weui-react-v2': { version: '3.0.7' },
+                'weui-react-v2': { version: '3.1.0' },
                 '@ant-design/icons': { version: '4.2.2' },
               },
               title: '\u81ea\u5b9a\u4e49\u6307\u793a\u7b26',
@@ -9751,7 +9756,7 @@
       }
       return a % 10 !== 0 && (t = !1), t;
     }
-    function A(e) {
+    function I(e) {
       if (c(e)) return !1;
       var t,
         n = new Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2, 1),
@@ -9776,7 +9781,7 @@
       }
       return !0;
     }
-    function I(e) {
+    function A(e) {
       return /^\d+$/.test(e + '');
     }
     function j(e, t) {
@@ -9864,10 +9869,10 @@
         return N;
       }),
       n.d(a, 'IdCardNo', function () {
-        return A;
+        return I;
       }),
       n.d(a, 'IsDigits', function () {
-        return I;
+        return A;
       }),
       n.d(a, 'IsStep', function () {
         return j;
@@ -10256,12 +10261,12 @@
               sources: {
                 _: {
                   jsx:
-                    'import React from \'react\';\nimport { List, ListItem, NumberInput, SafeArea } from \'weui-react-v2\';\n\nexport default function() {\n  return (\n    <SafeArea\n      style={{\n        margin: \'-0.16rem\',\n        minHeight: \'100vh\',\n        backgroundColor: \'#f4f4f4\',\n        padding: \'5px 0 10px\',\n      }}\n    >\n      <List title="\u8f93\u5165\u683c\u5f0f">\n        <ListItem hd="\u4efb\u610f\u8f93\u5165">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6570\u503c" />\n        </ListItem>\n        <ListItem hd="\u4fdd\u7559\u5c0f\u6570\u70b93\u4f4d">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6570\u503c" precision={3} />\n        </ListItem>\n        <ListItem hd="\u53ea\u80fd\u6574\u6570">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6574\u6570" precision={0} />\n        </ListItem>\n        <ListItem hd="\u81ea\u5b9a\u4e49\u524d\u7f00">\n          <NumberInput\n            placeholder="\u524d\u7f00\u52a0\u4e0a\u7f8e\u5143\u7b26\u53f7"\n            formatter={value => `$ ${value || \'\'}`.replace(/\\B(?=(\\d{3})+(?!\\d))/g, \',\')}\n            parser={value => value.replace(/\\$\\s?|(,*)/g, \'\')}\n          />\n        </ListItem>\n        <ListItem hd="\u81ea\u5b9a\u4e49\u540e\u7f00">\n          <NumberInput\n            placeholder="\u540e\u7f00\u52a0\u4e0a\u767e\u5206\u6bd4"\n            min={0}\n            max={100}\n            formatter={value => `${value}%`}\n            parser={value => `${value}`.replace(\'%\', \'\')}\n          />\n        </ListItem>\n        <ListItem hd="\u6700\u5927\u6700\u5c0f\u9650\u5236">\n          <NumberInput placeholder="\u6700\u5c0f3,\u6700\u592715" min={3} max={15} />\n        </ListItem>\n        <ListItem hd="\u7981\u7528\u6837\u5f0f">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165" disabled />\n        </ListItem>\n        <ListItem hd="\u7981\u7528\u6837\u5f0f">\n          <NumberInput value={123} disabled />\n        </ListItem>\n        <ListItem hd="\u663e\u793a\u63a7\u5236\u6309\u94ae">\n          <NumberInput\n            defaultValue={1}\n            min={1}\n            max={10}\n            showControl\n            style={{\n              width: \'30vw\',\n            }}\n          />\n        </ListItem>\n      </List>\n    </SafeArea>\n  );\n}\n',
+                    'import React from \'react\';\nimport { List, ListItem, NumberInput, SafeArea } from \'weui-react-v2\';\n\nexport default function() {\n  return (\n    <SafeArea\n      style={{\n        margin: \'-0.16rem\',\n        minHeight: \'100vh\',\n        backgroundColor: \'#f4f4f4\',\n        padding: \'5px 0 10px\',\n      }}\n    >\n      <List title="\u8f93\u5165\u683c\u5f0f">\n        <ListItem hd="\u4efb\u610f\u8f93\u5165">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6570\u503c" />\n        </ListItem>\n        <ListItem hd="\u4fdd\u7559\u5c0f\u6570\u70b93\u4f4d">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6570\u503c" precision={3} />\n        </ListItem>\n        <ListItem hd="\u53ea\u80fd\u6574\u6570">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6574\u6570" precision={0} />\n        </ListItem>\n        <ListItem hd="\u91d1\u989d\u8f93\u5165">\n          <NumberInput placeholder="\u5f39\u51fa\u91d1\u989d\u952e\u76d8" type="amount" />\n        </ListItem>\n        <ListItem hd="\u81ea\u5b9a\u4e49\u524d\u7f00">\n          <NumberInput\n            placeholder="\u524d\u7f00\u52a0\u4e0a\u7f8e\u5143\u7b26\u53f7"\n            formatter={value => `$ ${value || \'\'}`.replace(/\\B(?=(\\d{3})+(?!\\d))/g, \',\')}\n            parser={value => value.replace(/\\$\\s?|(,*)/g, \'\')}\n          />\n        </ListItem>\n        <ListItem hd="\u81ea\u5b9a\u4e49\u540e\u7f00">\n          <NumberInput\n            placeholder="\u540e\u7f00\u52a0\u4e0a\u767e\u5206\u6bd4"\n            min={0}\n            max={100}\n            formatter={value => `${value}%`}\n            parser={value => `${value}`.replace(\'%\', \'\')}\n          />\n        </ListItem>\n        <ListItem hd="\u6700\u5927\u6700\u5c0f\u9650\u5236">\n          <NumberInput placeholder="\u6700\u5c0f3,\u6700\u592715" min={3} max={15} />\n        </ListItem>\n        <ListItem hd="\u7981\u7528\u6837\u5f0f">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165" disabled />\n        </ListItem>\n        <ListItem hd="\u7981\u7528\u6837\u5f0f">\n          <NumberInput value={123} disabled />\n        </ListItem>\n        <ListItem hd="\u663e\u793a\u63a7\u5236\u6309\u94ae">\n          <NumberInput\n            defaultValue={1}\n            min={1}\n            max={10}\n            showControl\n            style={{\n              width: \'30vw\',\n            }}\n          />\n        </ListItem>\n      </List>\n    </SafeArea>\n  );\n}\n',
                   tsx:
-                    'import React from \'react\';\nimport { List, ListItem, NumberInput, SafeArea } from \'weui-react-v2\';\n\nexport default function () {\n  return (\n    <SafeArea style={{ margin: \'-0.16rem\', minHeight: \'100vh\', backgroundColor: \'#f4f4f4\', padding: \'5px 0 10px\' }}>\n      <List title="\u8f93\u5165\u683c\u5f0f">\n        <ListItem hd="\u4efb\u610f\u8f93\u5165">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6570\u503c" />\n        </ListItem>\n        <ListItem hd="\u4fdd\u7559\u5c0f\u6570\u70b93\u4f4d">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6570\u503c" precision={3} />\n        </ListItem>\n        <ListItem hd="\u53ea\u80fd\u6574\u6570">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6574\u6570" precision={0} />\n        </ListItem>\n        <ListItem hd="\u81ea\u5b9a\u4e49\u524d\u7f00">\n          <NumberInput\n            placeholder="\u524d\u7f00\u52a0\u4e0a\u7f8e\u5143\u7b26\u53f7"\n            formatter={(value) => `$ ${value || \'\'}`.replace(/\\B(?=(\\d{3})+(?!\\d))/g, \',\')}\n            parser={(value) => value.replace(/\\$\\s?|(,*)/g, \'\')}\n          />\n        </ListItem>\n        <ListItem hd="\u81ea\u5b9a\u4e49\u540e\u7f00">\n          <NumberInput\n            placeholder="\u540e\u7f00\u52a0\u4e0a\u767e\u5206\u6bd4"\n            min={0}\n            max={100}\n            formatter={(value) => `${value}%`}\n            parser={(value) => (value + \'\').replace(\'%\', \'\')}\n          />\n        </ListItem>\n        <ListItem hd="\u6700\u5927\u6700\u5c0f\u9650\u5236">\n          <NumberInput placeholder="\u6700\u5c0f3,\u6700\u592715" min={3} max={15} />\n        </ListItem>\n        <ListItem hd="\u7981\u7528\u6837\u5f0f">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165" disabled={true} />\n        </ListItem>\n        <ListItem hd="\u7981\u7528\u6837\u5f0f">\n          <NumberInput value={123} disabled={true} />\n        </ListItem>\n        <ListItem hd="\u663e\u793a\u63a7\u5236\u6309\u94ae">\n          <NumberInput defaultValue={1} min={1} max={10} showControl={true} style={{ width: \'30vw\' }} />\n        </ListItem>\n      </List>\n    </SafeArea>\n  );\n}\n',
+                    'import React from \'react\';\nimport { List, ListItem, NumberInput, SafeArea } from \'weui-react-v2\';\n\nexport default function () {\n  return (\n    <SafeArea style={{ margin: \'-0.16rem\', minHeight: \'100vh\', backgroundColor: \'#f4f4f4\', padding: \'5px 0 10px\' }}>\n      <List title="\u8f93\u5165\u683c\u5f0f">\n        <ListItem hd="\u4efb\u610f\u8f93\u5165">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6570\u503c" />\n        </ListItem>\n        <ListItem hd="\u4fdd\u7559\u5c0f\u6570\u70b93\u4f4d">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6570\u503c" precision={3} />\n        </ListItem>\n        <ListItem hd="\u53ea\u80fd\u6574\u6570">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6574\u6570" precision={0} />\n        </ListItem>\n        <ListItem hd="\u91d1\u989d\u8f93\u5165">\n          <NumberInput placeholder="\u5f39\u51fa\u91d1\u989d\u952e\u76d8" type="amount" />\n        </ListItem>\n        <ListItem hd="\u81ea\u5b9a\u4e49\u524d\u7f00">\n          <NumberInput\n            placeholder="\u524d\u7f00\u52a0\u4e0a\u7f8e\u5143\u7b26\u53f7"\n            formatter={(value) => `$ ${value || \'\'}`.replace(/\\B(?=(\\d{3})+(?!\\d))/g, \',\')}\n            parser={(value) => value.replace(/\\$\\s?|(,*)/g, \'\')}\n          />\n        </ListItem>\n        <ListItem hd="\u81ea\u5b9a\u4e49\u540e\u7f00">\n          <NumberInput\n            placeholder="\u540e\u7f00\u52a0\u4e0a\u767e\u5206\u6bd4"\n            min={0}\n            max={100}\n            formatter={(value) => `${value}%`}\n            parser={(value) => (value + \'\').replace(\'%\', \'\')}\n          />\n        </ListItem>\n        <ListItem hd="\u6700\u5927\u6700\u5c0f\u9650\u5236">\n          <NumberInput placeholder="\u6700\u5c0f3,\u6700\u592715" min={3} max={15} />\n        </ListItem>\n        <ListItem hd="\u7981\u7528\u6837\u5f0f">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165" disabled={true} />\n        </ListItem>\n        <ListItem hd="\u7981\u7528\u6837\u5f0f">\n          <NumberInput value={123} disabled={true} />\n        </ListItem>\n        <ListItem hd="\u663e\u793a\u63a7\u5236\u6309\u94ae">\n          <NumberInput defaultValue={1} min={1} max={10} showControl={true} style={{ width: \'30vw\' }} />\n        </ListItem>\n      </List>\n    </SafeArea>\n  );\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u7ec4\u5408\u6837\u5f0f',
               identifier: 'number-input-demo',
             },
@@ -11232,7 +11237,7 @@
                     'import React from \'react\';\nimport { BallLoading, CircleLoading, WaveLoading, MultistageLoading, Flex } from \'weui-react-v2\';\n\nexport default () => (\n  <>\n    <Flex justify="center">\n      <BallLoading />\n    </Flex>\n    <br />\n    <Flex justify="center">\n      <CircleLoading />\n    </Flex>\n    <br />\n    <Flex justify="center">\n      <WaveLoading />\n    </Flex>\n    <br />\n    <Flex justify="center">\n      <MultistageLoading />\n    </Flex>\n  </>\n);',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u52a0\u8f7d\u4e2d',
               identifier: 'components-loading',
             },
@@ -11329,8 +11334,8 @@
       C = 'Invalid host',
       M = 'Invalid port',
       N = /[A-Za-z]/,
-      A = /[\d+-.A-Za-z]/,
-      I = /\d/,
+      I = /[\d+-.A-Za-z]/,
+      A = /\d/,
       j = /^(0x|0X)/,
       H = /^[0-7]+$/,
       R = /^\d+$/,
@@ -11419,8 +11424,8 @@
                   if (!('.' == f() && a < 4)) return;
                   d++;
                 }
-                if (!I.test(f())) return;
-                while (I.test(f())) {
+                if (!A.test(f())) return;
+                while (A.test(f())) {
                   if (((i = parseInt(f(), 10)), null === r)) r = i;
                   else {
                     if (0 == r) return;
@@ -11566,7 +11571,7 @@
               (f += c.toLowerCase()), (s = oe);
               break;
             case oe:
-              if (c && (A.test(c) || '+' == c || '-' == c || '.' == c)) f += c.toLowerCase();
+              if (c && (I.test(c) || '+' == c || '-' == c || '.' == c)) f += c.toLowerCase();
               else {
                 if (':' != c) {
                   if (n) return L;
@@ -11713,7 +11718,7 @@
               }
               break;
             case be:
-              if (!I.test(c)) {
+              if (!A.test(c)) {
                 if (c == a || '/' == c || '?' == c || '#' == c || ('\\' == c && $(e)) || n) {
                   if ('' != f) {
                     var w = parseInt(f, 10);
@@ -11838,8 +11843,8 @@
           }),
           i ||
             ((a.href = Ne.call(a)),
-            (a.origin = Ae.call(a)),
-            (a.protocol = Ie.call(a)),
+            (a.origin = Ie.call(a)),
+            (a.protocol = Ae.call(a)),
             (a.username = je.call(a)),
             (a.password = He.call(a)),
             (a.host = Re.call(a)),
@@ -11872,7 +11877,7 @@
           s
         );
       },
-      Ae = function () {
+      Ie = function () {
         var e = z(this),
           t = e.scheme,
           n = e.port;
@@ -11884,7 +11889,7 @@
           }
         return 'file' != t && $(e) ? t + '://' + G(e.host) + (null !== n ? ':' + n : '') : 'null';
       },
-      Ie = function () {
+      Ae = function () {
         return z(this).scheme + ':';
       },
       je = function () {
@@ -11936,8 +11941,8 @@
             if (a) throw TypeError(a);
             x(t.searchParams).updateSearchParams(t.query);
           }),
-          origin: _e(Ae),
-          protocol: _e(Ie, function (e) {
+          origin: _e(Ie),
+          protocol: _e(Ae, function (e) {
             var t = z(this);
             Le(t, String(e) + ':', ce);
           }),
@@ -12268,7 +12273,7 @@
                     '.tabs-demo {\n  .block {\n    background-color: antiquewhite;\n    margin: 40px;\n    height: 600px;\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u61d2\u52a0\u8f7d',
               description:
                 '<div class="markdown"><p>F12\u67e5\u770b\u5143\u7d20\uff0c\u53ef\u4ee5\u770b\u5230\u61d2\u52a0\u8f7d\u65f6\uff0c\u5185\u5bb9\u4e0d\u4f1a\u771f\u7684\u63d2\u5165dom,\u800c\u662f\u5360\u4f4d\u7b26\u53d6\u4ee3</p></div>',
@@ -12293,7 +12298,7 @@
                     '.swiper-demo {\n  .fimg {\n    width: 100%;\n    height: 400px;\n    // touch-action: none;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center center;\n    box-shadow: 0 62.5px 125px -25px rgba(50, 50, 73, 0.5), 0 37.5px 75px -37.5px rgba(0, 0, 0, 0.6);\n  }\n}\n.swiper-demo2 {\n  .fimg {\n    width: 100%;\n    height: 100%;\n    // touch-action: none;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center center;\n  }\n}\n\n.tabs-demo {\n  font-size: 32px;\n\n  select {\n    display: block;\n    width: 100%;\n    height: 45px;\n    line-height: 45px;\n    font-size: 35px;\n  }\n\n  .weui-tab-panel {\n    // background-color: #607d8b;\n    text-align: center;\n    padding: 20px;\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u52a8\u6001\u589e\u51cf',
               description:
                 '<div class="markdown"><p>\u5f53tabbar\u6ea2\u51fa\u540e\uff0c\u4f1a\u663e\u793a\u7bad\u5934, \u9ed8\u8ba4\u5f00\u542f\u81ea\u52a8\u9ad8\u5ea6</p></div>',
@@ -12326,7 +12331,7 @@
               dependencies: {
                 classnames: { version: '2.2.6' },
                 react: { version: '17.0.1' },
-                'weui-react-v2': { version: '3.0.7' },
+                'weui-react-v2': { version: '3.1.0' },
               },
               title: '\u5782\u76f4\u663e\u793a',
               description:
@@ -12543,7 +12548,7 @@
                     'import React from \'react\';\nimport { WhiteSpace, Button } from \'weui-react-v2\';\n\nexport default () => (\n  <>\n    <Button block>\u6700\u5c0f\u95f4\u8ddd</Button>\n    <WhiteSpace size="xs" />\n    <Button block>\u5c0f\u95f4\u8ddd</Button>\n    <WhiteSpace size="sm" />\n    <Button block>\u4e2d\u7b49\u95f4\u8ddd(\u9ed8\u8ba4)</Button>\n    <WhiteSpace size="md" />\n    <Button block>\u5927\u95f4\u8ddd</Button>\n    <WhiteSpace size="lg" />\n    <Button block>\u6700\u5927\u95f4\u8ddd</Button>\n    <WhiteSpace size="xl" />\n  </>\n);',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u4e0d\u540c\u5c3a\u5bf8',
               identifier: 'components-white-space',
             },
@@ -12761,9 +12766,9 @@
             C = s && s.replace(/([.+*?=^!:${}()[\]|/\\])/g, '\\$1'),
             M = C ? Object(a['i'])(n.pathname, { path: C, exact: h, sensitive: E, strict: z }) : null,
             N = !!(v ? v(M, n) : M),
-            A = N ? w(p, o) : p,
-            I = N ? Object(l['a'])({}, k, {}, m) : k,
-            j = Object(l['a'])({ 'aria-current': (N && r) || null, className: A, style: I, to: i }, L);
+            I = N ? w(p, o) : p,
+            A = N ? Object(l['a'])({}, k, {}, m) : k,
+            j = Object(l['a'])({ 'aria-current': (N && r) || null, className: I, style: A, to: i }, L);
           return b !== y ? (j.ref = t || S) : (j.innerRef = S), c.a.createElement(g, j);
         });
       }),
@@ -12829,7 +12834,7 @@
         e
       );
     }
-    function A(e, t) {
+    function I(e, t) {
       var n = Object.keys(e);
       if (Object.getOwnPropertySymbols) {
         var a = Object.getOwnPropertySymbols(e);
@@ -12841,16 +12846,16 @@
       }
       return n;
     }
-    function I(e) {
+    function A(e) {
       for (var t = 1; t < arguments.length; t++) {
         var n = null != arguments[t] ? arguments[t] : {};
         t % 2
-          ? A(Object(n), !0).forEach(function (t) {
+          ? I(Object(n), !0).forEach(function (t) {
               N(e, t, n[t]);
             })
           : Object.getOwnPropertyDescriptors
           ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(n))
-          : A(Object(n)).forEach(function (t) {
+          : I(Object(n)).forEach(function (t) {
               Object.defineProperty(e, t, Object.getOwnPropertyDescriptor(n, t));
             });
       }
@@ -13074,7 +13079,7 @@
                                       case 19:
                                         a = e.sent;
                                       case 20:
-                                        return e.abrupt('return', I({}, n, {}, a));
+                                        return e.abrupt('return', A({}, n, {}, a));
                                       case 21:
                                       case 'end':
                                         return e.stop();
@@ -13094,7 +13099,7 @@
                               'function' === typeof n || 'object' === k(n),
                               'applyPlugins failed, all hooks for key '.concat(t, ' must be function or plain object.'),
                             ),
-                            'function' === typeof n ? n(e, r) : I({}, e, {}, n)
+                            'function' === typeof n ? n(e, r) : A({}, e, {}, n)
                           );
                         }, a);
                   case x.event:
@@ -13294,7 +13299,7 @@
           {
             key: '_update',
             value: function (e) {
-              (this._state = I({}, this._state, {}, e)),
+              (this._state = A({}, this._state, {}, e)),
                 this._callbacks.forEach(function (e) {
                   return e();
                 });
@@ -13309,7 +13314,7 @@
           {
             key: 'getCurrentValue',
             value: function () {
-              return I({}, this._state, {
+              return A({}, this._state, {
                 error: this._res.error,
                 loaded: this._res.loaded,
                 loading: this._res.loading,
@@ -13360,7 +13365,7 @@
       if ('function' === typeof e) n.loader = e;
       else {
         if ('object' !== k(e)) throw new Error('Unexpect arguments '.concat(e));
-        n = I({}, n, {}, e);
+        n = A({}, n, {}, e);
       }
       return t(n);
     }
@@ -13447,7 +13452,7 @@
                     '// html,\n// body {\n//   width: 100%;\n//   height: 100%;\n//   overflow: hidden;\n// }\n// #root {\n//   width: 100%;\n//   height: 100%;\n//   overflow-y: auto;\n//   -webkit-overflow-scrolling: auto;\n// }\n.pull-refresh-demo {\n  .tips {\n    padding: 80px;\n    background-color: antiquewhite;\n    text-align: center;\n    font-size: 28px;\n    color: #000;\n    margin: 0;\n  }\n\n  .fake-list {\n    min-height: 600px;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    padding: 0;\n    margin: 20px 0;\n\n    li {\n      padding: 40px;\n      text-align: center;\n      font-size: 28px;\n      color: #000;\n      background-color: aliceblue;\n      margin-bottom: 20px;\n      overflow: hidden;\n      border-radius: 15px;\n    }\n  }\n}\n\n// html,\n// body {\n//   height: 100%;\n//   overflow: hidden;\n// }\n// #root {\n//   height: 100%;\n//   overflow: auto;\n// }\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u4e0b\u62c9\u5237\u65b0',
               description:
                 '<div class="markdown"><p>\u8bbe\u7f6e\u9608\u503c\u53ef\u4ee5\u6307\u5b9a\u4e0b\u62c9\u591a\u5c11\u8ddd\u79bb\uff0c\u677e\u5f00\u540e\u5237\u65b0</p></div>',
@@ -13590,7 +13595,7 @@
                     ".keyboard-demo {\n  font-size: 24px;\n\n  .payment-page__bd {\n    padding-top: 80px;\n    padding-bottom: 80px;\n  }\n  .paymeny-title {\n    font-size: 48px;\n    line-height: 106px;\n    text-align: center;\n  }\n  .fake-amount-input {\n    padding: 0 30px 24px;\n    position: relative;\n    box-sizing: border-box;\n\n    .amount-placeholder {\n      width: 100%;\n      padding: 0 50px;\n      text-align: left;\n      position: absolute;\n      left: 0;\n      top: 0;\n      z-index: 1;\n      color: #bebebe;\n      font-size: 36px;\n      height: 108px;\n      line-height: 108px;\n      box-sizing: border-box;\n    }\n    .amount-input {\n      z-index: 2;\n      position: relative;\n      padding: 0 20px;\n      border: 2px solid #06bf04;\n      border-radius: 10px;\n      text-align: right;\n      height: 108px;\n      line-height: 108px;\n      font-size: 72px;\n      width: 100%;\n      box-sizing: border-box;\n    }\n    .amount_plan {\n      position: absolute;\n      color: #bebebe;\n      z-index: 1;\n      top: 0;\n      left: 0;\n      padding: 0 50px;\n      height: 108px;\n      line-height: 108px;\n      font-size: 72px;\n      width: 100%;\n      text-align: right;\n      box-sizing: border-box;\n    }\n    .unit {\n      display: inline-block;\n      vertical-align: top;\n    }\n    .amount {\n      display: inline-block;\n      max-width: 62%;\n      color: #000;\n      vertical-align: top;\n      word-break: keep-all;\n      white-space: nowrap;\n      overflow: hidden;\n      text-overflow: ellipsis;\n      font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Helvetica Neue', 'Hiragino Sans GB', 'Microsoft Yahei',\n        sans-serif;\n    }\n  }\n}\n",
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u91d1\u989d\u952e\u76d8',
               description:
                 '<div class="markdown"><p>\u4e00\u822c\u9ed8\u8ba4\u7528Input\u7ec4\u4ef6\u5524\u8d77\u3002</p></div>',
@@ -13726,7 +13731,7 @@
                     'import React from \'react\';\nimport { Checkbox, Form, FormItem, List } from \'weui-react-v2\';\n\nexport default () => (\n  <Form>\n    <List title="\u4e0d\u540c\u5c3a\u5bf8">\n      <FormItem access={true}>\n        <Checkbox defaultChecked={true} size="small">\n          (small) standard is dealt for u.\n        </Checkbox>\n      </FormItem>\n      <FormItem access={true}>\n        <Checkbox defaultChecked={true} size="default">\n          (default) standard is dealicient for u.\n        </Checkbox>\n      </FormItem>\n      <FormItem access={true}>\n        <Checkbox defaultChecked={true} size="large">\n          (big) standard is dealicient for u.\n        </Checkbox>\n      </FormItem>\n    </List>\n    <List title="\u7981\u7528\u6837\u5f0f">\n      <FormItem prop="a" disabled={true} valueKey="checked" defaultValue={true}>\n        <Checkbox>\u9009\u4e2d\u7981\u7528</Checkbox>\n      </FormItem>\n      <FormItem prop="b" disabled={true} valueKey="checked">\n        <Checkbox>\u672a\u9009\u4e2d\u7981\u7528</Checkbox>\n      </FormItem>\n    </List>\n  </Form>\n);',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u4e0d\u540c\u5c3a\u5bf8',
               identifier: 'components-checkbox',
             },
@@ -14188,7 +14193,7 @@
                     'import React from \'react\';\nimport { DatePicker, List, ListItem, SafeArea } from \'weui-react-v2\';\n\nexport default function () {\n  return (\n    <SafeArea style={{ margin: \'-0.16rem\', minHeight: \'100vh\', backgroundColor: \'#f4f4f4\', padding: \'5px 0 10px\' }}>\n      <List title="\u4e0d\u540c\u6a21\u5f0f">\n        <DatePicker placeholder="\u8bf7\u9009\u62e9" defaultValue={null} useDefaultFormat={false} separator="">\n          <ListItem hd="date" arrow={true} />\n        </DatePicker>\n        <DatePicker placeholder="\u8bf7\u9009\u62e9" mode="datetime" defaultValue={null}>\n          <ListItem hd="datetime" arrow={true} />\n        </DatePicker>\n        <DatePicker placeholder="\u8bf7\u9009\u62e9" mode="time" defaultValue={null} useDefaultFormat={false} separator="">\n          <ListItem hd="time" arrow={true} />\n        </DatePicker>\n        <DatePicker placeholder="\u8bf7\u9009\u62e9" mode="year" defaultValue={null}>\n          <ListItem hd="year" arrow={true} />\n        </DatePicker>\n        <DatePicker placeholder="\u8bf7\u9009\u62e9" mode="month" defaultValue={null}>\n          <ListItem hd="month" arrow={true} />\n        </DatePicker>\n      </List>\n    </SafeArea>\n  );\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u65e5\u671f\u9009\u62e9\u5668',
               description:
                 '<div class="markdown"><p>\u9ed8\u8ba4\u9009\u4e2d\u7684\u6807\u7b7e\u683c\u5f0f\u5316\u4e3a (\u5e74-\u6708-\u65e5 \u65f6:\u5206:\u79d2)</p></div>',
@@ -14426,9 +14431,9 @@
         C = L[0],
         M = L[1],
         N = C >= 0 && C < v.length ? v[C] : null,
-        A = Object(s['useRef'])(new Map()),
-        I = Object(s['useState'])(!1),
-        j = Object(i['default'])(I, 2),
+        I = Object(s['useRef'])(new Map()),
+        A = Object(s['useState'])(!1),
+        j = Object(i['default'])(A, 2),
         H = j[0],
         R = j[1],
         V = Object(s['useRef'])(null);
@@ -14439,13 +14444,13 @@
         R(1 !== e);
       }
       function P(e, t) {
-        A.current.set(e, t);
+        I.current.set(e, t);
       }
       function F(e) {
-        A.current.has(e) && A.current.delete(e);
+        I.current.has(e) && I.current.delete(e);
       }
       function D() {
-        if (A.current.has(C)) return A.current.get(C);
+        if (I.current.has(C)) return I.current.get(C);
       }
       function _() {
         var e;
@@ -14694,7 +14699,7 @@
                     "import React from 'react';\nimport { SegmentedControl, PickerItem } from 'weui-react-v2';\n\nconst data: PickerItem[] = [\n  {\n    label: '\u65e5',\n    value: 'day',\n  },\n  {\n    label: '\u6708',\n    value: 'month',\n  },\n  {\n    label: '\u5e74',\n    value: 'year',\n  },\n];\n\nexport default () => (\n  <>\n    <SegmentedControl data={data} defaultValue=\"month\" onChange={(val) => console.log('\u9009\u62e9', val)} />\n  </>\n);",
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u5206\u6bb5\u5668',
               identifier: 'components-segmented-control',
             },
@@ -14980,7 +14985,7 @@
         m || S.reset();
       }
       return (
-        x && x(S),
+        x && (x instanceof Function ? x(S) : (x.current = S)),
         c.a.createElement(
           'form',
           { className: r()(n, a), style: l, onSubmit: M, onReset: N, autoComplete: 'off' },
@@ -15037,16 +15042,16 @@
         C = Object(i['useState'])(L.current),
         M = Object(m['default'])(C, 2),
         N = M[0],
-        A = M[1],
-        I = Object(i['useRef'])(N),
+        I = M[1],
+        A = Object(i['useRef'])(N),
         j = Object(i['useState'])({ status: !0, msg: void 0 }),
         H = Object(m['default'])(j, 2),
         R = H[0],
         V = H[1],
         B = Object(i['useRef'])(R);
       function T(e) {
-        (I.current = e),
-          A(e),
+        (A.current = e),
+          I(e),
           (z !== o['c'].blur && z !== o['c'].none) || P({ status: !0, msg: void 0 }),
           E.fieldChange(t, e);
       }
@@ -15063,7 +15068,7 @@
         getLabel: () => h || '',
         getValidateResult: () => R,
         getCanValidate: () => !k && !l,
-        getValue: () => (y ? y(I.current) : I.current),
+        getValue: () => (y ? y(A.current) : A.current),
         getRule: () => x,
       });
       function D(e) {
@@ -15133,15 +15138,15 @@
           'onClick',
         ]),
         N = 'prop' in e,
-        A = N ? c.a.Children.only(l) : l,
-        I = c.a.isValidElement(A),
+        I = N ? c.a.Children.only(l) : l,
+        A = c.a.isValidElement(I),
         j = Object(i['useContext'])(u),
         H = O || j.labelPostion,
         R = Object(i['useState'])({ status: !0, msg: void 0 }),
         V = Object(m['default'])(R, 2),
         B = V[0],
         T = V[1],
-        P = I && 'disabled' in (A.props || {}) ? A.props.disabled : 'disabled' in e ? e.disabled : j.disabled,
+        P = A && 'disabled' in (I.props || {}) ? I.props.disabled : 'disabled' in e ? e.disabled : j.disabled,
         F = r()(n, a, ''.concat(n, '-pos-').concat(H), {
           [''.concat(n, '-error')]: !B.status,
           [''.concat(n, '-disabled')]: P,
@@ -15154,16 +15159,16 @@
       }
       var U = M.prop
         ? c.a.cloneElement(
-            A,
+            I,
             Object.assign(
               {},
-              A.props,
+              I.props,
               y(
                 Object.assign(M, {
                   onValidateChange: D,
                   disabled: P,
                   onChange: (e) => {
-                    L && L(e), A.props.onChange && A.props.onChange(e);
+                    L && L(e), I.props.onChange && I.props.onChange(e);
                   },
                   labelString: e.labelString || 'string' === typeof s ? s : null,
                 }),
@@ -15280,7 +15285,7 @@
         return C;
       }),
       n.d(t, 'AlertTwoTone', function () {
-        return I;
+        return A;
       }),
       n.d(t, 'AlibabaOutlined', function () {
         return V;
@@ -15361,7 +15366,7 @@
         return Ct;
       }),
       n.d(t, 'AppstoreOutlined', function () {
-        return It;
+        return At;
       }),
       n.d(t, 'AppstoreTwoTone', function () {
         return Vt;
@@ -15403,7 +15408,7 @@
         return Cn;
       }),
       n.d(t, 'BackwardOutlined', function () {
-        return In;
+        return An;
       }),
       n.d(t, 'BankFilled', function () {
         return Vn;
@@ -15484,7 +15489,7 @@
         return Cr;
       }),
       n.d(t, 'BorderTopOutlined', function () {
-        return Ir;
+        return Ar;
       }),
       n.d(t, 'BorderVerticleOutlined', function () {
         return Vr;
@@ -15565,7 +15570,7 @@
         return Cc;
       }),
       n.d(t, 'CarTwoTone', function () {
-        return Ic;
+        return Ac;
       }),
       n.d(t, 'CaretDownFilled', function () {
         return Vc;
@@ -15607,7 +15612,7 @@
         return Co['a'];
       }),
       n.d(t, 'CheckCircleTwoTone', function () {
-        return Io;
+        return Ao;
       }),
       n.d(t, 'CheckOutlined', function () {
         return Vo;
@@ -15733,7 +15738,7 @@
         return Cu;
       }),
       n.d(t, 'ColumnHeightOutlined', function () {
-        return Iu;
+        return Au;
       }),
       n.d(t, 'ColumnWidthOutlined', function () {
         return Vu;
@@ -15853,7 +15858,7 @@
         return Lm;
       }),
       n.d(t, 'DatabaseTwoTone', function () {
-        return Am;
+        return Im;
       }),
       n.d(t, 'DeleteColumnOutlined', function () {
         return Rm;
@@ -15934,7 +15939,7 @@
         return Lh;
       }),
       n.d(t, 'DoubleRightOutlined', function () {
-        return Ah;
+        return Ih;
       }),
       n.d(t, 'DownCircleFilled', function () {
         return Rh;
@@ -16018,7 +16023,7 @@
         return Cg;
       }),
       n.d(t, 'EuroOutlined', function () {
-        return Ig;
+        return Ag;
       }),
       n.d(t, 'EuroTwoTone', function () {
         return Vg;
@@ -16060,7 +16065,7 @@
         return Lb;
       }),
       n.d(t, 'EyeInvisibleFilled', function () {
-        return Ab;
+        return Ib;
       }),
       n.d(t, 'EyeInvisibleOutlined', function () {
         return Rb;
@@ -16141,7 +16146,7 @@
         return Lw;
       }),
       n.d(t, 'FileGifOutlined', function () {
-        return Aw;
+        return Iw;
       }),
       n.d(t, 'FileImageFilled', function () {
         return Rw;
@@ -16222,7 +16227,7 @@
         return LE;
       }),
       n.d(t, 'FileWordTwoTone', function () {
-        return AE;
+        return IE;
       }),
       n.d(t, 'FileZipFilled', function () {
         return RE;
@@ -16306,7 +16311,7 @@
         return Ck;
       }),
       n.d(t, 'FormatPainterOutlined', function () {
-        return Ik;
+        return Ak;
       }),
       n.d(t, 'ForwardFilled', function () {
         return Vk;
@@ -16387,7 +16392,7 @@
         return CS;
       }),
       n.d(t, 'GoldFilled', function () {
-        return IS;
+        return AS;
       }),
       n.d(t, 'GoldOutlined', function () {
         return VS;
@@ -16468,7 +16473,7 @@
         return CC;
       }),
       n.d(t, 'HourglassTwoTone', function () {
-        return IC;
+        return AC;
       }),
       n.d(t, 'Html5Filled', function () {
         return VC;
@@ -16549,7 +16554,7 @@
         return CN;
       }),
       n.d(t, 'InteractionTwoTone', function () {
-        return IN;
+        return AN;
       }),
       n.d(t, 'IssuesCloseOutlined', function () {
         return VN;
@@ -16567,88 +16572,88 @@
         return $N;
       }),
       n.d(t, 'LayoutOutlined', function () {
-        return nA;
+        return nI;
       }),
       n.d(t, 'LayoutTwoTone', function () {
-        return cA;
+        return cI;
       }),
       n.d(t, 'LeftCircleFilled', function () {
-        return uA;
+        return uI;
       }),
       n.d(t, 'LeftCircleOutlined', function () {
-        return pA;
+        return pI;
       }),
       n.d(t, 'LeftCircleTwoTone', function () {
-        return bA;
+        return bI;
       }),
       n.d(t, 'LeftOutlined', function () {
-        return yA['a'];
+        return yI['a'];
       }),
       n.d(t, 'LeftSquareFilled', function () {
-        return zA;
+        return zI;
       }),
       n.d(t, 'LeftSquareOutlined', function () {
-        return LA;
+        return LI;
       }),
       n.d(t, 'LeftSquareTwoTone', function () {
-        return AA;
+        return II;
       }),
       n.d(t, 'LikeFilled', function () {
-        return RA;
+        return RI;
       }),
       n.d(t, 'LikeOutlined', function () {
-        return PA;
+        return PI;
       }),
       n.d(t, 'LikeTwoTone', function () {
-        return UA;
+        return UI;
       }),
       n.d(t, 'LineChartOutlined', function () {
-        return KA;
+        return KI;
       }),
       n.d(t, 'LineHeightOutlined', function () {
-        return ZA;
+        return ZI;
       }),
       n.d(t, 'LineOutlined', function () {
-        return tI;
+        return tA;
       }),
       n.d(t, 'LinkOutlined', function () {
-        return iI;
+        return iA;
       }),
       n.d(t, 'LinkedinFilled', function () {
-        return sI;
+        return sA;
       }),
       n.d(t, 'LinkedinOutlined', function () {
-        return mI;
+        return mA;
       }),
       n.d(t, 'Loading3QuartersOutlined', function () {
-        return gI;
+        return gA;
       }),
       n.d(t, 'LoadingOutlined', function () {
-        return xI;
+        return xA;
       }),
       n.d(t, 'LockFilled', function () {
-        return OI;
+        return OA;
       }),
       n.d(t, 'LockOutlined', function () {
-        return MI;
+        return MA;
       }),
       n.d(t, 'LockTwoTone', function () {
-        return jI;
+        return jA;
       }),
       n.d(t, 'LoginOutlined', function () {
-        return BI;
+        return BA;
       }),
       n.d(t, 'LogoutOutlined', function () {
-        return DI;
+        return DA;
       }),
       n.d(t, 'MacCommandFilled', function () {
-        return GI;
+        return GA;
       }),
       n.d(t, 'MacCommandOutlined', function () {
-        return YI;
+        return YA;
       }),
       n.d(t, 'MailFilled', function () {
-        return XI;
+        return XA;
       }),
       n.d(t, 'MailOutlined', function () {
         return aj;
@@ -16672,7 +16677,7 @@
         return Lj;
       }),
       n.d(t, 'MediumOutlined', function () {
-        return Aj;
+        return Ij;
       }),
       n.d(t, 'MediumSquareFilled', function () {
         return Rj;
@@ -16756,7 +16761,7 @@
         return CR;
       }),
       n.d(t, 'NodeCollapseOutlined', function () {
-        return IR;
+        return AR;
       }),
       n.d(t, 'NodeExpandOutlined', function () {
         return VR;
@@ -16837,7 +16842,7 @@
         return CB;
       }),
       n.d(t, 'PieChartFilled', function () {
-        return IB;
+        return AB;
       }),
       n.d(t, 'PieChartOutlined', function () {
         return VB;
@@ -16879,7 +16884,7 @@
         return LT;
       }),
       n.d(t, 'PlusSquareOutlined', function () {
-        return AT;
+        return IT;
       }),
       n.d(t, 'PlusSquareTwoTone', function () {
         return RT;
@@ -16960,7 +16965,7 @@
         return LF;
       }),
       n.d(t, 'QuestionCircleFilled', function () {
-        return AF;
+        return IF;
       }),
       n.d(t, 'QuestionCircleOutlined', function () {
         return RF;
@@ -17041,7 +17046,7 @@
         return L_;
       }),
       n.d(t, 'RightCircleFilled', function () {
-        return A_;
+        return I_;
       }),
       n.d(t, 'RightCircleOutlined', function () {
         return R_;
@@ -17167,7 +17172,7 @@
         return LG;
       }),
       n.d(t, 'ShoppingCartOutlined', function () {
-        return AG;
+        return IG;
       }),
       n.d(t, 'ShoppingFilled', function () {
         return RG;
@@ -17251,7 +17256,7 @@
         return CK['a'];
       }),
       n.d(t, 'SnippetsTwoTone', function () {
-        return IK;
+        return AK;
       }),
       n.d(t, 'SolutionOutlined', function () {
         return VK;
@@ -17332,7 +17337,7 @@
         return CY;
       }),
       n.d(t, 'SyncOutlined', function () {
-        return IY;
+        return AY;
       }),
       n.d(t, 'TableOutlined', function () {
         return VY;
@@ -17413,7 +17418,7 @@
         return CZ;
       }),
       n.d(t, 'TransactionOutlined', function () {
-        return IZ;
+        return AZ;
       }),
       n.d(t, 'TranslationOutlined', function () {
         return VZ;
@@ -17536,7 +17541,7 @@
         return L1;
       }),
       n.d(t, 'VideoCameraTwoTone', function () {
-        return A1;
+        return I1;
       }),
       n.d(t, 'WalletFilled', function () {
         return R1;
@@ -17617,7 +17622,7 @@
         return L2;
       }),
       n.d(t, 'ZhihuSquareFilled', function () {
-        return A2;
+        return I2;
       }),
       n.d(t, 'ZoomInOutlined', function () {
         return R2;
@@ -17833,11 +17838,11 @@
         theme: 'twotone',
       },
       N = M,
-      A = function (e, t) {
+      I = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: N }));
       };
-    A.displayName = 'AlertTwoTone';
-    var I = a['forwardRef'](A),
+    I.displayName = 'AlertTwoTone';
+    var A = a['forwardRef'](I),
       j = {
         icon: {
           tag: 'svg',
@@ -18137,7 +18142,7 @@
       };
     Me.displayName = 'AmazonOutlined';
     var Ne = a['forwardRef'](Me),
-      Ae = {
+      Ie = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -18154,9 +18159,9 @@
         name: 'amazon-square',
         theme: 'filled',
       },
-      Ie = Ae,
+      Ae = Ie,
       je = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Ie }));
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Ae }));
       };
     je.displayName = 'AmazonSquareFilled';
     var He = a['forwardRef'](je),
@@ -18466,11 +18471,11 @@
         theme: 'outlined',
       },
       Nt = Mt,
-      At = function (e, t) {
+      It = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Nt }));
       };
-    At.displayName = 'AppstoreOutlined';
-    var It = a['forwardRef'](At),
+    It.displayName = 'AppstoreOutlined';
+    var At = a['forwardRef'](It),
       jt = {
         icon: function (e, t) {
           return {
@@ -18802,11 +18807,11 @@
         theme: 'outlined',
       },
       Nn = Mn,
-      An = function (e, t) {
+      In = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Nn }));
       };
-    An.displayName = 'BackwardOutlined';
-    var In = a['forwardRef'](An),
+    In.displayName = 'BackwardOutlined';
+    var An = a['forwardRef'](In),
       jn = {
         icon: {
           tag: 'svg',
@@ -19121,7 +19126,7 @@
       };
     Ma.displayName = 'BellTwoTone';
     var Na = a['forwardRef'](Ma),
-      Aa = {
+      Ia = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -19138,9 +19143,9 @@
         name: 'bg-colors',
         theme: 'outlined',
       },
-      Ia = Aa,
+      Aa = Ia,
       ja = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Ia }));
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Aa }));
       };
     ja.displayName = 'BgColorsOutlined';
     var Ha = a['forwardRef'](ja),
@@ -19450,11 +19455,11 @@
         theme: 'outlined',
       },
       Nr = Mr,
-      Ar = function (e, t) {
+      Ir = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Nr }));
       };
-    Ar.displayName = 'BorderTopOutlined';
-    var Ir = a['forwardRef'](Ar),
+    Ir.displayName = 'BorderTopOutlined';
+    var Ar = a['forwardRef'](Ir),
       jr = {
         icon: {
           tag: 'svg',
@@ -19788,7 +19793,7 @@
       };
     Mi.displayName = 'BulbFilled';
     var Ni = a['forwardRef'](Mi),
-      Ai = {
+      Ii = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -19805,9 +19810,9 @@
         name: 'bulb',
         theme: 'outlined',
       },
-      Ii = Ai,
+      Ai = Ii,
       ji = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Ii }));
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Ai }));
       };
     ji.displayName = 'BulbOutlined';
     var Hi = a['forwardRef'](ji),
@@ -20185,11 +20190,11 @@
         theme: 'twotone',
       },
       Nc = Mc,
-      Ac = function (e, t) {
+      Ic = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Nc }));
       };
-    Ac.displayName = 'CarTwoTone';
-    var Ic = a['forwardRef'](Ac),
+    Ic.displayName = 'CarTwoTone';
+    var Ac = a['forwardRef'](Ic),
       jc = {
         icon: {
           tag: 'svg',
@@ -20523,11 +20528,11 @@
         theme: 'twotone',
       },
       No = Mo,
-      Ao = function (e, t) {
+      Io = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: No }));
       };
-    Ao.displayName = 'CheckCircleTwoTone';
-    var Io = a['forwardRef'](Ao),
+    Io.displayName = 'CheckCircleTwoTone';
+    var Ao = a['forwardRef'](Io),
       jo = {
         icon: {
           tag: 'svg',
@@ -20892,7 +20897,7 @@
       };
     Ml.displayName = 'ClockCircleFilled';
     var Nl = a['forwardRef'](Ml),
-      Al = {
+      Il = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -20916,9 +20921,9 @@
         name: 'clock-circle',
         theme: 'outlined',
       },
-      Il = Al,
+      Al = Il,
       jl = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Il }));
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Al }));
       };
     jl.displayName = 'ClockCircleOutlined';
     var Hl = a['forwardRef'](jl),
@@ -21300,7 +21305,7 @@
       };
     Ms.displayName = 'CloudTwoTone';
     var Ns = a['forwardRef'](Ms),
-      As = {
+      Is = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -21324,9 +21329,9 @@
         name: 'cloud-upload',
         theme: 'outlined',
       },
-      Is = As,
+      As = Is,
       js = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Is }));
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: As }));
       };
     js.displayName = 'CloudUploadOutlined';
     var Hs = a['forwardRef'](js),
@@ -21643,11 +21648,11 @@
         theme: 'outlined',
       },
       Nu = Mu,
-      Au = function (e, t) {
+      Iu = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Nu }));
       };
-    Au.displayName = 'ColumnHeightOutlined';
-    var Iu = a['forwardRef'](Au),
+    Iu.displayName = 'ColumnHeightOutlined';
+    var Au = a['forwardRef'](Iu),
       ju = {
         icon: {
           tag: 'svg',
@@ -22039,7 +22044,7 @@
       };
     Md.displayName = 'ContainerTwoTone';
     var Nd = a['forwardRef'](Md),
-      Ad = {
+      Id = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -22056,9 +22061,9 @@
         name: 'control',
         theme: 'filled',
       },
-      Id = Ad,
+      Ad = Id,
       jd = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Id }));
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Ad }));
       };
     jd.displayName = 'ControlFilled';
     var Hd = a['forwardRef'](jd),
@@ -22450,12 +22455,12 @@
         name: 'credit-card',
         theme: 'twotone',
       },
-      Af = Nf,
-      If = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Af }));
+      If = Nf,
+      Af = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: If }));
       };
-    If.displayName = 'CreditCardTwoTone';
-    var jf = a['forwardRef'](If),
+    Af.displayName = 'CreditCardTwoTone';
+    var jf = a['forwardRef'](Af),
       Hf = {
         icon: {
           tag: 'svg',
@@ -22823,8 +22828,8 @@
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Mm }));
       };
     Nm.displayName = 'DatabaseTwoTone';
-    var Am = a['forwardRef'](Nm),
-      Im = {
+    var Im = a['forwardRef'](Nm),
+      Am = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -22842,7 +22847,7 @@
         name: 'delete-column',
         theme: 'outlined',
       },
-      jm = Im,
+      jm = Am,
       Hm = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: jm }));
       };
@@ -23174,12 +23179,12 @@
         name: 'dingtalk',
         theme: 'outlined',
       },
-      Ap = Np,
-      Ip = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Ap }));
+      Ip = Np,
+      Ap = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Ip }));
       };
-    Ip.displayName = 'DingtalkOutlined';
-    var jp = a['forwardRef'](Ip),
+    Ap.displayName = 'DingtalkOutlined';
+    var jp = a['forwardRef'](Ap),
       Hp = {
         icon: {
           tag: 'svg',
@@ -23543,8 +23548,8 @@
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Mh }));
       };
     Nh.displayName = 'DoubleRightOutlined';
-    var Ah = a['forwardRef'](Nh),
-      Ih = {
+    var Ih = a['forwardRef'](Nh),
+      Ah = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -23561,7 +23566,7 @@
         name: 'down-circle',
         theme: 'filled',
       },
-      jh = Ih,
+      jh = Ah,
       Hh = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: jh }));
       };
@@ -23896,7 +23901,7 @@
       };
     Mv.displayName = 'DropboxCircleFilled';
     var Nv = a['forwardRef'](Mv),
-      Av = {
+      Iv = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -23913,9 +23918,9 @@
         name: 'dropbox',
         theme: 'outlined',
       },
-      Iv = Av,
+      Av = Iv,
       jv = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Iv }));
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Av }));
       };
     jv.displayName = 'DropboxOutlined';
     var Hv = a['forwardRef'](jv),
@@ -24255,11 +24260,11 @@
         theme: 'outlined',
       },
       Ng = Mg,
-      Ag = function (e, t) {
+      Ig = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Ng }));
       };
-    Ag.displayName = 'EuroOutlined';
-    var Ig = a['forwardRef'](Ag),
+    Ig.displayName = 'EuroOutlined';
+    var Ag = a['forwardRef'](Ig),
       jg = {
         icon: function (e, t) {
           return {
@@ -24624,8 +24629,8 @@
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Mb }));
       };
     Nb.displayName = 'EyeInvisibleFilled';
-    var Ab = a['forwardRef'](Nb),
-      Ib = {
+    var Ib = a['forwardRef'](Nb),
+      Ab = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -24649,7 +24654,7 @@
         name: 'eye-invisible',
         theme: 'outlined',
       },
-      jb = Ib,
+      jb = Ab,
       Hb = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: jb }));
       };
@@ -24997,12 +25002,12 @@
         name: 'field-string',
         theme: 'outlined',
       },
-      Ay = Ny,
-      Iy = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Ay }));
+      Iy = Ny,
+      Ay = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Iy }));
       };
-    Iy.displayName = 'FieldStringOutlined';
-    var jy = a['forwardRef'](Iy),
+    Ay.displayName = 'FieldStringOutlined';
+    var jy = a['forwardRef'](Ay),
       Hy = {
         icon: {
           tag: 'svg',
@@ -25381,8 +25386,8 @@
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Mw }));
       };
     Nw.displayName = 'FileGifOutlined';
-    var Aw = a['forwardRef'](Nw),
-      Iw = {
+    var Iw = a['forwardRef'](Nw),
+      Aw = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -25399,7 +25404,7 @@
         name: 'file-image',
         theme: 'filled',
       },
-      jw = Iw,
+      jw = Aw,
       Hw = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: jw }));
       };
@@ -25797,12 +25802,12 @@
         name: 'file-ppt',
         theme: 'twotone',
       },
-      Ax = Nx,
-      Ix = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Ax }));
+      Ix = Nx,
+      Ax = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Ix }));
       };
-    Ix.displayName = 'FilePptTwoTone';
-    var jx = a['forwardRef'](Ix),
+    Ax.displayName = 'FilePptTwoTone';
+    var jx = a['forwardRef'](Ax),
       Hx = {
         icon: {
           tag: 'svg',
@@ -26162,8 +26167,8 @@
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: ME }));
       };
     NE.displayName = 'FileWordTwoTone';
-    var AE = a['forwardRef'](NE),
-      IE = {
+    var IE = a['forwardRef'](NE),
+      AE = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -26180,7 +26185,7 @@
         name: 'file-zip',
         theme: 'filled',
       },
-      jE = IE,
+      jE = AE,
       HE = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: jE }));
       };
@@ -26522,12 +26527,12 @@
         name: 'folder-add',
         theme: 'outlined',
       },
-      Az = Nz,
-      Iz = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Az }));
+      Iz = Nz,
+      Az = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Iz }));
       };
-    Iz.displayName = 'FolderAddOutlined';
-    var jz = a['forwardRef'](Iz),
+    Az.displayName = 'FolderAddOutlined';
+    var jz = a['forwardRef'](Az),
       Hz = {
         icon: function (e, t) {
           return {
@@ -26861,11 +26866,11 @@
         theme: 'outlined',
       },
       Nk = Mk,
-      Ak = function (e, t) {
+      Ik = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Nk }));
       };
-    Ak.displayName = 'FormatPainterOutlined';
-    var Ik = a['forwardRef'](Ak),
+    Ik.displayName = 'FormatPainterOutlined';
+    var Ak = a['forwardRef'](Ik),
       jk = {
         icon: {
           tag: 'svg',
@@ -27227,7 +27232,7 @@
       };
     MO.displayName = 'FundViewOutlined';
     var NO = a['forwardRef'](MO),
-      AO = {
+      IO = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -27244,9 +27249,9 @@
         name: 'funnel-plot',
         theme: 'filled',
       },
-      IO = AO,
+      AO = IO,
       jO = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: IO }));
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: AO }));
       };
     jO.displayName = 'FunnelPlotFilled';
     var HO = a['forwardRef'](jO),
@@ -27566,11 +27571,11 @@
         theme: 'filled',
       },
       NS = MS,
-      AS = function (e, t) {
+      IS = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: NS }));
       };
-    AS.displayName = 'GoldFilled';
-    var IS = a['forwardRef'](AS),
+    IS.displayName = 'GoldFilled';
+    var AS = a['forwardRef'](IS),
       jS = {
         icon: {
           tag: 'svg',
@@ -27908,7 +27913,7 @@
       };
     ML.displayName = 'HddTwoTone';
     var NL = a['forwardRef'](ML),
-      AL = {
+      IL = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -27925,9 +27930,9 @@
         name: 'heart',
         theme: 'filled',
       },
-      IL = AL,
+      AL = IL,
       jL = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: IL }));
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: AL }));
       };
     jL.displayName = 'HeartFilled';
     var HL = a['forwardRef'](jL),
@@ -28269,11 +28274,11 @@
         theme: 'twotone',
       },
       NC = MC,
-      AC = function (e, t) {
+      IC = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: NC }));
       };
-    AC.displayName = 'HourglassTwoTone';
-    var IC = a['forwardRef'](AC),
+    IC.displayName = 'HourglassTwoTone';
+    var AC = a['forwardRef'](IC),
       jC = {
         icon: {
           tag: 'svg',
@@ -28619,7 +28624,7 @@
       };
     MM.displayName = 'InfoCircleOutlined';
     var NM = a['forwardRef'](MM),
-      AM = {
+      IM = {
         icon: function (e, t) {
           return {
             tag: 'svg',
@@ -28655,9 +28660,9 @@
         name: 'info-circle',
         theme: 'twotone',
       },
-      IM = AM,
+      AM = IM,
       jM = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: IM }));
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: AM }));
       };
     jM.displayName = 'InfoCircleTwoTone';
     var HM = a['forwardRef'](jM),
@@ -28998,11 +29003,11 @@
         theme: 'twotone',
       },
       NN = MN,
-      AN = function (e, t) {
+      IN = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: NN }));
       };
-    AN.displayName = 'InteractionTwoTone';
-    var IN = a['forwardRef'](AN),
+    IN.displayName = 'InteractionTwoTone';
+    var AN = a['forwardRef'](IN),
       jN = {
         icon: {
           tag: 'svg',
@@ -29135,13 +29140,13 @@
         name: 'layout',
         theme: 'outlined',
       },
-      eA = XN,
-      tA = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: eA }));
+      eI = XN,
+      tI = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: eI }));
       };
-    tA.displayName = 'LayoutOutlined';
-    var nA = a['forwardRef'](tA),
-      aA = {
+    tI.displayName = 'LayoutOutlined';
+    var nI = a['forwardRef'](tI),
+      aI = {
         icon: function (e, t) {
           return {
             tag: 'svg',
@@ -29169,13 +29174,13 @@
         name: 'layout',
         theme: 'twotone',
       },
-      rA = aA,
-      iA = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: rA }));
+      rI = aI,
+      iI = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: rI }));
       };
-    iA.displayName = 'LayoutTwoTone';
-    var cA = a['forwardRef'](iA),
-      oA = {
+    iI.displayName = 'LayoutTwoTone';
+    var cI = a['forwardRef'](iI),
+      oI = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -29192,13 +29197,13 @@
         name: 'left-circle',
         theme: 'filled',
       },
-      lA = oA,
-      sA = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: lA }));
+      lI = oI,
+      sI = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: lI }));
       };
-    sA.displayName = 'LeftCircleFilled';
-    var uA = a['forwardRef'](sA),
-      dA = {
+    sI.displayName = 'LeftCircleFilled';
+    var uI = a['forwardRef'](sI),
+      dI = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -29222,13 +29227,13 @@
         name: 'left-circle',
         theme: 'outlined',
       },
-      fA = dA,
-      mA = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: fA }));
+      fI = dI,
+      mI = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: fI }));
       };
-    mA.displayName = 'LeftCircleOutlined';
-    var pA = a['forwardRef'](mA),
-      hA = {
+    mI.displayName = 'LeftCircleOutlined';
+    var pI = a['forwardRef'](mI),
+      hI = {
         icon: function (e, t) {
           return {
             tag: 'svg',
@@ -29264,14 +29269,14 @@
         name: 'left-circle',
         theme: 'twotone',
       },
-      vA = hA,
-      gA = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: vA }));
+      vI = hI,
+      gI = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: vI }));
       };
-    gA.displayName = 'LeftCircleTwoTone';
-    var bA = a['forwardRef'](gA),
-      yA = n('5bA4'),
-      wA = {
+    gI.displayName = 'LeftCircleTwoTone';
+    var bI = a['forwardRef'](gI),
+      yI = n('5bA4'),
+      wI = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -29288,13 +29293,13 @@
         name: 'left-square',
         theme: 'filled',
       },
-      xA = wA,
-      EA = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: xA }));
+      xI = wI,
+      EI = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: xI }));
       };
-    EA.displayName = 'LeftSquareFilled';
-    var zA = a['forwardRef'](EA),
-      kA = {
+    EI.displayName = 'LeftSquareFilled';
+    var zI = a['forwardRef'](EI),
+      kI = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -29318,13 +29323,13 @@
         name: 'left-square',
         theme: 'outlined',
       },
-      OA = kA,
-      SA = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: OA }));
+      OI = kI,
+      SI = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: OI }));
       };
-    SA.displayName = 'LeftSquareOutlined';
-    var LA = a['forwardRef'](SA),
-      CA = {
+    SI.displayName = 'LeftSquareOutlined';
+    var LI = a['forwardRef'](SI),
+      CI = {
         icon: function (e, t) {
           return {
             tag: 'svg',
@@ -29360,13 +29365,13 @@
         name: 'left-square',
         theme: 'twotone',
       },
-      MA = CA,
-      NA = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: MA }));
+      MI = CI,
+      NI = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: MI }));
       };
-    NA.displayName = 'LeftSquareTwoTone';
-    var AA = a['forwardRef'](NA),
-      IA = {
+    NI.displayName = 'LeftSquareTwoTone';
+    var II = a['forwardRef'](NI),
+      AI = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -29383,13 +29388,13 @@
         name: 'like',
         theme: 'filled',
       },
-      jA = IA,
-      HA = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: jA }));
+      jI = AI,
+      HI = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: jI }));
       };
-    HA.displayName = 'LikeFilled';
-    var RA = a['forwardRef'](HA),
-      VA = {
+    HI.displayName = 'LikeFilled';
+    var RI = a['forwardRef'](HI),
+      VI = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -29406,13 +29411,13 @@
         name: 'like',
         theme: 'outlined',
       },
-      BA = VA,
-      TA = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: BA }));
+      BI = VI,
+      TI = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: BI }));
       };
-    TA.displayName = 'LikeOutlined';
-    var PA = a['forwardRef'](TA),
-      FA = {
+    TI.displayName = 'LikeOutlined';
+    var PI = a['forwardRef'](TI),
+      FI = {
         icon: function (e, t) {
           return {
             tag: 'svg',
@@ -29440,13 +29445,13 @@
         name: 'like',
         theme: 'twotone',
       },
-      DA = FA,
-      _A = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: DA }));
+      DI = FI,
+      _I = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: DI }));
       };
-    _A.displayName = 'LikeTwoTone';
-    var UA = a['forwardRef'](_A),
-      qA = {
+    _I.displayName = 'LikeTwoTone';
+    var UI = a['forwardRef'](_I),
+      qI = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -29463,13 +29468,13 @@
         name: 'line-chart',
         theme: 'outlined',
       },
-      GA = qA,
-      WA = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: GA }));
+      GI = qI,
+      WI = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: GI }));
       };
-    WA.displayName = 'LineChartOutlined';
-    var KA = a['forwardRef'](WA),
-      QA = {
+    WI.displayName = 'LineChartOutlined';
+    var KI = a['forwardRef'](WI),
+      QI = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -29486,13 +29491,13 @@
         name: 'line-height',
         theme: 'outlined',
       },
-      YA = QA,
-      JA = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: YA }));
+      YI = QI,
+      JI = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: YI }));
       };
-    JA.displayName = 'LineHeightOutlined';
-    var ZA = a['forwardRef'](JA),
-      $A = {
+    JI.displayName = 'LineHeightOutlined';
+    var ZI = a['forwardRef'](JI),
+      $I = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -29506,13 +29511,13 @@
         name: 'line',
         theme: 'outlined',
       },
-      XA = $A,
-      eI = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: XA }));
+      XI = $I,
+      eA = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: XI }));
       };
-    eI.displayName = 'LineOutlined';
-    var tI = a['forwardRef'](eI),
-      nI = {
+    eA.displayName = 'LineOutlined';
+    var tA = a['forwardRef'](eA),
+      nA = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -29529,13 +29534,13 @@
         name: 'link',
         theme: 'outlined',
       },
-      aI = nI,
-      rI = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: aI }));
+      aA = nA,
+      rA = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: aA }));
       };
-    rI.displayName = 'LinkOutlined';
-    var iI = a['forwardRef'](rI),
-      cI = {
+    rA.displayName = 'LinkOutlined';
+    var iA = a['forwardRef'](rA),
+      cA = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -29552,13 +29557,13 @@
         name: 'linkedin',
         theme: 'filled',
       },
-      oI = cI,
-      lI = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: oI }));
+      oA = cA,
+      lA = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: oA }));
       };
-    lI.displayName = 'LinkedinFilled';
-    var sI = a['forwardRef'](lI),
-      uI = {
+    lA.displayName = 'LinkedinFilled';
+    var sA = a['forwardRef'](lA),
+      uA = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -29575,13 +29580,13 @@
         name: 'linkedin',
         theme: 'outlined',
       },
-      dI = uI,
-      fI = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: dI }));
+      dA = uA,
+      fA = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: dA }));
       };
-    fI.displayName = 'LinkedinOutlined';
-    var mI = a['forwardRef'](fI),
-      pI = {
+    fA.displayName = 'LinkedinOutlined';
+    var mA = a['forwardRef'](fA),
+      pA = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '0 0 1024 1024', focusable: 'false' },
@@ -29598,13 +29603,13 @@
         name: 'loading-3-quarters',
         theme: 'outlined',
       },
-      hI = pI,
-      vI = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: hI }));
+      hA = pA,
+      vA = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: hA }));
       };
-    vI.displayName = 'Loading3QuartersOutlined';
-    var gI = a['forwardRef'](vI),
-      bI = {
+    vA.displayName = 'Loading3QuartersOutlined';
+    var gA = a['forwardRef'](vA),
+      bA = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '0 0 1024 1024', focusable: 'false' },
@@ -29621,13 +29626,13 @@
         name: 'loading',
         theme: 'outlined',
       },
-      yI = bI,
-      wI = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: yI }));
+      yA = bA,
+      wA = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: yA }));
       };
-    wI.displayName = 'LoadingOutlined';
-    var xI = a['forwardRef'](wI),
-      EI = {
+    wA.displayName = 'LoadingOutlined';
+    var xA = a['forwardRef'](wA),
+      EA = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -29644,13 +29649,13 @@
         name: 'lock',
         theme: 'filled',
       },
-      zI = EI,
-      kI = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: zI }));
+      zA = EA,
+      kA = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: zA }));
       };
-    kI.displayName = 'LockFilled';
-    var OI = a['forwardRef'](kI),
-      SI = {
+    kA.displayName = 'LockFilled';
+    var OA = a['forwardRef'](kA),
+      SA = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -29667,13 +29672,13 @@
         name: 'lock',
         theme: 'outlined',
       },
-      LI = SI,
-      CI = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: LI }));
+      LA = SA,
+      CA = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: LA }));
       };
-    CI.displayName = 'LockOutlined';
-    var MI = a['forwardRef'](CI),
-      NI = {
+    CA.displayName = 'LockOutlined';
+    var MA = a['forwardRef'](CA),
+      NA = {
         icon: function (e, t) {
           return {
             tag: 'svg',
@@ -29705,13 +29710,13 @@
         name: 'lock',
         theme: 'twotone',
       },
-      AI = NI,
-      II = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: AI }));
+      IA = NA,
+      AA = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: IA }));
       };
-    II.displayName = 'LockTwoTone';
-    var jI = a['forwardRef'](II),
-      HI = {
+    AA.displayName = 'LockTwoTone';
+    var jA = a['forwardRef'](AA),
+      HA = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -29729,13 +29734,13 @@
         name: 'login',
         theme: 'outlined',
       },
-      RI = HI,
-      VI = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: RI }));
+      RA = HA,
+      VA = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: RA }));
       };
-    VI.displayName = 'LoginOutlined';
-    var BI = a['forwardRef'](VI),
-      TI = {
+    VA.displayName = 'LoginOutlined';
+    var BA = a['forwardRef'](VA),
+      TA = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -29752,13 +29757,13 @@
         name: 'logout',
         theme: 'outlined',
       },
-      PI = TI,
-      FI = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: PI }));
+      PA = TA,
+      FA = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: PA }));
       };
-    FI.displayName = 'LogoutOutlined';
-    var DI = a['forwardRef'](FI),
-      _I = {
+    FA.displayName = 'LogoutOutlined';
+    var DA = a['forwardRef'](FA),
+      _A = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -29790,13 +29795,13 @@
         name: 'mac-command',
         theme: 'filled',
       },
-      UI = _I,
-      qI = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: UI }));
+      UA = _A,
+      qA = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: UA }));
       };
-    qI.displayName = 'MacCommandFilled';
-    var GI = a['forwardRef'](qI),
-      WI = {
+    qA.displayName = 'MacCommandFilled';
+    var GA = a['forwardRef'](qA),
+      WA = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -29821,13 +29826,13 @@
         name: 'mac-command',
         theme: 'outlined',
       },
-      KI = WI,
-      QI = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: KI }));
+      KA = WA,
+      QA = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: KA }));
       };
-    QI.displayName = 'MacCommandOutlined';
-    var YI = a['forwardRef'](QI),
-      JI = {
+    QA.displayName = 'MacCommandOutlined';
+    var YA = a['forwardRef'](QA),
+      JA = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -29844,12 +29849,12 @@
         name: 'mail',
         theme: 'filled',
       },
-      ZI = JI,
-      $I = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: ZI }));
+      ZA = JA,
+      $A = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: ZA }));
       };
-    $I.displayName = 'MailFilled';
-    var XI = a['forwardRef']($I),
+    $A.displayName = 'MailFilled';
+    var XA = a['forwardRef']($A),
       ej = {
         icon: {
           tag: 'svg',
@@ -30063,8 +30068,8 @@
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Mj }));
       };
     Nj.displayName = 'MediumOutlined';
-    var Aj = a['forwardRef'](Nj),
-      Ij = {
+    var Ij = a['forwardRef'](Nj),
+      Aj = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -30081,7 +30086,7 @@
         name: 'medium-square',
         theme: 'filled',
       },
-      jj = Ij,
+      jj = Aj,
       Hj = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: jj }));
       };
@@ -30423,12 +30428,12 @@
         name: 'minus-circle',
         theme: 'outlined',
       },
-      AH = NH,
-      IH = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: AH }));
+      IH = NH,
+      AH = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: IH }));
       };
-    IH.displayName = 'MinusCircleOutlined';
-    var jH = a['forwardRef'](IH),
+    AH.displayName = 'MinusCircleOutlined';
+    var jH = a['forwardRef'](AH),
       HH = {
         icon: function (e, t) {
           return {
@@ -30796,11 +30801,11 @@
         theme: 'outlined',
       },
       NR = MR,
-      AR = function (e, t) {
+      IR = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: NR }));
       };
-    AR.displayName = 'NodeCollapseOutlined';
-    var IR = a['forwardRef'](AR),
+    IR.displayName = 'NodeCollapseOutlined';
+    var AR = a['forwardRef'](IR),
       jR = {
         icon: {
           tag: 'svg',
@@ -31145,7 +31150,7 @@
       };
     MV.displayName = 'PauseCircleTwoTone';
     var NV = a['forwardRef'](MV),
-      AV = {
+      IV = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -31162,9 +31167,9 @@
         name: 'pause',
         theme: 'outlined',
       },
-      IV = AV,
+      AV = IV,
       jV = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: IV }));
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: AV }));
       };
     jV.displayName = 'PauseOutlined';
     var HV = a['forwardRef'](jV),
@@ -31494,11 +31499,11 @@
         theme: 'filled',
       },
       NB = MB,
-      AB = function (e, t) {
+      IB = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: NB }));
       };
-    AB.displayName = 'PieChartFilled';
-    var IB = a['forwardRef'](AB),
+    IB.displayName = 'PieChartFilled';
+    var AB = a['forwardRef'](IB),
       jB = {
         icon: {
           tag: 'svg',
@@ -31917,8 +31922,8 @@
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: MT }));
       };
     NT.displayName = 'PlusSquareOutlined';
-    var AT = a['forwardRef'](NT),
-      IT = {
+    var IT = a['forwardRef'](NT),
+      AT = {
         icon: function (e, t) {
           return {
             tag: 'svg',
@@ -31954,7 +31959,7 @@
         name: 'plus-square',
         theme: 'twotone',
       },
-      jT = IT,
+      jT = AT,
       HT = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: jT }));
       };
@@ -32309,12 +32314,12 @@
         name: 'project',
         theme: 'outlined',
       },
-      AP = NP,
-      IP = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: AP }));
+      IP = NP,
+      AP = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: IP }));
       };
-    IP.displayName = 'ProjectOutlined';
-    var jP = a['forwardRef'](IP),
+    AP.displayName = 'ProjectOutlined';
+    var jP = a['forwardRef'](AP),
       HP = {
         icon: function (e, t) {
           return {
@@ -32662,8 +32667,8 @@
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: MF }));
       };
     NF.displayName = 'QuestionCircleFilled';
-    var AF = a['forwardRef'](NF),
-      IF = {
+    var IF = a['forwardRef'](NF),
+      AF = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -32687,7 +32692,7 @@
         name: 'question-circle',
         theme: 'outlined',
       },
-      jF = IF,
+      jF = AF,
       HF = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: jF }));
       };
@@ -33033,12 +33038,12 @@
         name: 'reconciliation',
         theme: 'twotone',
       },
-      AD = ND,
-      ID = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: AD }));
+      ID = ND,
+      AD = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: ID }));
       };
-    ID.displayName = 'ReconciliationTwoTone';
-    var jD = a['forwardRef'](ID),
+    AD.displayName = 'ReconciliationTwoTone';
+    var jD = a['forwardRef'](AD),
       HD = {
         icon: {
           tag: 'svg',
@@ -33384,8 +33389,8 @@
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: M_ }));
       };
     N_.displayName = 'RightCircleFilled';
-    var A_ = a['forwardRef'](N_),
-      I_ = {
+    var I_ = a['forwardRef'](N_),
+      A_ = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -33409,7 +33414,7 @@
         name: 'right-circle',
         theme: 'outlined',
       },
-      j_ = I_,
+      j_ = A_,
       H_ = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: j_ }));
       };
@@ -33758,7 +33763,7 @@
       };
     MU.displayName = 'RotateLeftOutlined';
     var NU = a['forwardRef'](MU),
-      AU = {
+      IU = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -33783,9 +33788,9 @@
         name: 'rotate-right',
         theme: 'outlined',
       },
-      IU = AU,
+      AU = IU,
       jU = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: IU }));
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: AU }));
       };
     jU.displayName = 'RotateRightOutlined';
     var HU = a['forwardRef'](jU),
@@ -34154,12 +34159,12 @@
         name: 'security-scan',
         theme: 'filled',
       },
-      Aq = Nq,
-      Iq = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Aq }));
+      Iq = Nq,
+      Aq = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: Iq }));
       };
-    Iq.displayName = 'SecurityScanFilled';
-    var jq = a['forwardRef'](Iq),
+    Aq.displayName = 'SecurityScanFilled';
+    var jq = a['forwardRef'](Aq),
       Hq = {
         icon: {
           tag: 'svg',
@@ -34517,8 +34522,8 @@
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: MG }));
       };
     NG.displayName = 'ShoppingCartOutlined';
-    var AG = a['forwardRef'](NG),
-      IG = {
+    var IG = a['forwardRef'](NG),
+      AG = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -34535,7 +34540,7 @@
         name: 'shopping',
         theme: 'filled',
       },
-      jG = IG,
+      jG = AG,
       HG = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: jG }));
       };
@@ -34858,12 +34863,12 @@
         name: 'skype',
         theme: 'outlined',
       },
-      AW = NW,
-      IW = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: AW }));
+      IW = NW,
+      AW = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: IW }));
       };
-    IW.displayName = 'SkypeOutlined';
-    var jW = a['forwardRef'](IW),
+    AW.displayName = 'SkypeOutlined';
+    var jW = a['forwardRef'](AW),
       HW = {
         icon: {
           tag: 'svg',
@@ -35190,11 +35195,11 @@
         theme: 'twotone',
       },
       NK = MK,
-      AK = function (e, t) {
+      IK = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: NK }));
       };
-    AK.displayName = 'SnippetsTwoTone';
-    var IK = a['forwardRef'](AK),
+    IK.displayName = 'SnippetsTwoTone';
+    var AK = a['forwardRef'](IK),
       jK = {
         icon: {
           tag: 'svg',
@@ -35510,7 +35515,7 @@
       };
     MQ.displayName = 'StepForwardFilled';
     var NQ = a['forwardRef'](MQ),
-      AQ = {
+      IQ = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '0 0 1024 1024', focusable: 'false' },
@@ -35527,9 +35532,9 @@
         name: 'step-forward',
         theme: 'outlined',
       },
-      IQ = AQ,
+      AQ = IQ,
       jQ = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: IQ }));
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: AQ }));
       };
     jQ.displayName = 'StepForwardOutlined';
     var HQ = a['forwardRef'](jQ),
@@ -35852,11 +35857,11 @@
         theme: 'outlined',
       },
       NY = MY,
-      AY = function (e, t) {
+      IY = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: NY }));
       };
-    AY.displayName = 'SyncOutlined';
-    var IY = a['forwardRef'](AY),
+    IY.displayName = 'SyncOutlined';
+    var AY = a['forwardRef'](IY),
       jY = {
         icon: {
           tag: 'svg',
@@ -36214,7 +36219,7 @@
       };
     MJ.displayName = 'TaobaoOutlined';
     var NJ = a['forwardRef'](MJ),
-      AJ = {
+      IJ = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -36231,9 +36236,9 @@
         name: 'taobao-square',
         theme: 'filled',
       },
-      IJ = AJ,
+      AJ = IJ,
       jJ = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: IJ }));
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: AJ }));
       };
     jJ.displayName = 'TaobaoSquareFilled';
     var HJ = a['forwardRef'](jJ),
@@ -36572,11 +36577,11 @@
         theme: 'outlined',
       },
       NZ = MZ,
-      AZ = function (e, t) {
+      IZ = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: NZ }));
       };
-    AZ.displayName = 'TransactionOutlined';
-    var IZ = a['forwardRef'](AZ),
+    IZ.displayName = 'TransactionOutlined';
+    var AZ = a['forwardRef'](IZ),
       jZ = {
         icon: {
           tag: 'svg',
@@ -36911,7 +36916,7 @@
       };
     M$.displayName = 'UnlockTwoTone';
     var N$ = a['forwardRef'](M$),
-      A$ = {
+      I$ = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -36928,9 +36933,9 @@
         name: 'unordered-list',
         theme: 'outlined',
       },
-      I$ = A$,
+      A$ = I$,
       j$ = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: I$ }));
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: A$ }));
       };
     j$.displayName = 'UnorderedListOutlined';
     var H$ = a['forwardRef'](j$),
@@ -37295,12 +37300,12 @@
         name: 'user',
         theme: 'outlined',
       },
-      AX = NX,
-      IX = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: AX }));
+      IX = NX,
+      AX = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: IX }));
       };
-    IX.displayName = 'UserOutlined';
-    var jX = a['forwardRef'](IX),
+    AX.displayName = 'UserOutlined';
+    var jX = a['forwardRef'](AX),
       HX = {
         icon: {
           tag: 'svg',
@@ -37645,8 +37650,8 @@
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: M1 }));
       };
     N1.displayName = 'VideoCameraTwoTone';
-    var A1 = a['forwardRef'](N1),
-      I1 = {
+    var I1 = a['forwardRef'](N1),
+      A1 = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -37663,7 +37668,7 @@
         name: 'wallet',
         theme: 'filled',
       },
-      j1 = I1,
+      j1 = A1,
       H1 = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: j1 }));
       };
@@ -38008,12 +38013,12 @@
         name: 'whats-app',
         theme: 'outlined',
       },
-      A4 = N4,
-      I4 = function (e, t) {
-        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: A4 }));
+      I4 = N4,
+      A4 = function (e, t) {
+        return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: I4 }));
       };
-    I4.displayName = 'WhatsAppOutlined';
-    var j4 = a['forwardRef'](I4),
+    A4.displayName = 'WhatsAppOutlined';
+    var j4 = a['forwardRef'](A4),
       H4 = {
         icon: {
           tag: 'svg',
@@ -38312,8 +38317,8 @@
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: M2 }));
       };
     N2.displayName = 'ZhihuSquareFilled';
-    var A2 = a['forwardRef'](N2),
-      I2 = {
+    var I2 = a['forwardRef'](N2),
+      A2 = {
         icon: {
           tag: 'svg',
           attrs: { viewBox: '64 64 896 896', focusable: 'false' },
@@ -38330,7 +38335,7 @@
         name: 'zoom-in',
         theme: 'outlined',
       },
-      j2 = I2,
+      j2 = A2,
       H2 = function (e, t) {
         return a['createElement'](c['a'], Object.assign({}, e, { ref: t, icon: j2 }));
       };
@@ -38580,8 +38585,8 @@
           C = e.onCompositionStart,
           M = e.onCompositionEnd,
           N = e.onSearch,
-          A = e.delay,
-          I = void 0 === A ? 500 : A,
+          I = e.delay,
+          A = void 0 === I ? 500 : I,
           j = e.formatter,
           H = e.parser,
           R = e.readOnly,
@@ -38605,7 +38610,7 @@
         function Y(e) {
           setTimeout(() => {
             var t;
-            (U(!1), S && S(e), /webOS|iPhone|iPod/i.test(navigator.userAgent)) &&
+            (U(!1), S && S(e), !R && /webOS|iPhone|iPod/i.test(navigator.userAgent)) &&
               'INPUT' !== (null === (t = document.activeElement) || void 0 === t ? void 0 : t.nodeName) &&
               ((document.body.scrollTop = G.current), (document.documentElement.scrollTop = G.current));
           }, 100);
@@ -38638,7 +38643,7 @@
             () => {
               N && !q.current && N(T);
             },
-            I,
+            A,
             [T],
           ),
           Object(c['useEffect'])(() => {
@@ -38986,7 +38991,7 @@
                 "import React from 'react';\nimport { ActionSheet, Button, WhiteSpace } from 'weui-react-v2';\n\nfunction pop() {\n  ActionSheet({\n    title: '\u8bf7\u9009\u62e9\u559c\u6b22\u7684\u6c34\u679c?',\n    menus: ['\u82f9\u679c', '\u897f\u74dc', '\u68a8\u5b50'],\n    rootSelector: '#root',\n    onClick: (index) => {\n      return new Promise((resolve, reject) => {\n        setTimeout(() => {\n          resolve();\n        }, 2000);\n      });\n    },\n  });\n}\n\nexport default () => (\n  <>\n    <WhiteSpace />\n    <Button block={true} type=\"primary\" size=\"large\" onClick={pop}>\n      \u70b9\u51fb\u9009\u62e9\n    </Button>\n    <WhiteSpace />\n    <img\n      style={{ width: '100%', display: 'block' }}\n      src=\"https://images.pexels.com/photos/1239387/pexels-photo-1239387.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940\"\n      alt=\"\"\n    />\n    <img\n      style={{ width: '100%', display: 'block' }}\n      src=\"https://images.pexels.com/photos/1657110/pexels-photo-1657110.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=650&w=940\"\n      alt=\"\"\n    />\n  </>\n);",
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u914d\u7f6e\u83dc\u5355',
           description:
             '"<div class=\\"markdown\\"><p>\u8bbe\u7f6e<code>menus</code>\u5c5e\u6027\u6765\u914d\u7f6e\u83dc\u5355\uff0c<code>onClick</code>\u76d1\u542c\u83dc\u5355\u70b9\u51fb\u4e8b\u4ef6</p></div>"',
@@ -39017,7 +39022,7 @@
                 ".keyboard-demo {\n  font-size: 24px;\n\n  .payment-page__bd {\n    padding-top: 80px;\n    padding-bottom: 80px;\n  }\n  .paymeny-title {\n    font-size: 48px;\n    line-height: 106px;\n    text-align: center;\n  }\n  .fake-amount-input {\n    padding: 0 30px 24px;\n    position: relative;\n    box-sizing: border-box;\n\n    .amount-placeholder {\n      width: 100%;\n      padding: 0 50px;\n      text-align: left;\n      position: absolute;\n      left: 0;\n      top: 0;\n      z-index: 1;\n      color: #bebebe;\n      font-size: 36px;\n      height: 108px;\n      line-height: 108px;\n      box-sizing: border-box;\n    }\n    .amount-input {\n      z-index: 2;\n      position: relative;\n      padding: 0 20px;\n      border: 2px solid #06bf04;\n      border-radius: 10px;\n      text-align: right;\n      height: 108px;\n      line-height: 108px;\n      font-size: 72px;\n      width: 100%;\n      box-sizing: border-box;\n    }\n    .amount_plan {\n      position: absolute;\n      color: #bebebe;\n      z-index: 1;\n      top: 0;\n      left: 0;\n      padding: 0 50px;\n      height: 108px;\n      line-height: 108px;\n      font-size: 72px;\n      width: 100%;\n      text-align: right;\n      box-sizing: border-box;\n    }\n    .unit {\n      display: inline-block;\n      vertical-align: top;\n    }\n    .amount {\n      display: inline-block;\n      max-width: 62%;\n      color: #000;\n      vertical-align: top;\n      word-break: keep-all;\n      white-space: nowrap;\n      overflow: hidden;\n      text-overflow: ellipsis;\n      font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Helvetica Neue', 'Hiragino Sans GB', 'Microsoft Yahei',\n        sans-serif;\n    }\n  }\n}\n",
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u91d1\u989d\u952e\u76d8',
           description:
             '"<div class=\\"markdown\\"><p>\u4e00\u822c\u9ed8\u8ba4\u7528Input\u7ec4\u4ef6\u5524\u8d77\u3002</p></div>"',
@@ -39047,7 +39052,7 @@
               content: '.demo-btn-wrap {\n  .weui-btn + .weui-btn {\n    margin-left: 15px;\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u6309\u94ae\u7c7b\u578b',
           description:
             '"<div class=\\"markdown\\"><p>\u94ae\u6709\u4e94\u79cd\u7c7b\u578b\uff1a\u4e3b\u6309\u94ae\u3001\u6b21\u6309\u94ae\u3001\u865a\u7ebf\u6309\u94ae\u3001\u6587\u672c\u6309\u94ae\u548c\u94fe\u63a5\u6309\u94ae\u3002\u4e3b\u6309\u94ae\u5728\u540c\u4e00\u4e2a\u64cd\u4f5c\u533a\u57df\u6700\u591a\u51fa\u73b0\u4e00\u6b21\u3002</p></div>"',
@@ -39077,7 +39082,7 @@
               content: '.demo-btn-wrap {\n  .weui-btn + .weui-btn {\n    margin-left: 15px;\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u4e0d\u53ef\u7528\u72b6\u6001',
           description:
             '"<div class=\\"markdown\\"><p>\u6dfb\u52a0 <code>disabled</code> \u5c5e\u6027\u5373\u53ef\u8ba9\u6309\u94ae\u5904\u4e8e\u4e0d\u53ef\u7528\u72b6\u6001\uff0c\u540c\u65f6\u6309\u94ae\u6837\u5f0f\u4e5f\u4f1a\u6539\u53d8\u3002</p></div>"',
@@ -39107,7 +39112,7 @@
               content: '.demo-btn-wrap {\n  .weui-btn + .weui-btn {\n    margin-left: 15px;\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u957f\u6309\u94ae',
           description:
             '"<div class=\\"markdown\\"><p>\u6309\u94ae\u5c06<code>100%</code>\u586b\u5145\u7236\u5143\u7d20\u5bbd\u5ea6</p></div>"',
@@ -39181,7 +39186,7 @@
                 'import React from \'react\';\nimport { Checkbox, Form, FormItem, List } from \'weui-react-v2\';\n\nexport default () => (\n  <Form>\n    <List title="\u4e0d\u540c\u5c3a\u5bf8">\n      <FormItem access={true}>\n        <Checkbox defaultChecked={true} size="small">\n          (small) standard is dealt for u.\n        </Checkbox>\n      </FormItem>\n      <FormItem access={true}>\n        <Checkbox defaultChecked={true} size="default">\n          (default) standard is dealicient for u.\n        </Checkbox>\n      </FormItem>\n      <FormItem access={true}>\n        <Checkbox defaultChecked={true} size="large">\n          (big) standard is dealicient for u.\n        </Checkbox>\n      </FormItem>\n    </List>\n    <List title="\u7981\u7528\u6837\u5f0f">\n      <FormItem prop="a" disabled={true} valueKey="checked" defaultValue={true}>\n        <Checkbox>\u9009\u4e2d\u7981\u7528</Checkbox>\n      </FormItem>\n      <FormItem prop="b" disabled={true} valueKey="checked">\n        <Checkbox>\u672a\u9009\u4e2d\u7981\u7528</Checkbox>\n      </FormItem>\n    </List>\n  </Form>\n);',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u4e0d\u540c\u5c3a\u5bf8',
           identifier: 'components-checkbox',
         },
@@ -39205,7 +39210,7 @@
                 'import React from \'react\';\nimport { DatePicker, List, ListItem, SafeArea } from \'weui-react-v2\';\n\nexport default function () {\n  return (\n    <SafeArea style={{ margin: \'-0.16rem\', minHeight: \'100vh\', backgroundColor: \'#f4f4f4\', padding: \'5px 0 10px\' }}>\n      <List title="\u4e0d\u540c\u6a21\u5f0f">\n        <DatePicker placeholder="\u8bf7\u9009\u62e9" defaultValue={null} useDefaultFormat={false} separator="">\n          <ListItem hd="date" arrow={true} />\n        </DatePicker>\n        <DatePicker placeholder="\u8bf7\u9009\u62e9" mode="datetime" defaultValue={null}>\n          <ListItem hd="datetime" arrow={true} />\n        </DatePicker>\n        <DatePicker placeholder="\u8bf7\u9009\u62e9" mode="time" defaultValue={null} useDefaultFormat={false} separator="">\n          <ListItem hd="time" arrow={true} />\n        </DatePicker>\n        <DatePicker placeholder="\u8bf7\u9009\u62e9" mode="year" defaultValue={null}>\n          <ListItem hd="year" arrow={true} />\n        </DatePicker>\n        <DatePicker placeholder="\u8bf7\u9009\u62e9" mode="month" defaultValue={null}>\n          <ListItem hd="month" arrow={true} />\n        </DatePicker>\n      </List>\n    </SafeArea>\n  );\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u65e5\u671f\u9009\u62e9\u5668',
           description:
             '"<div class=\\"markdown\\"><p>\u9ed8\u8ba4\u9009\u4e2d\u7684\u6807\u7b7e\u683c\u5f0f\u5316\u4e3a (\u5e74-\u6708-\u65e5 \u65f6:\u5206:\u79d2)</p></div>"',
@@ -39231,7 +39236,7 @@
                 "import React from 'react';\nimport { Button, WhiteSpace, DialogPop } from 'weui-react-v2';\n\nexport default function () {\n  function pop() {\n    DialogPop({\n      title: '\u5bf9\u8bdd\u6846\u6807\u9898',\n      children: '\u5f39\u7a97\u5185\u5bb9\uff0c\u544a\u77e5\u5f53\u524d\u72b6\u6001\u3001\u4fe1\u606f\u548c\u89e3\u51b3\u65b9\u6cd5\uff0c\u63cf\u8ff0\u6587\u5b57\u5c3d\u91cf\u63a7\u5236\u5728\u4e09\u884c\u5185',\n      onConfirm: () => {\n        return new Promise((resolve) => {\n          setTimeout(() => {\n            resolve(true);\n          }, 2000);\n        });\n      },\n    });\n  }\n\n  return (\n    <div>\n      <WhiteSpace />\n      <Button block={true} size=\"large\" type=\"primary\" onClick={pop}>\n        \u663e\u793a\n      </Button>\n    </div>\n  );\n}\n",
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u6a21\u6001\u5bf9\u8bdd\u6846',
           description:
             '"<div class=\\"markdown\\"><p>\u5c5e\u6027\u57fa\u672c\u4e0e<code>HalfScreenDialog</code>\u4fdd\u6301\u4e00\u81f4</p></div>"',
@@ -39262,7 +39267,7 @@
                 '.demo-prompt {\n  .title {\n    font-size: 30px;\n    color: #888;\n    line-height: 1.5;\n  }\n  .tips {\n    font-size: 26px;\n    color: #ff4d4f;\n    margin-top: 10px;\n    margin-bottom: 0;\n    text-align: left;\n  }\n  .input-container {\n    margin-top: 18px;\n    border: 2px solid #ddd;\n    border-radius: 6px;\n    height: 72px;\n    line-height: 1;\n    min-width: 65vw;\n\n    input {\n      font-size: 30px;\n      position: relative;\n      border: 0;\n      width: 100%;\n      height: 100%;\n      box-sizing: border-box;\n      margin: 0;\n      padding: 0 15px;\n    }\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u5c01\u88c5\u8f93\u5165\u6846',
           description:
             '"<div class=\\"markdown\\"><p>\u6839\u636e\u4e1a\u52a1\u548c\u6837\u5f0f\u9700\u8981\uff0c\u81ea\u884c\u5c01\u88c5</p></div>"',
@@ -39293,7 +39298,7 @@
                 '.flex-demo {\n  .title {\n    font-size: 34px;\n    padding: 20px 10px;\n    font-weight: bold;\n  }\n\n  .title + .title {\n    margin-top: 50px;\n  }\n\n  .ant-col {\n    min-height: 30px;\n    margin-top: 8px;\n    margin-bottom: 8px;\n    padding: 5px 0;\n    color: #fff;\n    text-align: center;\n    border-radius: 0;\n    font-size: 24px;\n    padding: 16px 0;\n    background: #00a0e9;\n\n    &:nth-child(2n + 1) {\n      background: rgba(0, 160, 233, 0.7);\n    }\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u5bf9\u5176\u65b9\u5f0f',
           description:
             '"<div class=\\"markdown\\"><p>\u6839\u636e\u4e3b\u8f74\u8fdb\u884c\u5de6\u5bf9\u9f50\uff0c\u5c45\u4e2d\u5bf9\u9f50\uff0c\u53f3\u5bf9\u9f50</p></div>"',
@@ -39314,9 +39319,9 @@
           sources: {
             _: {
               jsx:
-                'import React, { useRef } from \'react\';\nimport {\n  Button,\n  Checkbox,\n  DatePicker,\n  Form,\n  FormItem,\n  Input,\n  List,\n  MultiUpload,\n  NumberInput,\n  Picker,\n  SingleUpload,\n  SubmitButton,\n  TextArea,\n} from \'weui-react-v2\';\nimport { singlePickerData } from \'../../picker/demo/picker-data\';\nimport \'./index.less\';\n\nfunction getResponse(res) {\n  if (res && res.code === 0) {\n    return res.filekey;\n  }\n  throw new Error(\'\u540e\u53f0\u4e0a\u4f20\u9519\u8bef\');\n}\n\nconst validConfig = {\n  // phone: [{ name: \'Required\' }, { name: \'Pattern\', params: [/^1\\d{10}$/] }],\n  // vcode: [{ name: \'Required\' }, { name: \'EqualLength\', params: [6] }],\n  // name: [{ name: \'Required\' }],\n  // age: [{ name: \'Required\' }],\n  // amount: [{ name: \'Required\' }, { name: \'Amount\' }],\n  // loginType: [{ name: \'Required\' }],\n  img: [\n    {\n      name: \'Required\',\n    },\n  ],\n};\nexport default function() {\n  const formMethods = useRef(null);\n\n  function subamit(data) {\n    console.log(\'\u63d0\u4ea4\u6570\u636e\u4e3a\', data);\n    return new Promise((resolve, reject) => {\n      setTimeout(() => {\n        resolve(data);\n      }, 2000);\n    });\n  }\n\n  return (\n    <div className="form-demo">\n      <div className="form-text-area">\n        <div className="form-title">\u8868\u5355\u7ed3\u6784</div>\n        <div className="form-desc">\n          \u5c55\u793a\u8868\u5355\u9875\u9762\u7684\u4fe1\u606f\u7ed3\u6784\u6837\u5f0f, \u5206\u522b\u7531\u5934\u90e8\u533a\u57df/\u63a7\u4ef6\u533a\u57df/\u63d0\u793a\u533a\u57df/\u64cd\u4f5c\u533a\u57df\u548c\u5e95\u90e8\u4fe1\u606f\u533a\u57df\u7ec4\u6210\u3002\n        </div>\n      </div>\n      <Form\n        labelWidth="20vw"\n        validConfig={validConfig}\n        defaultModel={{\n          img:\n            \'http://365wifi.oss-cn-zhangjiakou.aliyuncs.com/cabinet/20210104/97013ff8d05e4c4ab39bc0aa0f7f86bf.jpg\',\n          imgs: [\n            \'http://365wifi.oss-cn-zhangjiakou.aliyuncs.com/cabinet/20210104/97013ff8d05e4c4ab39bc0aa0f7f86bf.jpg\',\n          ],\n        }}\n        getFormMethods={methods => (formMethods.current = methods)}\n        onSubmit={subamit}\n      >\n        <div className="form-margin">\n          <List title="\u8868\u5355\u7ec4\u6807\u9898">\n            <FormItem prop="phone" label="\u624b\u673a\u53f7">\n              <Input\n                placeholder="\u8bf7\u8f93\u5165\u624b\u673a\u53f7"\n                type="phone"\n                pattern="[0-9]*"\n                maxlength={13}\n                autoFocus\n              />\n            </FormItem>\n            <FormItem prop="vcode" label="\u9a8c\u8bc1\u7801" extra={<Button size="small">\u83b7\u53d6\u9a8c\u8bc1\u7801</Button>}>\n              <Input placeholder="\u8bf7\u8f93\u5165\u9a8c\u8bc1\u7801" pattern="[0-9]*" maxlength={6} />\n            </FormItem>\n            <FormItem prop="name" label="\u59d3\u540d">\n              <Input placeholder="\u8bf7\u8f93\u5165\u771f\u5b9e\u59d3\u540d" maxlength={10} />\n            </FormItem>\n            <FormItem prop="age" label="\u5e74\u9f84" defaultValue={22}>\n              <NumberInput\n                style={{\n                  width: \'50%\',\n                }}\n                min={1}\n                max={120}\n                maxlength={3}\n                pattern="[0-9]*"\n                showControl\n              />\n            </FormItem>\n            <FormItem prop="amount" label="\u91d1\u989d">\n              <NumberInput type="amount" placeholder="\u8bf7\u8f93\u5165\u91d1\u989d" precision={2} />\n            </FormItem>\n            <FormItem prop="date" label="\u65e5\u671f">\n              <DatePicker placeholder="\u8bf7\u9009\u62e9\u751f\u65e5" useDefaultFormat={false} separator="" />\n            </FormItem>\n            <FormItem prop="feedback" label="\u95ee\u9898\u53cd\u9988" alignItems="flex-start">\n              <TextArea placeholder="\u8bf7\u8f93\u5165\u60a8\u9047\u5230\u7684\u95ee\u9898" />\n            </FormItem>\n          </List>\n          <List title="\u539f\u751f\u9009\u62e9\u6846">\n            <FormItem prop="loginType" defaultValue="2" arrow="horizontal">\n              <select>\n                <option value="">\u4e0d\u9009</option>\n                <option value="1">\u5fae\u4fe1\u53f7</option>\n                <option value="2">QQ\u53f7</option>\n                <option value="3">Email</option>\n              </select>\n            </FormItem>\n            <FormItem\n              className="virtual-select"\n              label={\n                <FormItem prop="zoneCode" labelString="\u533a\u53f7" simple defaultValue="86">\n                  <select>\n                    <option value="86">+86</option>\n                    <option value="80">+80</option>\n                    <option value="87">+87</option>\n                  </select>\n                </FormItem>\n              }\n            >\n              <FormItem prop="zonePhone" labelString="\u533a\u57df\u624b\u673a\u53f7" simple>\n                <Input placeholder="\u8bf7\u8f93\u5165\u624b\u673a\u53f7" type="phone" pattern="[0-9]*" maxlength={13} />\n              </FormItem>\n            </FormItem>\n            <FormItem prop="country" label="\u56fd\u5bb6" arrow="horizontal" defaultValue="2">\n              <select>\n                <option value="1">\u4e2d\u56fd</option>\n                <option value="2">\u7f8e\u56fd</option>\n                <option value="3">\u82f1\u56fd</option>\n              </select>\n            </FormItem>\n          </List>\n\n          <List title="Picker\u9009\u62e9\u5668">\n            <FormItem prop="piao" label="\u7968\u636e" arrow>\n              <Picker title="\u8bf7\u9009\u62e9" placeholder="\u8bf7\u9009\u62e9" data={singlePickerData} />\n            </FormItem>\n          </List>\n          <List title="\u6587\u4ef6">\n            <FormItem prop="img" label="\u5934\u50cf">\n              <SingleUpload action="/upload" getResponse={getResponse} />\n            </FormItem>\n            <FormItem prop="imgs" label="\u7167\u7247\u5899">\n              <MultiUpload length={3} action="/upload" getResponse={getResponse} />\n            </FormItem>\n          </List>\n        </div>\n        <div className="form-tips">\n          <Checkbox size="small">\n            \u9605\u8bfb\u5e76\u540c\u610f<a>\u300a\u76f8\u5173\u6761\u6b3e\u300b</a>\n          </Checkbox>\n        </div>\n        <div className="form-btns">\n          <SubmitButton size="large">\u786e\u5b9a</SubmitButton>\n        </div>\n      </Form>\n    </div>\n  );\n}\n',
+                'import React, { useRef } from \'react\';\nimport {\n  Button,\n  Checkbox,\n  DatePicker,\n  Form,\n  FormItem,\n  Input,\n  List,\n  MultiUpload,\n  NumberInput,\n  Picker,\n  SingleUpload,\n  SubmitButton,\n  TextArea,\n} from \'weui-react-v2\';\nimport { singlePickerData } from \'../../picker/demo/picker-data\';\nimport \'./index.less\';\n\nfunction getResponse(res) {\n  if (res && res.code === 0) {\n    return res.filekey;\n  }\n  throw new Error(\'\u540e\u53f0\u4e0a\u4f20\u9519\u8bef\');\n}\n\nconst validConfig = {\n  // phone: [{ name: \'Required\' }, { name: \'Pattern\', params: [/^1\\d{10}$/] }],\n  // vcode: [{ name: \'Required\' }, { name: \'EqualLength\', params: [6] }],\n  // name: [{ name: \'Required\' }],\n  // age: [{ name: \'Required\' }],\n  // amount: [{ name: \'Required\' }, { name: \'Amount\' }],\n  // loginType: [{ name: \'Required\' }],\n  img: [\n    {\n      name: \'Required\',\n    },\n  ],\n};\nexport default function() {\n  const formMethods = useRef(null);\n\n  function subamit(data) {\n    console.log(\'\u63d0\u4ea4\u6570\u636e\u4e3a\', data);\n    return new Promise((resolve, reject) => {\n      setTimeout(() => {\n        resolve(data);\n      }, 2000);\n    });\n  }\n\n  return (\n    <div className="form-demo">\n      <div className="form-text-area">\n        <div className="form-title">\u8868\u5355\u7ed3\u6784</div>\n        <div className="form-desc">\n          \u5c55\u793a\u8868\u5355\u9875\u9762\u7684\u4fe1\u606f\u7ed3\u6784\u6837\u5f0f, \u5206\u522b\u7531\u5934\u90e8\u533a\u57df/\u63a7\u4ef6\u533a\u57df/\u63d0\u793a\u533a\u57df/\u64cd\u4f5c\u533a\u57df\u548c\u5e95\u90e8\u4fe1\u606f\u533a\u57df\u7ec4\u6210\u3002\n        </div>\n      </div>\n      <Form\n        labelWidth="20vw"\n        validConfig={validConfig}\n        defaultModel={{\n          img:\n            \'http://365wifi.oss-cn-zhangjiakou.aliyuncs.com/cabinet/20210104/97013ff8d05e4c4ab39bc0aa0f7f86bf.jpg\',\n          imgs: [\n            \'http://365wifi.oss-cn-zhangjiakou.aliyuncs.com/cabinet/20210104/97013ff8d05e4c4ab39bc0aa0f7f86bf.jpg\',\n          ],\n          amount: 33.45,\n        }}\n        getFormMethods={methods => (formMethods.current = methods)}\n        onSubmit={subamit}\n      >\n        <div className="form-margin">\n          <List title="\u8868\u5355\u7ec4\u6807\u9898">\n            <FormItem prop="phone" label="\u624b\u673a\u53f7">\n              <Input\n                placeholder="\u8bf7\u8f93\u5165\u624b\u673a\u53f7"\n                type="phone"\n                pattern="[0-9]*"\n                maxlength={13}\n                autoFocus\n              />\n            </FormItem>\n            <FormItem prop="vcode" label="\u9a8c\u8bc1\u7801" extra={<Button size="small">\u83b7\u53d6\u9a8c\u8bc1\u7801</Button>}>\n              <Input placeholder="\u8bf7\u8f93\u5165\u9a8c\u8bc1\u7801" pattern="[0-9]*" maxlength={6} />\n            </FormItem>\n            <FormItem prop="name" label="\u59d3\u540d">\n              <Input placeholder="\u8bf7\u8f93\u5165\u771f\u5b9e\u59d3\u540d" maxlength={10} />\n            </FormItem>\n            <FormItem prop="age" label="\u5e74\u9f84" defaultValue={22}>\n              <NumberInput\n                style={{\n                  width: \'50%\',\n                }}\n                min={1}\n                max={120}\n                maxlength={3}\n                pattern="[0-9]*"\n                showControl\n              />\n            </FormItem>\n            <FormItem prop="amount" label="\u91d1\u989d">\n              <NumberInput type="amount" placeholder="\u8bf7\u8f93\u5165\u91d1\u989d" precision={4} />\n            </FormItem>\n            <FormItem prop="date" label="\u65e5\u671f">\n              <DatePicker placeholder="\u8bf7\u9009\u62e9\u751f\u65e5" useDefaultFormat={false} separator="" />\n            </FormItem>\n            <FormItem prop="feedback" label="\u95ee\u9898\u53cd\u9988" alignItems="flex-start">\n              <TextArea placeholder="\u8bf7\u8f93\u5165\u60a8\u9047\u5230\u7684\u95ee\u9898" />\n            </FormItem>\n          </List>\n          <List title="\u539f\u751f\u9009\u62e9\u6846">\n            <FormItem prop="loginType" defaultValue="2" arrow="horizontal">\n              <select>\n                <option value="">\u4e0d\u9009</option>\n                <option value="1">\u5fae\u4fe1\u53f7</option>\n                <option value="2">QQ\u53f7</option>\n                <option value="3">Email</option>\n              </select>\n            </FormItem>\n            <FormItem\n              className="virtual-select"\n              label={\n                <FormItem prop="zoneCode" labelString="\u533a\u53f7" simple defaultValue="86">\n                  <select>\n                    <option value="86">+86</option>\n                    <option value="80">+80</option>\n                    <option value="87">+87</option>\n                  </select>\n                </FormItem>\n              }\n            >\n              <FormItem prop="zonePhone" labelString="\u533a\u57df\u624b\u673a\u53f7" simple>\n                <Input placeholder="\u8bf7\u8f93\u5165\u624b\u673a\u53f7" type="phone" pattern="[0-9]*" maxlength={13} />\n              </FormItem>\n            </FormItem>\n            <FormItem prop="country" label="\u56fd\u5bb6" arrow="horizontal" defaultValue="2">\n              <select>\n                <option value="1">\u4e2d\u56fd</option>\n                <option value="2">\u7f8e\u56fd</option>\n                <option value="3">\u82f1\u56fd</option>\n              </select>\n            </FormItem>\n          </List>\n\n          <List title="Picker\u9009\u62e9\u5668">\n            <FormItem prop="piao" label="\u7968\u636e" arrow>\n              <Picker title="\u8bf7\u9009\u62e9" placeholder="\u8bf7\u9009\u62e9" data={singlePickerData} />\n            </FormItem>\n          </List>\n          <List title="\u6587\u4ef6">\n            <FormItem prop="img" label="\u5934\u50cf">\n              <SingleUpload action="/upload" getResponse={getResponse} />\n            </FormItem>\n            <FormItem prop="imgs" label="\u7167\u7247\u5899">\n              <MultiUpload length={3} action="/upload" getResponse={getResponse} />\n            </FormItem>\n          </List>\n        </div>\n        <div className="form-tips">\n          <Checkbox size="small">\n            \u9605\u8bfb\u5e76\u540c\u610f<a>\u300a\u76f8\u5173\u6761\u6b3e\u300b</a>\n          </Checkbox>\n        </div>\n        <div className="form-btns">\n          <SubmitButton size="large">\u786e\u5b9a</SubmitButton>\n        </div>\n      </Form>\n    </div>\n  );\n}\n',
               tsx:
-                'import React, { useRef } from \'react\';\nimport {\n  Button,\n  Checkbox,\n  DatePicker,\n  Form,\n  FormItem,\n  FormMethods,\n  Switch,\n  Input,\n  List,\n  MultiUpload,\n  NumberInput,\n  Picker,\n  SingleUpload,\n  SubmitButton,\n  TextArea,\n  ValidateConfig,\n} from \'weui-react-v2\';\nimport { singlePickerData } from \'../../picker/demo/picker-data\';\nimport \'./index.less\';\n\ninterface Model {\n  phone: string;\n  vcode: string;\n  name: string;\n  loginType: string;\n  age: number;\n  amount: number;\n  img: string;\n}\n\ninterface Res {\n  code: number;\n  filekey: string;\n}\n\nfunction getResponse(res: Res) {\n  if (res && res.code === 0) {\n    return res.filekey;\n  } else {\n    throw new Error(\'\u540e\u53f0\u4e0a\u4f20\u9519\u8bef\');\n  }\n}\n\nconst validConfig: ValidateConfig<Required<Model>> = {\n  // phone: [{ name: \'Required\' }, { name: \'Pattern\', params: [/^1\\d{10}$/] }],\n  // vcode: [{ name: \'Required\' }, { name: \'EqualLength\', params: [6] }],\n  // name: [{ name: \'Required\' }],\n  // age: [{ name: \'Required\' }],\n  // amount: [{ name: \'Required\' }, { name: \'Amount\' }],\n  // loginType: [{ name: \'Required\' }],\n  img: [{ name: \'Required\' }],\n};\n\nexport default function () {\n  const formMethods = useRef<FormMethods | null>(null);\n\n  function subamit(data: Model) {\n    console.log(\'\u63d0\u4ea4\u6570\u636e\u4e3a\', data);\n    return new Promise((resolve, reject) => {\n      setTimeout(() => {\n        resolve(data);\n      }, 2000);\n    });\n  }\n\n  return (\n    <div className="form-demo">\n      <div className="form-text-area">\n        <div className="form-title">\u8868\u5355\u7ed3\u6784</div>\n        <div className="form-desc">\n          \u5c55\u793a\u8868\u5355\u9875\u9762\u7684\u4fe1\u606f\u7ed3\u6784\u6837\u5f0f, \u5206\u522b\u7531\u5934\u90e8\u533a\u57df/\u63a7\u4ef6\u533a\u57df/\u63d0\u793a\u533a\u57df/\u64cd\u4f5c\u533a\u57df\u548c\u5e95\u90e8\u4fe1\u606f\u533a\u57df\u7ec4\u6210\u3002\n        </div>\n      </div>\n      <Form\n        labelWidth="20vw"\n        validConfig={validConfig}\n        defaultModel={{\n          img: \'http://365wifi.oss-cn-zhangjiakou.aliyuncs.com/cabinet/20210104/97013ff8d05e4c4ab39bc0aa0f7f86bf.jpg\',\n          imgs: [\n            \'http://365wifi.oss-cn-zhangjiakou.aliyuncs.com/cabinet/20210104/97013ff8d05e4c4ab39bc0aa0f7f86bf.jpg\',\n          ],\n        }}\n        getFormMethods={(methods) => (formMethods.current = methods)}\n        onSubmit={subamit}\n      >\n        <div className="form-margin">\n          <List title="\u8868\u5355\u7ec4\u6807\u9898">\n            <FormItem prop="phone" label="\u624b\u673a\u53f7">\n              <Input placeholder="\u8bf7\u8f93\u5165\u624b\u673a\u53f7" type="phone" pattern="[0-9]*" maxlength={13} autoFocus={true} />\n            </FormItem>\n            <FormItem prop="vcode" label="\u9a8c\u8bc1\u7801" extra={<Button size="small">\u83b7\u53d6\u9a8c\u8bc1\u7801</Button>}>\n              <Input placeholder="\u8bf7\u8f93\u5165\u9a8c\u8bc1\u7801" pattern="[0-9]*" maxlength={6} />\n            </FormItem>\n            <FormItem prop="name" label="\u59d3\u540d">\n              <Input placeholder="\u8bf7\u8f93\u5165\u771f\u5b9e\u59d3\u540d" maxlength={10} />\n            </FormItem>\n            <FormItem prop="age" label="\u5e74\u9f84" defaultValue={22}>\n              <NumberInput\n                style={{ width: \'50%\' }}\n                min={1}\n                max={120}\n                maxlength={3}\n                pattern="[0-9]*"\n                showControl={true}\n              />\n            </FormItem>\n            <FormItem prop="amount" label="\u91d1\u989d">\n              <NumberInput type="amount" placeholder="\u8bf7\u8f93\u5165\u91d1\u989d" precision={2} />\n            </FormItem>\n            <FormItem prop="date" label="\u65e5\u671f">\n              <DatePicker placeholder="\u8bf7\u9009\u62e9\u751f\u65e5" useDefaultFormat={false} separator="" />\n            </FormItem>\n            <FormItem prop="feedback" label="\u95ee\u9898\u53cd\u9988" alignItems="flex-start">\n              <TextArea placeholder="\u8bf7\u8f93\u5165\u60a8\u9047\u5230\u7684\u95ee\u9898" />\n            </FormItem>\n          </List>\n          <List title="\u539f\u751f\u9009\u62e9\u6846">\n            <FormItem prop="loginType" defaultValue="2" arrow="horizontal">\n              <select>\n                <option value="">\u4e0d\u9009</option>\n                <option value="1">\u5fae\u4fe1\u53f7</option>\n                <option value="2">QQ\u53f7</option>\n                <option value="3">Email</option>\n              </select>\n            </FormItem>\n            <FormItem\n              className="virtual-select"\n              label={\n                <FormItem prop="zoneCode" labelString="\u533a\u53f7" simple={true} defaultValue="86">\n                  <select>\n                    <option value="86">+86</option>\n                    <option value="80">+80</option>\n                    <option value="87">+87</option>\n                  </select>\n                </FormItem>\n              }\n            >\n              <FormItem prop="zonePhone" labelString="\u533a\u57df\u624b\u673a\u53f7" simple={true}>\n                <Input placeholder="\u8bf7\u8f93\u5165\u624b\u673a\u53f7" type="phone" pattern="[0-9]*" maxlength={13} />\n              </FormItem>\n            </FormItem>\n            <FormItem prop="country" label="\u56fd\u5bb6" arrow="horizontal" defaultValue="2">\n              <select>\n                <option value="1">\u4e2d\u56fd</option>\n                <option value="2">\u7f8e\u56fd</option>\n                <option value="3">\u82f1\u56fd</option>\n              </select>\n            </FormItem>\n          </List>\n\n          <List title="Picker\u9009\u62e9\u5668">\n            <FormItem prop="piao" label="\u7968\u636e" arrow={true}>\n              <Picker title="\u8bf7\u9009\u62e9" placeholder="\u8bf7\u9009\u62e9" data={singlePickerData} />\n            </FormItem>\n          </List>\n          <List title="\u6587\u4ef6">\n            <FormItem prop="img" label="\u5934\u50cf">\n              <SingleUpload<Res> action="/upload" getResponse={getResponse} />\n            </FormItem>\n            <FormItem prop="imgs" label="\u7167\u7247\u5899">\n              <MultiUpload<Res> length={3} action="/upload" getResponse={getResponse} />\n            </FormItem>\n          </List>\n        </div>\n        <div className="form-tips">\n          <Checkbox size="small">\n            \u9605\u8bfb\u5e76\u540c\u610f<a>\u300a\u76f8\u5173\u6761\u6b3e\u300b</a>\n          </Checkbox>\n        </div>\n        <div className="form-btns">\n          <SubmitButton size="large">\u786e\u5b9a</SubmitButton>\n        </div>\n      </Form>\n    </div>\n  );\n}\n',
+                'import React, { useRef } from \'react\';\nimport {\n  Button,\n  Checkbox,\n  DatePicker,\n  Form,\n  FormItem,\n  FormMethods,\n  Switch,\n  Input,\n  List,\n  MultiUpload,\n  NumberInput,\n  Picker,\n  SingleUpload,\n  SubmitButton,\n  TextArea,\n  ValidateConfig,\n} from \'weui-react-v2\';\nimport { singlePickerData } from \'../../picker/demo/picker-data\';\nimport \'./index.less\';\n\ninterface Model {\n  phone: string;\n  vcode: string;\n  name: string;\n  loginType: string;\n  age: number;\n  amount: number;\n  img: string;\n}\n\ninterface Res {\n  code: number;\n  filekey: string;\n}\n\nfunction getResponse(res: Res) {\n  if (res && res.code === 0) {\n    return res.filekey;\n  } else {\n    throw new Error(\'\u540e\u53f0\u4e0a\u4f20\u9519\u8bef\');\n  }\n}\n\nconst validConfig: ValidateConfig<Required<Model>> = {\n  // phone: [{ name: \'Required\' }, { name: \'Pattern\', params: [/^1\\d{10}$/] }],\n  // vcode: [{ name: \'Required\' }, { name: \'EqualLength\', params: [6] }],\n  // name: [{ name: \'Required\' }],\n  // age: [{ name: \'Required\' }],\n  // amount: [{ name: \'Required\' }, { name: \'Amount\' }],\n  // loginType: [{ name: \'Required\' }],\n  img: [{ name: \'Required\' }],\n};\n\nexport default function () {\n  const formMethods = useRef<FormMethods | null>(null);\n\n  function subamit(data: Model) {\n    console.log(\'\u63d0\u4ea4\u6570\u636e\u4e3a\', data);\n    return new Promise((resolve, reject) => {\n      setTimeout(() => {\n        resolve(data);\n      }, 2000);\n    });\n  }\n\n  return (\n    <div className="form-demo">\n      <div className="form-text-area">\n        <div className="form-title">\u8868\u5355\u7ed3\u6784</div>\n        <div className="form-desc">\n          \u5c55\u793a\u8868\u5355\u9875\u9762\u7684\u4fe1\u606f\u7ed3\u6784\u6837\u5f0f, \u5206\u522b\u7531\u5934\u90e8\u533a\u57df/\u63a7\u4ef6\u533a\u57df/\u63d0\u793a\u533a\u57df/\u64cd\u4f5c\u533a\u57df\u548c\u5e95\u90e8\u4fe1\u606f\u533a\u57df\u7ec4\u6210\u3002\n        </div>\n      </div>\n      <Form\n        labelWidth="20vw"\n        validConfig={validConfig}\n        defaultModel={{\n          img: \'http://365wifi.oss-cn-zhangjiakou.aliyuncs.com/cabinet/20210104/97013ff8d05e4c4ab39bc0aa0f7f86bf.jpg\',\n          imgs: [\n            \'http://365wifi.oss-cn-zhangjiakou.aliyuncs.com/cabinet/20210104/97013ff8d05e4c4ab39bc0aa0f7f86bf.jpg\',\n          ],\n          amount: 33.45,\n        }}\n        getFormMethods={(methods) => (formMethods.current = methods)}\n        onSubmit={subamit}\n      >\n        <div className="form-margin">\n          <List title="\u8868\u5355\u7ec4\u6807\u9898">\n            <FormItem prop="phone" label="\u624b\u673a\u53f7">\n              <Input placeholder="\u8bf7\u8f93\u5165\u624b\u673a\u53f7" type="phone" pattern="[0-9]*" maxlength={13} autoFocus={true} />\n            </FormItem>\n            <FormItem prop="vcode" label="\u9a8c\u8bc1\u7801" extra={<Button size="small">\u83b7\u53d6\u9a8c\u8bc1\u7801</Button>}>\n              <Input placeholder="\u8bf7\u8f93\u5165\u9a8c\u8bc1\u7801" pattern="[0-9]*" maxlength={6} />\n            </FormItem>\n            <FormItem prop="name" label="\u59d3\u540d">\n              <Input placeholder="\u8bf7\u8f93\u5165\u771f\u5b9e\u59d3\u540d" maxlength={10} />\n            </FormItem>\n            <FormItem prop="age" label="\u5e74\u9f84" defaultValue={22}>\n              <NumberInput\n                style={{ width: \'50%\' }}\n                min={1}\n                max={120}\n                maxlength={3}\n                pattern="[0-9]*"\n                showControl={true}\n              />\n            </FormItem>\n            <FormItem prop="amount" label="\u91d1\u989d">\n              <NumberInput type="amount" placeholder="\u8bf7\u8f93\u5165\u91d1\u989d" precision={4} />\n            </FormItem>\n            <FormItem prop="date" label="\u65e5\u671f">\n              <DatePicker placeholder="\u8bf7\u9009\u62e9\u751f\u65e5" useDefaultFormat={false} separator="" />\n            </FormItem>\n            <FormItem prop="feedback" label="\u95ee\u9898\u53cd\u9988" alignItems="flex-start">\n              <TextArea placeholder="\u8bf7\u8f93\u5165\u60a8\u9047\u5230\u7684\u95ee\u9898" />\n            </FormItem>\n          </List>\n          <List title="\u539f\u751f\u9009\u62e9\u6846">\n            <FormItem prop="loginType" defaultValue="2" arrow="horizontal">\n              <select>\n                <option value="">\u4e0d\u9009</option>\n                <option value="1">\u5fae\u4fe1\u53f7</option>\n                <option value="2">QQ\u53f7</option>\n                <option value="3">Email</option>\n              </select>\n            </FormItem>\n            <FormItem\n              className="virtual-select"\n              label={\n                <FormItem prop="zoneCode" labelString="\u533a\u53f7" simple={true} defaultValue="86">\n                  <select>\n                    <option value="86">+86</option>\n                    <option value="80">+80</option>\n                    <option value="87">+87</option>\n                  </select>\n                </FormItem>\n              }\n            >\n              <FormItem prop="zonePhone" labelString="\u533a\u57df\u624b\u673a\u53f7" simple={true}>\n                <Input placeholder="\u8bf7\u8f93\u5165\u624b\u673a\u53f7" type="phone" pattern="[0-9]*" maxlength={13} />\n              </FormItem>\n            </FormItem>\n            <FormItem prop="country" label="\u56fd\u5bb6" arrow="horizontal" defaultValue="2">\n              <select>\n                <option value="1">\u4e2d\u56fd</option>\n                <option value="2">\u7f8e\u56fd</option>\n                <option value="3">\u82f1\u56fd</option>\n              </select>\n            </FormItem>\n          </List>\n\n          <List title="Picker\u9009\u62e9\u5668">\n            <FormItem prop="piao" label="\u7968\u636e" arrow={true}>\n              <Picker title="\u8bf7\u9009\u62e9" placeholder="\u8bf7\u9009\u62e9" data={singlePickerData} />\n            </FormItem>\n          </List>\n          <List title="\u6587\u4ef6">\n            <FormItem prop="img" label="\u5934\u50cf">\n              <SingleUpload<Res> action="/upload" getResponse={getResponse} />\n            </FormItem>\n            <FormItem prop="imgs" label="\u7167\u7247\u5899">\n              <MultiUpload<Res> length={3} action="/upload" getResponse={getResponse} />\n            </FormItem>\n          </List>\n        </div>\n        <div className="form-tips">\n          <Checkbox size="small">\n            \u9605\u8bfb\u5e76\u540c\u610f<a>\u300a\u76f8\u5173\u6761\u6b3e\u300b</a>\n          </Checkbox>\n        </div>\n        <div className="form-btns">\n          <SubmitButton size="large">\u786e\u5b9a</SubmitButton>\n        </div>\n      </Form>\n    </div>\n  );\n}\n',
             },
             'picker/demo/picker-data.ts': {
               import: '../../picker/demo/picker-data',
@@ -39329,7 +39334,7 @@
                 '.form-demo {\n  padding: 112px 0 40px;\n  display: flex;\n  flex-direction: column;\n  min-height: 100%;\n  background-color: #ffffff;\n  box-sizing: border-box;\n  line-height: 1.4;\n  font-size: 28px;\n\n  .form-margin {\n    margin: 96px 0;\n  }\n\n  .form-text-area {\n    padding: 0 64px;\n    color: rgba(0, 0, 0, 0.9);\n    text-align: center;\n\n    .form-title {\n      font-size: 44px;\n      font-weight: 700;\n      line-height: 1.36;\n    }\n    .form-desc {\n      font-size: 30px;\n      margin-top: 32px;\n      line-height: 60px;\n    }\n  }\n\n  .form-tips {\n    overflow: hidden;\n    margin-bottom: 48px;\n    text-align: center;\n    color: rgba(0, 0, 0, 0.5);\n\n    .weui-checkbox {\n      font-size: 28px;\n    }\n\n    a {\n      color: #576b95;\n    }\n  }\n\n  .form-btns {\n    text-align: center;\n\n    .weui-btn {\n      width: 368px;\n      margin: auto;\n    }\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u8868\u5355\u9a8c\u8bc1',
           description:
             '"<div class=\\"markdown\\"><p>\u8868\u5355\u9a8c\u8bc1\u975e\u5e38\u81ea\u7136\uff0c\u6302\u63a5\u4e86\u539f\u751f\u7684\u8868\u5355</p></div>"',
@@ -39412,7 +39417,7 @@
           },
           dependencies: {
             react: { version: '17.0.1' },
-            'weui-react-v2': { version: '3.0.7' },
+            'weui-react-v2': { version: '3.1.0' },
             '@ant-design/icons': { version: '4.2.2' },
           },
           title: '\u4e5d\u5bab\u683c\u6bcf\u884c3\u5217',
@@ -39443,7 +39448,7 @@
                 '.weui-half-screen-dialog__tips {\n  padding-top: 32px;\n  font-size: 28px;\n  color: rgba(0, 0, 0, 0.3);\n  line-height: 1.4;\n  margin: 0;\n}\n.weui-half-screen-dialog__desc {\n  padding-top: 8px;\n  font-size: 34px;\n  font-weight: 700;\n  color: rgba(0, 0, 0, 0.9);\n  line-height: 1.4;\n  margin: 0;\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u786e\u5b9a\u6309\u94ae',
           description:
             '"<div class=\\"markdown\\"><p>\u786e\u5b9a\u6309\u94ae\u4e8b\u4ef6\u662f\u4e00\u4e2a<code>Promise</code>, \u5728\u8fd4\u56de\u4e4b\u524d\u6309\u94ae\u4f1a\u5904\u4e8e\u52a0\u8f7d\u72b6\u6001</p></div>"',
@@ -39469,7 +39474,7 @@
                 "import React, { useState } from 'react';\nimport { Gallery, Button, WhiteSpace } from 'weui-react-v2';\n\nconst images = [\n  {\n    src: require('../../swiper/pexels-photo-296878.jpeg'),\n    title: 'Photo: Michael Hull',\n    desc: \"Dummy caption. It's Greek to you. Unless, of course, you're Greek, in which case, it really makes no sense.\",\n  },\n  {\n    src: require('./15008465772_d50c8f0531_h.jpg'),\n    title: '\u4e00\u53ea\u718a',\n    desc: '\u61a8\u61a8\u7684\u718a\uff0c \u77ed\u77ed\u7684\u5c3e\u5df4',\n  },\n  {\n    src: require('./15008518202_c265dfa55f_h.jpg'),\n  },\n  {\n    src: require('./15008867125_b61960af01_h.jpg'),\n  },\n];\n\nexport default () => {\n  const [visible, setVisible] = useState(true);\n  return (\n    <div>\n      <WhiteSpace size=\"xl\" />\n      <WhiteSpace size=\"xl\" />\n      <Button block={true} type=\"primary\" size=\"large\" onClick={() => setVisible(true)}>\n        \u6253\u5f00\n      </Button>\n      <Gallery className=\"image-view-demo\" data={images} visible={visible} onVisibleChange={setVisible} />\n    </div>\n  );\n};\n",
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u53d7\u63a7\u5c55\u793a',
           description:
             '"<div class=\\"markdown\\"><p>\u53ef\u8bbe\u7f6e\u9ed8\u8ba4\u67e5\u770b\u54ea\u4e00\u5f20\u56fe\u7247</p></div>"',
@@ -39498,7 +39503,7 @@
           dependencies: {
             react: { version: '17.0.1' },
             '@ant-design/icons': { version: '4.2.2' },
-            'weui-react-v2': { version: '3.0.7' },
+            'weui-react-v2': { version: '3.1.0' },
           },
           title: '\u8f93\u5165\u6846\u5404\u79cd\u6837\u5f0f\u7ec4\u5408',
           identifier: 'input-demo',
@@ -39614,7 +39619,7 @@
           },
           dependencies: {
             react: { version: '17.0.1' },
-            'weui-react-v2': { version: '3.0.7' },
+            'weui-react-v2': { version: '3.1.0' },
             '@ant-design/icons': { version: '4.2.2' },
           },
           title: '\u5217\u8868\u7ec4\u5408\u5c55\u793a',
@@ -39666,7 +39671,7 @@
                 'import React from \'react\';\nimport { BallLoading, CircleLoading, WaveLoading, MultistageLoading, Flex } from \'weui-react-v2\';\n\nexport default () => (\n  <>\n    <Flex justify="center">\n      <BallLoading />\n    </Flex>\n    <br />\n    <Flex justify="center">\n      <CircleLoading />\n    </Flex>\n    <br />\n    <Flex justify="center">\n      <WaveLoading />\n    </Flex>\n    <br />\n    <Flex justify="center">\n      <MultistageLoading />\n    </Flex>\n  </>\n);',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u52a0\u8f7d\u4e2d',
           identifier: 'components-loading',
         },
@@ -39699,7 +39704,7 @@
                 'import React from \'react\';\nimport { Loadmore } from \'weui-react-v2\';\n\nexport default () => (\n  <>\n    <Loadmore tips="\u6b63\u5728\u52a0\u8f7d" loading={true} />\n    <br />\n    <Loadmore tips="\u6682\u65e0\u6570\u636e" />\n    <br />\n    <Loadmore dot={true} />\n    <br />\n  </>\n);',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u52a0\u8f7d\u66f4\u591a',
           identifier: 'components-loadmore',
         },
@@ -39718,12 +39723,12 @@
           sources: {
             _: {
               jsx:
-                'import React from \'react\';\nimport { List, ListItem, NumberInput, SafeArea } from \'weui-react-v2\';\n\nexport default function() {\n  return (\n    <SafeArea\n      style={{\n        margin: \'-0.16rem\',\n        minHeight: \'100vh\',\n        backgroundColor: \'#f4f4f4\',\n        padding: \'5px 0 10px\',\n      }}\n    >\n      <List title="\u8f93\u5165\u683c\u5f0f">\n        <ListItem hd="\u4efb\u610f\u8f93\u5165">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6570\u503c" />\n        </ListItem>\n        <ListItem hd="\u4fdd\u7559\u5c0f\u6570\u70b93\u4f4d">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6570\u503c" precision={3} />\n        </ListItem>\n        <ListItem hd="\u53ea\u80fd\u6574\u6570">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6574\u6570" precision={0} />\n        </ListItem>\n        <ListItem hd="\u81ea\u5b9a\u4e49\u524d\u7f00">\n          <NumberInput\n            placeholder="\u524d\u7f00\u52a0\u4e0a\u7f8e\u5143\u7b26\u53f7"\n            formatter={value => `$ ${value || \'\'}`.replace(/\\B(?=(\\d{3})+(?!\\d))/g, \',\')}\n            parser={value => value.replace(/\\$\\s?|(,*)/g, \'\')}\n          />\n        </ListItem>\n        <ListItem hd="\u81ea\u5b9a\u4e49\u540e\u7f00">\n          <NumberInput\n            placeholder="\u540e\u7f00\u52a0\u4e0a\u767e\u5206\u6bd4"\n            min={0}\n            max={100}\n            formatter={value => `${value}%`}\n            parser={value => `${value}`.replace(\'%\', \'\')}\n          />\n        </ListItem>\n        <ListItem hd="\u6700\u5927\u6700\u5c0f\u9650\u5236">\n          <NumberInput placeholder="\u6700\u5c0f3,\u6700\u592715" min={3} max={15} />\n        </ListItem>\n        <ListItem hd="\u7981\u7528\u6837\u5f0f">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165" disabled />\n        </ListItem>\n        <ListItem hd="\u7981\u7528\u6837\u5f0f">\n          <NumberInput value={123} disabled />\n        </ListItem>\n        <ListItem hd="\u663e\u793a\u63a7\u5236\u6309\u94ae">\n          <NumberInput\n            defaultValue={1}\n            min={1}\n            max={10}\n            showControl\n            style={{\n              width: \'30vw\',\n            }}\n          />\n        </ListItem>\n      </List>\n    </SafeArea>\n  );\n}\n',
+                'import React from \'react\';\nimport { List, ListItem, NumberInput, SafeArea } from \'weui-react-v2\';\n\nexport default function() {\n  return (\n    <SafeArea\n      style={{\n        margin: \'-0.16rem\',\n        minHeight: \'100vh\',\n        backgroundColor: \'#f4f4f4\',\n        padding: \'5px 0 10px\',\n      }}\n    >\n      <List title="\u8f93\u5165\u683c\u5f0f">\n        <ListItem hd="\u4efb\u610f\u8f93\u5165">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6570\u503c" />\n        </ListItem>\n        <ListItem hd="\u4fdd\u7559\u5c0f\u6570\u70b93\u4f4d">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6570\u503c" precision={3} />\n        </ListItem>\n        <ListItem hd="\u53ea\u80fd\u6574\u6570">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6574\u6570" precision={0} />\n        </ListItem>\n        <ListItem hd="\u91d1\u989d\u8f93\u5165">\n          <NumberInput placeholder="\u5f39\u51fa\u91d1\u989d\u952e\u76d8" type="amount" />\n        </ListItem>\n        <ListItem hd="\u81ea\u5b9a\u4e49\u524d\u7f00">\n          <NumberInput\n            placeholder="\u524d\u7f00\u52a0\u4e0a\u7f8e\u5143\u7b26\u53f7"\n            formatter={value => `$ ${value || \'\'}`.replace(/\\B(?=(\\d{3})+(?!\\d))/g, \',\')}\n            parser={value => value.replace(/\\$\\s?|(,*)/g, \'\')}\n          />\n        </ListItem>\n        <ListItem hd="\u81ea\u5b9a\u4e49\u540e\u7f00">\n          <NumberInput\n            placeholder="\u540e\u7f00\u52a0\u4e0a\u767e\u5206\u6bd4"\n            min={0}\n            max={100}\n            formatter={value => `${value}%`}\n            parser={value => `${value}`.replace(\'%\', \'\')}\n          />\n        </ListItem>\n        <ListItem hd="\u6700\u5927\u6700\u5c0f\u9650\u5236">\n          <NumberInput placeholder="\u6700\u5c0f3,\u6700\u592715" min={3} max={15} />\n        </ListItem>\n        <ListItem hd="\u7981\u7528\u6837\u5f0f">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165" disabled />\n        </ListItem>\n        <ListItem hd="\u7981\u7528\u6837\u5f0f">\n          <NumberInput value={123} disabled />\n        </ListItem>\n        <ListItem hd="\u663e\u793a\u63a7\u5236\u6309\u94ae">\n          <NumberInput\n            defaultValue={1}\n            min={1}\n            max={10}\n            showControl\n            style={{\n              width: \'30vw\',\n            }}\n          />\n        </ListItem>\n      </List>\n    </SafeArea>\n  );\n}\n',
               tsx:
-                'import React from \'react\';\nimport { List, ListItem, NumberInput, SafeArea } from \'weui-react-v2\';\n\nexport default function () {\n  return (\n    <SafeArea style={{ margin: \'-0.16rem\', minHeight: \'100vh\', backgroundColor: \'#f4f4f4\', padding: \'5px 0 10px\' }}>\n      <List title="\u8f93\u5165\u683c\u5f0f">\n        <ListItem hd="\u4efb\u610f\u8f93\u5165">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6570\u503c" />\n        </ListItem>\n        <ListItem hd="\u4fdd\u7559\u5c0f\u6570\u70b93\u4f4d">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6570\u503c" precision={3} />\n        </ListItem>\n        <ListItem hd="\u53ea\u80fd\u6574\u6570">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6574\u6570" precision={0} />\n        </ListItem>\n        <ListItem hd="\u81ea\u5b9a\u4e49\u524d\u7f00">\n          <NumberInput\n            placeholder="\u524d\u7f00\u52a0\u4e0a\u7f8e\u5143\u7b26\u53f7"\n            formatter={(value) => `$ ${value || \'\'}`.replace(/\\B(?=(\\d{3})+(?!\\d))/g, \',\')}\n            parser={(value) => value.replace(/\\$\\s?|(,*)/g, \'\')}\n          />\n        </ListItem>\n        <ListItem hd="\u81ea\u5b9a\u4e49\u540e\u7f00">\n          <NumberInput\n            placeholder="\u540e\u7f00\u52a0\u4e0a\u767e\u5206\u6bd4"\n            min={0}\n            max={100}\n            formatter={(value) => `${value}%`}\n            parser={(value) => (value + \'\').replace(\'%\', \'\')}\n          />\n        </ListItem>\n        <ListItem hd="\u6700\u5927\u6700\u5c0f\u9650\u5236">\n          <NumberInput placeholder="\u6700\u5c0f3,\u6700\u592715" min={3} max={15} />\n        </ListItem>\n        <ListItem hd="\u7981\u7528\u6837\u5f0f">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165" disabled={true} />\n        </ListItem>\n        <ListItem hd="\u7981\u7528\u6837\u5f0f">\n          <NumberInput value={123} disabled={true} />\n        </ListItem>\n        <ListItem hd="\u663e\u793a\u63a7\u5236\u6309\u94ae">\n          <NumberInput defaultValue={1} min={1} max={10} showControl={true} style={{ width: \'30vw\' }} />\n        </ListItem>\n      </List>\n    </SafeArea>\n  );\n}\n',
+                'import React from \'react\';\nimport { List, ListItem, NumberInput, SafeArea } from \'weui-react-v2\';\n\nexport default function () {\n  return (\n    <SafeArea style={{ margin: \'-0.16rem\', minHeight: \'100vh\', backgroundColor: \'#f4f4f4\', padding: \'5px 0 10px\' }}>\n      <List title="\u8f93\u5165\u683c\u5f0f">\n        <ListItem hd="\u4efb\u610f\u8f93\u5165">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6570\u503c" />\n        </ListItem>\n        <ListItem hd="\u4fdd\u7559\u5c0f\u6570\u70b93\u4f4d">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6570\u503c" precision={3} />\n        </ListItem>\n        <ListItem hd="\u53ea\u80fd\u6574\u6570">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6574\u6570" precision={0} />\n        </ListItem>\n        <ListItem hd="\u91d1\u989d\u8f93\u5165">\n          <NumberInput placeholder="\u5f39\u51fa\u91d1\u989d\u952e\u76d8" type="amount" />\n        </ListItem>\n        <ListItem hd="\u81ea\u5b9a\u4e49\u524d\u7f00">\n          <NumberInput\n            placeholder="\u524d\u7f00\u52a0\u4e0a\u7f8e\u5143\u7b26\u53f7"\n            formatter={(value) => `$ ${value || \'\'}`.replace(/\\B(?=(\\d{3})+(?!\\d))/g, \',\')}\n            parser={(value) => value.replace(/\\$\\s?|(,*)/g, \'\')}\n          />\n        </ListItem>\n        <ListItem hd="\u81ea\u5b9a\u4e49\u540e\u7f00">\n          <NumberInput\n            placeholder="\u540e\u7f00\u52a0\u4e0a\u767e\u5206\u6bd4"\n            min={0}\n            max={100}\n            formatter={(value) => `${value}%`}\n            parser={(value) => (value + \'\').replace(\'%\', \'\')}\n          />\n        </ListItem>\n        <ListItem hd="\u6700\u5927\u6700\u5c0f\u9650\u5236">\n          <NumberInput placeholder="\u6700\u5c0f3,\u6700\u592715" min={3} max={15} />\n        </ListItem>\n        <ListItem hd="\u7981\u7528\u6837\u5f0f">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165" disabled={true} />\n        </ListItem>\n        <ListItem hd="\u7981\u7528\u6837\u5f0f">\n          <NumberInput value={123} disabled={true} />\n        </ListItem>\n        <ListItem hd="\u663e\u793a\u63a7\u5236\u6309\u94ae">\n          <NumberInput defaultValue={1} min={1} max={10} showControl={true} style={{ width: \'30vw\' }} />\n        </ListItem>\n      </List>\n    </SafeArea>\n  );\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u7ec4\u5408\u6837\u5f0f',
           identifier: 'number-input-demo',
         },
@@ -39804,7 +39809,7 @@
                 'import React from \'react\';\nimport { Panel, PanelItem, Brief, ListItem, SafeArea } from \'weui-react-v2\';\n\nexport default () => (\n  <SafeArea style={{ margin: \'-0.16rem\', minHeight: \'100vh\', backgroundColor: \'#f4f4f4\', padding: \'5px 0 10px\' }}>\n    <Panel title="\u56fe\u6587\u7ec4\u5408\u5217\u8868">\n      <PanelItem title="\u6807\u9898\u4e00" thumb={require(\'./icon_tabbar.png\')}>\n        \u7531\u5404\u79cd\u7269\u8d28\u7ec4\u6210\u7684\u5de8\u578b\u7403\u72b6\u5929\u4f53\uff0c\u53eb\u505a\u661f\u7403\u3002\u661f\u7403\u6709\u4e00\u5b9a\u7684\u5f62\u72b6\uff0c\u6709\u81ea\u5df1\u7684\u8fd0\u884c\u8f68\u9053\u3002\n      </PanelItem>\n      <PanelItem title="\u6807\u9898\u4e8c" thumb={require(\'./icon_tabbar.png\')}>\n        \u7531\u5404\u79cd\u7269\u8d28\u7ec4\u6210\u7684\u5de8\u578b\u7403\u72b6\u5929\u4f53\uff0c\u53eb\u505a\u661f\u7403\u3002\u661f\u7403\u6709\u4e00\u5b9a\u7684\u5f62\u72b6\uff0c\u6709\u81ea\u5df1\u7684\u8fd0\u884c\u8f68\u9053\u3002\n      </PanelItem>\n      <ListItem arrow={true}>\n        <a>\u67e5\u770b\u66f4\u591a</a>\n      </ListItem>\n    </Panel>\n    <Panel title="\u6587\u5b57\u7ec4\u5408\u5217\u8868">\n      <PanelItem title="\u6807\u9898\u4e00" text={true}>\n        \u7531\u5404\u79cd\u7269\u8d28\u7ec4\u6210\u7684\u5de8\u578b\u7403\u72b6\u5929\u4f53\uff0c\u53eb\u505a\u661f\u7403\u3002\u661f\u7403\u6709\u4e00\u5b9a\u7684\u5f62\u72b6\uff0c\u6709\u81ea\u5df1\u7684\u8fd0\u884c\u8f68\u9053\u3002\n      </PanelItem>\n      <PanelItem title="\u6807\u9898\u4e8c" text={true}>\n        \u7531\u5404\u79cd\u7269\u8d28\u7ec4\u6210\u7684\u5de8\u578b\u7403\u72b6\u5929\u4f53\uff0c\u53eb\u505a\u661f\u7403\u3002\u661f\u7403\u6709\u4e00\u5b9a\u7684\u5f62\u72b6\uff0c\u6709\u81ea\u5df1\u7684\u8fd0\u884c\u8f68\u9053\u3002\n      </PanelItem>\n    </Panel>\n    <Panel title="\u6587\u5b57\u5217\u8868\u9644\u52a0\u6e90">\n      <PanelItem\n        title="\u6807\u9898\u4e00"\n        text={true}\n        info={\n          <>\n            <Brief>\u6587\u5b57\u6765\u6e90</Brief>\n            <Brief>\u65f6\u95f4</Brief>\n            <Brief divider={true}>\u5176\u4ed6\u4fe1\u606f</Brief>\n          </>\n        }\n      >\n        \u7531\u5404\u79cd\u7269\u8d28\u7ec4\u6210\u7684\u5de8\u578b\u7403\u72b6\u5929\u4f53\uff0c\u53eb\u505a\u661f\u7403\u3002\u661f\u7403\u6709\u4e00\u5b9a\u7684\u5f62\u72b6\uff0c\u6709\u81ea\u5df1\u7684\u8fd0\u884c\u8f68\u9053\u3002\n      </PanelItem>\n    </Panel>\n  </SafeArea>\n);',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u56fe\u6587\u7ec4\u5408\u9762\u677f',
           identifier: 'components-panel',
         },
@@ -39833,7 +39838,7 @@
                 "import { PickerItem } from 'weui-react-v2';\n\n/**\n * \u5355\u5217\u6570\u636e\n */\nexport const singlePickerData: PickerItem[] = [\n  {\n    label: '\u98de\u673a\u7968',\n    value: '\u98de\u673a\u7968',\n  },\n  {\n    label: '\u706b\u8f66\u7968',\n    value: '\u706b\u8f66\u7968',\n  },\n  {\n    label: '\u7684\u58eb\u7968',\n    value: '\u7684\u58eb\u7968',\n  },\n  {\n    label: '\u4f4f\u5bbf\u8d39',\n    value: '\u4f4f\u5bbf\u8d39',\n  },\n  {\n    label: '\u793c\u54c1\u8d39(disabled)',\n    value: '\u793c\u54c1\u8d39',\n    disabled: true,\n  },\n  {\n    label: '\u6d3b\u52a8\u8d39',\n    value: '\u6d3b\u52a8\u8d39',\n  },\n  {\n    label: '\u901a\u8baf\u8d39',\n    value: '\u901a\u8baf\u8d39',\n  },\n  {\n    label: '\u8865\u52a9',\n    value: '\u8865\u52a9',\n  },\n  {\n    label: '\u901a\u8baf\u8d392',\n    value: '\u901a\u8baf\u8d392',\n  },\n  {\n    label: '\u5176\u4ed6',\n    value: '\u5176\u4ed6',\n  },\n];\n\n/**\n * \u53cc\u5217\u6570\u636e\n */\nexport const miltiplePickerData: PickerItem[][] = [\n  [\n    {\n      label: '\u98de\u673a\u7968',\n      value: '\u98de\u673a\u7968',\n    },\n    {\n      label: '\u706b\u8f66\u7968',\n      value: '\u706b\u8f66\u7968',\n    },\n    {\n      label: '\u7684\u58eb\u7968',\n      value: '\u7684\u58eb\u7968',\n    },\n    {\n      label: '\u6253\u5370\u7968',\n      value: '\u6253\u5370\u7968',\n    },\n  ],\n  [\n    {\n      label: '\u4f4f\u5bbf\u8d39',\n      value: '\u4f4f\u5bbf\u8d39',\n    },\n    {\n      label: '\u793c\u54c1\u8d39',\n      value: '\u793c\u54c1\u8d39',\n    },\n    {\n      label: '\u6d3b\u52a8\u8d39',\n      value: '\u6d3b\u52a8\u8d39',\n    },\n    {\n      label: '\u901a\u8baf\u8d39',\n      value: '\u901a\u8baf\u8d39',\n    },\n    {\n      label: '\u8865\u52a9',\n      value: '\u8865\u52a9',\n    },\n  ],\n];\n\n/**\n * \u7ea7\u8054\u6570\u636e\n */\nexport const cascadePickerData: PickerItem[] = [\n  {\n    label: '\u7968\u636e',\n    value: '\u7968\u636e',\n    children: [\n      {\n        label: '\u98de\u673a\u7968',\n        value: '\u98de\u673a\u7968',\n      },\n      {\n        label: '\u706b\u8f66\u7968',\n        value: '\u706b\u8f66\u7968',\n      },\n      {\n        label: '\u7684\u58eb\u7968',\n        value: '\u7684\u58eb\u7968',\n      },\n      {\n        label: '\u540c\u503c\u6d4b\u8bd5',\n        value: '\u540c\u503c\u6d4b\u8bd5',\n      },\n      {\n        label: '\u6253\u5370\u7968',\n        value: '\u6253\u5370\u7968',\n      },\n    ],\n  },\n  {\n    label: '\u8d39\u7528',\n    value: '\u8d39\u7528',\n    children: [\n      {\n        label: '\u4f4f\u5bbf\u8d39',\n        value: '\u4f4f\u5bbf\u8d39',\n      },\n      {\n        label: '\u793c\u54c1\u8d39',\n        value: '\u793c\u54c1\u8d39',\n      },\n      {\n        label: '\u6d3b\u52a8\u8d39',\n        value: '\u6d3b\u52a8\u8d39',\n      },\n      {\n        label: '\u540c\u503c\u6d4b\u8bd5',\n        value: '\u540c\u503c\u6d4b\u8bd5',\n      },\n      {\n        label: '\u901a\u8baf\u8d39',\n        value: '\u901a\u8baf\u8d39',\n      },\n      {\n        label: '\u8865\u52a9',\n        value: '\u8865\u52a9',\n      },\n    ],\n  },\n];\n",
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: 'Picker\u9009\u62e9\u5668',
           identifier: 'picker-picker',
         },
@@ -39862,7 +39867,7 @@
                 "import { PickerItem } from 'weui-react-v2';\n\n/**\n * \u5355\u5217\u6570\u636e\n */\nexport const singlePickerData: PickerItem[] = [\n  {\n    label: '\u98de\u673a\u7968',\n    value: '\u98de\u673a\u7968',\n  },\n  {\n    label: '\u706b\u8f66\u7968',\n    value: '\u706b\u8f66\u7968',\n  },\n  {\n    label: '\u7684\u58eb\u7968',\n    value: '\u7684\u58eb\u7968',\n  },\n  {\n    label: '\u4f4f\u5bbf\u8d39',\n    value: '\u4f4f\u5bbf\u8d39',\n  },\n  {\n    label: '\u793c\u54c1\u8d39(disabled)',\n    value: '\u793c\u54c1\u8d39',\n    disabled: true,\n  },\n  {\n    label: '\u6d3b\u52a8\u8d39',\n    value: '\u6d3b\u52a8\u8d39',\n  },\n  {\n    label: '\u901a\u8baf\u8d39',\n    value: '\u901a\u8baf\u8d39',\n  },\n  {\n    label: '\u8865\u52a9',\n    value: '\u8865\u52a9',\n  },\n  {\n    label: '\u901a\u8baf\u8d392',\n    value: '\u901a\u8baf\u8d392',\n  },\n  {\n    label: '\u5176\u4ed6',\n    value: '\u5176\u4ed6',\n  },\n];\n\n/**\n * \u53cc\u5217\u6570\u636e\n */\nexport const miltiplePickerData: PickerItem[][] = [\n  [\n    {\n      label: '\u98de\u673a\u7968',\n      value: '\u98de\u673a\u7968',\n    },\n    {\n      label: '\u706b\u8f66\u7968',\n      value: '\u706b\u8f66\u7968',\n    },\n    {\n      label: '\u7684\u58eb\u7968',\n      value: '\u7684\u58eb\u7968',\n    },\n    {\n      label: '\u6253\u5370\u7968',\n      value: '\u6253\u5370\u7968',\n    },\n  ],\n  [\n    {\n      label: '\u4f4f\u5bbf\u8d39',\n      value: '\u4f4f\u5bbf\u8d39',\n    },\n    {\n      label: '\u793c\u54c1\u8d39',\n      value: '\u793c\u54c1\u8d39',\n    },\n    {\n      label: '\u6d3b\u52a8\u8d39',\n      value: '\u6d3b\u52a8\u8d39',\n    },\n    {\n      label: '\u901a\u8baf\u8d39',\n      value: '\u901a\u8baf\u8d39',\n    },\n    {\n      label: '\u8865\u52a9',\n      value: '\u8865\u52a9',\n    },\n  ],\n];\n\n/**\n * \u7ea7\u8054\u6570\u636e\n */\nexport const cascadePickerData: PickerItem[] = [\n  {\n    label: '\u7968\u636e',\n    value: '\u7968\u636e',\n    children: [\n      {\n        label: '\u98de\u673a\u7968',\n        value: '\u98de\u673a\u7968',\n      },\n      {\n        label: '\u706b\u8f66\u7968',\n        value: '\u706b\u8f66\u7968',\n      },\n      {\n        label: '\u7684\u58eb\u7968',\n        value: '\u7684\u58eb\u7968',\n      },\n      {\n        label: '\u540c\u503c\u6d4b\u8bd5',\n        value: '\u540c\u503c\u6d4b\u8bd5',\n      },\n      {\n        label: '\u6253\u5370\u7968',\n        value: '\u6253\u5370\u7968',\n      },\n    ],\n  },\n  {\n    label: '\u8d39\u7528',\n    value: '\u8d39\u7528',\n    children: [\n      {\n        label: '\u4f4f\u5bbf\u8d39',\n        value: '\u4f4f\u5bbf\u8d39',\n      },\n      {\n        label: '\u793c\u54c1\u8d39',\n        value: '\u793c\u54c1\u8d39',\n      },\n      {\n        label: '\u6d3b\u52a8\u8d39',\n        value: '\u6d3b\u52a8\u8d39',\n      },\n      {\n        label: '\u540c\u503c\u6d4b\u8bd5',\n        value: '\u540c\u503c\u6d4b\u8bd5',\n      },\n      {\n        label: '\u901a\u8baf\u8d39',\n        value: '\u901a\u8baf\u8d39',\n      },\n      {\n        label: '\u8865\u52a9',\n        value: '\u8865\u52a9',\n      },\n    ],\n  },\n];\n",
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: 'Picker\u9762\u677f',
           identifier: 'picker-demo',
         },
@@ -39886,7 +39891,7 @@
                 "import React, { useState } from 'react';\nimport { List, ListItem, Picker, SafeArea, PickerItem, Button } from 'weui-react-v2';\n\nfunction getRandom(): PickerItem {\n  const n = Math.random();\n  return { label: n, value: n };\n}\n\nexport default function () {\n  const [data, setData] = useState<PickerItem[]>([]);\n  const [val, setVal] = useState<any>(null);\n\n  function switchData() {\n    setTimeout(() => {\n      setData([getRandom(), getRandom(), getRandom()]);\n    }, 300);\n  }\n\n  return (\n    <SafeArea style={{ margin: '-0.16rem', minHeight: '100vh', backgroundColor: '#f4f4f4', padding: '5px 0 10px' }}>\n      <List>\n        <Picker placeholder=\"\u8bf7\u9009\u62e9\" data={data} value={val} onChange={setVal}>\n          <ListItem hd=\"\u968f\u673a\" arrow={true} />\n        </Picker>\n        <ListItem>\n          <Button onClick={switchData}>\u5207\u6362\u6570\u636e\u6e90</Button>\n        </ListItem>\n      </List>\n    </SafeArea>\n  );\n}\n",
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u5f02\u6b65\u8bbe\u7f6e\u6570\u636e\u6e90',
           identifier: 'picker-async',
         },
@@ -39977,7 +39982,7 @@
                 'import React from \'react\';\nimport { SafeArea, Preview, PreviewItem, PreviewButton, WhiteSpace } from \'weui-react-v2\';\n\nexport default () => (\n  <SafeArea style={{ margin: \'-0.16rem\', minHeight: \'100vh\', backgroundColor: \'#f4f4f4\', padding: \'5px 0 10px\' }}>\n    <Preview subTitle="\u4ed8\u6b3e\u91d1\u989d" title="\xa52400.00" footer={<PreviewButton key="c">\u64cd\u4f5c</PreviewButton>}>\n      <PreviewItem title="\u5546\u54c1">\u7535\u52a8\u6253\u5355\u673a</PreviewItem>\n      <PreviewItem title="\u6807\u9898\u6807\u9898">\u540d\u5b57\u540d\u5b57\u540d\u5b57</PreviewItem>\n      <PreviewItem title="\u6807\u9898\u6807\u9898">\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57</PreviewItem>\n    </Preview>\n\n    <WhiteSpace size="xl" />\n\n    <Preview\n      subTitle="\u4ed8\u6b3e\u91d1\u989d"\n      title="\xa52400.00"\n      footer={[\n        <PreviewButton key="a">\u8f85\u52a9\u64cd\u4f5c</PreviewButton>,\n        <PreviewButton type="primary" key="b">\n          \u63d0\u4ea4\n        </PreviewButton>,\n      ]}\n    >\n      <PreviewItem title="\u5546\u54c1">\u7535\u52a8\u6253\u5355\u673a</PreviewItem>\n      <PreviewItem title="\u6807\u9898\u6807\u9898">\u540d\u5b57\u540d\u5b57\u540d\u5b57</PreviewItem>\n      <PreviewItem title="\u6807\u9898\u6807\u9898">\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57</PreviewItem>\n    </Preview>\n\n    <WhiteSpace size="xl" />\n\n    <Preview subTitle="\u5de6\u5bf9\u9f50" align="left">\n      <PreviewItem title="\u59d3\u540d">XueYou</PreviewItem>\n      <PreviewItem title="\u5e74\u9f84">666</PreviewItem>\n      <PreviewItem title="\u559c\u597d">\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57</PreviewItem>\n    </Preview>\n  </SafeArea>\n);',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u9884\u89c8\u5185\u5bb9',
           identifier: 'components-preview',
         },
@@ -40006,7 +40011,7 @@
                 '// html,\n// body {\n//   width: 100%;\n//   height: 100%;\n//   overflow: hidden;\n// }\n// #root {\n//   width: 100%;\n//   height: 100%;\n//   overflow-y: auto;\n//   -webkit-overflow-scrolling: auto;\n// }\n.pull-refresh-demo {\n  .tips {\n    padding: 80px;\n    background-color: antiquewhite;\n    text-align: center;\n    font-size: 28px;\n    color: #000;\n    margin: 0;\n  }\n\n  .fake-list {\n    min-height: 600px;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    padding: 0;\n    margin: 20px 0;\n\n    li {\n      padding: 40px;\n      text-align: center;\n      font-size: 28px;\n      color: #000;\n      background-color: aliceblue;\n      margin-bottom: 20px;\n      overflow: hidden;\n      border-radius: 15px;\n    }\n  }\n}\n\n// html,\n// body {\n//   height: 100%;\n//   overflow: hidden;\n// }\n// #root {\n//   height: 100%;\n//   overflow: auto;\n// }\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u4e0b\u62c9\u5237\u65b0',
           description:
             '"<div class=\\"markdown\\"><p>\u8bbe\u7f6e\u9608\u503c\u53ef\u4ee5\u6307\u5b9a\u4e0b\u62c9\u591a\u5c11\u8ddd\u79bb\uff0c\u677e\u5f00\u540e\u5237\u65b0</p></div>"',
@@ -40040,7 +40045,7 @@
                 "import React from 'react';\nimport { Rate } from 'weui-react-v2';\n\nexport default () => (\n  <>\n    <div style={{ textAlign: 'center' }}>\n      <Rate defaultValue={3} />\n    </div>\n  </>\n);",
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: 'count\u53ef\u4ee5\u81ea\u5b9a\u4e49\u661f\u661f\u6570\u91cf',
           identifier: 'components-rate',
         },
@@ -40081,7 +40086,7 @@
                 '.safearea-demo {\n  .block {\n    font-size: 60px;\n    color: #fff;\n    display: block;\n    width: 100%;\n    text-align: center;\n    height: 600px;\n    line-height: 600px;\n    background-color: #009a61;\n    background-image: linear-gradient(\n      -45deg,\n      rgba(255, 255, 255, 0.2) 25%,\n      transparent 25%,\n      transparent 50%,\n      rgba(255, 255, 255, 0.2) 50%,\n      rgba(255, 255, 255, 0.2) 75%,\n      transparent 75%,\n      transparent\n    );\n\n    &:nth-child(odd) {\n      background: repeating-linear-gradient(135deg, #ffeb3b, #ffeb3b 0.25em, #0092b7 0, #0092b7 0.75em);\n    }\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u56db\u5468\u4fdd\u7559\u5b89\u5168\u8fb9\u8ddd',
           identifier: 'components-safe-area',
         },
@@ -40105,7 +40110,7 @@
                 "import React from 'react';\nimport { SafeArea, Search } from 'weui-react-v2';\n\nexport default () => {\n  return (\n    <SafeArea style={{ margin: '-0.16rem' }}>\n      <Search\n        placeholder=\"\u641c\u7d22\"\n        onConfirm={(val) => console.log('\u786e\u8ba4\u8f93\u5165: ', val)}\n        onSearch={(val) => console.log('search: ', val)}\n        onCancel={() => console.log('\u53d6\u6d88\u641c\u7d22')}\n      />\n    </SafeArea>\n  );\n};\n",
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u641c\u7d22\u680f',
           identifier: 'search-demo',
         },
@@ -40144,7 +40149,7 @@
                 "import React from 'react';\nimport { SegmentedControl, PickerItem } from 'weui-react-v2';\n\nconst data: PickerItem[] = [\n  {\n    label: '\u65e5',\n    value: 'day',\n  },\n  {\n    label: '\u6708',\n    value: 'month',\n  },\n  {\n    label: '\u5e74',\n    value: 'year',\n  },\n];\n\nexport default () => (\n  <>\n    <SegmentedControl data={data} defaultValue=\"month\" onChange={(val) => console.log('\u9009\u62e9', val)} />\n  </>\n);",
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u5206\u6bb5\u5668',
           identifier: 'components-segmented-control',
         },
@@ -40197,7 +40202,7 @@
                 '.skeleton-demo {\n  .weui-item-bd {\n    flex: 0 0 160px;\n  }\n\n  .weui-item-ft {\n    flex: 1;\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u5207\u6362\u52a0\u8f7d\u72b6\u6001',
           identifier: 'components-skeleton',
         },
@@ -40243,7 +40248,7 @@
                 '.skeleton-demo {\n  .weui-item-bd {\n    flex: 0 0 160px;\n  }\n\n  .weui-item-ft {\n    flex: 1;\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: 'Stripe\u7528\u4e8e\u884c\u5185\u6570\u636e',
           identifier: 'components-skeleton-1',
         },
@@ -40287,7 +40292,7 @@
                 'import React from \'react\';\nimport { Spin, Flex, WhiteSpace } from \'weui-react-v2\';\n\nexport default () => (\n  <>\n    <Flex justify="center">\n      <Spin spinning={true} size="small" />\n    </Flex>\n    <WhiteSpace size="sm" />\n    <Flex justify="center">\n      <Spin spinning={true} />\n    </Flex>\n\n    <WhiteSpace size="sm" />\n    <Flex justify="center">\n      <Spin spinning={true} size="large" />\n    </Flex>\n  </>\n);',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u4e0d\u540c\u5c3a\u5bf8',
           description:
             '"<div class=\\"markdown\\"><p>\u5185\u7f6e3\u79cd\u4e0d\u540c\u5c3a\u5bf8\uff0c \u8bbe\u7f6e <code>size</code> \u5c5e\u6027\u4e3a <code>small</code>, <code>large</code>, <code>default</code>\u3002</p></div>"',
@@ -40318,7 +40323,7 @@
                 '.spin-demo {\n  .alert-box {\n    font-family: Monospaced Number, Chinese Quote, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC,\n      Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;\n    font-size: 14px;\n    line-height: 1.5;\n    color: rgba(0, 0, 0, 0.65);\n    -webkit-box-sizing: border-box;\n    box-sizing: border-box;\n    margin: 0;\n    padding: 0;\n    list-style: none;\n    position: relative;\n    padding: 8px 15px 8px 37px;\n    border-radius: 4px;\n    border: 1px solid #91d5ff;\n    background-color: #e6f7ff;\n    padding: 15px 15px 15px 64px;\n    position: relative;\n    border-radius: 4px;\n    color: rgba(0, 0, 0, 0.65);\n    line-height: 1.5;\n    padding: 15px;\n  }\n\n  .xy-spin {\n    margin-right: 16px;\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: 'inline/block\u6a21\u5f0f\u5207\u6362',
           description:
             '"<div class=\\"markdown\\"><p>\u9ed8\u8ba4\u662f\u5185\u8054\u6a21\u5f0f\uff0c<code>Spin</code>\u4e0d\u4f1a\u5bbd\u5ea6100%</p></div>"',
@@ -40378,7 +40383,7 @@
           },
           dependencies: {
             react: { version: '17.0.1' },
-            'weui-react-v2': { version: '3.0.7' },
+            'weui-react-v2': { version: '3.1.0' },
             '@ant-design/icons': { version: '4.2.2' },
           },
           title: '\u81ea\u5b9a\u4e49\u6307\u793a\u7b26',
@@ -40411,7 +40416,7 @@
                 '// html,\n// body {\n//   width: 100%;\n//   height: 100%;\n//   overflow: hidden;\n// }\n// #root {\n//   width: 100%;\n//   height: 100%;\n//   // background-color: rgb(244, 244, 244);\n//   overflow-y: auto;\n//   -webkit-overflow-scrolling: auto;\n// }\n// #root .__dumi-default-mobile-demo-layout {\n//   padding: 0;\n//   width: 100%;\n//   height: 100%;\n//   overflow: auto;\n// }\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u5de6\u53f3\u6ed1\u52a8\u663e\u793a\u6309\u94ae',
           description:
             '"<div class=\\"markdown\\"><p>\u53ef\u8bbe\u7f6e\u6ed1\u52a8\u6253\u5f00\u8ddd\u79bb</p></div>"',
@@ -40466,7 +40471,7 @@
                 '.swiper-demo {\n  .fimg {\n    width: 100%;\n    height: 400px;\n    // touch-action: none;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center center;\n    box-shadow: 0 62.5px 125px -25px rgba(50, 50, 73, 0.5), 0 37.5px 75px -37.5px rgba(0, 0, 0, 0.6);\n  }\n}\n.swiper-demo2 {\n  .fimg {\n    width: 100%;\n    height: 100%;\n    // touch-action: none;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center center;\n  }\n}\n\n.tabs-demo {\n  font-size: 32px;\n\n  select {\n    display: block;\n    width: 100%;\n    height: 45px;\n    line-height: 45px;\n    font-size: 35px;\n  }\n\n  .weui-tab-panel {\n    // background-color: #607d8b;\n    text-align: center;\n    padding: 20px;\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u81ea\u52a8\u8f6e\u64ad',
           description:
             '"<div class=\\"markdown\\"><p>scaleMode\u5f00\u542f\u62d6\u62fd\u7f29\u653e\u6548\u679c</p></div>"',
@@ -40528,7 +40533,7 @@
                 '.swiper-demo {\n  .fimg {\n    width: 100%;\n    height: 400px;\n    // touch-action: none;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center center;\n    box-shadow: 0 62.5px 125px -25px rgba(50, 50, 73, 0.5), 0 37.5px 75px -37.5px rgba(0, 0, 0, 0.6);\n  }\n}\n.swiper-demo2 {\n  .fimg {\n    width: 100%;\n    height: 100%;\n    // touch-action: none;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center center;\n  }\n}\n\n.tabs-demo {\n  font-size: 32px;\n\n  select {\n    display: block;\n    width: 100%;\n    height: 45px;\n    line-height: 45px;\n    font-size: 35px;\n  }\n\n  .weui-tab-panel {\n    // background-color: #607d8b;\n    text-align: center;\n    padding: 20px;\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u5782\u76f4\u6eda\u52a8',
           description:
             '"<div class=\\"markdown\\"><p>\u5782\u76f4\u6eda\u52a8\u65f6\u5fc5\u987b\u7ed9\u5bb9\u5668\u8bbe\u7f6e\u56fa\u5b9a\u9ad8\u5ea6</p></div>"',
@@ -40599,7 +40604,7 @@
                 'import React from \'react\';\nimport { Switch, Form, FormItem, List } from \'weui-react-v2\';\n\nexport default () => (\n  <Form labelWidth="20vw">\n    <List title="\u4e0d\u540c\u5c3a\u5bf8">\n      <FormItem label="\u5c0f\u5c3a\u5bf8" access={false} align="right">\n        <Switch defaultChecked={true} size="small" />\n      </FormItem>\n      <FormItem label="\u4e2d\u7b49\u5c3a\u5bf8" access={false} align="right">\n        <Switch defaultChecked={true} size="default" />\n      </FormItem>\n      <FormItem label="\u5927\u5c3a\u5bf8" access={false} align="right">\n        <Switch defaultChecked={true} size="large" />\n      </FormItem>\n    </List>\n    <List title="\u7981\u7528\u6837\u5f0f">\n      <FormItem label="\u5f00\u7981\u7528" access={false} align="right">\n        <Switch disabled={true} checked={true} />\n      </FormItem>\n      <FormItem label="\u5173\u7981\u7528" access={false} align="right">\n        <Switch disabled={true} />\n      </FormItem>\n    </List>\n    <List title="\u81ea\u5b9a\u4e49\u6807\u8bc6\u7b26">\n      <FormItem label="\u4e2d\u6587\u63d0\u793a" access={false} align="right">\n        <Switch checkedNode="\u5f00" unCheckedNode="\u5173" />\n      </FormItem>\n    </List>\n  </Form>\n);',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u4e0d\u540c\u5c3a\u5bf8',
           identifier: 'components-switch',
         },
@@ -40665,7 +40670,7 @@
                 '.tabs-demo {\n  .block {\n    background-color: antiquewhite;\n    margin: 40px;\n    height: 600px;\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u61d2\u52a0\u8f7d',
           description:
             '"<div class=\\"markdown\\"><p>F12\u67e5\u770b\u5143\u7d20\uff0c\u53ef\u4ee5\u770b\u5230\u61d2\u52a0\u8f7d\u65f6\uff0c\u5185\u5bb9\u4e0d\u4f1a\u771f\u7684\u63d2\u5165dom,\u800c\u662f\u5360\u4f4d\u7b26\u53d6\u4ee3</p></div>"',
@@ -40761,7 +40766,7 @@
                 '.swiper-demo {\n  .fimg {\n    width: 100%;\n    height: 400px;\n    // touch-action: none;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center center;\n    box-shadow: 0 62.5px 125px -25px rgba(50, 50, 73, 0.5), 0 37.5px 75px -37.5px rgba(0, 0, 0, 0.6);\n  }\n}\n.swiper-demo2 {\n  .fimg {\n    width: 100%;\n    height: 100%;\n    // touch-action: none;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center center;\n  }\n}\n\n.tabs-demo {\n  font-size: 32px;\n\n  select {\n    display: block;\n    width: 100%;\n    height: 45px;\n    line-height: 45px;\n    font-size: 35px;\n  }\n\n  .weui-tab-panel {\n    // background-color: #607d8b;\n    text-align: center;\n    padding: 20px;\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u52a8\u6001\u589e\u51cf',
           description:
             '"<div class=\\"markdown\\"><p>\u5f53tabbar\u6ea2\u51fa\u540e\uff0c\u4f1a\u663e\u793a\u7bad\u5934, \u9ed8\u8ba4\u5f00\u542f\u81ea\u52a8\u9ad8\u5ea6</p></div>"',
@@ -40800,7 +40805,7 @@
           dependencies: {
             classnames: { version: '2.2.6' },
             react: { version: '17.0.1' },
-            'weui-react-v2': { version: '3.0.7' },
+            'weui-react-v2': { version: '3.1.0' },
           },
           title: '\u5782\u76f4\u663e\u793a',
           description:
@@ -40827,7 +40832,7 @@
                 'import React from \'react\';\nimport { SafeArea, List, ListItem, TextArea } from \'weui-react-v2\';\n\nexport default function () {\n  return (\n    <SafeArea style={{ margin: \'-0.16rem\', minHeight: \'100vh\', backgroundColor: \'#f4f4f4\', padding: \'5px 0 10px\' }}>\n      <List>\n        <ListItem hd="\u914d\u5408\u6807\u9898:" alignItems="flex-start">\n          <TextArea placeholder="\u8bf7\u63cf\u8ff0\u4f60\u6240\u53d1\u751f\u7684\u95ee\u9898" />\n        </ListItem>\n        <ListItem>\n          <TextArea disabled={true} defaultValue="\u6211\u662f\u7981\u7528\u7684, ---\u606d\u559c\u53d1\u8d22\ud83c\udf89---" placeholder="\u8bf7\u63cf\u8ff0\u4f60\u6240\u53d1\u751f\u7684\u95ee\u9898" />\n        </ListItem>\n      </List>\n\n      <List title="\u95ee\u9898\u63cf\u8ff0">\n        <ListItem>\n          <TextArea placeholder="\u8bf7\u63cf\u8ff0\u4f60\u6240\u53d1\u751f\u7684\u95ee\u9898" />\n        </ListItem>\n      </List>\n    </SafeArea>\n  );\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u6587\u672c\u57df',
           description: '"<div class=\\"markdown\\"><p>\u9ed8\u8ba4\u6700\u5927\u5b57\u7b26\u6570\u4e3a200</p></div>"',
           identifier: 'textarea-demo',
@@ -40856,7 +40861,7 @@
               content: '.toast-demo {\n  .weui-btn {\n    margin-top: 20px;\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u8f7b\u63d0\u793a',
           description:
             '"<div class=\\"markdown\\"><p>\u5927\u90e8\u5206\u90fd\u662f\u7531js\u5f39\u51fa\u64cd\u4f5c, <code>duration</code>\u6301\u7eed\u4e8b\u4ef6\u8bbe\u4e3a0\u5219\u4e0d\u4f1a\u81ea\u52a8\u5173\u95ed</p></div>"',
@@ -40919,7 +40924,7 @@
                 "import React, { useState } from 'react';\nimport { Toptips, Button, WhiteSpace } from 'weui-react-v2';\n\nexport default () => {\n  return (\n    <>\n      <WhiteSpace size=\"xl\" />\n      <Button\n        block={true}\n        onClick={() => {\n          console.log('\u6253\u5f00\u6210\u63d0\u793a');\n          Toptips('\u63d0\u4ea4\u6210\u529f', 'success');\n        }}\n      >\n        \u6210\u529f\u63d0\u793a\n      </Button>\n      <WhiteSpace />\n      <Button block={true} onClick={() => Toptips('\u8bf7\u586b\u5199\u624b\u673a\u53f7', 'fail')}>\n        \u5931\u8d25\u63d0\u793a\n      </Button>\n      <WhiteSpace />\n      <Button block={true} onClick={() => Toptips('\u8bf7\u586b\u5199\u624b\u673a\u53f7', 'default')}>\n        \u666e\u901a\u7c7b\u578b\n      </Button>\n    </>\n  );\n};",
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u4e24\u79cd\u63d0\u793a',
           description:
             '"<div class=\\"markdown\\"><p>\u5185\u7f6e\u6210\u529f\u548c\u5931\u8d25\u4e24\u79cd\u63d0\u793a \u8bbe\u7f6e <code>type</code> \u5c5e\u6027\u4e3a <code>success</code>, <code>fail</code>\u3002</p></div>"',
@@ -40945,7 +40950,7 @@
                 'import React from \'react\';\nimport { SafeArea, List, ListItem, SingleUpload, MultiUpload } from \'weui-react-v2\';\n\ninterface Res {\n  code: number;\n  filekey: string;\n}\n\nexport default function () {\n  function getResponse(res: Res) {\n    if (res && res.code === 0) {\n      return res.filekey;\n    } else {\n      throw new Error(\'\u540e\u53f0\u4e0a\u4f20\u9519\u8bef\');\n    }\n  }\n\n  return (\n    <SafeArea style={{ margin: \'-0.16rem\', minHeight: \'100vh\', backgroundColor: \'#f4f4f4\', padding: \'5px 0 10px\' }}>\n      <List title="\u5355\u6587\u4ef6\u4e0a\u4f20">\n        <ListItem hd="\u4e0a\u4f20\u6210\u529f" alignItems="flex-start">\n          <SingleUpload<Res> style={{ marginLeft: \'30px\' }} action="/upload" getResponse={getResponse} />\n        </ListItem>\n        <ListItem hd="\u4e0a\u4f20\u5931\u8d25" alignItems="flex-start">\n          <SingleUpload<Res> style={{ marginLeft: \'30px\' }} action="/upload2" getResponse={getResponse} />\n        </ListItem>\n        <ListItem hd="\u9759\u6001\u663e\u793a" alignItems="flex-start">\n          <SingleUpload<Res>\n            style={{ marginLeft: \'30px\' }}\n            value="https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg"\n            disabled={true}\n            action="/upload2"\n            getResponse={getResponse}\n          />\n        </ListItem>\n      </List>\n      <List title="\u591a\u6587\u4ef6\u4e0a\u4f20">\n        <ListItem hd="\u56fe\u7247\u4e0a\u4f20" alignItems="flex-start">\n          <MultiUpload<Res>\n            style={{ marginLeft: \'30px\' }}\n            action="/upload"\n            maxSize={10}\n            length={3}\n            getResponse={getResponse}\n            max={4}\n          />\n        </ListItem>\n        <ListItem hd="\u9759\u6001\u663e\u793a" alignItems="flex-start">\n          <MultiUpload<Res>\n            style={{ marginLeft: \'30px\' }}\n            disabled={true}\n            value={[\n              \'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg\',\n              \'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg\',\n              \'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg\',\n              \'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg\',\n            ]}\n            action="/upload"\n            length={3}\n            getResponse={getResponse}\n            max={6}\n          />\n        </ListItem>\n      </List>\n    </SafeArea>\n  );\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u4e0a\u4f20\u7ec4\u5408',
           identifier: 'upload-demo',
         },
@@ -40982,7 +40987,7 @@
                 'import React from \'react\';\nimport { WhiteSpace, Button } from \'weui-react-v2\';\n\nexport default () => (\n  <>\n    <Button block>\u6700\u5c0f\u95f4\u8ddd</Button>\n    <WhiteSpace size="xs" />\n    <Button block>\u5c0f\u95f4\u8ddd</Button>\n    <WhiteSpace size="sm" />\n    <Button block>\u4e2d\u7b49\u95f4\u8ddd(\u9ed8\u8ba4)</Button>\n    <WhiteSpace size="md" />\n    <Button block>\u5927\u95f4\u8ddd</Button>\n    <WhiteSpace size="lg" />\n    <Button block>\u6700\u5927\u95f4\u8ddd</Button>\n    <WhiteSpace size="xl" />\n  </>\n);',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u4e0d\u540c\u5c3a\u5bf8',
           identifier: 'components-white-space',
         },
@@ -41026,7 +41031,7 @@
                 'import React from \'react\';\nimport { WingBlank, WhiteSpace, Button } from \'weui-react-v2\';\n\nexport default () => (\n  <>\n    <WingBlank size="sm">\n      <Button block>\u5c0f\u5c3a\u5bf8</Button>\n    </WingBlank>\n    <WhiteSpace />\n    <WingBlank size="md">\n      <Button block>\u4e2d\u7b49\u5c3a\u5bf8(\u9ed8\u8ba4)</Button>\n    </WingBlank>\n    <WhiteSpace />\n    <WingBlank size="lg">\n      <Button block>\u5927\u5c3a\u5bf8</Button>\n    </WingBlank>\n  </>\n);',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
           title: '\u4e0d\u540c\u5c3a\u5bf8',
           identifier: 'components-wing-blank',
         },
@@ -41128,7 +41133,7 @@
                     "import { PickerItem } from 'weui-react-v2';\n\n/**\n * \u5355\u5217\u6570\u636e\n */\nexport const singlePickerData: PickerItem[] = [\n  {\n    label: '\u98de\u673a\u7968',\n    value: '\u98de\u673a\u7968',\n  },\n  {\n    label: '\u706b\u8f66\u7968',\n    value: '\u706b\u8f66\u7968',\n  },\n  {\n    label: '\u7684\u58eb\u7968',\n    value: '\u7684\u58eb\u7968',\n  },\n  {\n    label: '\u4f4f\u5bbf\u8d39',\n    value: '\u4f4f\u5bbf\u8d39',\n  },\n  {\n    label: '\u793c\u54c1\u8d39(disabled)',\n    value: '\u793c\u54c1\u8d39',\n    disabled: true,\n  },\n  {\n    label: '\u6d3b\u52a8\u8d39',\n    value: '\u6d3b\u52a8\u8d39',\n  },\n  {\n    label: '\u901a\u8baf\u8d39',\n    value: '\u901a\u8baf\u8d39',\n  },\n  {\n    label: '\u8865\u52a9',\n    value: '\u8865\u52a9',\n  },\n  {\n    label: '\u901a\u8baf\u8d392',\n    value: '\u901a\u8baf\u8d392',\n  },\n  {\n    label: '\u5176\u4ed6',\n    value: '\u5176\u4ed6',\n  },\n];\n\n/**\n * \u53cc\u5217\u6570\u636e\n */\nexport const miltiplePickerData: PickerItem[][] = [\n  [\n    {\n      label: '\u98de\u673a\u7968',\n      value: '\u98de\u673a\u7968',\n    },\n    {\n      label: '\u706b\u8f66\u7968',\n      value: '\u706b\u8f66\u7968',\n    },\n    {\n      label: '\u7684\u58eb\u7968',\n      value: '\u7684\u58eb\u7968',\n    },\n    {\n      label: '\u6253\u5370\u7968',\n      value: '\u6253\u5370\u7968',\n    },\n  ],\n  [\n    {\n      label: '\u4f4f\u5bbf\u8d39',\n      value: '\u4f4f\u5bbf\u8d39',\n    },\n    {\n      label: '\u793c\u54c1\u8d39',\n      value: '\u793c\u54c1\u8d39',\n    },\n    {\n      label: '\u6d3b\u52a8\u8d39',\n      value: '\u6d3b\u52a8\u8d39',\n    },\n    {\n      label: '\u901a\u8baf\u8d39',\n      value: '\u901a\u8baf\u8d39',\n    },\n    {\n      label: '\u8865\u52a9',\n      value: '\u8865\u52a9',\n    },\n  ],\n];\n\n/**\n * \u7ea7\u8054\u6570\u636e\n */\nexport const cascadePickerData: PickerItem[] = [\n  {\n    label: '\u7968\u636e',\n    value: '\u7968\u636e',\n    children: [\n      {\n        label: '\u98de\u673a\u7968',\n        value: '\u98de\u673a\u7968',\n      },\n      {\n        label: '\u706b\u8f66\u7968',\n        value: '\u706b\u8f66\u7968',\n      },\n      {\n        label: '\u7684\u58eb\u7968',\n        value: '\u7684\u58eb\u7968',\n      },\n      {\n        label: '\u540c\u503c\u6d4b\u8bd5',\n        value: '\u540c\u503c\u6d4b\u8bd5',\n      },\n      {\n        label: '\u6253\u5370\u7968',\n        value: '\u6253\u5370\u7968',\n      },\n    ],\n  },\n  {\n    label: '\u8d39\u7528',\n    value: '\u8d39\u7528',\n    children: [\n      {\n        label: '\u4f4f\u5bbf\u8d39',\n        value: '\u4f4f\u5bbf\u8d39',\n      },\n      {\n        label: '\u793c\u54c1\u8d39',\n        value: '\u793c\u54c1\u8d39',\n      },\n      {\n        label: '\u6d3b\u52a8\u8d39',\n        value: '\u6d3b\u52a8\u8d39',\n      },\n      {\n        label: '\u540c\u503c\u6d4b\u8bd5',\n        value: '\u540c\u503c\u6d4b\u8bd5',\n      },\n      {\n        label: '\u901a\u8baf\u8d39',\n        value: '\u901a\u8baf\u8d39',\n      },\n      {\n        label: '\u8865\u52a9',\n        value: '\u8865\u52a9',\n      },\n    ],\n  },\n];\n",
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: 'Picker\u9009\u62e9\u5668',
               identifier: 'picker-picker',
             },
@@ -41151,7 +41156,7 @@
                     "import { PickerItem } from 'weui-react-v2';\n\n/**\n * \u5355\u5217\u6570\u636e\n */\nexport const singlePickerData: PickerItem[] = [\n  {\n    label: '\u98de\u673a\u7968',\n    value: '\u98de\u673a\u7968',\n  },\n  {\n    label: '\u706b\u8f66\u7968',\n    value: '\u706b\u8f66\u7968',\n  },\n  {\n    label: '\u7684\u58eb\u7968',\n    value: '\u7684\u58eb\u7968',\n  },\n  {\n    label: '\u4f4f\u5bbf\u8d39',\n    value: '\u4f4f\u5bbf\u8d39',\n  },\n  {\n    label: '\u793c\u54c1\u8d39(disabled)',\n    value: '\u793c\u54c1\u8d39',\n    disabled: true,\n  },\n  {\n    label: '\u6d3b\u52a8\u8d39',\n    value: '\u6d3b\u52a8\u8d39',\n  },\n  {\n    label: '\u901a\u8baf\u8d39',\n    value: '\u901a\u8baf\u8d39',\n  },\n  {\n    label: '\u8865\u52a9',\n    value: '\u8865\u52a9',\n  },\n  {\n    label: '\u901a\u8baf\u8d392',\n    value: '\u901a\u8baf\u8d392',\n  },\n  {\n    label: '\u5176\u4ed6',\n    value: '\u5176\u4ed6',\n  },\n];\n\n/**\n * \u53cc\u5217\u6570\u636e\n */\nexport const miltiplePickerData: PickerItem[][] = [\n  [\n    {\n      label: '\u98de\u673a\u7968',\n      value: '\u98de\u673a\u7968',\n    },\n    {\n      label: '\u706b\u8f66\u7968',\n      value: '\u706b\u8f66\u7968',\n    },\n    {\n      label: '\u7684\u58eb\u7968',\n      value: '\u7684\u58eb\u7968',\n    },\n    {\n      label: '\u6253\u5370\u7968',\n      value: '\u6253\u5370\u7968',\n    },\n  ],\n  [\n    {\n      label: '\u4f4f\u5bbf\u8d39',\n      value: '\u4f4f\u5bbf\u8d39',\n    },\n    {\n      label: '\u793c\u54c1\u8d39',\n      value: '\u793c\u54c1\u8d39',\n    },\n    {\n      label: '\u6d3b\u52a8\u8d39',\n      value: '\u6d3b\u52a8\u8d39',\n    },\n    {\n      label: '\u901a\u8baf\u8d39',\n      value: '\u901a\u8baf\u8d39',\n    },\n    {\n      label: '\u8865\u52a9',\n      value: '\u8865\u52a9',\n    },\n  ],\n];\n\n/**\n * \u7ea7\u8054\u6570\u636e\n */\nexport const cascadePickerData: PickerItem[] = [\n  {\n    label: '\u7968\u636e',\n    value: '\u7968\u636e',\n    children: [\n      {\n        label: '\u98de\u673a\u7968',\n        value: '\u98de\u673a\u7968',\n      },\n      {\n        label: '\u706b\u8f66\u7968',\n        value: '\u706b\u8f66\u7968',\n      },\n      {\n        label: '\u7684\u58eb\u7968',\n        value: '\u7684\u58eb\u7968',\n      },\n      {\n        label: '\u540c\u503c\u6d4b\u8bd5',\n        value: '\u540c\u503c\u6d4b\u8bd5',\n      },\n      {\n        label: '\u6253\u5370\u7968',\n        value: '\u6253\u5370\u7968',\n      },\n    ],\n  },\n  {\n    label: '\u8d39\u7528',\n    value: '\u8d39\u7528',\n    children: [\n      {\n        label: '\u4f4f\u5bbf\u8d39',\n        value: '\u4f4f\u5bbf\u8d39',\n      },\n      {\n        label: '\u793c\u54c1\u8d39',\n        value: '\u793c\u54c1\u8d39',\n      },\n      {\n        label: '\u6d3b\u52a8\u8d39',\n        value: '\u6d3b\u52a8\u8d39',\n      },\n      {\n        label: '\u540c\u503c\u6d4b\u8bd5',\n        value: '\u540c\u503c\u6d4b\u8bd5',\n      },\n      {\n        label: '\u901a\u8baf\u8d39',\n        value: '\u901a\u8baf\u8d39',\n      },\n      {\n        label: '\u8865\u52a9',\n        value: '\u8865\u52a9',\n      },\n    ],\n  },\n];\n",
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: 'Picker\u9762\u677f',
               identifier: 'picker-demo',
             },
@@ -41169,7 +41174,7 @@
                     "import React, { useState } from 'react';\nimport { List, ListItem, Picker, SafeArea, PickerItem, Button } from 'weui-react-v2';\n\nfunction getRandom(): PickerItem {\n  const n = Math.random();\n  return { label: n, value: n };\n}\n\nexport default function () {\n  const [data, setData] = useState<PickerItem[]>([]);\n  const [val, setVal] = useState<any>(null);\n\n  function switchData() {\n    setTimeout(() => {\n      setData([getRandom(), getRandom(), getRandom()]);\n    }, 300);\n  }\n\n  return (\n    <SafeArea style={{ margin: '-0.16rem', minHeight: '100vh', backgroundColor: '#f4f4f4', padding: '5px 0 10px' }}>\n      <List>\n        <Picker placeholder=\"\u8bf7\u9009\u62e9\" data={data} value={val} onChange={setVal}>\n          <ListItem hd=\"\u968f\u673a\" arrow={true} />\n        </Picker>\n        <ListItem>\n          <Button onClick={switchData}>\u5207\u6362\u6570\u636e\u6e90</Button>\n        </ListItem>\n      </List>\n    </SafeArea>\n  );\n}\n",
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u5f02\u6b65\u8bbe\u7f6e\u6570\u636e\u6e90',
               identifier: 'picker-async',
             },
@@ -41891,14 +41896,14 @@
           }
           for (var O = '', S = 0, L = 0; L < E.length; L++) {
             z = E[L];
-            for (var C = String(z[0]), M = d(f(o(z.index), m.length), 0), N = [], A = 1; A < z.length; A++)
-              N.push(v(z[A]));
-            var I = z.groups;
+            for (var C = String(z[0]), M = d(f(o(z.index), m.length), 0), N = [], I = 1; I < z.length; I++)
+              N.push(v(z[I]));
+            var A = z.groups;
             if (p) {
               var j = [C].concat(N, M, m);
-              void 0 !== I && j.push(I);
+              void 0 !== A && j.push(A);
               var H = String(a.apply(void 0, j));
-            } else H = w(C, m, M, N, I, a);
+            } else H = w(C, m, M, N, A, a);
             M >= S && ((O += m.slice(S, M) + H), (S = M + C.length));
           }
           return O + m.slice(S);
@@ -42544,7 +42549,7 @@
                   content: '.toast-demo {\n  .weui-btn {\n    margin-top: 20px;\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u8f7b\u63d0\u793a',
               description:
                 '<div class="markdown"><p>\u5927\u90e8\u5206\u90fd\u662f\u7531js\u5f39\u51fa\u64cd\u4f5c, <code>duration</code>\u6301\u7eed\u4e8b\u4ef6\u8bbe\u4e3a0\u5219\u4e0d\u4f1a\u81ea\u52a8\u5173\u95ed</p></div>',
@@ -42868,15 +42873,15 @@
     }
     var M = {},
       N = 1e4,
-      A = 0;
-    function I(e, t) {
+      I = 0;
+    function A(e, t) {
       var n = '' + t.end + t.strict + t.sensitive,
         a = M[n] || (M[n] = {});
       if (a[e]) return a[e];
       var r = [],
         i = d()(e, r, t),
         c = { regexp: i, keys: r };
-      return A < N && ((a[e] = c), A++), c;
+      return I < N && ((a[e] = c), I++), c;
     }
     function j(e, t) {
       void 0 === t && (t = {}), ('string' === typeof t || Array.isArray(t)) && (t = { path: t });
@@ -42892,7 +42897,7 @@
       return u.reduce(function (t, n) {
         if (!n && '' !== n) return null;
         if (t) return t;
-        var a = I(n, { end: i, strict: o, sensitive: s }),
+        var a = A(n, { end: i, strict: o, sensitive: s }),
           r = a.regexp,
           c = a.keys,
           l = r.exec(e);
@@ -43330,7 +43335,7 @@
                     '.skeleton-demo {\n  .weui-item-bd {\n    flex: 0 0 160px;\n  }\n\n  .weui-item-ft {\n    flex: 1;\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u5207\u6362\u52a0\u8f7d\u72b6\u6001',
               identifier: 'components-skeleton',
             },
@@ -43353,7 +43358,7 @@
                     '.skeleton-demo {\n  .weui-item-bd {\n    flex: 0 0 160px;\n  }\n\n  .weui-item-ft {\n    flex: 1;\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: 'Stripe\u7528\u4e8e\u884c\u5185\u6570\u636e',
               identifier: 'components-skeleton-1',
             },
@@ -44141,8 +44146,8 @@
       return void 0 === e.state && -1 === navigator.userAgent.indexOf('CriOS');
     }
     var N = 'popstate',
-      A = 'hashchange';
-    function I() {
+      I = 'hashchange';
+    function A() {
       try {
         return window.history.state || {};
       } catch (e) {
@@ -44184,7 +44189,7 @@
         M(e) || R(h(e.state));
       }
       function j() {
-        R(h(I()));
+        R(h(A()));
       }
       var H = !1;
       function R(e) {
@@ -44205,7 +44210,7 @@
         var r = n - a;
         r && ((H = !0), _(r));
       }
-      var B = h(I()),
+      var B = h(A()),
         T = [B.key];
       function P(e) {
         return f + w(e);
@@ -44260,8 +44265,8 @@
       function W(e) {
         (G += e),
           1 === G && 1 === e
-            ? (window.addEventListener(N, C), r && window.addEventListener(A, j))
-            : 0 === G && (window.removeEventListener(N, C), r && window.removeEventListener(A, j));
+            ? (window.addEventListener(N, C), r && window.addEventListener(I, j))
+            : 0 === G && (window.removeEventListener(N, C), r && window.removeEventListener(I, j));
       }
       var K = !1;
       function Q(e) {
@@ -44381,9 +44386,9 @@
         var r = n - a;
         r && ((y = !0), q(r));
       }
-      var A = B(),
-        I = u(A);
-      A !== I && P(I);
+      var I = B(),
+        A = u(I);
+      I !== A && P(A);
       var j = f(),
         F = [w(j)];
       function D(e) {
@@ -44589,8 +44594,8 @@
       C = a[z],
       M = C,
       N = a[k],
-      A = N && N[O],
-      I = Object.prototype,
+      I = N && N[O],
+      A = Object.prototype,
       j = a.RangeError,
       H = m.pack,
       R = m.unpack,
@@ -44653,14 +44658,14 @@
         for (var G, W = (M[O] = C[O]), K = v(C), Q = 0; K.length > Q; ) (G = K[Q++]) in M || c(M, G, C[G]);
         W.constructor = M;
       }
-      h && p(A) !== I && h(A, I);
+      h && p(I) !== A && h(I, A);
       var Y = new N(new M(2)),
-        J = A.setInt8;
+        J = I.setInt8;
       Y.setInt8(0, 2147483648),
         Y.setInt8(1, 2147483649),
         (!Y.getInt8(0) && Y.getInt8(1)) ||
           o(
-            A,
+            I,
             {
               setInt8: function (e, t) {
                 J.call(this, e, (t << 24) >> 24);
@@ -44793,7 +44798,7 @@
                     'import React from \'react\';\nimport { SafeArea, List, ListItem, TextArea } from \'weui-react-v2\';\n\nexport default function () {\n  return (\n    <SafeArea style={{ margin: \'-0.16rem\', minHeight: \'100vh\', backgroundColor: \'#f4f4f4\', padding: \'5px 0 10px\' }}>\n      <List>\n        <ListItem hd="\u914d\u5408\u6807\u9898:" alignItems="flex-start">\n          <TextArea placeholder="\u8bf7\u63cf\u8ff0\u4f60\u6240\u53d1\u751f\u7684\u95ee\u9898" />\n        </ListItem>\n        <ListItem>\n          <TextArea disabled={true} defaultValue="\u6211\u662f\u7981\u7528\u7684, ---\u606d\u559c\u53d1\u8d22\ud83c\udf89---" placeholder="\u8bf7\u63cf\u8ff0\u4f60\u6240\u53d1\u751f\u7684\u95ee\u9898" />\n        </ListItem>\n      </List>\n\n      <List title="\u95ee\u9898\u63cf\u8ff0">\n        <ListItem>\n          <TextArea placeholder="\u8bf7\u63cf\u8ff0\u4f60\u6240\u53d1\u751f\u7684\u95ee\u9898" />\n        </ListItem>\n      </List>\n    </SafeArea>\n  );\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u6587\u672c\u57df',
               description: '<div class="markdown"><p>\u9ed8\u8ba4\u6700\u5927\u5b57\u7b26\u6570\u4e3a200</p></div>',
               identifier: 'textarea-demo',
@@ -44893,7 +44898,7 @@
                     'import React from \'react\';\nimport { WingBlank, WhiteSpace, Button } from \'weui-react-v2\';\n\nexport default () => (\n  <>\n    <WingBlank size="sm">\n      <Button block>\u5c0f\u5c3a\u5bf8</Button>\n    </WingBlank>\n    <WhiteSpace />\n    <WingBlank size="md">\n      <Button block>\u4e2d\u7b49\u5c3a\u5bf8(\u9ed8\u8ba4)</Button>\n    </WingBlank>\n    <WhiteSpace />\n    <WingBlank size="lg">\n      <Button block>\u5927\u5c3a\u5bf8</Button>\n    </WingBlank>\n  </>\n);',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u4e0d\u540c\u5c3a\u5bf8',
               identifier: 'components-wing-blank',
             },
@@ -44964,8 +44969,8 @@
         C = void 0 === L ? 0.5 : L,
         M = e.swiperSpeed,
         N = void 0 === M ? 3 : M,
-        A = e.disabled,
-        I = s.a.Children.toArray(p),
+        I = e.disabled,
+        A = s.a.Children.toArray(p),
         j = Object(f['a'])(v, { value: e.index, onChange: e.onChange }),
         H = Object(r['default'])(j, 2),
         R = H[0],
@@ -44980,7 +44985,7 @@
         q = Object(l['useRef'])(F.get()),
         G = Object(l['useRef'])(!1),
         W = k && !x,
-        K = Object(u['useSprings'])(I.length, (e) => ({ display: R === e ? 'block' : 'none', top: 0 })),
+        K = Object(u['useSprings'])(A.length, (e) => ({ display: R === e ? 'block' : 'none', top: 0 })),
         Q = Object(r['default'])(K, 2),
         Y = Q[0],
         J = Q[1],
@@ -45018,7 +45023,7 @@
           return (
             g &&
               (e = window.setInterval(() => {
-                G.current || V(R + 1 >= I.length ? 0 : R + 1);
+                G.current || V(R + 1 >= A.length ? 0 : R + 1);
               }, y)),
             () => window.clearInterval(e)
           );
@@ -45039,7 +45044,7 @@
             p = f[1],
             h = e.distance,
             v = e.cancel;
-          if (!A) {
+          if (!I) {
             var g = U.current,
               b = x ? g.height : g.width,
               y = x ? d : u,
@@ -45050,20 +45055,20 @@
                 n &&
                 ((q.current = Z.current), J((e) => ({ display: 'block', top: e * U.current.height, immediate: !0 }))),
               t && (G.current = !0),
-              t && Math.abs(E) > N && ((G.current = !1), V(Object(i['a'])(R + (w > 0 ? -1 : 1), 0, I.length - 1)), v()),
+              t && Math.abs(E) > N && ((G.current = !1), V(Object(i['a'])(R + (w > 0 ? -1 : 1), 0, A.length - 1)), v()),
               _({
-                offset: Object(i['a'])(q.current + y, -(I.length - 1) * b, 0),
+                offset: Object(i['a'])(q.current + y, -(A.length - 1) * b, 0),
                 scale: t ? 1 - h / g.width / 2 : 1,
                 immediate: !0,
               }),
               a &&
                 ((G.current = !1),
                 h > (C <= 1 ? b * C : C)
-                  ? ((Z.current = F.get()), V(Object(i['a'])(R + (w > 0 ? -1 : 1), 0, I.length - 1)))
+                  ? ((Z.current = F.get()), V(Object(i['a'])(R + (w > 0 ? -1 : 1), 0, A.length - 1)))
                   : _({ offset: -R * b, scale: 1, immediate: !1 })));
           }
         },
-        { axis: x ? 'y' : 'x', filterTaps: !0, enabled: !A, eventOptions: { passive: !0, capture: !0 } },
+        { axis: x ? 'y' : 'x', filterTaps: !0, enabled: !I, eventOptions: { passive: !0, capture: !0 } },
       );
       return (
         Object(l['useLayoutEffect'])(() => {
@@ -45092,7 +45097,7 @@
                   key: t,
                   style: { display: k ? a : 'block', scale: z ? D : 1, top: x ? r : 0 },
                 },
-                I[t],
+                A[t],
               );
             }),
           ),
@@ -45103,7 +45108,7 @@
               s.a.createElement(
                 'div',
                 { className: ''.concat(n, '-decorator-inner') },
-                I.map((e, t) =>
+                A.map((e, t) =>
                   s.a.createElement(
                     'div',
                     { className: o()(''.concat(n, '-dot'), { active: R === t }), key: t },
@@ -45499,13 +45504,13 @@
                           (z = E.index + v), (E = E[0].slice(v)), (k = z + E.length);
                           var M = x.slice(0, z),
                             N = x.slice(k),
-                            A = [y, C];
-                          M && (++y, (w += M.length), A.push(M));
-                          var I = new l(s, m ? t.tokenize(E, m) : E, g, E, h);
+                            I = [y, C];
+                          M && (++y, (w += M.length), I.push(M));
+                          var A = new l(s, m ? t.tokenize(E, m) : E, g, E, h);
                           if (
-                            (A.push(I),
-                            N && A.push(N),
-                            Array.prototype.splice.apply(n, A),
+                            (I.push(A),
+                            N && I.push(N),
+                            Array.prototype.splice.apply(n, I),
                             1 != C && t.matchGrammar(e, n, a, y, w, !0, s),
                             c)
                           )
@@ -47504,7 +47509,7 @@
           n = t.h;
         return [f(e), f({ h: (n + 120) % 360, s: t.s, l: t.l }), f({ h: (n + 240) % 360, s: t.s, l: t.l })];
       }
-      function A(e) {
+      function I(e) {
         var t = f(e).toHsl(),
           n = t.h;
         return [
@@ -47514,7 +47519,7 @@
           f({ h: (n + 270) % 360, s: t.s, l: t.l }),
         ];
       }
-      function I(e) {
+      function A(e) {
         var t = f(e).toHsl(),
           n = t.h;
         return [f(e), f({ h: (n + 72) % 360, s: t.s, l: t.l }), f({ h: (n + 216) % 360, s: t.s, l: t.l })];
@@ -47731,13 +47736,13 @@
           return this._applyCombination(H, arguments);
         },
         splitcomplement: function () {
-          return this._applyCombination(I, arguments);
+          return this._applyCombination(A, arguments);
         },
         triad: function () {
           return this._applyCombination(N, arguments);
         },
         tetrad: function () {
-          return this._applyCombination(A, arguments);
+          return this._applyCombination(I, arguments);
         },
       }),
         (f.fromRatio = function (e, t) {
@@ -48149,10 +48154,10 @@
         C = Object(p['g'])('', O),
         M = Object(c['default'])(C, 1),
         N = M[0],
-        A = Object(s['useState'])(-1),
-        I = Object(c['default'])(A, 2),
-        j = I[0],
-        H = I[1],
+        I = Object(s['useState'])(-1),
+        A = Object(c['default'])(I, 2),
+        j = A[0],
+        H = A[1],
         R = Object(s['useState'])(200 * b.length),
         V = Object(c['default'])(R, 2),
         B = V[0],
@@ -48999,7 +49004,7 @@
                     'import React from \'react\';\nimport { SafeArea, Preview, PreviewItem, PreviewButton, WhiteSpace } from \'weui-react-v2\';\n\nexport default () => (\n  <SafeArea style={{ margin: \'-0.16rem\', minHeight: \'100vh\', backgroundColor: \'#f4f4f4\', padding: \'5px 0 10px\' }}>\n    <Preview subTitle="\u4ed8\u6b3e\u91d1\u989d" title="\xa52400.00" footer={<PreviewButton key="c">\u64cd\u4f5c</PreviewButton>}>\n      <PreviewItem title="\u5546\u54c1">\u7535\u52a8\u6253\u5355\u673a</PreviewItem>\n      <PreviewItem title="\u6807\u9898\u6807\u9898">\u540d\u5b57\u540d\u5b57\u540d\u5b57</PreviewItem>\n      <PreviewItem title="\u6807\u9898\u6807\u9898">\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57</PreviewItem>\n    </Preview>\n\n    <WhiteSpace size="xl" />\n\n    <Preview\n      subTitle="\u4ed8\u6b3e\u91d1\u989d"\n      title="\xa52400.00"\n      footer={[\n        <PreviewButton key="a">\u8f85\u52a9\u64cd\u4f5c</PreviewButton>,\n        <PreviewButton type="primary" key="b">\n          \u63d0\u4ea4\n        </PreviewButton>,\n      ]}\n    >\n      <PreviewItem title="\u5546\u54c1">\u7535\u52a8\u6253\u5355\u673a</PreviewItem>\n      <PreviewItem title="\u6807\u9898\u6807\u9898">\u540d\u5b57\u540d\u5b57\u540d\u5b57</PreviewItem>\n      <PreviewItem title="\u6807\u9898\u6807\u9898">\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57</PreviewItem>\n    </Preview>\n\n    <WhiteSpace size="xl" />\n\n    <Preview subTitle="\u5de6\u5bf9\u9f50" align="left">\n      <PreviewItem title="\u59d3\u540d">XueYou</PreviewItem>\n      <PreviewItem title="\u5e74\u9f84">666</PreviewItem>\n      <PreviewItem title="\u559c\u597d">\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57</PreviewItem>\n    </Preview>\n  </SafeArea>\n);',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u9884\u89c8\u5185\u5bb9',
               identifier: 'components-preview',
             },
@@ -49468,8 +49473,8 @@
       C = n('cVYH'),
       M = L.get,
       N = L.set,
-      A = O.f,
-      I = S.f,
+      I = O.f,
+      A = S.f,
       j = Math.round,
       H = r.RangeError,
       R = l.ArrayBuffer,
@@ -49490,7 +49495,7 @@
         return r;
       },
       W = function (e, t) {
-        A(e, t, {
+        I(e, t, {
           get: function () {
             return M(this)[t];
           },
@@ -49504,7 +49509,7 @@
         return _(e) && 'symbol' != typeof t && t in e && String(+t) == String(t);
       },
       Y = function (e, t) {
-        return Q(e, (t = h(t, !0))) ? u(2, e[t]) : I(e, t);
+        return Q(e, (t = h(t, !0))) ? u(2, e[t]) : A(e, t);
       },
       J = function (e, t, n) {
         return !(Q(e, (t = h(t, !0))) && b(n) && v(n, 'value')) ||
@@ -49513,7 +49518,7 @@
           n.configurable ||
           (v(n, 'writable') && !n.writable) ||
           (v(n, 'enumerable') && !n.enumerable)
-          ? A(e, t, n)
+          ? I(e, t, n)
           : ((e[t] = n.value), e);
       };
     i
@@ -49536,8 +49541,8 @@
               var r = M(e);
               n && (a = (a = j(a)) < 0 ? 0 : a > 255 ? 255 : 255 & a), r.view[u](t * i + r.byteOffset, a, !0);
             },
-            I = function (e, t) {
-              A(e, t, {
+            A = function (e, t) {
+              I(e, t, {
                 get: function () {
                   return S(this, t);
                 },
@@ -49594,7 +49599,7 @@
                   l = c / i;
                 } else (l = m(t)), (c = l * i), (r = new R(c));
                 N(e, { buffer: r, byteOffset: d, byteLength: c, length: l, view: new V(r) });
-                while (u < l) I(e, u++);
+                while (u < l) A(e, u++);
               })),
               w && w(v, P),
               (g = v.prototype = y(F))),
@@ -49971,8 +49976,8 @@
           C = void 0 === L ? l(10) : L,
           M = e.labelField,
           N = void 0 === M ? 'label' : M,
-          A = e.onPickerChange,
-          I = e.format,
+          I = e.onPickerChange,
+          A = e.format,
           j = e.useDefaultFormat,
           H = void 0 === j || j,
           R = Object(c['a'])(e, [
@@ -50008,7 +50013,7 @@
           G(k(e, m));
         }
         function Y() {
-          return T ? (I ? I(T, m) : s(T, D)) : null;
+          return T ? (A ? A(T, m) : s(T, D)) : null;
         }
         return (
           Object(v['useEffect'])(() => {
@@ -50029,7 +50034,7 @@
               value: T ? z(T, D) : void 0,
               pickerValue: q ? z(q, D) : void 0,
               onPickerValueChange: Q,
-              onPickerChange: A,
+              onPickerChange: I,
               onChange: K,
             }),
           )
@@ -50362,7 +50367,7 @@
         k,
         O,
         S = function (e) {
-          if (e === m && A) return A;
+          if (e === m && I) return I;
           if (!h && e in M) return M[e];
           switch (e) {
             case g:
@@ -50386,11 +50391,11 @@
         C = !1,
         M = e.prototype,
         N = M[v] || M['@@iterator'] || (m && M[m]),
-        A = (!h && N) || S(m),
-        I = ('Array' == t && M.entries) || N;
+        I = (!h && N) || S(m),
+        A = ('Array' == t && M.entries) || N;
       if (
-        (I &&
-          ((z = i(I.call(new e()))),
+        (A &&
+          ((z = i(A.call(new e()))),
           p !== Object.prototype &&
             z.next &&
             (d || i(z) === p || (c ? c(z, p) : 'function' != typeof z[v] && l(z, v, w)),
@@ -50400,14 +50405,14 @@
           N &&
           N.name !== b &&
           ((C = !0),
-          (A = function () {
+          (I = function () {
             return N.call(this);
           })),
-        (d && !E) || M[v] === A || l(M, v, A),
-        (f[t] = A),
+        (d && !E) || M[v] === I || l(M, v, I),
+        (f[t] = I),
         m)
       )
-        if (((k = { values: S(b), keys: x ? A : S(g), entries: S(y) }), E))
+        if (((k = { values: S(b), keys: x ? I : S(g), entries: S(y) }), E))
           for (O in k) (h || C || !(O in M)) && s(M, O, k[O]);
         else a({ target: t, proto: !0, forced: h || C }, k);
       return k;
@@ -50815,10 +50820,10 @@
   hRgD: function (e, t, n) {
     'use strict';
     n.d(t, 'e', function () {
-      return A;
+      return I;
     }),
       n.d(t, 'c', function () {
-        return I;
+        return A;
       }),
       n.d(t, 'f', function () {
         return E;
@@ -50914,12 +50919,12 @@
         C = S[1],
         M = Object(c['useState'])(!1),
         N = Object(a['default'])(M, 2),
-        A = N[0],
-        I = N[1];
+        I = N[0],
+        A = N[1];
       function j() {
         var e = z.current,
           t = k.current;
-        I(y ? t.scrollHeight > e.clientHeight : t.scrollWidth > e.clientWidth);
+        A(y ? t.scrollHeight > e.clientHeight : t.scrollWidth > e.clientWidth);
       }
       function H() {
         var e = k.current,
@@ -50940,7 +50945,7 @@
           l = H(),
           s = Object(a['default'])(l, 2),
           d = s[1];
-        return A && t ? [Object(u['a'])(i - (o / 2 - c), 0, d), r] : [Object(u['a'])(i, 0, d), r];
+        return I && t ? [Object(u['a'])(i - (o / 2 - c), 0, d), r] : [Object(u['a'])(i, 0, d), r];
       }
       function V() {
         var e = H(),
@@ -50986,7 +50991,7 @@
         }, [b.length]),
         o.a.createElement(
           'div',
-          { className: i()(n, r, { overflow: A, vertical: y, arrow: E }), style: l, ref: z },
+          { className: i()(n, r, { overflow: I, vertical: y, arrow: E }), style: l, ref: z },
           o.a.createElement(
             'span',
             { className: 'tabs-arrow tab-prev', onClick: V },
@@ -51122,7 +51127,7 @@
     }
     var M = () => o.a.createElement(b, null),
       N = () => o.a.createElement(x, null);
-    function A(e) {
+    function I(e) {
       var t = e.prefixCls,
         n = void 0 === t ? 'weui-tabs' : t,
         r = e.className,
@@ -51143,8 +51148,8 @@
         k = Object(l['a'])(O(d, u), { value: e.activeKey, onChange: e.onChange }),
         L = Object(a['default'])(k, 2),
         C = L[0],
-        A = L[1],
-        I = S(d, C),
+        I = L[1],
+        A = S(d, C),
         j = Object(c['useRef'])(new Map()),
         H = Object(c['useRef'])(new Map());
       function R(e, t) {
@@ -51154,16 +51159,16 @@
           var r = a.get(C);
           r && r();
           var i = n.get(e);
-          i && i(), A(e), f && f(e, t);
+          i && i(), I(e), f && f(e, t);
         }
       }
       function V() {
-        return o.a.cloneElement(w(), { activeKey: C, tabsInfo: I, onTabClick: R, vertical: g, key: 'tabbar' });
+        return o.a.cloneElement(w(), { activeKey: C, tabsInfo: A, onTabClick: R, vertical: g, key: 'tabbar' });
       }
       function B() {
         return o.a.cloneElement(z(), {
           activeKey: C,
-          tabsInfo: I,
+          tabsInfo: A,
           lazy: p,
           audoHeight: v,
           vertical: g,
@@ -51175,11 +51180,11 @@
       var T = [V(), B()];
       return o.a.createElement(
         E.Provider,
-        { value: { activeKey: C, setActiveKey: A, lazy: p, enterEvents: j.current, leaveEvents: H.current } },
+        { value: { activeKey: C, setActiveKey: I, lazy: p, enterEvents: j.current, leaveEvents: H.current } },
         o.a.createElement('div', { className: i()(n, r), style: s, 'data-active-key': C }, m ? T.reverse() : T),
       );
     }
-    function I(e) {
+    function A(e) {
       var t = e.prefixCls,
         n = void 0 === t ? 'weui-tab-panel' : t,
         a = e.className,
@@ -51301,7 +51306,7 @@
                     "import React from 'react';\nimport { Button, WhiteSpace, DialogPop } from 'weui-react-v2';\n\nexport default function () {\n  function pop() {\n    DialogPop({\n      title: '\u5bf9\u8bdd\u6846\u6807\u9898',\n      children: '\u5f39\u7a97\u5185\u5bb9\uff0c\u544a\u77e5\u5f53\u524d\u72b6\u6001\u3001\u4fe1\u606f\u548c\u89e3\u51b3\u65b9\u6cd5\uff0c\u63cf\u8ff0\u6587\u5b57\u5c3d\u91cf\u63a7\u5236\u5728\u4e09\u884c\u5185',\n      onConfirm: () => {\n        return new Promise((resolve) => {\n          setTimeout(() => {\n            resolve(true);\n          }, 2000);\n        });\n      },\n    });\n  }\n\n  return (\n    <div>\n      <WhiteSpace />\n      <Button block={true} size=\"large\" type=\"primary\" onClick={pop}>\n        \u663e\u793a\n      </Button>\n    </div>\n  );\n}\n",
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u6a21\u6001\u5bf9\u8bdd\u6846',
               description:
                 '<div class="markdown"><p>\u5c5e\u6027\u57fa\u672c\u4e0e<code>HalfScreenDialog</code>\u4fdd\u6301\u4e00\u81f4</p></div>',
@@ -51326,7 +51331,7 @@
                     '.demo-prompt {\n  .title {\n    font-size: 30px;\n    color: #888;\n    line-height: 1.5;\n  }\n  .tips {\n    font-size: 26px;\n    color: #ff4d4f;\n    margin-top: 10px;\n    margin-bottom: 0;\n    text-align: left;\n  }\n  .input-container {\n    margin-top: 18px;\n    border: 2px solid #ddd;\n    border-radius: 6px;\n    height: 72px;\n    line-height: 1;\n    min-width: 65vw;\n\n    input {\n      font-size: 30px;\n      position: relative;\n      border: 0;\n      width: 100%;\n      height: 100%;\n      box-sizing: border-box;\n      margin: 0;\n      padding: 0 15px;\n    }\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u5c01\u88c5\u8f93\u5165\u6846',
               description:
                 '<div class="markdown"><p>\u6839\u636e\u4e1a\u52a1\u548c\u6837\u5f0f\u9700\u8981\uff0c\u81ea\u884c\u5c01\u88c5</p></div>',
@@ -51516,7 +51521,7 @@
       return E;
     }),
       n.d(t, 'b', function () {
-        return I;
+        return A;
       }),
       n.d(t, 'a', function () {
         return R;
@@ -51776,11 +51781,11 @@
         C = e.onProgress,
         M = e.onSuccess,
         N = e.onUpload,
-        A = e.onBatchUpload,
-        I = e.disabled,
+        I = e.onBatchUpload,
+        A = e.disabled,
         j = Object(i['useRef'])(null);
       function H() {
-        if (!I) {
+        if (!A) {
           var e = j.current;
           e && e.click();
         }
@@ -51792,7 +51797,7 @@
           if (n) Object(o['a'])('\u4e0a\u4f20\u56fe\u7247\u8fc7\u5927!', 'fail');
           else {
             var a = [].slice.call(t, 0, S);
-            A && A(a), a.forEach((e) => V(e));
+            I && I(a), a.forEach((e) => V(e));
           }
         }
       }
@@ -51868,7 +51873,7 @@
       C = n('Q0FF'),
       M = n('2BaD'),
       N = n('kBoc');
-    function A(e) {
+    function I(e) {
       var t = e.prefixCls,
         n = void 0 === t ? 'weui-image-item' : t,
         a = e.className,
@@ -51897,7 +51902,7 @@
         c.a.createElement('div', { className: ''.concat(n, '-uploading') }, c.a.createElement(N['b'], null)),
       );
     }
-    function I(e) {
+    function A(e) {
       var t = e.prefixCls,
         n = void 0 === t ? 'weui-single-upload' : t,
         a = e.className,
@@ -51931,30 +51936,30 @@
         x = Object(i['useState'])({ thumbnail: null, file: null, percent: 0, status: 'init' }),
         M = Object(O['default'])(x, 2),
         N = M[0],
-        I = M[1];
+        A = M[1];
       function j(e) {
         h && h(e), w(e);
       }
       function H(e) {
-        I({ thumbnail: URL.createObjectURL(e), file: e, percent: 0, status: 'uploading' });
+        A({ thumbnail: URL.createObjectURL(e), file: e, percent: 0, status: 'uploading' });
       }
       function R(e, t, n) {
         u && u(e, t, n),
-          I((e) => Object(k['a'])(Object(k['a'])({}, e), {}, { response: t, percent: 100, status: 'success' }));
+          A((e) => Object(k['a'])(Object(k['a'])({}, e), {}, { response: t, percent: 100, status: 'success' }));
         try {
           if (s) {
             var a = s(t);
             j(a);
           }
         } catch (r) {
-          I((e) => Object(k['a'])(Object(k['a'])({}, e), {}, { percent: 100, status: 'fail' }));
+          A((e) => Object(k['a'])(Object(k['a'])({}, e), {}, { percent: 100, status: 'fail' }));
         }
       }
       function V(e, t, n) {
-        d && d(e, t, n), I((e) => Object(k['a'])(Object(k['a'])({}, e), {}, { percent: 100, status: 'fail' }));
+        d && d(e, t, n), A((e) => Object(k['a'])(Object(k['a'])({}, e), {}, { percent: 100, status: 'fail' }));
       }
       function B(e, t, n) {
-        f && f(e, t, n), I((e) => Object(k['a'])(Object(k['a'])({}, e), {}, { percent: t, status: 'uploading' }));
+        f && f(e, t, n), A((e) => Object(k['a'])(Object(k['a'])({}, e), {}, { percent: t, status: 'uploading' }));
       }
       function T() {
         if (m) m(N);
@@ -51976,15 +51981,15 @@
           });
       }
       function P() {
-        p && p(N), I({ thumbnail: null, file: null, percent: 0, status: 'init' }), j(null);
+        p && p(N), A({ thumbnail: null, file: null, percent: 0, status: 'init' }), j(null);
       }
       return (
         Object(i['useEffect'])(() => {
           'value' in e &&
             (w(e.value || null),
             e.value
-              ? I({ thumbnail: e.value, file: null, percent: 100, status: 'success' })
-              : I({ thumbnail: null, file: null, percent: 0, status: 'init' }));
+              ? A({ thumbnail: e.value, file: null, percent: 100, status: 'success' })
+              : A({ thumbnail: null, file: null, percent: 0, status: 'init' }));
         }, [e.value]),
         c.a.createElement(
           'div',
@@ -51995,7 +52000,7 @@
                 Object(z['a'])({}, g, { disabled: v, onUpload: H, onSuccess: R, onProgress: B, onError: V }),
                 c.a.createElement('div', { className: ''.concat(n, '-uploadBtn') }, c.a.createElement(L['a'], null)),
               )
-            : c.a.createElement(A, { disableDelete: !!v || l, onImageView: T, onImageRemove: P, fileInfo: N }),
+            : c.a.createElement(I, { disableDelete: !!v || l, onImageView: T, onImageRemove: P, fileInfo: N }),
         )
       );
     }
@@ -52039,8 +52044,8 @@
         k = Object(O['default'])(x, 2),
         M = k[0],
         N = k[1],
-        I = Object(i['useState'])([]),
-        R = Object(O['default'])(I, 2),
+        A = Object(i['useState'])([]),
+        R = Object(O['default'])(A, 2),
         V = R[0],
         B = R[1],
         T = Object(i['useRef'])(V),
@@ -52145,7 +52150,7 @@
                         ),
                       )
                   : e &&
-                      c.a.createElement(A, {
+                      c.a.createElement(I, {
                         key: t * v + a,
                         disableDelete: !!l || g,
                         onImageView: () => Y(t * v + a),
@@ -52270,7 +52275,7 @@
                     '// html,\n// body {\n//   width: 100%;\n//   height: 100%;\n//   overflow: hidden;\n// }\n// #root {\n//   width: 100%;\n//   height: 100%;\n//   // background-color: rgb(244, 244, 244);\n//   overflow-y: auto;\n//   -webkit-overflow-scrolling: auto;\n// }\n// #root .__dumi-default-mobile-demo-layout {\n//   padding: 0;\n//   width: 100%;\n//   height: 100%;\n//   overflow: auto;\n// }\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u5de6\u53f3\u6ed1\u52a8\u663e\u793a\u6309\u94ae',
               description: '<div class="markdown"><p>\u53ef\u8bbe\u7f6e\u6ed1\u52a8\u6253\u5f00\u8ddd\u79bb</p></div>',
               identifier: 'swipe-action-demo',
@@ -52644,9 +52649,9 @@
         C = L[0],
         M = L[1],
         N = Object(c['useState'])(0),
-        A = Object(a['default'])(N, 2),
-        I = A[0],
-        j = A[1],
+        I = Object(a['default'])(N, 2),
+        A = I[0],
+        j = I[1],
         H = Object(c['useState'])(0),
         R = Object(a['default'])(H, 2),
         V = R[0],
@@ -52692,7 +52697,7 @@
             { className: ''.concat(n, '__form'), onSubmit: F },
             o.a.createElement(
               'div',
-              { className: ''.concat(n, '__synthetic-ph'), onClick: () => M(!0), style: { width: C ? I : '100%' } },
+              { className: ''.concat(n, '__synthetic-ph'), onClick: () => M(!0), style: { width: C ? A : '100%' } },
               o.a.createElement(
                 'div',
                 { className: 'synthetic-ph__inner', ref: T },
@@ -52937,7 +52942,7 @@
                     '.flex-demo {\n  .title {\n    font-size: 34px;\n    padding: 20px 10px;\n    font-weight: bold;\n  }\n\n  .title + .title {\n    margin-top: 50px;\n  }\n\n  .ant-col {\n    min-height: 30px;\n    margin-top: 8px;\n    margin-bottom: 8px;\n    padding: 5px 0;\n    color: #fff;\n    text-align: center;\n    border-radius: 0;\n    font-size: 24px;\n    padding: 16px 0;\n    background: #00a0e9;\n\n    &:nth-child(2n + 1) {\n      background: rgba(0, 160, 233, 0.7);\n    }\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u5bf9\u5176\u65b9\u5f0f',
               description:
                 '<div class="markdown"><p>\u6839\u636e\u4e3b\u8f74\u8fdb\u884c\u5de6\u5bf9\u9f50\uff0c\u5c45\u4e2d\u5bf9\u9f50\uff0c\u53f3\u5bf9\u9f50</p></div>',
@@ -53118,9 +53123,9 @@
       C = u.getterFor(O),
       M = u.getterFor(S),
       N = /\+/g,
-      A = Array(4),
-      I = function (e) {
-        return A[e - 1] || (A[e - 1] = RegExp('((?:%[\\da-f]{2}){' + e + '})', 'gi'));
+      I = Array(4),
+      A = function (e) {
+        return I[e - 1] || (I[e - 1] = RegExp('((?:%[\\da-f]{2}){' + e + '})', 'gi'));
       },
       j = function (e) {
         try {
@@ -53135,7 +53140,7 @@
         try {
           return decodeURIComponent(t);
         } catch (a) {
-          while (n) t = t.replace(I(n--), j);
+          while (n) t = t.replace(A(n--), j);
           return t;
         }
       },
@@ -53423,8 +53428,8 @@
         C = void 0 === L || L,
         M = e.idleTime,
         N = void 0 === M ? 2e3 : M,
-        A = e.threshold,
-        I = void 0 === A ? 60 : A,
+        I = e.threshold,
+        A = void 0 === I ? 60 : I,
         j = Object(p['a'])(a.init, { value: e.action, onChange: e.handleAction }),
         H = Object(i['default'])(j, 2),
         R = H[0],
@@ -53459,7 +53464,7 @@
           if (_.current !== r.middle || s !== r.middle) {
             if ((_.current === r.middle && (_.current = s), x(_.current, l))) return;
             _.current === r.up && S
-              ? Q(l >= I ? a.enough : a.pulling)
+              ? Q(l >= A ? a.enough : a.pulling)
               : _.current === r.down && T.current !== a.loading && k && Q(a.loading),
               W({ y: l, immediate: !0 }),
               (t.stopScroll = !0),
@@ -53658,7 +53663,7 @@
                     "import React, { useState } from 'react';\nimport { Gallery, Button, WhiteSpace } from 'weui-react-v2';\n\nconst images = [\n  {\n    src: require('../../swiper/pexels-photo-296878.jpeg'),\n    title: 'Photo: Michael Hull',\n    desc: \"Dummy caption. It's Greek to you. Unless, of course, you're Greek, in which case, it really makes no sense.\",\n  },\n  {\n    src: require('./15008465772_d50c8f0531_h.jpg'),\n    title: '\u4e00\u53ea\u718a',\n    desc: '\u61a8\u61a8\u7684\u718a\uff0c \u77ed\u77ed\u7684\u5c3e\u5df4',\n  },\n  {\n    src: require('./15008518202_c265dfa55f_h.jpg'),\n  },\n  {\n    src: require('./15008867125_b61960af01_h.jpg'),\n  },\n];\n\nexport default () => {\n  const [visible, setVisible] = useState(true);\n  return (\n    <div>\n      <WhiteSpace size=\"xl\" />\n      <WhiteSpace size=\"xl\" />\n      <Button block={true} type=\"primary\" size=\"large\" onClick={() => setVisible(true)}>\n        \u6253\u5f00\n      </Button>\n      <Gallery className=\"image-view-demo\" data={images} visible={visible} onVisibleChange={setVisible} />\n    </div>\n  );\n};\n",
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u53d7\u63a7\u5c55\u793a',
               description:
                 '<div class="markdown"><p>\u53ef\u8bbe\u7f6e\u9ed8\u8ba4\u67e5\u770b\u54ea\u4e00\u5f20\u56fe\u7247</p></div>',
@@ -54035,9 +54040,9 @@
         C = L[0],
         M = Object(l['useState'])(200),
         N = Object(i['default'])(M, 2),
-        A = N[0],
-        I = N[1],
-        j = Object(u['useSpring'])(() => ({ y: -A - k })),
+        I = N[0],
+        A = N[1],
+        j = Object(u['useSpring'])(() => ({ y: -I - k })),
         H = Object(i['default'])(j, 2),
         R = H[0].y,
         V = H[1],
@@ -54046,14 +54051,14 @@
         P = T[0],
         F = T[1];
       function D(e) {
-        e && 200 === A && I(e.scrollHeight);
+        e && 200 === I && A(e.scrollHeight);
       }
       function _() {
         V({ y: k, immediate: !1, config: u['config'].stiff }), F(!0);
       }
       function U() {
         V({
-          y: -A - k,
+          y: -I - k,
           immediate: !1,
           onRest: (e) => {
             e.finished && e.value.y !== k && O && O();
@@ -54063,7 +54068,7 @@
       }
       x && x(() => F(!1)),
         Object(l['useEffect'])(() => {
-          V(P ? { y: k } : { y: -A - k });
+          V(P ? { y: k } : { y: -I - k });
         }, [P]),
         Object(m['e'])(() => {
           var e;
@@ -54077,7 +54082,7 @@
             r = a[1],
             c = Object(i['default'])(e.movement, 2),
             o = (c[0], c[1]);
-          t ? (o < -0.5 * A || r > 0.7 ? U() : _()) : n && V({ y: o, immediate: !0 });
+          t ? (o < -0.5 * I || r > 0.7 ? U() : _()) : n && V({ y: o, immediate: !0 });
         },
         { initial: () => [0, R.get()], axis: 'y', bounds: { bottom: k } },
       );
@@ -54087,7 +54092,7 @@
           Object(r['a'])({}, q(), {
             ref: D,
             className: ''.concat(n, '-wrapper'),
-            style: { y: R, opacity: R.to([-A - k, k], [0.3, 1], 'clamp') },
+            style: { y: R, opacity: R.to([-I - k, k], [0.3, 1], 'clamp') },
           }),
           s.a.createElement('div', { className: o()(n, a, ''.concat(n, '-type-').concat(h)), style: c }, v),
         ),
@@ -54282,7 +54287,7 @@
                     '.swiper-demo {\n  .fimg {\n    width: 100%;\n    height: 400px;\n    // touch-action: none;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center center;\n    box-shadow: 0 62.5px 125px -25px rgba(50, 50, 73, 0.5), 0 37.5px 75px -37.5px rgba(0, 0, 0, 0.6);\n  }\n}\n.swiper-demo2 {\n  .fimg {\n    width: 100%;\n    height: 100%;\n    // touch-action: none;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center center;\n  }\n}\n\n.tabs-demo {\n  font-size: 32px;\n\n  select {\n    display: block;\n    width: 100%;\n    height: 45px;\n    line-height: 45px;\n    font-size: 35px;\n  }\n\n  .weui-tab-panel {\n    // background-color: #607d8b;\n    text-align: center;\n    padding: 20px;\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u81ea\u52a8\u8f6e\u64ad',
               description:
                 '<div class="markdown"><p>scaleMode\u5f00\u542f\u62d6\u62fd\u7f29\u653e\u6548\u679c</p></div>',
@@ -54307,7 +54312,7 @@
                     '.swiper-demo {\n  .fimg {\n    width: 100%;\n    height: 400px;\n    // touch-action: none;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center center;\n    box-shadow: 0 62.5px 125px -25px rgba(50, 50, 73, 0.5), 0 37.5px 75px -37.5px rgba(0, 0, 0, 0.6);\n  }\n}\n.swiper-demo2 {\n  .fimg {\n    width: 100%;\n    height: 100%;\n    // touch-action: none;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center center;\n  }\n}\n\n.tabs-demo {\n  font-size: 32px;\n\n  select {\n    display: block;\n    width: 100%;\n    height: 45px;\n    line-height: 45px;\n    font-size: 35px;\n  }\n\n  .weui-tab-panel {\n    // background-color: #607d8b;\n    text-align: center;\n    padding: 20px;\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u5782\u76f4\u6eda\u52a8',
               description:
                 '<div class="markdown"><p>\u5782\u76f4\u6eda\u52a8\u65f6\u5fc5\u987b\u7ed9\u5bb9\u5668\u8bbe\u7f6e\u56fa\u5b9a\u9ad8\u5ea6</p></div>',
@@ -54595,6 +54600,14 @@
             i['ListItem'],
             { hd: '\u53ea\u80fd\u6574\u6570' },
             r.a.createElement(i['NumberInput'], { placeholder: '\u8bf7\u8f93\u5165\u6574\u6570', precision: 0 }),
+          ),
+          r.a.createElement(
+            i['ListItem'],
+            { hd: '\u91d1\u989d\u8f93\u5165' },
+            r.a.createElement(i['NumberInput'], {
+              placeholder: '\u5f39\u51fa\u91d1\u989d\u952e\u76d8',
+              type: 'amount',
+            }),
           ),
           r.a.createElement(
             i['ListItem'],
@@ -55024,8 +55037,8 @@
       C = n('busE'),
       M = n('VpIT'),
       N = n('93I0'),
-      A = n('0BK2'),
-      I = n('kOOl'),
+      I = n('0BK2'),
+      A = n('kOOl'),
       j = n('tiKp'),
       H = n('5Tg+'),
       R = n('dG/n'),
@@ -55129,7 +55142,7 @@
           n = [];
         return (
           T(t, function (e) {
-            d($, e) || d(A, e) || n.push(e);
+            d($, e) || d(I, e) || n.push(e);
           }),
           n
         );
@@ -55150,7 +55163,7 @@
         ((W = function () {
           if (this instanceof W) throw TypeError('Symbol is not a constructor');
           var e = arguments.length && void 0 !== arguments[0] ? String(arguments[0]) : void 0,
-            t = I(e),
+            t = A(e),
             n = function (e) {
               this === G && n.call(X, e), d(this, P) && d(this[P], t) && (this[P][t] = !1), ie(this, t, b(1, e));
             };
@@ -55160,7 +55173,7 @@
           return q(this).tag;
         }),
         C(W, 'withoutSetter', function (e) {
-          return ce(I(e), e);
+          return ce(A(e), e);
         }),
         (S.f = de),
         (O.f = le),
@@ -55251,7 +55264,7 @@
         },
       );
     }
-    W[D][_] || L(W[D], _, W[D].valueOf), V(W, F), (A[P] = !0);
+    W[D][_] || L(W[D], _, W[D].valueOf), V(W, F), (I[P] = !0);
   },
   pevA: function (e, t, n) {
     'use strict';
@@ -55734,9 +55747,9 @@
               sources: {
                 _: {
                   jsx:
-                    'import React, { useRef } from \'react\';\nimport {\n  Button,\n  Checkbox,\n  DatePicker,\n  Form,\n  FormItem,\n  Input,\n  List,\n  MultiUpload,\n  NumberInput,\n  Picker,\n  SingleUpload,\n  SubmitButton,\n  TextArea,\n} from \'weui-react-v2\';\nimport { singlePickerData } from \'../../picker/demo/picker-data\';\nimport \'./index.less\';\n\nfunction getResponse(res) {\n  if (res && res.code === 0) {\n    return res.filekey;\n  }\n  throw new Error(\'\u540e\u53f0\u4e0a\u4f20\u9519\u8bef\');\n}\n\nconst validConfig = {\n  // phone: [{ name: \'Required\' }, { name: \'Pattern\', params: [/^1\\d{10}$/] }],\n  // vcode: [{ name: \'Required\' }, { name: \'EqualLength\', params: [6] }],\n  // name: [{ name: \'Required\' }],\n  // age: [{ name: \'Required\' }],\n  // amount: [{ name: \'Required\' }, { name: \'Amount\' }],\n  // loginType: [{ name: \'Required\' }],\n  img: [\n    {\n      name: \'Required\',\n    },\n  ],\n};\nexport default function() {\n  const formMethods = useRef(null);\n\n  function subamit(data) {\n    console.log(\'\u63d0\u4ea4\u6570\u636e\u4e3a\', data);\n    return new Promise((resolve, reject) => {\n      setTimeout(() => {\n        resolve(data);\n      }, 2000);\n    });\n  }\n\n  return (\n    <div className="form-demo">\n      <div className="form-text-area">\n        <div className="form-title">\u8868\u5355\u7ed3\u6784</div>\n        <div className="form-desc">\n          \u5c55\u793a\u8868\u5355\u9875\u9762\u7684\u4fe1\u606f\u7ed3\u6784\u6837\u5f0f, \u5206\u522b\u7531\u5934\u90e8\u533a\u57df/\u63a7\u4ef6\u533a\u57df/\u63d0\u793a\u533a\u57df/\u64cd\u4f5c\u533a\u57df\u548c\u5e95\u90e8\u4fe1\u606f\u533a\u57df\u7ec4\u6210\u3002\n        </div>\n      </div>\n      <Form\n        labelWidth="20vw"\n        validConfig={validConfig}\n        defaultModel={{\n          img:\n            \'http://365wifi.oss-cn-zhangjiakou.aliyuncs.com/cabinet/20210104/97013ff8d05e4c4ab39bc0aa0f7f86bf.jpg\',\n          imgs: [\n            \'http://365wifi.oss-cn-zhangjiakou.aliyuncs.com/cabinet/20210104/97013ff8d05e4c4ab39bc0aa0f7f86bf.jpg\',\n          ],\n        }}\n        getFormMethods={methods => (formMethods.current = methods)}\n        onSubmit={subamit}\n      >\n        <div className="form-margin">\n          <List title="\u8868\u5355\u7ec4\u6807\u9898">\n            <FormItem prop="phone" label="\u624b\u673a\u53f7">\n              <Input\n                placeholder="\u8bf7\u8f93\u5165\u624b\u673a\u53f7"\n                type="phone"\n                pattern="[0-9]*"\n                maxlength={13}\n                autoFocus\n              />\n            </FormItem>\n            <FormItem prop="vcode" label="\u9a8c\u8bc1\u7801" extra={<Button size="small">\u83b7\u53d6\u9a8c\u8bc1\u7801</Button>}>\n              <Input placeholder="\u8bf7\u8f93\u5165\u9a8c\u8bc1\u7801" pattern="[0-9]*" maxlength={6} />\n            </FormItem>\n            <FormItem prop="name" label="\u59d3\u540d">\n              <Input placeholder="\u8bf7\u8f93\u5165\u771f\u5b9e\u59d3\u540d" maxlength={10} />\n            </FormItem>\n            <FormItem prop="age" label="\u5e74\u9f84" defaultValue={22}>\n              <NumberInput\n                style={{\n                  width: \'50%\',\n                }}\n                min={1}\n                max={120}\n                maxlength={3}\n                pattern="[0-9]*"\n                showControl\n              />\n            </FormItem>\n            <FormItem prop="amount" label="\u91d1\u989d">\n              <NumberInput type="amount" placeholder="\u8bf7\u8f93\u5165\u91d1\u989d" precision={2} />\n            </FormItem>\n            <FormItem prop="date" label="\u65e5\u671f">\n              <DatePicker placeholder="\u8bf7\u9009\u62e9\u751f\u65e5" useDefaultFormat={false} separator="" />\n            </FormItem>\n            <FormItem prop="feedback" label="\u95ee\u9898\u53cd\u9988" alignItems="flex-start">\n              <TextArea placeholder="\u8bf7\u8f93\u5165\u60a8\u9047\u5230\u7684\u95ee\u9898" />\n            </FormItem>\n          </List>\n          <List title="\u539f\u751f\u9009\u62e9\u6846">\n            <FormItem prop="loginType" defaultValue="2" arrow="horizontal">\n              <select>\n                <option value="">\u4e0d\u9009</option>\n                <option value="1">\u5fae\u4fe1\u53f7</option>\n                <option value="2">QQ\u53f7</option>\n                <option value="3">Email</option>\n              </select>\n            </FormItem>\n            <FormItem\n              className="virtual-select"\n              label={\n                <FormItem prop="zoneCode" labelString="\u533a\u53f7" simple defaultValue="86">\n                  <select>\n                    <option value="86">+86</option>\n                    <option value="80">+80</option>\n                    <option value="87">+87</option>\n                  </select>\n                </FormItem>\n              }\n            >\n              <FormItem prop="zonePhone" labelString="\u533a\u57df\u624b\u673a\u53f7" simple>\n                <Input placeholder="\u8bf7\u8f93\u5165\u624b\u673a\u53f7" type="phone" pattern="[0-9]*" maxlength={13} />\n              </FormItem>\n            </FormItem>\n            <FormItem prop="country" label="\u56fd\u5bb6" arrow="horizontal" defaultValue="2">\n              <select>\n                <option value="1">\u4e2d\u56fd</option>\n                <option value="2">\u7f8e\u56fd</option>\n                <option value="3">\u82f1\u56fd</option>\n              </select>\n            </FormItem>\n          </List>\n\n          <List title="Picker\u9009\u62e9\u5668">\n            <FormItem prop="piao" label="\u7968\u636e" arrow>\n              <Picker title="\u8bf7\u9009\u62e9" placeholder="\u8bf7\u9009\u62e9" data={singlePickerData} />\n            </FormItem>\n          </List>\n          <List title="\u6587\u4ef6">\n            <FormItem prop="img" label="\u5934\u50cf">\n              <SingleUpload action="/upload" getResponse={getResponse} />\n            </FormItem>\n            <FormItem prop="imgs" label="\u7167\u7247\u5899">\n              <MultiUpload length={3} action="/upload" getResponse={getResponse} />\n            </FormItem>\n          </List>\n        </div>\n        <div className="form-tips">\n          <Checkbox size="small">\n            \u9605\u8bfb\u5e76\u540c\u610f<a>\u300a\u76f8\u5173\u6761\u6b3e\u300b</a>\n          </Checkbox>\n        </div>\n        <div className="form-btns">\n          <SubmitButton size="large">\u786e\u5b9a</SubmitButton>\n        </div>\n      </Form>\n    </div>\n  );\n}\n',
+                    'import React, { useRef } from \'react\';\nimport {\n  Button,\n  Checkbox,\n  DatePicker,\n  Form,\n  FormItem,\n  Input,\n  List,\n  MultiUpload,\n  NumberInput,\n  Picker,\n  SingleUpload,\n  SubmitButton,\n  TextArea,\n} from \'weui-react-v2\';\nimport { singlePickerData } from \'../../picker/demo/picker-data\';\nimport \'./index.less\';\n\nfunction getResponse(res) {\n  if (res && res.code === 0) {\n    return res.filekey;\n  }\n  throw new Error(\'\u540e\u53f0\u4e0a\u4f20\u9519\u8bef\');\n}\n\nconst validConfig = {\n  // phone: [{ name: \'Required\' }, { name: \'Pattern\', params: [/^1\\d{10}$/] }],\n  // vcode: [{ name: \'Required\' }, { name: \'EqualLength\', params: [6] }],\n  // name: [{ name: \'Required\' }],\n  // age: [{ name: \'Required\' }],\n  // amount: [{ name: \'Required\' }, { name: \'Amount\' }],\n  // loginType: [{ name: \'Required\' }],\n  img: [\n    {\n      name: \'Required\',\n    },\n  ],\n};\nexport default function() {\n  const formMethods = useRef(null);\n\n  function subamit(data) {\n    console.log(\'\u63d0\u4ea4\u6570\u636e\u4e3a\', data);\n    return new Promise((resolve, reject) => {\n      setTimeout(() => {\n        resolve(data);\n      }, 2000);\n    });\n  }\n\n  return (\n    <div className="form-demo">\n      <div className="form-text-area">\n        <div className="form-title">\u8868\u5355\u7ed3\u6784</div>\n        <div className="form-desc">\n          \u5c55\u793a\u8868\u5355\u9875\u9762\u7684\u4fe1\u606f\u7ed3\u6784\u6837\u5f0f, \u5206\u522b\u7531\u5934\u90e8\u533a\u57df/\u63a7\u4ef6\u533a\u57df/\u63d0\u793a\u533a\u57df/\u64cd\u4f5c\u533a\u57df\u548c\u5e95\u90e8\u4fe1\u606f\u533a\u57df\u7ec4\u6210\u3002\n        </div>\n      </div>\n      <Form\n        labelWidth="20vw"\n        validConfig={validConfig}\n        defaultModel={{\n          img:\n            \'http://365wifi.oss-cn-zhangjiakou.aliyuncs.com/cabinet/20210104/97013ff8d05e4c4ab39bc0aa0f7f86bf.jpg\',\n          imgs: [\n            \'http://365wifi.oss-cn-zhangjiakou.aliyuncs.com/cabinet/20210104/97013ff8d05e4c4ab39bc0aa0f7f86bf.jpg\',\n          ],\n          amount: 33.45,\n        }}\n        getFormMethods={methods => (formMethods.current = methods)}\n        onSubmit={subamit}\n      >\n        <div className="form-margin">\n          <List title="\u8868\u5355\u7ec4\u6807\u9898">\n            <FormItem prop="phone" label="\u624b\u673a\u53f7">\n              <Input\n                placeholder="\u8bf7\u8f93\u5165\u624b\u673a\u53f7"\n                type="phone"\n                pattern="[0-9]*"\n                maxlength={13}\n                autoFocus\n              />\n            </FormItem>\n            <FormItem prop="vcode" label="\u9a8c\u8bc1\u7801" extra={<Button size="small">\u83b7\u53d6\u9a8c\u8bc1\u7801</Button>}>\n              <Input placeholder="\u8bf7\u8f93\u5165\u9a8c\u8bc1\u7801" pattern="[0-9]*" maxlength={6} />\n            </FormItem>\n            <FormItem prop="name" label="\u59d3\u540d">\n              <Input placeholder="\u8bf7\u8f93\u5165\u771f\u5b9e\u59d3\u540d" maxlength={10} />\n            </FormItem>\n            <FormItem prop="age" label="\u5e74\u9f84" defaultValue={22}>\n              <NumberInput\n                style={{\n                  width: \'50%\',\n                }}\n                min={1}\n                max={120}\n                maxlength={3}\n                pattern="[0-9]*"\n                showControl\n              />\n            </FormItem>\n            <FormItem prop="amount" label="\u91d1\u989d">\n              <NumberInput type="amount" placeholder="\u8bf7\u8f93\u5165\u91d1\u989d" precision={4} />\n            </FormItem>\n            <FormItem prop="date" label="\u65e5\u671f">\n              <DatePicker placeholder="\u8bf7\u9009\u62e9\u751f\u65e5" useDefaultFormat={false} separator="" />\n            </FormItem>\n            <FormItem prop="feedback" label="\u95ee\u9898\u53cd\u9988" alignItems="flex-start">\n              <TextArea placeholder="\u8bf7\u8f93\u5165\u60a8\u9047\u5230\u7684\u95ee\u9898" />\n            </FormItem>\n          </List>\n          <List title="\u539f\u751f\u9009\u62e9\u6846">\n            <FormItem prop="loginType" defaultValue="2" arrow="horizontal">\n              <select>\n                <option value="">\u4e0d\u9009</option>\n                <option value="1">\u5fae\u4fe1\u53f7</option>\n                <option value="2">QQ\u53f7</option>\n                <option value="3">Email</option>\n              </select>\n            </FormItem>\n            <FormItem\n              className="virtual-select"\n              label={\n                <FormItem prop="zoneCode" labelString="\u533a\u53f7" simple defaultValue="86">\n                  <select>\n                    <option value="86">+86</option>\n                    <option value="80">+80</option>\n                    <option value="87">+87</option>\n                  </select>\n                </FormItem>\n              }\n            >\n              <FormItem prop="zonePhone" labelString="\u533a\u57df\u624b\u673a\u53f7" simple>\n                <Input placeholder="\u8bf7\u8f93\u5165\u624b\u673a\u53f7" type="phone" pattern="[0-9]*" maxlength={13} />\n              </FormItem>\n            </FormItem>\n            <FormItem prop="country" label="\u56fd\u5bb6" arrow="horizontal" defaultValue="2">\n              <select>\n                <option value="1">\u4e2d\u56fd</option>\n                <option value="2">\u7f8e\u56fd</option>\n                <option value="3">\u82f1\u56fd</option>\n              </select>\n            </FormItem>\n          </List>\n\n          <List title="Picker\u9009\u62e9\u5668">\n            <FormItem prop="piao" label="\u7968\u636e" arrow>\n              <Picker title="\u8bf7\u9009\u62e9" placeholder="\u8bf7\u9009\u62e9" data={singlePickerData} />\n            </FormItem>\n          </List>\n          <List title="\u6587\u4ef6">\n            <FormItem prop="img" label="\u5934\u50cf">\n              <SingleUpload action="/upload" getResponse={getResponse} />\n            </FormItem>\n            <FormItem prop="imgs" label="\u7167\u7247\u5899">\n              <MultiUpload length={3} action="/upload" getResponse={getResponse} />\n            </FormItem>\n          </List>\n        </div>\n        <div className="form-tips">\n          <Checkbox size="small">\n            \u9605\u8bfb\u5e76\u540c\u610f<a>\u300a\u76f8\u5173\u6761\u6b3e\u300b</a>\n          </Checkbox>\n        </div>\n        <div className="form-btns">\n          <SubmitButton size="large">\u786e\u5b9a</SubmitButton>\n        </div>\n      </Form>\n    </div>\n  );\n}\n',
                   tsx:
-                    'import React, { useRef } from \'react\';\nimport {\n  Button,\n  Checkbox,\n  DatePicker,\n  Form,\n  FormItem,\n  FormMethods,\n  Switch,\n  Input,\n  List,\n  MultiUpload,\n  NumberInput,\n  Picker,\n  SingleUpload,\n  SubmitButton,\n  TextArea,\n  ValidateConfig,\n} from \'weui-react-v2\';\nimport { singlePickerData } from \'../../picker/demo/picker-data\';\nimport \'./index.less\';\n\ninterface Model {\n  phone: string;\n  vcode: string;\n  name: string;\n  loginType: string;\n  age: number;\n  amount: number;\n  img: string;\n}\n\ninterface Res {\n  code: number;\n  filekey: string;\n}\n\nfunction getResponse(res: Res) {\n  if (res && res.code === 0) {\n    return res.filekey;\n  } else {\n    throw new Error(\'\u540e\u53f0\u4e0a\u4f20\u9519\u8bef\');\n  }\n}\n\nconst validConfig: ValidateConfig<Required<Model>> = {\n  // phone: [{ name: \'Required\' }, { name: \'Pattern\', params: [/^1\\d{10}$/] }],\n  // vcode: [{ name: \'Required\' }, { name: \'EqualLength\', params: [6] }],\n  // name: [{ name: \'Required\' }],\n  // age: [{ name: \'Required\' }],\n  // amount: [{ name: \'Required\' }, { name: \'Amount\' }],\n  // loginType: [{ name: \'Required\' }],\n  img: [{ name: \'Required\' }],\n};\n\nexport default function () {\n  const formMethods = useRef<FormMethods | null>(null);\n\n  function subamit(data: Model) {\n    console.log(\'\u63d0\u4ea4\u6570\u636e\u4e3a\', data);\n    return new Promise((resolve, reject) => {\n      setTimeout(() => {\n        resolve(data);\n      }, 2000);\n    });\n  }\n\n  return (\n    <div className="form-demo">\n      <div className="form-text-area">\n        <div className="form-title">\u8868\u5355\u7ed3\u6784</div>\n        <div className="form-desc">\n          \u5c55\u793a\u8868\u5355\u9875\u9762\u7684\u4fe1\u606f\u7ed3\u6784\u6837\u5f0f, \u5206\u522b\u7531\u5934\u90e8\u533a\u57df/\u63a7\u4ef6\u533a\u57df/\u63d0\u793a\u533a\u57df/\u64cd\u4f5c\u533a\u57df\u548c\u5e95\u90e8\u4fe1\u606f\u533a\u57df\u7ec4\u6210\u3002\n        </div>\n      </div>\n      <Form\n        labelWidth="20vw"\n        validConfig={validConfig}\n        defaultModel={{\n          img: \'http://365wifi.oss-cn-zhangjiakou.aliyuncs.com/cabinet/20210104/97013ff8d05e4c4ab39bc0aa0f7f86bf.jpg\',\n          imgs: [\n            \'http://365wifi.oss-cn-zhangjiakou.aliyuncs.com/cabinet/20210104/97013ff8d05e4c4ab39bc0aa0f7f86bf.jpg\',\n          ],\n        }}\n        getFormMethods={(methods) => (formMethods.current = methods)}\n        onSubmit={subamit}\n      >\n        <div className="form-margin">\n          <List title="\u8868\u5355\u7ec4\u6807\u9898">\n            <FormItem prop="phone" label="\u624b\u673a\u53f7">\n              <Input placeholder="\u8bf7\u8f93\u5165\u624b\u673a\u53f7" type="phone" pattern="[0-9]*" maxlength={13} autoFocus={true} />\n            </FormItem>\n            <FormItem prop="vcode" label="\u9a8c\u8bc1\u7801" extra={<Button size="small">\u83b7\u53d6\u9a8c\u8bc1\u7801</Button>}>\n              <Input placeholder="\u8bf7\u8f93\u5165\u9a8c\u8bc1\u7801" pattern="[0-9]*" maxlength={6} />\n            </FormItem>\n            <FormItem prop="name" label="\u59d3\u540d">\n              <Input placeholder="\u8bf7\u8f93\u5165\u771f\u5b9e\u59d3\u540d" maxlength={10} />\n            </FormItem>\n            <FormItem prop="age" label="\u5e74\u9f84" defaultValue={22}>\n              <NumberInput\n                style={{ width: \'50%\' }}\n                min={1}\n                max={120}\n                maxlength={3}\n                pattern="[0-9]*"\n                showControl={true}\n              />\n            </FormItem>\n            <FormItem prop="amount" label="\u91d1\u989d">\n              <NumberInput type="amount" placeholder="\u8bf7\u8f93\u5165\u91d1\u989d" precision={2} />\n            </FormItem>\n            <FormItem prop="date" label="\u65e5\u671f">\n              <DatePicker placeholder="\u8bf7\u9009\u62e9\u751f\u65e5" useDefaultFormat={false} separator="" />\n            </FormItem>\n            <FormItem prop="feedback" label="\u95ee\u9898\u53cd\u9988" alignItems="flex-start">\n              <TextArea placeholder="\u8bf7\u8f93\u5165\u60a8\u9047\u5230\u7684\u95ee\u9898" />\n            </FormItem>\n          </List>\n          <List title="\u539f\u751f\u9009\u62e9\u6846">\n            <FormItem prop="loginType" defaultValue="2" arrow="horizontal">\n              <select>\n                <option value="">\u4e0d\u9009</option>\n                <option value="1">\u5fae\u4fe1\u53f7</option>\n                <option value="2">QQ\u53f7</option>\n                <option value="3">Email</option>\n              </select>\n            </FormItem>\n            <FormItem\n              className="virtual-select"\n              label={\n                <FormItem prop="zoneCode" labelString="\u533a\u53f7" simple={true} defaultValue="86">\n                  <select>\n                    <option value="86">+86</option>\n                    <option value="80">+80</option>\n                    <option value="87">+87</option>\n                  </select>\n                </FormItem>\n              }\n            >\n              <FormItem prop="zonePhone" labelString="\u533a\u57df\u624b\u673a\u53f7" simple={true}>\n                <Input placeholder="\u8bf7\u8f93\u5165\u624b\u673a\u53f7" type="phone" pattern="[0-9]*" maxlength={13} />\n              </FormItem>\n            </FormItem>\n            <FormItem prop="country" label="\u56fd\u5bb6" arrow="horizontal" defaultValue="2">\n              <select>\n                <option value="1">\u4e2d\u56fd</option>\n                <option value="2">\u7f8e\u56fd</option>\n                <option value="3">\u82f1\u56fd</option>\n              </select>\n            </FormItem>\n          </List>\n\n          <List title="Picker\u9009\u62e9\u5668">\n            <FormItem prop="piao" label="\u7968\u636e" arrow={true}>\n              <Picker title="\u8bf7\u9009\u62e9" placeholder="\u8bf7\u9009\u62e9" data={singlePickerData} />\n            </FormItem>\n          </List>\n          <List title="\u6587\u4ef6">\n            <FormItem prop="img" label="\u5934\u50cf">\n              <SingleUpload<Res> action="/upload" getResponse={getResponse} />\n            </FormItem>\n            <FormItem prop="imgs" label="\u7167\u7247\u5899">\n              <MultiUpload<Res> length={3} action="/upload" getResponse={getResponse} />\n            </FormItem>\n          </List>\n        </div>\n        <div className="form-tips">\n          <Checkbox size="small">\n            \u9605\u8bfb\u5e76\u540c\u610f<a>\u300a\u76f8\u5173\u6761\u6b3e\u300b</a>\n          </Checkbox>\n        </div>\n        <div className="form-btns">\n          <SubmitButton size="large">\u786e\u5b9a</SubmitButton>\n        </div>\n      </Form>\n    </div>\n  );\n}\n',
+                    'import React, { useRef } from \'react\';\nimport {\n  Button,\n  Checkbox,\n  DatePicker,\n  Form,\n  FormItem,\n  FormMethods,\n  Switch,\n  Input,\n  List,\n  MultiUpload,\n  NumberInput,\n  Picker,\n  SingleUpload,\n  SubmitButton,\n  TextArea,\n  ValidateConfig,\n} from \'weui-react-v2\';\nimport { singlePickerData } from \'../../picker/demo/picker-data\';\nimport \'./index.less\';\n\ninterface Model {\n  phone: string;\n  vcode: string;\n  name: string;\n  loginType: string;\n  age: number;\n  amount: number;\n  img: string;\n}\n\ninterface Res {\n  code: number;\n  filekey: string;\n}\n\nfunction getResponse(res: Res) {\n  if (res && res.code === 0) {\n    return res.filekey;\n  } else {\n    throw new Error(\'\u540e\u53f0\u4e0a\u4f20\u9519\u8bef\');\n  }\n}\n\nconst validConfig: ValidateConfig<Required<Model>> = {\n  // phone: [{ name: \'Required\' }, { name: \'Pattern\', params: [/^1\\d{10}$/] }],\n  // vcode: [{ name: \'Required\' }, { name: \'EqualLength\', params: [6] }],\n  // name: [{ name: \'Required\' }],\n  // age: [{ name: \'Required\' }],\n  // amount: [{ name: \'Required\' }, { name: \'Amount\' }],\n  // loginType: [{ name: \'Required\' }],\n  img: [{ name: \'Required\' }],\n};\n\nexport default function () {\n  const formMethods = useRef<FormMethods | null>(null);\n\n  function subamit(data: Model) {\n    console.log(\'\u63d0\u4ea4\u6570\u636e\u4e3a\', data);\n    return new Promise((resolve, reject) => {\n      setTimeout(() => {\n        resolve(data);\n      }, 2000);\n    });\n  }\n\n  return (\n    <div className="form-demo">\n      <div className="form-text-area">\n        <div className="form-title">\u8868\u5355\u7ed3\u6784</div>\n        <div className="form-desc">\n          \u5c55\u793a\u8868\u5355\u9875\u9762\u7684\u4fe1\u606f\u7ed3\u6784\u6837\u5f0f, \u5206\u522b\u7531\u5934\u90e8\u533a\u57df/\u63a7\u4ef6\u533a\u57df/\u63d0\u793a\u533a\u57df/\u64cd\u4f5c\u533a\u57df\u548c\u5e95\u90e8\u4fe1\u606f\u533a\u57df\u7ec4\u6210\u3002\n        </div>\n      </div>\n      <Form\n        labelWidth="20vw"\n        validConfig={validConfig}\n        defaultModel={{\n          img: \'http://365wifi.oss-cn-zhangjiakou.aliyuncs.com/cabinet/20210104/97013ff8d05e4c4ab39bc0aa0f7f86bf.jpg\',\n          imgs: [\n            \'http://365wifi.oss-cn-zhangjiakou.aliyuncs.com/cabinet/20210104/97013ff8d05e4c4ab39bc0aa0f7f86bf.jpg\',\n          ],\n          amount: 33.45,\n        }}\n        getFormMethods={(methods) => (formMethods.current = methods)}\n        onSubmit={subamit}\n      >\n        <div className="form-margin">\n          <List title="\u8868\u5355\u7ec4\u6807\u9898">\n            <FormItem prop="phone" label="\u624b\u673a\u53f7">\n              <Input placeholder="\u8bf7\u8f93\u5165\u624b\u673a\u53f7" type="phone" pattern="[0-9]*" maxlength={13} autoFocus={true} />\n            </FormItem>\n            <FormItem prop="vcode" label="\u9a8c\u8bc1\u7801" extra={<Button size="small">\u83b7\u53d6\u9a8c\u8bc1\u7801</Button>}>\n              <Input placeholder="\u8bf7\u8f93\u5165\u9a8c\u8bc1\u7801" pattern="[0-9]*" maxlength={6} />\n            </FormItem>\n            <FormItem prop="name" label="\u59d3\u540d">\n              <Input placeholder="\u8bf7\u8f93\u5165\u771f\u5b9e\u59d3\u540d" maxlength={10} />\n            </FormItem>\n            <FormItem prop="age" label="\u5e74\u9f84" defaultValue={22}>\n              <NumberInput\n                style={{ width: \'50%\' }}\n                min={1}\n                max={120}\n                maxlength={3}\n                pattern="[0-9]*"\n                showControl={true}\n              />\n            </FormItem>\n            <FormItem prop="amount" label="\u91d1\u989d">\n              <NumberInput type="amount" placeholder="\u8bf7\u8f93\u5165\u91d1\u989d" precision={4} />\n            </FormItem>\n            <FormItem prop="date" label="\u65e5\u671f">\n              <DatePicker placeholder="\u8bf7\u9009\u62e9\u751f\u65e5" useDefaultFormat={false} separator="" />\n            </FormItem>\n            <FormItem prop="feedback" label="\u95ee\u9898\u53cd\u9988" alignItems="flex-start">\n              <TextArea placeholder="\u8bf7\u8f93\u5165\u60a8\u9047\u5230\u7684\u95ee\u9898" />\n            </FormItem>\n          </List>\n          <List title="\u539f\u751f\u9009\u62e9\u6846">\n            <FormItem prop="loginType" defaultValue="2" arrow="horizontal">\n              <select>\n                <option value="">\u4e0d\u9009</option>\n                <option value="1">\u5fae\u4fe1\u53f7</option>\n                <option value="2">QQ\u53f7</option>\n                <option value="3">Email</option>\n              </select>\n            </FormItem>\n            <FormItem\n              className="virtual-select"\n              label={\n                <FormItem prop="zoneCode" labelString="\u533a\u53f7" simple={true} defaultValue="86">\n                  <select>\n                    <option value="86">+86</option>\n                    <option value="80">+80</option>\n                    <option value="87">+87</option>\n                  </select>\n                </FormItem>\n              }\n            >\n              <FormItem prop="zonePhone" labelString="\u533a\u57df\u624b\u673a\u53f7" simple={true}>\n                <Input placeholder="\u8bf7\u8f93\u5165\u624b\u673a\u53f7" type="phone" pattern="[0-9]*" maxlength={13} />\n              </FormItem>\n            </FormItem>\n            <FormItem prop="country" label="\u56fd\u5bb6" arrow="horizontal" defaultValue="2">\n              <select>\n                <option value="1">\u4e2d\u56fd</option>\n                <option value="2">\u7f8e\u56fd</option>\n                <option value="3">\u82f1\u56fd</option>\n              </select>\n            </FormItem>\n          </List>\n\n          <List title="Picker\u9009\u62e9\u5668">\n            <FormItem prop="piao" label="\u7968\u636e" arrow={true}>\n              <Picker title="\u8bf7\u9009\u62e9" placeholder="\u8bf7\u9009\u62e9" data={singlePickerData} />\n            </FormItem>\n          </List>\n          <List title="\u6587\u4ef6">\n            <FormItem prop="img" label="\u5934\u50cf">\n              <SingleUpload<Res> action="/upload" getResponse={getResponse} />\n            </FormItem>\n            <FormItem prop="imgs" label="\u7167\u7247\u5899">\n              <MultiUpload<Res> length={3} action="/upload" getResponse={getResponse} />\n            </FormItem>\n          </List>\n        </div>\n        <div className="form-tips">\n          <Checkbox size="small">\n            \u9605\u8bfb\u5e76\u540c\u610f<a>\u300a\u76f8\u5173\u6761\u6b3e\u300b</a>\n          </Checkbox>\n        </div>\n        <div className="form-btns">\n          <SubmitButton size="large">\u786e\u5b9a</SubmitButton>\n        </div>\n      </Form>\n    </div>\n  );\n}\n',
                 },
                 'picker/demo/picker-data.ts': {
                   import: '../../picker/demo/picker-data',
@@ -55749,7 +55762,7 @@
                     '.form-demo {\n  padding: 112px 0 40px;\n  display: flex;\n  flex-direction: column;\n  min-height: 100%;\n  background-color: #ffffff;\n  box-sizing: border-box;\n  line-height: 1.4;\n  font-size: 28px;\n\n  .form-margin {\n    margin: 96px 0;\n  }\n\n  .form-text-area {\n    padding: 0 64px;\n    color: rgba(0, 0, 0, 0.9);\n    text-align: center;\n\n    .form-title {\n      font-size: 44px;\n      font-weight: 700;\n      line-height: 1.36;\n    }\n    .form-desc {\n      font-size: 30px;\n      margin-top: 32px;\n      line-height: 60px;\n    }\n  }\n\n  .form-tips {\n    overflow: hidden;\n    margin-bottom: 48px;\n    text-align: center;\n    color: rgba(0, 0, 0, 0.5);\n\n    .weui-checkbox {\n      font-size: 28px;\n    }\n\n    a {\n      color: #576b95;\n    }\n  }\n\n  .form-btns {\n    text-align: center;\n\n    .weui-btn {\n      width: 368px;\n      margin: auto;\n    }\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u8868\u5355\u9a8c\u8bc1',
               description:
                 '<div class="markdown"><p>\u8868\u5355\u9a8c\u8bc1\u975e\u5e38\u81ea\u7136\uff0c\u6302\u63a5\u4e86\u539f\u751f\u7684\u8868\u5355</p></div>',
@@ -55977,7 +55990,7 @@
                     "import React from 'react';\nimport { SafeArea, Search } from 'weui-react-v2';\n\nexport default () => {\n  return (\n    <SafeArea style={{ margin: '-0.16rem' }}>\n      <Search\n        placeholder=\"\u641c\u7d22\"\n        onConfirm={(val) => console.log('\u786e\u8ba4\u8f93\u5165: ', val)}\n        onSearch={(val) => console.log('search: ', val)}\n        onCancel={() => console.log('\u53d6\u6d88\u641c\u7d22')}\n      />\n    </SafeArea>\n  );\n};\n",
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u641c\u7d22\u680f',
               identifier: 'search-demo',
             },
@@ -58444,7 +58457,7 @@
                     'import React from \'react\';\nimport { Loadmore } from \'weui-react-v2\';\n\nexport default () => (\n  <>\n    <Loadmore tips="\u6b63\u5728\u52a0\u8f7d" loading={true} />\n    <br />\n    <Loadmore tips="\u6682\u65e0\u6570\u636e" />\n    <br />\n    <Loadmore dot={true} />\n    <br />\n  </>\n);',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u52a0\u8f7d\u66f4\u591a',
               identifier: 'components-loadmore',
             },
@@ -58627,7 +58640,7 @@
                     '.safearea-demo {\n  .block {\n    font-size: 60px;\n    color: #fff;\n    display: block;\n    width: 100%;\n    text-align: center;\n    height: 600px;\n    line-height: 600px;\n    background-color: #009a61;\n    background-image: linear-gradient(\n      -45deg,\n      rgba(255, 255, 255, 0.2) 25%,\n      transparent 25%,\n      transparent 50%,\n      rgba(255, 255, 255, 0.2) 50%,\n      rgba(255, 255, 255, 0.2) 75%,\n      transparent 75%,\n      transparent\n    );\n\n    &:nth-child(odd) {\n      background: repeating-linear-gradient(135deg, #ffeb3b, #ffeb3b 0.25em, #0092b7 0, #0092b7 0.75em);\n    }\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u56db\u5468\u4fdd\u7559\u5b89\u5168\u8fb9\u8ddd',
               identifier: 'components-safe-area',
             },
@@ -59366,7 +59379,7 @@
                     "import React, { useState } from 'react';\nimport { Toptips, Button, WhiteSpace } from 'weui-react-v2';\n\nexport default () => {\n  return (\n    <>\n      <WhiteSpace size=\"xl\" />\n      <Button\n        block={true}\n        onClick={() => {\n          console.log('\u6253\u5f00\u6210\u63d0\u793a');\n          Toptips('\u63d0\u4ea4\u6210\u529f', 'success');\n        }}\n      >\n        \u6210\u529f\u63d0\u793a\n      </Button>\n      <WhiteSpace />\n      <Button block={true} onClick={() => Toptips('\u8bf7\u586b\u5199\u624b\u673a\u53f7', 'fail')}>\n        \u5931\u8d25\u63d0\u793a\n      </Button>\n      <WhiteSpace />\n      <Button block={true} onClick={() => Toptips('\u8bf7\u586b\u5199\u624b\u673a\u53f7', 'default')}>\n        \u666e\u901a\u7c7b\u578b\n      </Button>\n    </>\n  );\n};",
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.0.7' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.0' } },
               title: '\u4e24\u79cd\u63d0\u793a',
               description:
                 '<div class="markdown"><p>\u5185\u7f6e\u6210\u529f\u548c\u5931\u8d25\u4e24\u79cd\u63d0\u793a \u8bbe\u7f6e <code>type</code> \u5c5e\u6027\u4e3a <code>success</code>, <code>fail</code>\u3002</p></div>',
@@ -59489,7 +59502,7 @@
               },
               dependencies: {
                 react: { version: '17.0.1' },
-                'weui-react-v2': { version: '3.0.7' },
+                'weui-react-v2': { version: '3.1.0' },
                 '@ant-design/icons': { version: '4.2.2' },
               },
               title: '\u5217\u8868\u7ec4\u5408\u5c55\u793a',
@@ -59792,8 +59805,8 @@
         C = e.disabled,
         M = e.defaultVisible,
         N = void 0 !== M && M,
-        A = e.labelField,
-        I = void 0 === A ? 'label' : A,
+        I = e.labelField,
+        A = void 0 === I ? 'label' : I,
         j = e.children,
         H = void 0 === j ? u.a.createElement(v, null) : j,
         R = e.popup,
@@ -59886,7 +59899,7 @@
                   children:
                     h(Z) || !ue
                       ? u.a.createElement('span', { className: ''.concat(o, '-placeholder') }, B)
-                      : U(ue, D, P, I),
+                      : U(ue, D, P, A),
                   onClick: me,
                   access: !C,
                 }),
@@ -60265,13 +60278,13 @@
           C = L && p.hero,
           M = L && p.features,
           N = !1 !== p.sidemenu && !C && !M && !p.gapless,
-          A =
+          I =
             !C &&
             !M &&
             Boolean(null === (t = p.slugs) || void 0 === t ? void 0 : t.length) &&
             ('content' === p.toc || void 0 === p.toc) &&
             !p.gapless,
-          I = 'zh-CN' === v,
+          A = 'zh-CN' === v,
           j = new Date(p.updatedTime).toLocaleString(),
           H = { github: 'GitHub', gitlab: 'GitLab' }[
             (null === (n = (x || '').match(/(github|gitlab)/)) || void 0 === n ? void 0 : n[1]) || 'nothing'
@@ -60285,7 +60298,7 @@
             {
               className: '__dumi-default-layout',
               'data-show-sidemenu': String(N),
-              'data-show-slugs': String(A),
+              'data-show-slugs': String(I),
               'data-site-mode': L,
               'data-gapless': String(!!p.gapless),
               onClick: () => S(!0),
@@ -60298,7 +60311,7 @@
               },
             }),
             c.a.createElement(g, { mobileMenuCollapsed: O, location: l }),
-            A && c.a.createElement(h, { slugs: p.slugs, className: '__dumi-default-layout-toc' }),
+            I && c.a.createElement(h, { slugs: p.slugs, className: '__dumi-default-layout-toc' }),
             C && y(p.hero),
             M && w(p.features),
             c.a.createElement(
@@ -60316,13 +60329,13 @@
                     c.a.createElement(
                       o['Link'],
                       { to: ''.concat(x, '/edit/').concat(E, '/').concat(p.filePath) },
-                      I
+                      A
                         ? '\u5728 '.concat(H, ' \u4e0a\u7f16\u8f91\u8fd9\u7bc7\u6587\u6863')
                         : 'Edit this doc on '.concat(H),
                     ),
                   c.a.createElement(
                     'span',
-                    { 'data-updated-text': I ? '\u6700\u540e\u66f4\u65b0\u65f6\u95f4\uff1a' : 'Last Update: ' },
+                    { 'data-updated-text': A ? '\u6700\u540e\u66f4\u65b0\u65f6\u95f4\uff1a' : 'Last Update: ' },
                     j,
                   ),
                 ),
@@ -60440,7 +60453,7 @@
   },
   x2v5: function (e) {
     e.exports = JSON.parse(
-      '{"../../../src/ActionSheet/ActionSheet.tsx":{"ActionSheet":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"title","description":"\u6807\u9898","type":"ReactNode"},{"identifier":"cancel","description":"\u53d6\u6d88\u6587\u672c","type":"ReactNode"},{"identifier":"menus","description":"\u83dc\u5355","type":"ReactNode[]"},{"identifier":"onClick","description":"\u9009\u4e2d\u83dc\u5355\u4e8b\u4ef6","type":"(index: number) => Promise<unknown>"},{"identifier":"visible","description":"\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"defaultVisible","description":"\u9ed8\u8ba4\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"onVisibleChange","description":"\u663e\u793a\u6539\u53d8","type":"(visible: boolean) => void"},{"identifier":"closeFuncRef","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570","type":"MutableRefObject<Function>"},{"identifier":"onUnmount","description":"\u5173\u95ed\u4e8b\u4ef6","type":"Function"},{"identifier":"getContainer","description":"\u9ed8\u8ba4\u4e3abody\u5185\u521b\u5efa\u4e00\u4e2adiv\u4f5c\u4e3a\u5bb9\u5668","type":"HTMLElement | GetContainerFun"},{"identifier":"rootSelector","description":"\u6839\u9009\u62e9\u5668, \u8ba9\u6b64\u8282\u70b9\u6837\u5f0f\u53d8\u5316. \u4e00\u822c\u662f`#root`","type":"string"},{"identifier":"animateClassName","description":"\u52a8\u753b\u7c7b\u540d","type":"string"},{"identifier":"popupClassName","description":"\u5f39\u51fa\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"popupContentClassName","description":"\u5f39\u51fa\u6846\u5185\u5bb9\u5143\u7d20\u7c7b\u540d","type":"string"},{"identifier":"duration","description":"\u6301\u7eed\u65f6\u95f4\uff08\u6beb\u79d2\uff09, \u9ed8\u8ba4 3000 \u6beb\u79d2\u540e\u5173\u95ed","type":"number"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode"},{"identifier":"mask","description":"\u662f\u5426\u663e\u793a\u906e\u7f69\u5c42","type":"boolean"},{"identifier":"maskClose","description":"\u80cc\u666f\u906e\u7f69\u662f\u5426\u53ef\u5173\u95ed","type":"boolean"},{"identifier":"getCloseFunc","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570(\u7528\u4e8ejs\u5f39\u51fa)","type":"(close: Function) => void"},{"identifier":"onClose","description":"\u5173\u95ed\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"},{"identifier":"onShow","description":"\u6253\u5f00\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"}]},"AmountKeyBoard":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"confirmBtn","description":"\u786e\u8ba4\u6309\u94ae","type":"ReactNode"},{"identifier":"cleanBtn","description":"\u6e05\u9664\u6309\u94ae","type":"ReactNode"},{"identifier":"visible","description":"\u662f\u5426\u6253\u5f00\u6570\u5b57\u952e\u76d8","type":"boolean"},{"identifier":"defaultVisible","description":"\u9ed8\u8ba4\u662f\u5426\u6253\u5f00\u6570\u5b57\u952e\u76d8","type":"boolean"},{"identifier":"onVisibleChange","description":"\u53ef\u89c6\u6539\u53d8\u4e8b\u4ef6","type":"(visible: boolean) => void"},{"identifier":"value","description":"\u91d1\u989d","type":"number"},{"identifier":"defaultVlue","description":"\u9ed8\u8ba4\u91d1\u989d","type":"number"},{"identifier":"onChange","description":"\u952e\u76d8\u952e\u5165\u4e8b\u4ef6","type":"(amount: number, amountStr: string) => void"},{"identifier":"onConfirm","description":"\u786e\u8ba4\u4e8b\u4ef6","type":"(amount: number, amountStr: string) => void"},{"identifier":"animateClassName","description":"\u52a8\u753b\u7c7b\u540d","type":"string"},{"identifier":"popupClassName","description":"\u5f39\u51fa\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"popupContentClassName","description":"\u5f39\u51fa\u6846\u5185\u5bb9\u5143\u7d20\u7c7b\u540d","type":"string"},{"identifier":"duration","description":"\u6301\u7eed\u65f6\u95f4\uff08\u6beb\u79d2\uff09, \u9ed8\u8ba4 3000 \u6beb\u79d2\u540e\u5173\u95ed","type":"number"},{"identifier":"onUnmount","description":"\u5173\u95ed\u4e8b\u4ef6","type":"Function"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode"},{"identifier":"mask","description":"\u662f\u5426\u663e\u793a\u906e\u7f69\u5c42","type":"boolean"},{"identifier":"maskClose","description":"\u80cc\u666f\u906e\u7f69\u662f\u5426\u53ef\u5173\u95ed","type":"boolean"},{"identifier":"closeFuncRef","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570","type":"MutableRefObject<Function>"},{"identifier":"getCloseFunc","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570(\u7528\u4e8ejs\u5f39\u51fa)","type":"(close: Function) => void"},{"identifier":"getContainer","description":"\u9ed8\u8ba4\u4e3abody\u5185\u521b\u5efa\u4e00\u4e2adiv\u4f5c\u4e3a\u5bb9\u5668","type":"HTMLElement | GetContainerFun"},{"identifier":"onClose","description":"\u5173\u95ed\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"},{"identifier":"onShow","description":"\u6253\u5f00\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"},{"identifier":"ref","type":"Ref<HTMLDivElement>"},{"identifier":"key","type":"ReactText"}]},"Button":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode"},{"identifier":"type","description":"\u6309\u94ae\u7c7b\u578b","type":"ButtonType"},{"identifier":"block","description":"\u662f\u5426\u957f\u6309\u94ae","type":"boolean"},{"identifier":"loading","description":"\u7b49\u5f85\u72b6\u6001","type":"boolean"},{"identifier":"disabled","description":"\u7981\u7528\u72b6\u6001","type":"boolean"},{"identifier":"danger","description":"\u8b66\u544a\u72b6\u6001","type":"boolean"},{"identifier":"icon","description":"\u56fe\u6807","type":"ReactNode"},{"identifier":"onClick","description":"click\u4e8b\u4ef6","type":"(event: MouseEvent<HTMLElement, MouseEvent>) => void"},{"identifier":"formType","description":"\u7c7b\u578b","type":"\\"button\\" | \\"submit\\" | \\"reset\\""},{"identifier":"size","description":"\u5c3a\u5bf8","type":"\\"default\\" | \\"small\\" | \\"large\\""}]},"Checkbox":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"checked","description":"\u590d\u9009\u6846\u662f\u5426\u9009\u4e2d","type":"boolean"},{"identifier":"onChange","description":"Switch\u503c\u66f4\u6539\u4e8b\u4ef6","type":"(chcked: boolean) => void"},{"identifier":"defaultChecked","description":"\u9ed8\u8ba4\u662f\u5426\u9009\u4e2d","type":"boolean"},{"identifier":"disabled","description":"\u662f\u5426\u7981\u7528","type":"boolean"},{"identifier":"size","description":"\u5c3a\u5bf8","type":"\\"default\\" | \\"small\\" | \\"large\\""},{"identifier":"children","description":"label\u5185\u5bb9","type":"ReactNode"},{"identifier":"ref","type":"Ref<HTMLSpanElement>"},{"identifier":"key","type":"ReactText"}]},"../../../src/DatePicker/DatePicker.tsx":{"DatePicker":[{"identifier":"mode","description":"\u65e5\u671f\u6a21\u5f0f, (\u65e5\u671fdate,\u65f6\u95f4time,\u65e5\u671f+\u65f6\u95f4datetime,\u5e74year,\u6708month)","type":"DatePickerMode"},{"identifier":"value","description":"\u9009\u4e2d\u65e5\u671f","type":"Date"},{"identifier":"defaultValue","description":"\u9ed8\u8ba4\u9009\u4e2d\u65e5\u671f","type":"Date"},{"identifier":"onChange","description":"\u65e5\u671f\u6539\u53d8","type":"(value: Date) => void"},{"identifier":"minDate","description":"\u6700\u5c0f\u53ef\u9009\u65e5\u671f, \u9ed8\u8ba4\u5411\u524d10\u5e74","type":"Date"},{"identifier":"maxDate","description":"\u6700\u5927\u53ef\u9009\u65e5\u671f, \u9ed8\u8ba4\u5411\u540e10\u5e74","type":"Date"},{"identifier":"format","description":"\u663e\u793a\u6807\u7b7e\u683c\u5f0f\u5316","type":"(date: Date, mode: DatePickerMode) => ReactNode"},{"identifier":"useDefaultFormat","description":"\u662f\u5426\u4f7f\u7528\u5185\u7f6e\u65e5\u671f\u683c\u5f0f\u5316label\\n\u9ed8\u8ba4\u9664\u4e86\u5e74\u548c\u6708\u6a21\u5f0f\uff0c\u5176\u4ed6\u9ed8\u8ba4\u9ed8\u8ba4\u4f7f\u7528","type":"boolean"},{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"title","description":"\u5f39\u51fa\u6846\u6807\u9898","type":"ReactNode"},{"identifier":"subTitle","description":"\u5b50\u6807\u9898","type":"ReactNode"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode"},{"identifier":"exted","description":"\u53f3\u4e0a\u89d2\u6269\u5c55\u5185\u5bb9","type":"ReactNode"},{"identifier":"onExtedClick","description":"\u53f3\u4e0a\u89d2\u6269\u5c55\u70b9\u51fb\u4e8b\u4ef6","type":"(close: Function) => void"},{"identifier":"cancel","description":"\u53d6\u6d88\u6309\u94ae","type":"ReactNode"},{"identifier":"onCancel","description":"\u53d6\u6d88\u6309\u94ae\u70b9\u51fb","type":"() => void"},{"identifier":"confirm","description":"\u786e\u5b9a\u6309\u94ae","type":"ReactNode"},{"identifier":"onConfirm","description":"\u786e\u5b9a\u4e8b\u4ef6","type":"(value: any[], data: PickerItem[]) => void"},{"identifier":"hideFooter","description":"\u662f\u5426\u9690\u85cf\u9875\u811a","type":"boolean"},{"identifier":"animateClassName","description":"\u52a8\u753b\u7c7b\u540d","type":"string"},{"identifier":"popupClassName","description":"\u5f39\u51fa\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"popupContentClassName","description":"\u5f39\u51fa\u6846\u5185\u5bb9\u5143\u7d20\u7c7b\u540d","type":"string"},{"identifier":"duration","description":"\u6301\u7eed\u65f6\u95f4\uff08\u6beb\u79d2\uff09, \u9ed8\u8ba4 3000 \u6beb\u79d2\u540e\u5173\u95ed","type":"number"},{"identifier":"onUnmount","description":"\u5173\u95ed\u4e8b\u4ef6","type":"Function"},{"identifier":"mask","description":"\u662f\u5426\u663e\u793a\u906e\u7f69\u5c42","type":"boolean"},{"identifier":"maskClose","description":"\u80cc\u666f\u906e\u7f69\u662f\u5426\u53ef\u5173\u95ed","type":"boolean"},{"identifier":"visible","description":"\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"defaultVisible","description":"\u9ed8\u8ba4\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"onVisibleChange","description":"\u663e\u793a\u6539\u53d8","type":"(visible: boolean) => void"},{"identifier":"closeFuncRef","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570","type":"MutableRefObject<Function>"},{"identifier":"getCloseFunc","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570(\u7528\u4e8ejs\u5f39\u51fa)","type":"(close: Function) => void"},{"identifier":"getContainer","description":"\u9ed8\u8ba4\u4e3abody\u5185\u521b\u5efa\u4e00\u4e2adiv\u4f5c\u4e3a\u5bb9\u5668","type":"HTMLElement | GetContainerFun"},{"identifier":"onClose","description":"\u5173\u95ed\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"},{"identifier":"onShow","description":"\u6253\u5f00\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"},{"identifier":"placeholder","description":"\u5360\u4f4d\u7b26","type":"ReactNode"},{"identifier":"popup","description":"\u5f39\u51fa\u6a21\u5f0f, \u7528\u4e8ejs\u89e6\u53d1\u5f39\u51fa\uff0c\u6b64\u65f6\u4e0d\u5c55\u793alabel\u533a\u5757","type":"boolean"},{"identifier":"singleLabel","description":"\u662f\u5426\u53ea\u663e\u793a\u6700\u7ec8\u4e00\u7ea7\u7684label (\u7528\u4e8e\u9ed8\u8ba4format)","type":"boolean"},{"identifier":"separator","description":"label\u5206\u9694\u7b26 (\u7528\u4e8e\u9ed8\u8ba4format)\\n\u6bd4\u5982\u65e5\u671f: 2019-10-08\\n\u6bd4\u5982\u7c7b\u522b: \u98df\u54c1/\u719f\u98df","type":"string"},{"identifier":"labelField","description":"\u6807\u7b7e\u5b57\u6bb5, \u9ed8\u8ba4label","type":"string"},{"identifier":"pickerValue","description":"\u5f53\u524d\u5373\u65f6\u9009\u62e9\u7684\u503c","type":"any[]"},{"identifier":"onPickerValueChange","description":"\u5f53\u524d\u5373\u65f6\u9009\u62e9\u7684\u503c\u6539\u53d8","type":"(pickerValue: any[]) => void"},{"identifier":"cols","description":"\u5217\u6570","type":"number"},{"identifier":"onPickerChange","description":"\u6bcf\u5217\u6570\u636e\u6539\u53d8","type":"(colIndex: number, value: any[], data: PickerItem[]) => void"},{"identifier":"cascade","description":"\u662f\u5426\u7ea7\u8fde","type":"boolean"},{"identifier":"disabled","description":"\u662f\u5426\u7981\u7528","type":"boolean"},{"identifier":"scrollOffsetRestRef","description":"\u91cd\u7f6e","type":"MutableRefObject<Function>"},{"identifier":"ref","type":"Ref<HTMLDivElement>"},{"identifier":"key","type":"ReactText"}]},"../../../src/Dialog/Dialog.tsx":{"Dialog":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"title","description":"\u6807\u9898","type":"ReactNode"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode","required":true},{"identifier":"cancel","description":"\u53d6\u6d88\u6309\u94ae","type":"ReactNode"},{"identifier":"onCancel","description":"\u53d6\u6d88\u6309\u94ae\u70b9\u51fb","type":"() => void"},{"identifier":"confirm","description":"\u786e\u5b9a\u6309\u94ae","type":"ReactNode"},{"identifier":"onConfirm","description":"\u786e\u5b9a\u6309\u94ae\u70b9\u51fb","type":"() => Promise<unknown>"},{"identifier":"hideFooter","description":"\u662f\u5426\u9690\u85cf\u9875\u811a","type":"boolean"},{"identifier":"footer","description":"\u81ea\u5b9a\u4e49\u9875\u811a\u6309\u94ae","type":"ReactNode[]"},{"identifier":"onClick","description":"\u81ea\u5b9a\u4e49\u9875\u811a\u6309\u94ae\u9009\u4e2d\u4e8b\u4ef6","type":"(index: number) => Promise<any>"},{"identifier":"animateClassName","description":"\u52a8\u753b\u7c7b\u540d","type":"string"},{"identifier":"popupClassName","description":"\u5f39\u51fa\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"popupContentClassName","description":"\u5f39\u51fa\u6846\u5185\u5bb9\u5143\u7d20\u7c7b\u540d","type":"string"},{"identifier":"duration","description":"\u6301\u7eed\u65f6\u95f4\uff08\u6beb\u79d2\uff09, \u9ed8\u8ba4 3000 \u6beb\u79d2\u540e\u5173\u95ed","type":"number"},{"identifier":"onUnmount","description":"\u5173\u95ed\u4e8b\u4ef6","type":"Function"},{"identifier":"mask","description":"\u662f\u5426\u663e\u793a\u906e\u7f69\u5c42","type":"boolean"},{"identifier":"maskClose","description":"\u80cc\u666f\u906e\u7f69\u662f\u5426\u53ef\u5173\u95ed","type":"boolean"},{"identifier":"visible","description":"\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"defaultVisible","description":"\u9ed8\u8ba4\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"onVisibleChange","description":"\u663e\u793a\u6539\u53d8","type":"(visible: boolean) => void"},{"identifier":"closeFuncRef","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570","type":"MutableRefObject<Function>"},{"identifier":"getCloseFunc","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570(\u7528\u4e8ejs\u5f39\u51fa)","type":"(close: Function) => void"},{"identifier":"getContainer","description":"\u9ed8\u8ba4\u4e3abody\u5185\u521b\u5efa\u4e00\u4e2adiv\u4f5c\u4e3a\u5bb9\u5668","type":"HTMLElement | GetContainerFun"},{"identifier":"onClose","description":"\u5173\u95ed\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"},{"identifier":"onShow","description":"\u6253\u5f00\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"}]},"../../../src/Flex/Flex.tsx":{"Flex":[{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"children","type":"ReactNode"},{"identifier":"type","description":"\u5e03\u5c40\u6a21\u5f0f","type":"\\"flex\\""},{"identifier":"justify","description":"\u9ed8\u8ba4 start","type":"\\"start\\" | \\"end\\" | \\"center\\" | \\"space-around\\" | \\"space-between\\""},{"identifier":"align","description":"\u9ed8\u8ba4 top","type":"\\"top\\" | \\"middle\\" | \\"bottom\\""},{"identifier":"gutter","description":"\u6805\u683c\u95f4\u9694","type":"number | Partial<Record<Breakpoint, number>>"}]},"../../../src/Flex/FLexItem.tsx":{"FLexItem":[{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"children","type":"ReactNode"},{"identifier":"span","description":"\u4e3a 0 \u65f6\u76f8\u5f53\u4e8e display: none","type":"number"},{"identifier":"pull","description":"\u6805\u683c\u5411\u5de6\u79fb\u52a8\u683c\u6570","type":"number"},{"identifier":"push","description":"\u6805\u683c\u5411\u53f3\u79fb\u52a8\u683c\u6570","type":"number"},{"identifier":"offset","description":"\u6805\u683c\u5de6\u4fa7\u7684\u95f4\u9694\u683c\u6570\uff0c\u95f4\u9694\u5185\u4e0d\u53ef\u4ee5\u6709\u6805\u683c","type":"number"},{"identifier":"order","description":"flex \u5e03\u5c40\u6a21\u5f0f\u4e0b\u5f97\u6805\u683c\u987a\u5e8f","type":"number"},{"identifier":"xxl","type":"number | ColConfig"},{"identifier":"xl","type":"number | ColConfig"},{"identifier":"lg","type":"number | ColConfig"},{"identifier":"md","type":"number | ColConfig"},{"identifier":"sm","type":"number | ColConfig"},{"identifier":"xs","type":"number | ColConfig"},{"identifier":"average","description":"\u662f\u5426\u5747\u5206","type":"boolean"}]},"../../../src/Form/Form.tsx":{"Form":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u8868\u5355\u5185\u5bb9","type":"ReactNode"},{"identifier":"validConfig","description":"\u9a8c\u8bc1\u914d\u7f6e","type":"ValidateConfig<T>"},{"identifier":"getFormMethods","description":"\u83b7\u53d6\u8868\u5355\u65b9\u6cd5","type":"(methods: FormMethods) => void"},{"identifier":"onFieldChange","description":"\u5b57\u6bb5\u503c\u6539\u53d8\u4e8b\u4ef6","type":"(prop: string, value: any) => void"},{"identifier":"onSubmitBefore","description":"\u5f00\u59cb\u70b9\u51fb\u63d0\u4ea4\u6309\u94ae","type":"(data: any) => void"},{"identifier":"onValidateFail","description":"\u8868\u5355\u9a8c\u8bc1\u5931\u8d25\u4e8b\u4ef6","type":"(error: Error, data: any) => void"},{"identifier":"onSubmit","description":"\u5f53\u9a8c\u8bc1\u5168\u90e8\u901a\u8fc7\u540e\u624d\u4f1a\u8c03\u7528\u6b64\u4e8b\u4ef6","type":"(data: any) => void"},{"identifier":"disabled","description":"\u662f\u5426\u7981\u7528\u8868\u5355","type":"boolean"},{"identifier":"methods","description":"\u8868\u5355\u65b9\u6cd5","type":"FormMethods"},{"identifier":"trigger","description":"\u9ed8\u8ba4\u89e6\u53d1\u4e8b\u4ef6","type":"ValidateTrigger"},{"identifier":"labelWidth","description":"\u6807\u7b7e\u5bbd\u5ea6","type":"string"},{"identifier":"labelPostion","description":"\u6807\u7b7e\u4f4d\u7f6e","type":"\\"left\\" | \\"top\\""},{"identifier":"defaultModel","description":"\u9ed8\u8ba4\u6a21\u578b","type":"any"},{"identifier":"add","description":"\u6dfb\u52a0\u5b57\u6bb5","type":"(prop: string, itemState: FormItemState) => void"},{"identifier":"remove","description":"\u79fb\u9664\u5b57\u6bb5","type":"(prop: string) => void"},{"identifier":"fieldChange","description":"\u5b57\u6bb5\u503c\u6539\u53d8\u4e8b\u4ef6","type":"(prop: string, value: any) => void"},{"identifier":"fieldValidate","description":"\u5b57\u6bb5\u9700\u8981\u9a8c\u8bc1\u4e8b\u4ef6","type":"(prop: string, trigger?: ValidateTrigger) => Promise<any>"}]},"../../../src/Form/FormItem.tsx":{"FormItem":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u8868\u5355\u5185\u5bb9","type":"ReactNode"},{"identifier":"label","description":"\u6807\u7b7e\u540d\u79f0","type":"ReactNode"},{"identifier":"extra","description":"\u53f3\u4fa7\u6269\u5c55\u5185\u5bb9","type":"ReactNode"},{"identifier":"arrow","description":"\u7bad\u5934\u65b9\u5411","type":"boolean | \\"horizontal\\" | \\"up\\" | \\"down\\""},{"identifier":"access","description":"\u662f\u5426\u70b9\u51fb\u4ea4\u4e92\u6837\u5f0f","type":"boolean"},{"identifier":"clickShowError","description":"\u70b9\u51fblabel\u662f\u5426\u663e\u793a\u9a8c\u8bc1\u5931\u8d25\u539f\u56e0","type":"boolean"},{"identifier":"align","description":"\u5185\u5bb9\u5bf9\u9f50\u65b9\u5f0f","type":"\\"left\\" | \\"center\\" | \\"right\\""},{"identifier":"simple","description":"\u662f\u5426\u7cbe\u7b80\u6a21\u5f0f\uff0c\u4e0d\u663e\u793aList\u6837\u5f0f","type":"boolean"},{"identifier":"labelPostion","description":"\u6807\u7b7e\u4f4d\u7f6e","type":"\\"left\\" | \\"top\\""},{"identifier":"alignItems","description":"\u5782\u76f4\u5bf9\u9f50\u65b9\u5f0f","type":"\\"center\\" | \\"flex-end\\" | \\"flex-start\\""},{"identifier":"onClick","description":"\u5217\u8868\u70b9\u51fb\u4e8b\u4ef6","type":"() => void"},{"identifier":"prop","description":"\u5b57\u6bb5\u5b57","type":"string"},{"identifier":"valueKey","description":"\u5b57\u6bb5\u503c\u7684key, \u9ed8\u8ba4\u60c5\u51b5\u4e0b\u90fd\u662f`value`,\u4f46\u6709\u4e9b\u7ec4\u4ef6\uff0c\u6bd4\u5982`Switch`\u662f`checked`","type":"string"},{"identifier":"converValue","description":"\u5982\u4f55\u4eceonChange\u8f6c\u6362\u503c","type":"Function"},{"identifier":"labelString","description":"\u4e2d\u6587\u6807\u7b7e\u540d (\u7528\u4e8e\u9a8c\u8bc1\u63d0\u793a)","type":"string"},{"identifier":"trigger","description":"\u9ed8\u8ba4\u89e6\u53d1\u4e8b\u4ef6","type":"ValidateTrigger"},{"identifier":"rule","description":"\u9a8c\u8bc1\u914d\u7f6e","type":"FieldConfig[]"},{"identifier":"defaultValue","description":"\u9ed8\u8ba4\u503c","type":"any"},{"identifier":"normalize","description":"\u6bd4\u5982\u7ed1\u5b9a\u7684\u662f Date \u7c7b\u578b\uff0cform \u6700\u540e\u540c\u6b65\u65f6\u53ef\u4ee5\u662f\u65e5\u671f\u5b57\u7b26\u4e32.","type":"(value: any) => any"},{"identifier":"disabledValidate","description":"\u662f\u5426\u7981\u7528\u9a8c\u8bc1","type":"boolean"},{"identifier":"onValidateChange","description":"\u9a8c\u8bc1\u72b6\u6001\u6539\u53d8\u4e8b\u4ef6","type":"(value: any, validateResult: ValidateResult) => void"},{"identifier":"disabled","description":"\u900f\u4f20\u5c5e\u6027\uff0c\u6ca1\u6709\u5219\u53d6form\u4e0a\u7684disabled","type":"boolean"},{"identifier":"onBlur","description":"\u900f\u4f20\u5c5e\u6027\uff0c\u4e3a\u4e86\u5931\u53bb\u7126\u70b9\u9a8c\u8bc1\uff0c\u9700\u8981\u4ee3\u7406\u6b64\u4e8b\u4ef6","type":"(e: FocusEvent<HTMLElement>) => void"},{"identifier":"onChange","description":"\u900f\u4f20\u5c5e\u6027\uff0c","type":"(value: any) => void"}]},"../../../src/Grid/Grid.tsx":{"Grid":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u7f51\u683c\u5185\u5bb9","type":"ReactNode","required":true}]},"../../../src/Grid/GridItem.tsx":{"GridItem":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u6807\u9898","type":"ReactNode","required":true},{"identifier":"icon","description":"\u56fe\u6807","type":"ReactNode"},{"identifier":"onClick","description":"\u70b9\u51fb\u4e8b\u4ef6","type":"(event: MouseEvent<HTMLDivElement, MouseEvent>) => void"}]},"../../../src/HalfScreenDialog/HalfScreenDialog.tsx":{"HalfScreenDialog":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"title","description":"\u6807\u9898","type":"ReactNode","required":true},{"identifier":"subTitle","description":"\u5b50\u6807\u9898","type":"ReactNode"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode"},{"identifier":"exted","description":"\u53f3\u4e0a\u89d2\u6269\u5c55\u5185\u5bb9","type":"ReactNode"},{"identifier":"onExtedClick","description":"\u53f3\u4e0a\u89d2\u6269\u5c55\u70b9\u51fb\u4e8b\u4ef6","type":"(close: Function) => void"},{"identifier":"cancel","description":"\u53d6\u6d88\u6309\u94ae","type":"ReactNode"},{"identifier":"onCancel","description":"\u53d6\u6d88\u6309\u94ae\u70b9\u51fb","type":"() => void"},{"identifier":"confirm","description":"\u786e\u5b9a\u6309\u94ae","type":"ReactNode"},{"identifier":"onConfirm","description":"\u786e\u5b9a\u6309\u94ae\u70b9\u51fb","type":"() => Promise<unknown>"},{"identifier":"hideFooter","description":"\u662f\u5426\u9690\u85cf\u9875\u811a","type":"boolean"},{"identifier":"animateClassName","description":"\u52a8\u753b\u7c7b\u540d","type":"string"},{"identifier":"popupClassName","description":"\u5f39\u51fa\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"popupContentClassName","description":"\u5f39\u51fa\u6846\u5185\u5bb9\u5143\u7d20\u7c7b\u540d","type":"string"},{"identifier":"duration","description":"\u6301\u7eed\u65f6\u95f4\uff08\u6beb\u79d2\uff09, \u9ed8\u8ba4 3000 \u6beb\u79d2\u540e\u5173\u95ed","type":"number"},{"identifier":"onUnmount","description":"\u5173\u95ed\u4e8b\u4ef6","type":"Function"},{"identifier":"mask","description":"\u662f\u5426\u663e\u793a\u906e\u7f69\u5c42","type":"boolean"},{"identifier":"maskClose","description":"\u80cc\u666f\u906e\u7f69\u662f\u5426\u53ef\u5173\u95ed","type":"boolean"},{"identifier":"visible","description":"\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"defaultVisible","description":"\u9ed8\u8ba4\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"onVisibleChange","description":"\u663e\u793a\u6539\u53d8","type":"(visible: boolean) => void"},{"identifier":"closeFuncRef","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570","type":"MutableRefObject<Function>"},{"identifier":"getCloseFunc","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570(\u7528\u4e8ejs\u5f39\u51fa)","type":"(close: Function) => void"},{"identifier":"getContainer","description":"\u9ed8\u8ba4\u4e3abody\u5185\u521b\u5efa\u4e00\u4e2adiv\u4f5c\u4e3a\u5bb9\u5668","type":"HTMLElement | GetContainerFun"},{"identifier":"onClose","description":"\u5173\u95ed\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"},{"identifier":"onShow","description":"\u6253\u5f00\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"}]},"../../../src/ImageView/Gallery.tsx":{"Gallery":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"data","description":"\u6570\u636e\u6e90","type":"ImageOption[]"},{"identifier":"index","description":"\u67e5\u770b\u56fe\u7247\u7d22\u5f15","type":"number"},{"identifier":"onChange","description":"\u7d22\u5f15\u66f4\u6539\u4e8b\u4ef6","type":"(index: number) => void"},{"identifier":"defaultIndex","description":"\u9ed8\u8ba4\u67e5\u770b\u56fe\u7247\u7d22\u5f15","type":"number"},{"identifier":"tool","description":"\u81ea\u5b9a\u4e49\u5de5\u5177\u6761","type":"ReactNode"},{"identifier":"bottom","description":"\u81ea\u5b9a\u4e49\u5e95\u90e8\u8282\u70b9","type":"ReactNode"},{"identifier":"swiperDistance","description":"\u62d6\u62fd\u5207\u6362\u8ddd\u79bb, \u9ed8\u8ba40.35\\n\u5982\u679c\u4e3a0.5\u8fd9\u6837\u7684\u767e\u5206\u6bd4\uff0c\u5219\u4ee5\u5143\u7d20\u5c3a\u5bf8\u7684\u767e\u5206\u6bd4\u8ba1\u7b97","type":"number"},{"identifier":"swiperSpeed","description":"\u62d6\u62fd\u5207\u6362\u52a0\u901f\u5ea6, \u9ed8\u8ba44\\n\u52a0\u901f\u5ea6\u8d8a\u5feb\uff0c\u5373\u53ef\u5207\u6362","type":"number"},{"identifier":"animateClassName","description":"\u52a8\u753b\u7c7b\u540d","type":"string"},{"identifier":"popupClassName","description":"\u5f39\u51fa\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"popupContentClassName","description":"\u5f39\u51fa\u6846\u5185\u5bb9\u5143\u7d20\u7c7b\u540d","type":"string"},{"identifier":"duration","description":"\u6301\u7eed\u65f6\u95f4\uff08\u6beb\u79d2\uff09, \u9ed8\u8ba4 3000 \u6beb\u79d2\u540e\u5173\u95ed","type":"number"},{"identifier":"onUnmount","description":"\u5173\u95ed\u4e8b\u4ef6","type":"Function"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode"},{"identifier":"mask","description":"\u662f\u5426\u663e\u793a\u906e\u7f69\u5c42","type":"boolean"},{"identifier":"maskClose","description":"\u80cc\u666f\u906e\u7f69\u662f\u5426\u53ef\u5173\u95ed","type":"boolean"},{"identifier":"visible","description":"\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"defaultVisible","description":"\u9ed8\u8ba4\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"onVisibleChange","description":"\u663e\u793a\u6539\u53d8","type":"(visible: boolean) => void"},{"identifier":"closeFuncRef","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570","type":"MutableRefObject<Function>"},{"identifier":"getCloseFunc","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570(\u7528\u4e8ejs\u5f39\u51fa)","type":"(close: Function) => void"},{"identifier":"getContainer","description":"\u9ed8\u8ba4\u4e3abody\u5185\u521b\u5efa\u4e00\u4e2adiv\u4f5c\u4e3a\u5bb9\u5668","type":"HTMLElement | GetContainerFun"},{"identifier":"onClose","description":"\u5173\u95ed\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"},{"identifier":"onShow","description":"\u6253\u5f00\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"}]},"../../../src/ImageView/ImageView.tsx":{"ImageView":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"src","description":"\u56fe\u7247\u5730\u5740","type":"string","required":true},{"identifier":"index","description":"\u7d22\u5f15","type":"number","required":true},{"identifier":"onScaleChange","description":"\u7f29\u653e\u6539\u53d8","type":"(scale: number) => void"}]},"Input":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"disabled","description":"\u662f\u5426\u7981\u7528","type":"boolean"},{"identifier":"readOnly","description":"\u662f\u5426\u53ea\u8bfb","type":"boolean"},{"identifier":"value","description":"\u503c","type":"string"},{"identifier":"defaultValue","description":"\u9ed8\u8ba4\u503c","type":"string"},{"identifier":"onChange","description":"\u8f93\u5165\u6846change\u4e8b\u4ef6","type":"(value: string) => void"},{"identifier":"placeholder","description":"\u5360\u4f4d\u7b26\u6587\u672c","type":"string"},{"identifier":"pattern","description":"\u5339\u914d\u6a21\u5f0f","type":"string"},{"identifier":"autoFocus","description":"\u81ea\u52a8\u7126\u70b9","type":"boolean"},{"identifier":"maxlength","description":"\u6700\u5927\u5b57\u7b26\u957f\u5ea6","type":"number"},{"identifier":"type","description":"\u8f93\u5165\u6846\u7c7b\u578b","type":"\\"number\\" | \\"text\\" | \\"password\\" | \\"phone\\" | \\"bankCard\\""},{"identifier":"onFocus","description":"\u8f93\u5165\u6846\u7126\u70b9\u4e8b\u4ef6","type":"(e: FocusEvent<HTMLInputElement>) => void"},{"identifier":"onBlur","description":"\u8f93\u5165\u6846\u5931\u53bb\u7126\u70b9\u4e8b\u4ef6","type":"(e: FocusEvent<HTMLInputElement>) => void"},{"identifier":"onCompositionStart","description":"\u5f00\u59cb\u8f93\u5165\u4e2d\u6587","type":"(e: CompositionEvent<HTMLInputElement>) => void"},{"identifier":"onCompositionEnd","description":"\u8f93\u5165\u4e2d\u6587\u5b8c\u6bd5","type":"(e: CompositionEvent<HTMLInputElement>) => void"},{"identifier":"onSearch","description":"\u641c\u7d22\u56de\u8c03, \u914d\u5408delay\u9632\u6296","type":"(value: string) => void"},{"identifier":"delay","description":"\u9632\u6296\u6beb\u79d2, \u9ed8\u8ba4 500ms, \u5173\u7cfb\u5230onSearch\u89e6\u53d1\u4e8b\u4ef6\u7684\u9891\u7387","type":"number"},{"identifier":"clearable","description":"\u662f\u5426\u663e\u793a\u6e05\u9664","type":"boolean"},{"identifier":"prefix","description":"\u524d\u7f6e\u56fe\u6807","type":"ReactNode"},{"identifier":"suffix","description":"\u540e\u7f6e\u56fe\u6807","type":"ReactNode"},{"identifier":"formatter","description":"\u8f93\u5165\u6846\u5c55\u793a\u503c\u7684\u683c\u5f0f\u5316","type":"InputParser"},{"identifier":"parser","description":"\u4eceformatter\u91cc\u8f6c\u6362\u56de\u6765, \u914d\u5408 formatter\u4f7f\u7528","type":"InputParser"},{"identifier":"inputRef","description":"\u8f93\u5165\u6846\u5f15\u7528","type":"MutableRefObject<HTMLInputElement>"},{"identifier":"ref","type":"Ref<HTMLDivElement>"},{"identifier":"key","type":"ReactText"}]},"../../../src/List/List.tsx":{"List":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"title","description":"\u6807\u9898","type":"ReactNode"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode"}]},"../../../src/List/ListItem.tsx":{"ListItem":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"hd","description":"\u5934\u90e8","type":"ReactNode"},{"identifier":"thumb","description":"\u7f29\u7565\u56fe(\u5f53\u4e3a string \u7c7b\u578b\u65f6\u4f5c\u4e3a img src)","type":"ReactNode"},{"identifier":"extra","description":"\u53f3\u4fa7\u6269\u5c55\u5185\u5bb9","type":"ReactNode"},{"identifier":"arrow","description":"\u7bad\u5934\u65b9\u5411","type":"boolean | \\"horizontal\\" | \\"up\\" | \\"down\\""},{"identifier":"access","description":"\u662f\u5426\u70b9\u51fb\u4ea4\u4e92\u6837\u5f0f","type":"boolean"},{"identifier":"onClick","description":"\u5217\u8868\u70b9\u51fb\u4e8b\u4ef6","type":"() => void"},{"identifier":"error","description":"\u662f\u5426\u62a5\u9519\u6837\u5f0f","type":"boolean"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode"},{"identifier":"align","description":"\u5185\u5bb9\u5bf9\u9f50\u65b9\u5f0f","type":"\\"left\\" | \\"center\\" | \\"right\\""},{"identifier":"alignItems","description":"\u5782\u76f4\u5bf9\u9f50\u65b9\u5f0f","type":"\\"center\\" | \\"flex-end\\" | \\"flex-start\\""}]},"Loadmore":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"loading","description":"\u52a0\u8f7d\u6a21\u5f0f","type":"boolean"},{"identifier":"line","description":"\u6a2a\u7ebf\u6a21\u5f0f","type":"boolean"},{"identifier":"dot","description":"\u70b9\u6a21\u5f0f","type":"boolean"},{"identifier":"tips","description":"\u63d0\u793a\u6587\u672c","type":"string"},{"identifier":"icon","description":"\u81ea\u5b9a\u4e49\u56fe\u6807","type":"ReactNode"}]},"NumberInput":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"disabled","description":"\u662f\u5426\u7981\u7528","type":"boolean"},{"identifier":"value","description":"\u503c","type":"number"},{"identifier":"defaultValue","description":"\u9ed8\u8ba4\u503c","type":"number"},{"identifier":"onChange","description":"change\u56de\u8c03","type":"(value: number) => void"},{"identifier":"placeholder","description":"\u5360\u4f4d\u7b26\u6587\u672c","type":"string"},{"identifier":"pattern","description":"\u5339\u914d\u6a21\u5f0f","type":"string"},{"identifier":"autoFocus","description":"\u81ea\u52a8\u7126\u70b9","type":"boolean"},{"identifier":"maxlength","description":"\u6700\u5927\u5b57\u7b26\u957f\u5ea6","type":"number"},{"identifier":"onFocus","description":"\u8f93\u5165\u6846\u7126\u70b9\u4e8b\u4ef6","type":"(e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void"},{"identifier":"onBlur","description":"\u8f93\u5165\u6846\u5931\u53bb\u7126\u70b9\u4e8b\u4ef6","type":"(e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void"},{"identifier":"prefix","description":"\u524d\u7f6e\u56fe\u6807","type":"ReactNode"},{"identifier":"suffix","description":"\u540e\u7f6e\u56fe\u6807","type":"ReactNode"},{"identifier":"formatter","description":"\u8f93\u5165\u6846\u5c55\u793a\u503c\u7684\u683c\u5f0f\u5316","type":"InputParser"},{"identifier":"parser","description":"\u4eceformatter\u91cc\u8f6c\u6362\u56de\u6765, \u914d\u5408 formatter\u4f7f\u7528","type":"InputParser"},{"identifier":"precision","description":"\u4e3a\u6574\u6570, \u6bd4\u59823, \u5c31\u662f\u4fdd\u7559\u5230\u5c0f\u6570\u70b93\u4f4d","type":"number"},{"identifier":"max","description":"\u6700\u5927\u503c","type":"number"},{"identifier":"min","description":"\u6700\u5c0f\u503c","type":"number"},{"identifier":"step","description":"\u6b65\u957f","type":"number"},{"identifier":"type","description":"\u8f93\u5165\u6846\u7c7b\u578b","type":"\\"number\\" | \\"amount\\""},{"identifier":"showControl","description":"\u662f\u5426\u663e\u793a\u63a7\u5236\u6309\u94ae","type":"boolean"},{"identifier":"ref","type":"Ref<HTMLDivElement>"},{"identifier":"key","type":"ReactText"}]},"../../../src/Panel/Panel.tsx":{"Panel":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode","required":true},{"identifier":"title","description":"\u6807\u9898","type":"ReactNode","required":true},{"identifier":"footer","description":"\u9875\u811a","type":"ReactNode"}]},"../../../src/Panel/PanelItem.tsx":{"PanelItem":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"title","description":"\u6807\u9898","type":"ReactNode","required":true},{"identifier":"thumb","description":"\u7f29\u7565\u56fe","type":"ReactNode"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode"},{"identifier":"text","description":"\u6587\u672c\u6a21\u5f0f","type":"boolean"},{"identifier":"info","description":"\u6269\u5c55\u4fe1\u606f","type":"ReactNode"},{"identifier":"arrow","description":"\u662f\u5426\u663e\u793a\u7bad\u5934","type":"boolean"},{"identifier":"onClick","description":"\u70b9\u51fb\u4e8b\u4ef6","type":"() => void"}]},"../../../src/Picker/Picker.tsx":{"Picker":[{"identifier":"onConfirm","description":"\u786e\u5b9a\u4e8b\u4ef6","type":"(value: any[], data: PickerItem[]) => void"},{"identifier":"placeholder","description":"\u5360\u4f4d\u7b26","type":"ReactNode"},{"identifier":"popup","description":"\u5f39\u51fa\u6a21\u5f0f, \u7528\u4e8ejs\u89e6\u53d1\u5f39\u51fa\uff0c\u6b64\u65f6\u4e0d\u5c55\u793alabel\u533a\u5757","type":"boolean"},{"identifier":"format","description":"\u683c\u5f0f\u5316\u51fd\u6570. \u9009\u4e2d\u6570\u636e\u5982\u4f55\u5c55\u793a","type":"(pickerData: PickerItem[], separator: string, singleLabel: boolean) => ReactNode"},{"identifier":"singleLabel","description":"\u662f\u5426\u53ea\u663e\u793a\u6700\u7ec8\u4e00\u7ea7\u7684label (\u7528\u4e8e\u9ed8\u8ba4format)","type":"boolean"},{"identifier":"separator","description":"label\u5206\u9694\u7b26 (\u7528\u4e8e\u9ed8\u8ba4format)\\n\u6bd4\u5982\u65e5\u671f: 2019-10-08\\n\u6bd4\u5982\u7c7b\u522b: \u98df\u54c1/\u719f\u98df","type":"string"},{"identifier":"labelField","description":"\u6807\u7b7e\u5b57\u6bb5, \u9ed8\u8ba4label","type":"string"},{"identifier":"title","description":"\u5f39\u51fa\u6846\u6807\u9898","type":"ReactNode"},{"identifier":"pickerValue","description":"\u5f53\u524d\u5373\u65f6\u9009\u62e9\u7684\u503c","type":"any[]"},{"identifier":"onPickerValueChange","description":"\u5f53\u524d\u5373\u65f6\u9009\u62e9\u7684\u503c\u6539\u53d8","type":"(pickerValue: any[]) => void"},{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"subTitle","description":"\u5b50\u6807\u9898","type":"ReactNode"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode"},{"identifier":"exted","description":"\u53f3\u4e0a\u89d2\u6269\u5c55\u5185\u5bb9","type":"ReactNode"},{"identifier":"onExtedClick","description":"\u53f3\u4e0a\u89d2\u6269\u5c55\u70b9\u51fb\u4e8b\u4ef6","type":"(close: Function) => void"},{"identifier":"cancel","description":"\u53d6\u6d88\u6309\u94ae","type":"ReactNode"},{"identifier":"onCancel","description":"\u53d6\u6d88\u6309\u94ae\u70b9\u51fb","type":"() => void"},{"identifier":"confirm","description":"\u786e\u5b9a\u6309\u94ae","type":"ReactNode"},{"identifier":"hideFooter","description":"\u662f\u5426\u9690\u85cf\u9875\u811a","type":"boolean"},{"identifier":"animateClassName","description":"\u52a8\u753b\u7c7b\u540d","type":"string"},{"identifier":"popupClassName","description":"\u5f39\u51fa\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"popupContentClassName","description":"\u5f39\u51fa\u6846\u5185\u5bb9\u5143\u7d20\u7c7b\u540d","type":"string"},{"identifier":"duration","description":"\u6301\u7eed\u65f6\u95f4\uff08\u6beb\u79d2\uff09, \u9ed8\u8ba4 3000 \u6beb\u79d2\u540e\u5173\u95ed","type":"number"},{"identifier":"onUnmount","description":"\u5173\u95ed\u4e8b\u4ef6","type":"Function"},{"identifier":"mask","description":"\u662f\u5426\u663e\u793a\u906e\u7f69\u5c42","type":"boolean"},{"identifier":"maskClose","description":"\u80cc\u666f\u906e\u7f69\u662f\u5426\u53ef\u5173\u95ed","type":"boolean"},{"identifier":"visible","description":"\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"defaultVisible","description":"\u9ed8\u8ba4\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"onVisibleChange","description":"\u663e\u793a\u6539\u53d8","type":"(visible: boolean) => void"},{"identifier":"closeFuncRef","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570","type":"MutableRefObject<Function>"},{"identifier":"getCloseFunc","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570(\u7528\u4e8ejs\u5f39\u51fa)","type":"(close: Function) => void"},{"identifier":"getContainer","description":"\u9ed8\u8ba4\u4e3abody\u5185\u521b\u5efa\u4e00\u4e2adiv\u4f5c\u4e3a\u5bb9\u5668","type":"HTMLElement | GetContainerFun"},{"identifier":"onClose","description":"\u5173\u95ed\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"},{"identifier":"onShow","description":"\u6253\u5f00\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"},{"identifier":"data","description":"\u6570\u636e\u6e90","type":"PickerItem[] | PickerItem[][]","required":true},{"identifier":"cols","description":"\u5217\u6570","type":"number"},{"identifier":"value","description":"\u9009\u4e2d\u503c","type":"any[]"},{"identifier":"defaultValue","description":"\u9ed8\u8ba4\u503c","type":"any[]"},{"identifier":"onChange","description":"\u503c\u6539\u53d8\u4e8b\u4ef6","type":"(value: any[]) => void"},{"identifier":"onPickerChange","description":"\u6bcf\u5217\u6570\u636e\u6539\u53d8","type":"(colIndex: number, value: any[], data: PickerItem[]) => void"},{"identifier":"cascade","description":"\u662f\u5426\u7ea7\u8fde","type":"boolean"},{"identifier":"disabled","description":"\u662f\u5426\u7981\u7528","type":"boolean"},{"identifier":"scrollOffsetRestRef","description":"\u91cd\u7f6e","type":"MutableRefObject<Function>"},{"identifier":"ref","type":"Ref<HTMLDivElement>"},{"identifier":"key","type":"ReactText"}]},"../../../src/Preview/Preview.tsx":{"Preview":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode","required":true},{"identifier":"title","description":"\u6807\u9898","type":"ReactNode"},{"identifier":"subTitle","description":"\u5b50\u6807\u9898","type":"ReactNode"},{"identifier":"footer","description":"\u9875\u811a","type":"ReactNode"},{"identifier":"align","description":"\u503c\u5bf9\u9f50\u65b9\u5f0f, \u9ed8\u8ba4`right`","type":"\\"right\\" | \\"left\\""}]},"../../../src/Preview/PreviewButton.tsx":{"PreviewButton":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"children","description":"\u503c","type":"ReactNode","required":true},{"identifier":"type","description":"\u6309\u94ae\u7c7b\u578b","type":"\\"default\\" | \\"primary\\""},{"identifier":"onClick","description":"\u70b9\u51fb\u4e8b\u4ef6","type":"() => void"}]},"../../../src/Preview/PreviewItem.tsx":{"PreviewItem":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u503c","type":"ReactNode","required":true},{"identifier":"title","description":"\u6807\u9898","type":"ReactNode","required":true},{"identifier":"onClick","description":"\u70b9\u51fb\u4e8b\u4ef6","type":"() => void"}]},"../../../src/PullRefresh/PullRefresh.tsx":{"PullRefresh":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u5305\u88f9\u5185\u5bb9","type":"ReactNode"},{"identifier":"enablePullRefresh","description":"\u662f\u5426\u5f00\u542f\u4e0b\u62c9\u5237\u65b0","type":"boolean"},{"identifier":"enableLoadMore","description":"\u662f\u5426\u5f00\u542f\u4e0a\u6ed1\u52a0\u8f7d\u66f4\u591a,","type":"boolean"},{"identifier":"threshold","description":"\u9608\u503c, \u4e0b\u62c9\u5237\u65b0\u7684\u8ddd\u79bb","type":"number"},{"identifier":"idleTime","description":"\u5237\u65b0\u5b8c\u6210\u7a7a\u95f2\u65f6\u95f4, \u9ed8\u8ba42000","type":"number"},{"identifier":"action","description":"\u72b6\u6001","type":"PullRefreshAction","required":true},{"identifier":"handleAction","description":"\u5904\u7406\u72b6\u6001","type":"(action: PullRefreshAction) => void","required":true},{"identifier":"scrollTarget","description":"\u6eda\u52a8\u5143\u7d20, \u9ed8\u8ba4\u4e3awindow","type":"any"},{"identifier":"autoRefresh","description":"\u662f\u5426\u81ea\u52a8\u5237\u65b0","type":"boolean"}]},"Rate":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"starCount","description":"\u8bc4\u661f\u6570\u91cf(\u9ed8\u8ba45\u661f)","type":"number"},{"identifier":"value","description":"\u9009\u4e2d\u503c","type":"number"},{"identifier":"defaultValue","description":"\u9ed8\u8ba4\u9009\u4e2d\u503c","type":"number"},{"identifier":"onChange","description":"\u6539\u53d8\u4e8b\u4ef6","type":"(val: number) => void"}]},"SafeArea":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode","required":true},{"identifier":"fullHeight","description":"\u662f\u5426\u6700\u5c0f\u9ad8\u5ea6\u4e3a\u5c4f\u5e55\u9ad8\u5ea6","type":"boolean"}]},"Search":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"value","description":"\u503c","type":"string"},{"identifier":"defaultValue","description":"\u9ed8\u8ba4\u503c","type":"string"},{"identifier":"onChange","description":"\u8f93\u5165\u6846change\u4e8b\u4ef6","type":"(value: string) => void"},{"identifier":"onSearch","description":"\u641c\u7d22\u56de\u8c03, \u914d\u5408delay\u9632\u6296","type":"(value: string) => void"},{"identifier":"onConfirm","description":"\u786e\u5b9a\u4e8b\u4ef6","type":"(value: string) => void"},{"identifier":"onCancel","description":"\u70b9\u51fb\u53d6\u6d88\u4e8b\u4ef6","type":"() => void"},{"identifier":"delay","description":"\u9632\u6296\u6beb\u79d2, \u9ed8\u8ba4 500ms, \u5173\u7cfb\u5230onSearch\u89e6\u53d1\u4e8b\u4ef6\u7684\u9891\u7387","type":"number"},{"identifier":"placeholder","description":"\u5360\u4f4d\u7b26\u6587\u672c","type":"string"},{"identifier":"autoFocus","description":"\u81ea\u52a8\u7126\u70b9","type":"boolean"}]},"SegmentedControl":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"data","description":"\u6570\u636e\u6e90","type":"PickerItem[]","required":true},{"identifier":"value","description":"\u503c","type":"any"},{"identifier":"defaultValue","description":"\u9ed8\u8ba4\u503c","type":"any"},{"identifier":"onChange","description":"\u503c\u6539\u53d8\u4e8b\u4ef6","type":"(value: any) => void"}]},"../../../src/Skeleton/Skeleton.tsx":{"Skeleton":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"loading","description":"\u662f\u5426\u663e\u793a\u52a0\u8f7d\u72b6\u6001","type":"boolean"},{"identifier":"rows","description":"\u663e\u793a\u591a\u5c11\u884c\u9aa8\u67b6","type":"number"},{"identifier":"children","description":"\u5305\u88f9\u5185\u5bb9","type":"ReactNode"}]},"../../../src/Skeleton/Stripe.tsx":{"Stripe":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode"}]},"Spin":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u5305\u88f9\u5185\u5bb9","type":"ReactNode"},{"identifier":"inline","description":"\u9ed8\u8ba4\u4e3atrue","type":"boolean"},{"identifier":"indicator","description":"\u81ea\u5b9a\u4e49\u52a0\u8f7d\u6307\u793a\u7b26","type":"ReactNode"},{"identifier":"size","description":"\u5927\u5c0f","type":"\\"small\\" | \\"default\\" | \\"large\\""},{"identifier":"spinning","description":"\u662f\u5426\u52a0\u8f7d\u4e2d","type":"boolean"},{"identifier":"tips","description":"\u81ea\u5b9a\u4e49\u63cf\u8ff0","type":"ReactNode"}]},"SwipeAction":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u5305\u88f9\u5185\u5bb9","type":"ReactNode"},{"identifier":"left","description":"\u5de6\u4fa7\u6309\u94ae\u7ec4","type":"ReactNode[]"},{"identifier":"right","description":"\u53f3\u4fa7\u6309\u94ae\u7ec4","type":"ReactNode[]"},{"identifier":"disabled","description":"\u662f\u5426\u7981\u7528","type":"boolean"},{"identifier":"clickContent","description":"\u662f\u5426\u70b9\u51fb\u5185\u5bb9\u6536\u8d77\u64cd\u4f5c\u6309\u94ae","type":"boolean"}]},"Swiper":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u5305\u88f9\u5185\u5bb9","type":"ReactNode"},{"identifier":"index","description":"\u5f53\u524d\u7d22\u5f15","type":"number"},{"identifier":"onChange","description":"\u7d22\u5f15\u6539\u53d8","type":"(index: number) => void"},{"identifier":"defaultIndex","description":"\u9ed8\u8ba4\u7d22\u5f15","type":"number"},{"identifier":"autoplay","description":"\u662f\u5426\u81ea\u52a8\u64ad\u653e","type":"boolean"},{"identifier":"autoplayInterval","description":"\u81ea\u52a8\u64ad\u653e\u95f4\u9694","type":"number"},{"identifier":"vertical","description":"\u662f\u5426\u5782\u76f4\u5c55\u793a, \u5782\u76f4\u5c55\u793a\u8bf7\u7ed9\u7ec4\u4ef6\u63d0\u4f9b\u56fa\u5b9a\u9ad8\u5ea6","type":"boolean"},{"identifier":"scaleMode","description":"\u662f\u5426\u6ed1\u52a8\u7f29\u653e\u7279\u6548","type":"boolean"},{"identifier":"audoHeight","description":"\u81ea\u52a8\u9ad8\u5ea6. \u6b64\u6a21\u5f0f\u4e0b\u975e\u5f53\u524d\u7d22\u5f15\u7684\u5143\u7d20\u4f1a\u88ab`display: none;`\u5f62\u5f0f\u9690\u85cf","type":"boolean"},{"identifier":"dots","description":"\u662f\u5426\u663e\u793a\u9762\u677f\u6307\u793a\u70b9","type":"boolean"},{"identifier":"swiperDistance","description":"\u62d6\u62fd\u5207\u6362\u8ddd\u79bb, \u9ed8\u8ba40.5\\n\u5982\u679c\u4e3a0.5\u8fd9\u6837\u7684\u767e\u5206\u6bd4\uff0c\u5219\u4ee5\u5143\u7d20\u5c3a\u5bf8\u7684\u767e\u5206\u6bd4\u8ba1\u7b97","type":"number"},{"identifier":"swiperSpeed","description":"\u62d6\u62fd\u5207\u6362\u52a0\u901f\u5ea6, \u9ed8\u8ba44\\n\u52a0\u901f\u5ea6\u8d8a\u5feb\uff0c\u5373\u53ef\u5207\u6362","type":"number"},{"identifier":"disabled","description":"\u662f\u5426\u7981\u7528\u89e6\u6478\u5207\u6362","type":"boolean"}]},"Switch":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"checked","description":"\u590d\u9009\u6846\u662f\u5426\u9009\u4e2d","type":"boolean"},{"identifier":"onChange","description":"Switch\u503c\u66f4\u6539\u4e8b\u4ef6","type":"(chcked: boolean) => void"},{"identifier":"defaultChecked","description":"\u9ed8\u8ba4\u662f\u5426\u9009\u4e2d","type":"boolean"},{"identifier":"disabled","description":"\u662f\u5426\u7981\u7528","type":"boolean"},{"identifier":"checkedNode","description":"\u9009\u4e2d\u65f6\u5f97\u5185\u5bb9","type":"ReactNode"},{"identifier":"unCheckedNode","description":"\u975e\u9009\u4e2d\u65f6\u5f97\u5185\u5bb9","type":"ReactNode"},{"identifier":"size","description":"\u5c3a\u5bf8","type":"\\"default\\" | \\"small\\" | \\"large\\""},{"identifier":"ref","type":"Ref<HTMLSpanElement>"},{"identifier":"key","type":"ReactText"}]},"../../../src/Tabs/Tabs.tsx":{"Tabs":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"lazy","description":"\u975e\u6fc0\u6d3bcontent\u7b2c\u4e00\u6b21\u5ef6\u8fdf\u663e\u793a,","type":"boolean"},{"identifier":"reverse","description":"\u9ed8\u8ba4tabbar\u5728tabcontent\u7684\u4e0a\u9762","type":"boolean"},{"identifier":"destroyInactiveTabPane","description":"\u4e0d\u662f\u6fc0\u6d3b\u7684content\u662f\u5426\u4e0d\u6e32\u67d3\u5728dom\u4e2d, \u9ed8\u8ba4false","type":"boolean"},{"identifier":"activeKey","description":"\u6fc0\u6d3bkey","type":"TabKey"},{"identifier":"defaultActiveKey","description":"\u9ed8\u8ba4\u6fc0\u6d3bkey","type":"TabKey"},{"identifier":"onChange","description":"\u6fc0\u6d3b\u6539\u53d8\u4e8b\u4ef6","type":"(activeKey: TabKey) => void"},{"identifier":"onTabClick","description":"\u4e0eonChange\u4e0d\u540c\u7684\u4ec5\u4ec5\u662f\u591a\u4e86\u539f\u751f\u4e8b\u4ef6\u53c2\u6570","type":"(activeKey: TabKey, event?: any) => void"},{"identifier":"renderTabBar","description":"\u9ed8\u8ba4\u7528div\u5305\u88f9, \u53ef\u81ea\u884c\u5b9e\u73b0, \u6bd4\u5982\u6ea2\u51fa\u663e\u793a\u7bad\u5934","type":"() => Element"},{"identifier":"renderTabContent","description":"\u9ed8\u8ba4\u7528div\u5305\u88f9, \u53ef\u81ea\u884c\u5b9e\u73b0, \u6bd4\u5982\u5207\u6362\u65f6\u5185\u5bb9\u7684\u52a8\u753b\u6ed1\u52a8","type":"() => Element"},{"identifier":"children","description":"TabPanels","type":"ReactNode"},{"identifier":"audoHeight","description":"\u81ea\u52a8\u9ad8\u5ea6. \u6b64\u6a21\u5f0f\u4e0b\u975e\u5f53\u524d\u7d22\u5f15\u7684\u5143\u7d20\u4f1a\u88ab`display: none;`\u5f62\u5f0f\u9690\u85cf","type":"boolean"},{"identifier":"vertical","description":"\u662f\u5426\u5782\u76f4\u5c55\u793a, \u5782\u76f4\u5c55\u793a\u8bf7\u7ed9\u7ec4\u4ef6\u63d0\u4f9b\u56fa\u5b9a\u9ad8\u5ea6","type":"boolean"}]},"../../../src/Tabs/TabPanel.tsx":{"TabPanel":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"active","description":"\u662f\u5426\u6fc0\u6d3b\u6837\u5f0f","type":"boolean"},{"identifier":"disabled","description":"\u662f\u5426\u7981\u7528","type":"boolean"},{"identifier":"children","description":"tab\u5185\u5bb9","type":"ReactNode"},{"identifier":"tab","description":"\u9009\u9879\u5361tab\u5185\u5bb9","type":"ReactNode","required":true},{"identifier":"lazy","description":"\u975e\u6fc0\u6d3bcontent\u7b2c\u4e00\u6b21\u5ef6\u8fdf\u663e\u793a,","type":"boolean"},{"identifier":"tabKey","description":"\u9009\u9879\u5361key(\u552f\u4e00)","type":"ReactText","required":true},{"identifier":"destroyInactiveTabPane","description":"\u4e0d\u662f\u6fc0\u6d3b\u7684content\u662f\u5426\u4e0d\u6e32\u67d3\u5728dom\u4e2d, \u9ed8\u8ba4false","type":"boolean"}]},"TextArea":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"disabled","description":"\u662f\u5426\u7981\u7528","type":"boolean"},{"identifier":"value","description":"\u503c","type":"string"},{"identifier":"defaultValue","description":"\u9ed8\u8ba4\u503c","type":"string"},{"identifier":"onChange","description":"\u8f93\u5165\u6846change\u4e8b\u4ef6","type":"(value: string) => void"},{"identifier":"placeholder","description":"\u5360\u4f4d\u7b26\u6587\u672c","type":"string"},{"identifier":"autoFocus","description":"\u81ea\u52a8\u7126\u70b9","type":"boolean"},{"identifier":"onFocus","description":"\u8f93\u5165\u6846\u7126\u70b9\u4e8b\u4ef6","type":"(e: FocusEvent<HTMLTextAreaElement>) => void"},{"identifier":"onBlur","description":"\u8f93\u5165\u6846\u5931\u53bb\u7126\u70b9\u4e8b\u4ef6","type":"(e: FocusEvent<HTMLTextAreaElement>) => void"},{"identifier":"maxLength","description":"\u6700\u5927\u5b57\u7b26\u957f\u5ea6, \u9ed8\u8ba4200","type":"number"},{"identifier":"cols","description":"\u53ef\u89c1\u5bbd\u5ea6","type":"number"},{"identifier":"rows","description":"\u53ef\u89c1\u884c\u6570","type":"number"},{"identifier":"ref","type":"Ref<HTMLDivElement>"},{"identifier":"key","type":"ReactText"}]},"../../../src/Toast/Toast.tsx":{"Toast":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"content","description":"\u5185\u5bb9","type":"ReactNode","required":true},{"identifier":"type","description":"\u7c7b\u578b","type":"\\"text\\" | \\"success\\" | \\"fail\\" | \\"loading\\""},{"identifier":"animateClassName","description":"\u52a8\u753b\u7c7b\u540d","type":"string"},{"identifier":"popupClassName","description":"\u5f39\u51fa\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"popupContentClassName","description":"\u5f39\u51fa\u6846\u5185\u5bb9\u5143\u7d20\u7c7b\u540d","type":"string"},{"identifier":"duration","description":"\u6301\u7eed\u65f6\u95f4\uff08\u6beb\u79d2\uff09, \u9ed8\u8ba4 3000 \u6beb\u79d2\u540e\u5173\u95ed","type":"number"},{"identifier":"onUnmount","description":"\u5173\u95ed\u4e8b\u4ef6","type":"Function"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode"},{"identifier":"mask","description":"\u662f\u5426\u663e\u793a\u906e\u7f69\u5c42","type":"boolean"},{"identifier":"maskClose","description":"\u80cc\u666f\u906e\u7f69\u662f\u5426\u53ef\u5173\u95ed","type":"boolean"},{"identifier":"visible","description":"\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"defaultVisible","description":"\u9ed8\u8ba4\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"onVisibleChange","description":"\u663e\u793a\u6539\u53d8","type":"(visible: boolean) => void"},{"identifier":"closeFuncRef","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570","type":"MutableRefObject<Function>"},{"identifier":"getCloseFunc","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570(\u7528\u4e8ejs\u5f39\u51fa)","type":"(close: Function) => void"},{"identifier":"getContainer","description":"\u9ed8\u8ba4\u4e3abody\u5185\u521b\u5efa\u4e00\u4e2adiv\u4f5c\u4e3a\u5bb9\u5668","type":"HTMLElement | GetContainerFun"},{"identifier":"onClose","description":"\u5173\u95ed\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"},{"identifier":"onShow","description":"\u6253\u5f00\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"}]},"../../../src/Toptips/Toptips.tsx":{"Toptips":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"type","description":"\u7c7b\u578b","type":"string"},{"identifier":"tips","description":"\u63d0\u793a\u5185\u5bb9","type":"ReactNode"},{"identifier":"visible","description":"\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"defaultVisible","description":"\u9ed8\u8ba4\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"onVisibleChange","description":"\u663e\u793a\u6539\u53d8","type":"(visible: boolean) => void"},{"identifier":"closeFuncRef","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570","type":"MutableRefObject<Function>"},{"identifier":"onUnmount","description":"\u5173\u95ed\u4e8b\u4ef6","type":"Function"},{"identifier":"getContainer","description":"\u9ed8\u8ba4\u4e3abody\u5185\u521b\u5efa\u4e00\u4e2adiv\u4f5c\u4e3a\u5bb9\u5668","type":"HTMLElement | GetContainerFun"},{"identifier":"duration","description":"\u6301\u7eed\u65f6\u95f4\uff08\u6beb\u79d2\uff09, \u9ed8\u8ba4 3000 \u6beb\u79d2\u540e\u5173\u95ed","type":"number"},{"identifier":"top","description":"\u8ddd\u79bb\u9876\u90e8\u8fb9\u8ddd, \u9ed8\u8ba4 20px","type":"number"},{"identifier":"animateClassName","description":"\u52a8\u753b\u7c7b\u540d","type":"string"},{"identifier":"popupClassName","description":"\u5f39\u51fa\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"popupContentClassName","description":"\u5f39\u51fa\u6846\u5185\u5bb9\u5143\u7d20\u7c7b\u540d","type":"string"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode"},{"identifier":"mask","description":"\u662f\u5426\u663e\u793a\u906e\u7f69\u5c42","type":"boolean"},{"identifier":"maskClose","description":"\u80cc\u666f\u906e\u7f69\u662f\u5426\u53ef\u5173\u95ed","type":"boolean"},{"identifier":"getCloseFunc","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570(\u7528\u4e8ejs\u5f39\u51fa)","type":"(close: Function) => void"},{"identifier":"onClose","description":"\u5173\u95ed\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"},{"identifier":"onShow","description":"\u6253\u5f00\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"}]},"../../../src/Upload/SingleUpload.tsx":{"SingleUpload":[{"identifier":"value","description":"\u56fe\u7247url","type":"string"},{"identifier":"onChange","description":"\u56fe\u7247url\u6539\u53d8","type":"(url: string) => void"},{"identifier":"getResponse","description":"\u4ece\u4e0a\u4f20\u7684\u54cd\u5e94\u4e2d\u62ff\u5230\u503c, \u6b64\u503c\u5c06\u540c\u6b65\u5230value","type":"(res: T) => string"},{"identifier":"disabled","description":"\u662f\u5426\u7981\u7528","type":"boolean"},{"identifier":"ref","description":"\u8f6c\u53d1ref","type":"any"},{"identifier":"disableDelete","description":"\u662f\u5426\u9690\u85cf\u5220\u9664\u6309\u94ae","type":"boolean"},{"identifier":"onImageView","description":"\u56fe\u7247\u70b9\u51fb\u4e8b\u4ef6","type":"(fileInfo: FileInfo<any>) => void"},{"identifier":"onImageRemove","description":"\u56fe\u7247\u5220\u9664\u4e8b\u4ef6","type":"(fileInfo: FileInfo<any>) => void"},{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"accept","description":"\u6587\u4ef6\u7c7b\u578b, \u9ed8\u8ba4 image/*,\\n\u4e5f\u53ef\u4ee5\u662f: image/gif,image/jpeg,image/jpg,image/png, \u5982\u679cios\u60f3\u4ece\u76f8\u673a\u8bfb\u53d6, \u9700\u8981\u8bbe\u7f6e\\"image/*;capture=camera\\"","type":"string"},{"identifier":"capture","description":"\u56fe\u7247\u6355\u83b7\u8bbe\u7f6e\uff0c \u6bd4\u5982capture=camera\u53ea\u4ece\u76f8\u673a\u8bfb\u53d6","type":"string | boolean"},{"identifier":"multiple","description":"\u662f\u5426\u591a\u9009","type":"boolean"},{"identifier":"beforeUpload","description":"\u8fd4\u56de Promise.reject() \u5219\u62d2\u7edd\u4e0a\u4f20","type":"(file: File) => boolean | Promise<File>"},{"identifier":"maxSize","description":"\u6700\u5927\u4e0a\u4f20\u5c3a\u5bf8\u9650\u5236, \u9ed8\u8ba46MB","type":"number"},{"identifier":"compressOptions","description":"\u538b\u7f29\u9009\u9879","type":"CompressOptions"},{"identifier":"children","description":"\u81ea\u5b9a\u4e49\u4e0a\u4f20\u6309\u94ae\u8282\u70b9","type":"ReactNode"},{"identifier":"onUpload","description":"\u5f00\u59cb\u4e0a\u4f20","type":"(file: File) => void"},{"identifier":"onBatchUpload","description":"\u6279\u91cf\u5f00\u59cb\u4e0a\u4f20","type":"(files: File[]) => void"},{"identifier":"max","description":"\u6700\u5927\u4e0a\u4f20\u6570\u91cf","type":"number"},{"identifier":"onSuccess","description":"\u6210\u529f\u4e8b\u4ef6","type":"(file: File, response: T, xhr: XMLHttpRequest) => void"},{"identifier":"onError","description":"\u5931\u8d25\u4e8b\u4ef6","type":"(file: File, error: Error, response?: T) => void"},{"identifier":"onProgress","description":"\u4e0a\u4f20\u8fdb\u5ea6\u4e8b\u4ef6","type":"(file: File, percent: number, event: ProgressEvent<EventTarget>) => void"},{"identifier":"action","description":"\u4e0a\u4f20\u5730\u5740","type":"string"},{"identifier":"filename","description":"\u4e0a\u4f20\u7684\u6587\u4ef6name, \u7528\u4e8e\u540e\u53f0\u63a5\u6536, \u9ed8\u8ba4 file","type":"string"},{"identifier":"data","description":"\u9644\u52a0\u6570\u636e","type":"Record<string, any>"},{"identifier":"withCredentials","description":"\u662f\u5426\u542f\u7528 withCredentials","type":"boolean"},{"identifier":"headers","description":"\u9644\u52a0\u8bf7\u6c42\u5934","type":"Record<string, string>"}]},"../../../src/Upload/MultiUpload.tsx":{"MultiUpload":[{"identifier":"value","description":"\u56fe\u7247url\u5217\u8868","type":"string[]"},{"identifier":"onChange","description":"\u56fe\u7247url\u5217\u8868\u6539\u53d8","type":"(url: string[]) => void"},{"identifier":"onImageView","description":"\u56fe\u7247\u70b9\u51fb\u4e8b\u4ef6","type":"(index: number, fileInfos: FileInfo<any>[]) => void"},{"identifier":"onImageRemove","description":"\u56fe\u7247\u5220\u9664\u4e8b\u4ef6","type":"(index: number, fileInfos: FileInfo<any>[]) => void"},{"identifier":"max","description":"\u6700\u5927\u4e0a\u4f20\u6570\u91cf","type":"number"},{"identifier":"length","description":"\u5355\u884c\u56fe\u7247\u7684\u6570\u91cf, \u9ed8\u8ba44","type":"number"},{"identifier":"action","description":"\u4e0a\u4f20\u5730\u5740","type":"string"},{"identifier":"filename","description":"\u4e0a\u4f20\u7684\u6587\u4ef6name, \u7528\u4e8e\u540e\u53f0\u63a5\u6536, \u9ed8\u8ba4 file","type":"string"},{"identifier":"data","description":"\u9644\u52a0\u6570\u636e","type":"Record<string, any>"},{"identifier":"withCredentials","description":"\u662f\u5426\u542f\u7528 withCredentials","type":"boolean"},{"identifier":"headers","description":"\u9644\u52a0\u8bf7\u6c42\u5934","type":"Record<string, string>"},{"identifier":"onSuccess","description":"\u6210\u529f\u4e8b\u4ef6","type":"(file: File, response: T, xhr: XMLHttpRequest) => void"},{"identifier":"onError","description":"\u5931\u8d25\u4e8b\u4ef6","type":"(file: File, error: Error, response?: T) => void"},{"identifier":"onProgress","description":"\u4e0a\u4f20\u8fdb\u5ea6\u4e8b\u4ef6","type":"(file: File, percent: number, event: ProgressEvent<EventTarget>) => void"},{"identifier":"getResponse","description":"\u4ece\u4e0a\u4f20\u7684\u54cd\u5e94\u4e2d\u62ff\u5230\u503c, \u6b64\u503c\u5c06\u540c\u6b65\u5230value","type":"(res: T) => string"},{"identifier":"disabled","description":"\u662f\u5426\u7981\u7528","type":"boolean"},{"identifier":"ref","description":"\u8f6c\u53d1ref","type":"any"},{"identifier":"disableDelete","description":"\u662f\u5426\u9690\u85cf\u5220\u9664\u6309\u94ae","type":"boolean"},{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"accept","description":"\u6587\u4ef6\u7c7b\u578b, \u9ed8\u8ba4 image/*,\\n\u4e5f\u53ef\u4ee5\u662f: image/gif,image/jpeg,image/jpg,image/png, \u5982\u679cios\u60f3\u4ece\u76f8\u673a\u8bfb\u53d6, \u9700\u8981\u8bbe\u7f6e\\"image/*;capture=camera\\"","type":"string"},{"identifier":"capture","description":"\u56fe\u7247\u6355\u83b7\u8bbe\u7f6e\uff0c \u6bd4\u5982capture=camera\u53ea\u4ece\u76f8\u673a\u8bfb\u53d6","type":"string | boolean"},{"identifier":"multiple","description":"\u662f\u5426\u591a\u9009","type":"boolean"},{"identifier":"beforeUpload","description":"\u8fd4\u56de Promise.reject() \u5219\u62d2\u7edd\u4e0a\u4f20","type":"(file: File) => boolean | Promise<File>"},{"identifier":"maxSize","description":"\u6700\u5927\u4e0a\u4f20\u5c3a\u5bf8\u9650\u5236, \u9ed8\u8ba46MB","type":"number"},{"identifier":"compressOptions","description":"\u538b\u7f29\u9009\u9879","type":"CompressOptions"},{"identifier":"children","description":"\u81ea\u5b9a\u4e49\u4e0a\u4f20\u6309\u94ae\u8282\u70b9","type":"ReactNode"},{"identifier":"onUpload","description":"\u5f00\u59cb\u4e0a\u4f20","type":"(file: File) => void"},{"identifier":"onBatchUpload","description":"\u6279\u91cf\u5f00\u59cb\u4e0a\u4f20","type":"(files: File[]) => void"}]},"WingBlank":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode","required":true},{"identifier":"size","description":"\u4e24\u7ffc\u7559\u767d\u7684\u95f4\u8ddd","type":"\\"lg\\" | \\"sm\\" | \\"md\\""}]}}',
+      '{"../../../src/ActionSheet/ActionSheet.tsx":{"ActionSheet":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"title","description":"\u6807\u9898","type":"ReactNode"},{"identifier":"cancel","description":"\u53d6\u6d88\u6587\u672c","type":"ReactNode"},{"identifier":"menus","description":"\u83dc\u5355","type":"ReactNode[]"},{"identifier":"onClick","description":"\u9009\u4e2d\u83dc\u5355\u4e8b\u4ef6","type":"(index: number) => Promise<unknown>"},{"identifier":"visible","description":"\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"defaultVisible","description":"\u9ed8\u8ba4\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"onVisibleChange","description":"\u663e\u793a\u6539\u53d8","type":"(visible: boolean) => void"},{"identifier":"closeFuncRef","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570","type":"MutableRefObject<Function>"},{"identifier":"onUnmount","description":"\u5173\u95ed\u4e8b\u4ef6","type":"Function"},{"identifier":"getContainer","description":"\u9ed8\u8ba4\u4e3abody\u5185\u521b\u5efa\u4e00\u4e2adiv\u4f5c\u4e3a\u5bb9\u5668","type":"HTMLElement | GetContainerFun"},{"identifier":"rootSelector","description":"\u6839\u9009\u62e9\u5668, \u8ba9\u6b64\u8282\u70b9\u6837\u5f0f\u53d8\u5316. \u4e00\u822c\u662f`#root`","type":"string"},{"identifier":"animateClassName","description":"\u52a8\u753b\u7c7b\u540d","type":"string"},{"identifier":"popupClassName","description":"\u5f39\u51fa\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"popupContentClassName","description":"\u5f39\u51fa\u6846\u5185\u5bb9\u5143\u7d20\u7c7b\u540d","type":"string"},{"identifier":"duration","description":"\u6301\u7eed\u65f6\u95f4\uff08\u6beb\u79d2\uff09, \u9ed8\u8ba4 3000 \u6beb\u79d2\u540e\u5173\u95ed","type":"number"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode"},{"identifier":"mask","description":"\u662f\u5426\u663e\u793a\u906e\u7f69\u5c42","type":"boolean"},{"identifier":"maskClose","description":"\u80cc\u666f\u906e\u7f69\u662f\u5426\u53ef\u5173\u95ed","type":"boolean"},{"identifier":"getCloseFunc","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570(\u7528\u4e8ejs\u5f39\u51fa)","type":"(close: Function) => void"},{"identifier":"onClose","description":"\u5173\u95ed\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"},{"identifier":"onShow","description":"\u6253\u5f00\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"}]},"AmountKeyBoard":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"confirmBtn","description":"\u786e\u8ba4\u6309\u94ae","type":"ReactNode"},{"identifier":"cleanBtn","description":"\u6e05\u9664\u6309\u94ae","type":"ReactNode"},{"identifier":"visible","description":"\u662f\u5426\u6253\u5f00\u6570\u5b57\u952e\u76d8","type":"boolean"},{"identifier":"defaultVisible","description":"\u9ed8\u8ba4\u662f\u5426\u6253\u5f00\u6570\u5b57\u952e\u76d8","type":"boolean"},{"identifier":"onVisibleChange","description":"\u53ef\u89c6\u6539\u53d8\u4e8b\u4ef6","type":"(visible: boolean) => void"},{"identifier":"value","description":"\u91d1\u989d","type":"number"},{"identifier":"defaultVlue","description":"\u9ed8\u8ba4\u91d1\u989d","type":"number"},{"identifier":"onChange","description":"\u952e\u76d8\u952e\u5165\u4e8b\u4ef6","type":"(amount: number, amountStr: string) => void"},{"identifier":"onConfirm","description":"\u786e\u8ba4\u4e8b\u4ef6","type":"(amount: number, amountStr: string) => void"},{"identifier":"precision","description":"\u4e3a\u6574\u6570, \u6bd4\u59822, \u5c31\u662f\u4fdd\u7559\u5230\u5c0f\u6570\u70b92\u4f4d","type":"number"},{"identifier":"animateClassName","description":"\u52a8\u753b\u7c7b\u540d","type":"string"},{"identifier":"popupClassName","description":"\u5f39\u51fa\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"popupContentClassName","description":"\u5f39\u51fa\u6846\u5185\u5bb9\u5143\u7d20\u7c7b\u540d","type":"string"},{"identifier":"duration","description":"\u6301\u7eed\u65f6\u95f4\uff08\u6beb\u79d2\uff09, \u9ed8\u8ba4 3000 \u6beb\u79d2\u540e\u5173\u95ed","type":"number"},{"identifier":"onUnmount","description":"\u5173\u95ed\u4e8b\u4ef6","type":"Function"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode"},{"identifier":"mask","description":"\u662f\u5426\u663e\u793a\u906e\u7f69\u5c42","type":"boolean"},{"identifier":"maskClose","description":"\u80cc\u666f\u906e\u7f69\u662f\u5426\u53ef\u5173\u95ed","type":"boolean"},{"identifier":"closeFuncRef","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570","type":"MutableRefObject<Function>"},{"identifier":"getCloseFunc","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570(\u7528\u4e8ejs\u5f39\u51fa)","type":"(close: Function) => void"},{"identifier":"getContainer","description":"\u9ed8\u8ba4\u4e3abody\u5185\u521b\u5efa\u4e00\u4e2adiv\u4f5c\u4e3a\u5bb9\u5668","type":"HTMLElement | GetContainerFun"},{"identifier":"onClose","description":"\u5173\u95ed\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"},{"identifier":"onShow","description":"\u6253\u5f00\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"},{"identifier":"ref","type":"Ref<HTMLDivElement>"},{"identifier":"key","type":"ReactText"}]},"Button":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode"},{"identifier":"type","description":"\u6309\u94ae\u7c7b\u578b","type":"ButtonType"},{"identifier":"block","description":"\u662f\u5426\u957f\u6309\u94ae","type":"boolean"},{"identifier":"loading","description":"\u7b49\u5f85\u72b6\u6001","type":"boolean"},{"identifier":"disabled","description":"\u7981\u7528\u72b6\u6001","type":"boolean"},{"identifier":"danger","description":"\u8b66\u544a\u72b6\u6001","type":"boolean"},{"identifier":"icon","description":"\u56fe\u6807","type":"ReactNode"},{"identifier":"onClick","description":"click\u4e8b\u4ef6","type":"(event: MouseEvent<HTMLElement, MouseEvent>) => void"},{"identifier":"formType","description":"\u7c7b\u578b","type":"\\"button\\" | \\"submit\\" | \\"reset\\""},{"identifier":"size","description":"\u5c3a\u5bf8","type":"\\"default\\" | \\"small\\" | \\"large\\""}]},"Checkbox":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"checked","description":"\u590d\u9009\u6846\u662f\u5426\u9009\u4e2d","type":"boolean"},{"identifier":"onChange","description":"Switch\u503c\u66f4\u6539\u4e8b\u4ef6","type":"(chcked: boolean) => void"},{"identifier":"defaultChecked","description":"\u9ed8\u8ba4\u662f\u5426\u9009\u4e2d","type":"boolean"},{"identifier":"disabled","description":"\u662f\u5426\u7981\u7528","type":"boolean"},{"identifier":"size","description":"\u5c3a\u5bf8","type":"\\"default\\" | \\"small\\" | \\"large\\""},{"identifier":"children","description":"label\u5185\u5bb9","type":"ReactNode"},{"identifier":"ref","type":"Ref<HTMLSpanElement>"},{"identifier":"key","type":"ReactText"}]},"../../../src/DatePicker/DatePicker.tsx":{"DatePicker":[{"identifier":"mode","description":"\u65e5\u671f\u6a21\u5f0f, (\u65e5\u671fdate,\u65f6\u95f4time,\u65e5\u671f+\u65f6\u95f4datetime,\u5e74year,\u6708month)","type":"DatePickerMode"},{"identifier":"value","description":"\u9009\u4e2d\u65e5\u671f","type":"Date"},{"identifier":"defaultValue","description":"\u9ed8\u8ba4\u9009\u4e2d\u65e5\u671f","type":"Date"},{"identifier":"onChange","description":"\u65e5\u671f\u6539\u53d8","type":"(value: Date) => void"},{"identifier":"minDate","description":"\u6700\u5c0f\u53ef\u9009\u65e5\u671f, \u9ed8\u8ba4\u5411\u524d10\u5e74","type":"Date"},{"identifier":"maxDate","description":"\u6700\u5927\u53ef\u9009\u65e5\u671f, \u9ed8\u8ba4\u5411\u540e10\u5e74","type":"Date"},{"identifier":"format","description":"\u663e\u793a\u6807\u7b7e\u683c\u5f0f\u5316","type":"(date: Date, mode: DatePickerMode) => ReactNode"},{"identifier":"useDefaultFormat","description":"\u662f\u5426\u4f7f\u7528\u5185\u7f6e\u65e5\u671f\u683c\u5f0f\u5316label\\n\u9ed8\u8ba4\u9664\u4e86\u5e74\u548c\u6708\u6a21\u5f0f\uff0c\u5176\u4ed6\u9ed8\u8ba4\u9ed8\u8ba4\u4f7f\u7528","type":"boolean"},{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"title","description":"\u5f39\u51fa\u6846\u6807\u9898","type":"ReactNode"},{"identifier":"subTitle","description":"\u5b50\u6807\u9898","type":"ReactNode"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode"},{"identifier":"exted","description":"\u53f3\u4e0a\u89d2\u6269\u5c55\u5185\u5bb9","type":"ReactNode"},{"identifier":"onExtedClick","description":"\u53f3\u4e0a\u89d2\u6269\u5c55\u70b9\u51fb\u4e8b\u4ef6","type":"(close: Function) => void"},{"identifier":"cancel","description":"\u53d6\u6d88\u6309\u94ae","type":"ReactNode"},{"identifier":"onCancel","description":"\u53d6\u6d88\u6309\u94ae\u70b9\u51fb","type":"() => void"},{"identifier":"confirm","description":"\u786e\u5b9a\u6309\u94ae","type":"ReactNode"},{"identifier":"onConfirm","description":"\u786e\u5b9a\u4e8b\u4ef6","type":"(value: any[], data: PickerItem[]) => void"},{"identifier":"hideFooter","description":"\u662f\u5426\u9690\u85cf\u9875\u811a","type":"boolean"},{"identifier":"animateClassName","description":"\u52a8\u753b\u7c7b\u540d","type":"string"},{"identifier":"popupClassName","description":"\u5f39\u51fa\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"popupContentClassName","description":"\u5f39\u51fa\u6846\u5185\u5bb9\u5143\u7d20\u7c7b\u540d","type":"string"},{"identifier":"duration","description":"\u6301\u7eed\u65f6\u95f4\uff08\u6beb\u79d2\uff09, \u9ed8\u8ba4 3000 \u6beb\u79d2\u540e\u5173\u95ed","type":"number"},{"identifier":"onUnmount","description":"\u5173\u95ed\u4e8b\u4ef6","type":"Function"},{"identifier":"mask","description":"\u662f\u5426\u663e\u793a\u906e\u7f69\u5c42","type":"boolean"},{"identifier":"maskClose","description":"\u80cc\u666f\u906e\u7f69\u662f\u5426\u53ef\u5173\u95ed","type":"boolean"},{"identifier":"visible","description":"\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"defaultVisible","description":"\u9ed8\u8ba4\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"onVisibleChange","description":"\u663e\u793a\u6539\u53d8","type":"(visible: boolean) => void"},{"identifier":"closeFuncRef","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570","type":"MutableRefObject<Function>"},{"identifier":"getCloseFunc","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570(\u7528\u4e8ejs\u5f39\u51fa)","type":"(close: Function) => void"},{"identifier":"getContainer","description":"\u9ed8\u8ba4\u4e3abody\u5185\u521b\u5efa\u4e00\u4e2adiv\u4f5c\u4e3a\u5bb9\u5668","type":"HTMLElement | GetContainerFun"},{"identifier":"onClose","description":"\u5173\u95ed\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"},{"identifier":"onShow","description":"\u6253\u5f00\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"},{"identifier":"placeholder","description":"\u5360\u4f4d\u7b26","type":"ReactNode"},{"identifier":"popup","description":"\u5f39\u51fa\u6a21\u5f0f, \u7528\u4e8ejs\u89e6\u53d1\u5f39\u51fa\uff0c\u6b64\u65f6\u4e0d\u5c55\u793alabel\u533a\u5757","type":"boolean"},{"identifier":"singleLabel","description":"\u662f\u5426\u53ea\u663e\u793a\u6700\u7ec8\u4e00\u7ea7\u7684label (\u7528\u4e8e\u9ed8\u8ba4format)","type":"boolean"},{"identifier":"separator","description":"label\u5206\u9694\u7b26 (\u7528\u4e8e\u9ed8\u8ba4format)\\n\u6bd4\u5982\u65e5\u671f: 2019-10-08\\n\u6bd4\u5982\u7c7b\u522b: \u98df\u54c1/\u719f\u98df","type":"string"},{"identifier":"labelField","description":"\u6807\u7b7e\u5b57\u6bb5, \u9ed8\u8ba4label","type":"string"},{"identifier":"pickerValue","description":"\u5f53\u524d\u5373\u65f6\u9009\u62e9\u7684\u503c","type":"any[]"},{"identifier":"onPickerValueChange","description":"\u5f53\u524d\u5373\u65f6\u9009\u62e9\u7684\u503c\u6539\u53d8","type":"(pickerValue: any[]) => void"},{"identifier":"cols","description":"\u5217\u6570","type":"number"},{"identifier":"onPickerChange","description":"\u6bcf\u5217\u6570\u636e\u6539\u53d8","type":"(colIndex: number, value: any[], data: PickerItem[]) => void"},{"identifier":"cascade","description":"\u662f\u5426\u7ea7\u8fde","type":"boolean"},{"identifier":"disabled","description":"\u662f\u5426\u7981\u7528","type":"boolean"},{"identifier":"scrollOffsetRestRef","description":"\u91cd\u7f6e","type":"MutableRefObject<Function>"},{"identifier":"ref","type":"Ref<HTMLDivElement>"},{"identifier":"key","type":"ReactText"}]},"../../../src/Dialog/Dialog.tsx":{"Dialog":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"title","description":"\u6807\u9898","type":"ReactNode"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode","required":true},{"identifier":"cancel","description":"\u53d6\u6d88\u6309\u94ae","type":"ReactNode"},{"identifier":"onCancel","description":"\u53d6\u6d88\u6309\u94ae\u70b9\u51fb","type":"() => void"},{"identifier":"confirm","description":"\u786e\u5b9a\u6309\u94ae","type":"ReactNode"},{"identifier":"onConfirm","description":"\u786e\u5b9a\u6309\u94ae\u70b9\u51fb","type":"() => Promise<unknown>"},{"identifier":"hideFooter","description":"\u662f\u5426\u9690\u85cf\u9875\u811a","type":"boolean"},{"identifier":"footer","description":"\u81ea\u5b9a\u4e49\u9875\u811a\u6309\u94ae","type":"ReactNode[]"},{"identifier":"onClick","description":"\u81ea\u5b9a\u4e49\u9875\u811a\u6309\u94ae\u9009\u4e2d\u4e8b\u4ef6","type":"(index: number) => Promise<any>"},{"identifier":"animateClassName","description":"\u52a8\u753b\u7c7b\u540d","type":"string"},{"identifier":"popupClassName","description":"\u5f39\u51fa\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"popupContentClassName","description":"\u5f39\u51fa\u6846\u5185\u5bb9\u5143\u7d20\u7c7b\u540d","type":"string"},{"identifier":"duration","description":"\u6301\u7eed\u65f6\u95f4\uff08\u6beb\u79d2\uff09, \u9ed8\u8ba4 3000 \u6beb\u79d2\u540e\u5173\u95ed","type":"number"},{"identifier":"onUnmount","description":"\u5173\u95ed\u4e8b\u4ef6","type":"Function"},{"identifier":"mask","description":"\u662f\u5426\u663e\u793a\u906e\u7f69\u5c42","type":"boolean"},{"identifier":"maskClose","description":"\u80cc\u666f\u906e\u7f69\u662f\u5426\u53ef\u5173\u95ed","type":"boolean"},{"identifier":"visible","description":"\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"defaultVisible","description":"\u9ed8\u8ba4\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"onVisibleChange","description":"\u663e\u793a\u6539\u53d8","type":"(visible: boolean) => void"},{"identifier":"closeFuncRef","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570","type":"MutableRefObject<Function>"},{"identifier":"getCloseFunc","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570(\u7528\u4e8ejs\u5f39\u51fa)","type":"(close: Function) => void"},{"identifier":"getContainer","description":"\u9ed8\u8ba4\u4e3abody\u5185\u521b\u5efa\u4e00\u4e2adiv\u4f5c\u4e3a\u5bb9\u5668","type":"HTMLElement | GetContainerFun"},{"identifier":"onClose","description":"\u5173\u95ed\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"},{"identifier":"onShow","description":"\u6253\u5f00\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"}]},"../../../src/Flex/Flex.tsx":{"Flex":[{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"children","type":"ReactNode"},{"identifier":"type","description":"\u5e03\u5c40\u6a21\u5f0f","type":"\\"flex\\""},{"identifier":"justify","description":"\u9ed8\u8ba4 start","type":"\\"start\\" | \\"end\\" | \\"center\\" | \\"space-around\\" | \\"space-between\\""},{"identifier":"align","description":"\u9ed8\u8ba4 top","type":"\\"top\\" | \\"middle\\" | \\"bottom\\""},{"identifier":"gutter","description":"\u6805\u683c\u95f4\u9694","type":"number | Partial<Record<Breakpoint, number>>"}]},"../../../src/Flex/FLexItem.tsx":{"FLexItem":[{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"children","type":"ReactNode"},{"identifier":"span","description":"\u4e3a 0 \u65f6\u76f8\u5f53\u4e8e display: none","type":"number"},{"identifier":"pull","description":"\u6805\u683c\u5411\u5de6\u79fb\u52a8\u683c\u6570","type":"number"},{"identifier":"push","description":"\u6805\u683c\u5411\u53f3\u79fb\u52a8\u683c\u6570","type":"number"},{"identifier":"offset","description":"\u6805\u683c\u5de6\u4fa7\u7684\u95f4\u9694\u683c\u6570\uff0c\u95f4\u9694\u5185\u4e0d\u53ef\u4ee5\u6709\u6805\u683c","type":"number"},{"identifier":"order","description":"flex \u5e03\u5c40\u6a21\u5f0f\u4e0b\u5f97\u6805\u683c\u987a\u5e8f","type":"number"},{"identifier":"xxl","type":"number | ColConfig"},{"identifier":"xl","type":"number | ColConfig"},{"identifier":"lg","type":"number | ColConfig"},{"identifier":"md","type":"number | ColConfig"},{"identifier":"sm","type":"number | ColConfig"},{"identifier":"xs","type":"number | ColConfig"},{"identifier":"average","description":"\u662f\u5426\u5747\u5206","type":"boolean"}]},"../../../src/Form/Form.tsx":{"Form":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u8868\u5355\u5185\u5bb9","type":"ReactNode"},{"identifier":"validConfig","description":"\u9a8c\u8bc1\u914d\u7f6e","type":"ValidateConfig<T>"},{"identifier":"getFormMethods","description":"\u83b7\u53d6\u8868\u5355\u65b9\u6cd5","type":"GetMethods | MutableRefObject<FormMethods>"},{"identifier":"onFieldChange","description":"\u5b57\u6bb5\u503c\u6539\u53d8\u4e8b\u4ef6","type":"(prop: string, value: any) => void"},{"identifier":"onSubmitBefore","description":"\u5f00\u59cb\u70b9\u51fb\u63d0\u4ea4\u6309\u94ae","type":"(data: any) => void"},{"identifier":"onValidateFail","description":"\u8868\u5355\u9a8c\u8bc1\u5931\u8d25\u4e8b\u4ef6","type":"(error: Error, data: any) => void"},{"identifier":"onSubmit","description":"\u5f53\u9a8c\u8bc1\u5168\u90e8\u901a\u8fc7\u540e\u624d\u4f1a\u8c03\u7528\u6b64\u4e8b\u4ef6","type":"(data: any) => void"},{"identifier":"disabled","description":"\u662f\u5426\u7981\u7528\u8868\u5355","type":"boolean"},{"identifier":"methods","description":"\u8868\u5355\u65b9\u6cd5","type":"FormMethods"},{"identifier":"trigger","description":"\u9ed8\u8ba4\u89e6\u53d1\u4e8b\u4ef6","type":"ValidateTrigger"},{"identifier":"labelWidth","description":"\u6807\u7b7e\u5bbd\u5ea6","type":"string"},{"identifier":"labelPostion","description":"\u6807\u7b7e\u4f4d\u7f6e","type":"\\"left\\" | \\"top\\""},{"identifier":"defaultModel","description":"\u9ed8\u8ba4\u6a21\u578b","type":"any"},{"identifier":"add","description":"\u6dfb\u52a0\u5b57\u6bb5","type":"(prop: string, itemState: FormItemState) => void"},{"identifier":"remove","description":"\u79fb\u9664\u5b57\u6bb5","type":"(prop: string) => void"},{"identifier":"fieldChange","description":"\u5b57\u6bb5\u503c\u6539\u53d8\u4e8b\u4ef6","type":"(prop: string, value: any) => void"},{"identifier":"fieldValidate","description":"\u5b57\u6bb5\u9700\u8981\u9a8c\u8bc1\u4e8b\u4ef6","type":"(prop: string, trigger?: ValidateTrigger) => Promise<any>"}]},"../../../src/Form/FormItem.tsx":{"FormItem":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u8868\u5355\u5185\u5bb9","type":"ReactNode"},{"identifier":"label","description":"\u6807\u7b7e\u540d\u79f0","type":"ReactNode"},{"identifier":"extra","description":"\u53f3\u4fa7\u6269\u5c55\u5185\u5bb9","type":"ReactNode"},{"identifier":"arrow","description":"\u7bad\u5934\u65b9\u5411","type":"boolean | \\"horizontal\\" | \\"up\\" | \\"down\\""},{"identifier":"access","description":"\u662f\u5426\u70b9\u51fb\u4ea4\u4e92\u6837\u5f0f","type":"boolean"},{"identifier":"clickShowError","description":"\u70b9\u51fblabel\u662f\u5426\u663e\u793a\u9a8c\u8bc1\u5931\u8d25\u539f\u56e0","type":"boolean"},{"identifier":"align","description":"\u5185\u5bb9\u5bf9\u9f50\u65b9\u5f0f","type":"\\"left\\" | \\"center\\" | \\"right\\""},{"identifier":"simple","description":"\u662f\u5426\u7cbe\u7b80\u6a21\u5f0f\uff0c\u4e0d\u663e\u793aList\u6837\u5f0f","type":"boolean"},{"identifier":"labelPostion","description":"\u6807\u7b7e\u4f4d\u7f6e","type":"\\"left\\" | \\"top\\""},{"identifier":"alignItems","description":"\u5782\u76f4\u5bf9\u9f50\u65b9\u5f0f","type":"\\"center\\" | \\"flex-end\\" | \\"flex-start\\""},{"identifier":"onClick","description":"\u5217\u8868\u70b9\u51fb\u4e8b\u4ef6","type":"() => void"},{"identifier":"prop","description":"\u5b57\u6bb5\u5b57","type":"string"},{"identifier":"valueKey","description":"\u5b57\u6bb5\u503c\u7684key, \u9ed8\u8ba4\u60c5\u51b5\u4e0b\u90fd\u662f`value`,\u4f46\u6709\u4e9b\u7ec4\u4ef6\uff0c\u6bd4\u5982`Switch`\u662f`checked`","type":"string"},{"identifier":"converValue","description":"\u5982\u4f55\u4eceonChange\u8f6c\u6362\u503c","type":"Function"},{"identifier":"labelString","description":"\u4e2d\u6587\u6807\u7b7e\u540d (\u7528\u4e8e\u9a8c\u8bc1\u63d0\u793a)","type":"string"},{"identifier":"trigger","description":"\u9ed8\u8ba4\u89e6\u53d1\u4e8b\u4ef6","type":"ValidateTrigger"},{"identifier":"rule","description":"\u9a8c\u8bc1\u914d\u7f6e","type":"FieldConfig[]"},{"identifier":"defaultValue","description":"\u9ed8\u8ba4\u503c","type":"any"},{"identifier":"normalize","description":"\u6bd4\u5982\u7ed1\u5b9a\u7684\u662f Date \u7c7b\u578b\uff0cform \u6700\u540e\u540c\u6b65\u65f6\u53ef\u4ee5\u662f\u65e5\u671f\u5b57\u7b26\u4e32.","type":"(value: any) => any"},{"identifier":"disabledValidate","description":"\u662f\u5426\u7981\u7528\u9a8c\u8bc1","type":"boolean"},{"identifier":"onValidateChange","description":"\u9a8c\u8bc1\u72b6\u6001\u6539\u53d8\u4e8b\u4ef6","type":"(value: any, validateResult: ValidateResult) => void"},{"identifier":"disabled","description":"\u900f\u4f20\u5c5e\u6027\uff0c\u6ca1\u6709\u5219\u53d6form\u4e0a\u7684disabled","type":"boolean"},{"identifier":"onBlur","description":"\u900f\u4f20\u5c5e\u6027\uff0c\u4e3a\u4e86\u5931\u53bb\u7126\u70b9\u9a8c\u8bc1\uff0c\u9700\u8981\u4ee3\u7406\u6b64\u4e8b\u4ef6","type":"(e: FocusEvent<HTMLElement>) => void"},{"identifier":"onChange","description":"\u900f\u4f20\u5c5e\u6027\uff0c","type":"(value: any) => void"}]},"../../../src/Grid/Grid.tsx":{"Grid":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u7f51\u683c\u5185\u5bb9","type":"ReactNode","required":true}]},"../../../src/Grid/GridItem.tsx":{"GridItem":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u6807\u9898","type":"ReactNode","required":true},{"identifier":"icon","description":"\u56fe\u6807","type":"ReactNode"},{"identifier":"onClick","description":"\u70b9\u51fb\u4e8b\u4ef6","type":"(event: MouseEvent<HTMLDivElement, MouseEvent>) => void"}]},"../../../src/HalfScreenDialog/HalfScreenDialog.tsx":{"HalfScreenDialog":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"title","description":"\u6807\u9898","type":"ReactNode","required":true},{"identifier":"subTitle","description":"\u5b50\u6807\u9898","type":"ReactNode"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode"},{"identifier":"exted","description":"\u53f3\u4e0a\u89d2\u6269\u5c55\u5185\u5bb9","type":"ReactNode"},{"identifier":"onExtedClick","description":"\u53f3\u4e0a\u89d2\u6269\u5c55\u70b9\u51fb\u4e8b\u4ef6","type":"(close: Function) => void"},{"identifier":"cancel","description":"\u53d6\u6d88\u6309\u94ae","type":"ReactNode"},{"identifier":"onCancel","description":"\u53d6\u6d88\u6309\u94ae\u70b9\u51fb","type":"() => void"},{"identifier":"confirm","description":"\u786e\u5b9a\u6309\u94ae","type":"ReactNode"},{"identifier":"onConfirm","description":"\u786e\u5b9a\u6309\u94ae\u70b9\u51fb","type":"() => Promise<unknown>"},{"identifier":"hideFooter","description":"\u662f\u5426\u9690\u85cf\u9875\u811a","type":"boolean"},{"identifier":"animateClassName","description":"\u52a8\u753b\u7c7b\u540d","type":"string"},{"identifier":"popupClassName","description":"\u5f39\u51fa\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"popupContentClassName","description":"\u5f39\u51fa\u6846\u5185\u5bb9\u5143\u7d20\u7c7b\u540d","type":"string"},{"identifier":"duration","description":"\u6301\u7eed\u65f6\u95f4\uff08\u6beb\u79d2\uff09, \u9ed8\u8ba4 3000 \u6beb\u79d2\u540e\u5173\u95ed","type":"number"},{"identifier":"onUnmount","description":"\u5173\u95ed\u4e8b\u4ef6","type":"Function"},{"identifier":"mask","description":"\u662f\u5426\u663e\u793a\u906e\u7f69\u5c42","type":"boolean"},{"identifier":"maskClose","description":"\u80cc\u666f\u906e\u7f69\u662f\u5426\u53ef\u5173\u95ed","type":"boolean"},{"identifier":"visible","description":"\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"defaultVisible","description":"\u9ed8\u8ba4\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"onVisibleChange","description":"\u663e\u793a\u6539\u53d8","type":"(visible: boolean) => void"},{"identifier":"closeFuncRef","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570","type":"MutableRefObject<Function>"},{"identifier":"getCloseFunc","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570(\u7528\u4e8ejs\u5f39\u51fa)","type":"(close: Function) => void"},{"identifier":"getContainer","description":"\u9ed8\u8ba4\u4e3abody\u5185\u521b\u5efa\u4e00\u4e2adiv\u4f5c\u4e3a\u5bb9\u5668","type":"HTMLElement | GetContainerFun"},{"identifier":"onClose","description":"\u5173\u95ed\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"},{"identifier":"onShow","description":"\u6253\u5f00\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"}]},"../../../src/ImageView/Gallery.tsx":{"Gallery":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"data","description":"\u6570\u636e\u6e90","type":"ImageOption[]"},{"identifier":"index","description":"\u67e5\u770b\u56fe\u7247\u7d22\u5f15","type":"number"},{"identifier":"onChange","description":"\u7d22\u5f15\u66f4\u6539\u4e8b\u4ef6","type":"(index: number) => void"},{"identifier":"defaultIndex","description":"\u9ed8\u8ba4\u67e5\u770b\u56fe\u7247\u7d22\u5f15","type":"number"},{"identifier":"tool","description":"\u81ea\u5b9a\u4e49\u5de5\u5177\u6761","type":"ReactNode"},{"identifier":"bottom","description":"\u81ea\u5b9a\u4e49\u5e95\u90e8\u8282\u70b9","type":"ReactNode"},{"identifier":"swiperDistance","description":"\u62d6\u62fd\u5207\u6362\u8ddd\u79bb, \u9ed8\u8ba40.35\\n\u5982\u679c\u4e3a0.5\u8fd9\u6837\u7684\u767e\u5206\u6bd4\uff0c\u5219\u4ee5\u5143\u7d20\u5c3a\u5bf8\u7684\u767e\u5206\u6bd4\u8ba1\u7b97","type":"number"},{"identifier":"swiperSpeed","description":"\u62d6\u62fd\u5207\u6362\u52a0\u901f\u5ea6, \u9ed8\u8ba44\\n\u52a0\u901f\u5ea6\u8d8a\u5feb\uff0c\u5373\u53ef\u5207\u6362","type":"number"},{"identifier":"animateClassName","description":"\u52a8\u753b\u7c7b\u540d","type":"string"},{"identifier":"popupClassName","description":"\u5f39\u51fa\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"popupContentClassName","description":"\u5f39\u51fa\u6846\u5185\u5bb9\u5143\u7d20\u7c7b\u540d","type":"string"},{"identifier":"duration","description":"\u6301\u7eed\u65f6\u95f4\uff08\u6beb\u79d2\uff09, \u9ed8\u8ba4 3000 \u6beb\u79d2\u540e\u5173\u95ed","type":"number"},{"identifier":"onUnmount","description":"\u5173\u95ed\u4e8b\u4ef6","type":"Function"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode"},{"identifier":"mask","description":"\u662f\u5426\u663e\u793a\u906e\u7f69\u5c42","type":"boolean"},{"identifier":"maskClose","description":"\u80cc\u666f\u906e\u7f69\u662f\u5426\u53ef\u5173\u95ed","type":"boolean"},{"identifier":"visible","description":"\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"defaultVisible","description":"\u9ed8\u8ba4\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"onVisibleChange","description":"\u663e\u793a\u6539\u53d8","type":"(visible: boolean) => void"},{"identifier":"closeFuncRef","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570","type":"MutableRefObject<Function>"},{"identifier":"getCloseFunc","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570(\u7528\u4e8ejs\u5f39\u51fa)","type":"(close: Function) => void"},{"identifier":"getContainer","description":"\u9ed8\u8ba4\u4e3abody\u5185\u521b\u5efa\u4e00\u4e2adiv\u4f5c\u4e3a\u5bb9\u5668","type":"HTMLElement | GetContainerFun"},{"identifier":"onClose","description":"\u5173\u95ed\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"},{"identifier":"onShow","description":"\u6253\u5f00\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"}]},"../../../src/ImageView/ImageView.tsx":{"ImageView":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"src","description":"\u56fe\u7247\u5730\u5740","type":"string","required":true},{"identifier":"index","description":"\u7d22\u5f15","type":"number","required":true},{"identifier":"onScaleChange","description":"\u7f29\u653e\u6539\u53d8","type":"(scale: number) => void"}]},"Input":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"disabled","description":"\u662f\u5426\u7981\u7528","type":"boolean"},{"identifier":"readOnly","description":"\u662f\u5426\u53ea\u8bfb","type":"boolean"},{"identifier":"value","description":"\u503c","type":"string"},{"identifier":"defaultValue","description":"\u9ed8\u8ba4\u503c","type":"string"},{"identifier":"onChange","description":"\u8f93\u5165\u6846change\u4e8b\u4ef6","type":"(value: string) => void"},{"identifier":"placeholder","description":"\u5360\u4f4d\u7b26\u6587\u672c","type":"string"},{"identifier":"pattern","description":"\u5339\u914d\u6a21\u5f0f","type":"string"},{"identifier":"autoFocus","description":"\u81ea\u52a8\u7126\u70b9","type":"boolean"},{"identifier":"maxlength","description":"\u6700\u5927\u5b57\u7b26\u957f\u5ea6","type":"number"},{"identifier":"type","description":"\u8f93\u5165\u6846\u7c7b\u578b","type":"\\"number\\" | \\"text\\" | \\"password\\" | \\"phone\\" | \\"bankCard\\""},{"identifier":"onFocus","description":"\u8f93\u5165\u6846\u7126\u70b9\u4e8b\u4ef6","type":"(e: FocusEvent<HTMLInputElement>) => void"},{"identifier":"onBlur","description":"\u8f93\u5165\u6846\u5931\u53bb\u7126\u70b9\u4e8b\u4ef6","type":"(e: FocusEvent<HTMLInputElement>) => void"},{"identifier":"onCompositionStart","description":"\u5f00\u59cb\u8f93\u5165\u4e2d\u6587","type":"(e: CompositionEvent<HTMLInputElement>) => void"},{"identifier":"onCompositionEnd","description":"\u8f93\u5165\u4e2d\u6587\u5b8c\u6bd5","type":"(e: CompositionEvent<HTMLInputElement>) => void"},{"identifier":"onSearch","description":"\u641c\u7d22\u56de\u8c03, \u914d\u5408delay\u9632\u6296","type":"(value: string) => void"},{"identifier":"delay","description":"\u9632\u6296\u6beb\u79d2, \u9ed8\u8ba4 500ms, \u5173\u7cfb\u5230onSearch\u89e6\u53d1\u4e8b\u4ef6\u7684\u9891\u7387","type":"number"},{"identifier":"clearable","description":"\u662f\u5426\u663e\u793a\u6e05\u9664","type":"boolean"},{"identifier":"prefix","description":"\u524d\u7f6e\u56fe\u6807","type":"ReactNode"},{"identifier":"suffix","description":"\u540e\u7f6e\u56fe\u6807","type":"ReactNode"},{"identifier":"formatter","description":"\u8f93\u5165\u6846\u5c55\u793a\u503c\u7684\u683c\u5f0f\u5316","type":"InputParser"},{"identifier":"parser","description":"\u4eceformatter\u91cc\u8f6c\u6362\u56de\u6765, \u914d\u5408 formatter\u4f7f\u7528","type":"InputParser"},{"identifier":"inputRef","description":"\u8f93\u5165\u6846\u5f15\u7528","type":"MutableRefObject<HTMLInputElement>"},{"identifier":"fixedKeyboard","description":"\u662f\u5426\u4fee\u590dinput\u5931\u7126window\u6eda\u52a8\u56de\u5f39","type":"boolean"},{"identifier":"ref","type":"Ref<HTMLDivElement>"},{"identifier":"key","type":"ReactText"}]},"../../../src/List/List.tsx":{"List":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"title","description":"\u6807\u9898","type":"ReactNode"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode"}]},"../../../src/List/ListItem.tsx":{"ListItem":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"hd","description":"\u5934\u90e8","type":"ReactNode"},{"identifier":"thumb","description":"\u7f29\u7565\u56fe(\u5f53\u4e3a string \u7c7b\u578b\u65f6\u4f5c\u4e3a img src)","type":"ReactNode"},{"identifier":"extra","description":"\u53f3\u4fa7\u6269\u5c55\u5185\u5bb9","type":"ReactNode"},{"identifier":"arrow","description":"\u7bad\u5934\u65b9\u5411","type":"boolean | \\"horizontal\\" | \\"up\\" | \\"down\\""},{"identifier":"access","description":"\u662f\u5426\u70b9\u51fb\u4ea4\u4e92\u6837\u5f0f","type":"boolean"},{"identifier":"onClick","description":"\u5217\u8868\u70b9\u51fb\u4e8b\u4ef6","type":"() => void"},{"identifier":"error","description":"\u662f\u5426\u62a5\u9519\u6837\u5f0f","type":"boolean"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode"},{"identifier":"align","description":"\u5185\u5bb9\u5bf9\u9f50\u65b9\u5f0f","type":"\\"left\\" | \\"center\\" | \\"right\\""},{"identifier":"alignItems","description":"\u5782\u76f4\u5bf9\u9f50\u65b9\u5f0f","type":"\\"center\\" | \\"flex-end\\" | \\"flex-start\\""}]},"Loadmore":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"loading","description":"\u52a0\u8f7d\u6a21\u5f0f","type":"boolean"},{"identifier":"line","description":"\u6a2a\u7ebf\u6a21\u5f0f","type":"boolean"},{"identifier":"dot","description":"\u70b9\u6a21\u5f0f","type":"boolean"},{"identifier":"tips","description":"\u63d0\u793a\u6587\u672c","type":"string"},{"identifier":"icon","description":"\u81ea\u5b9a\u4e49\u56fe\u6807","type":"ReactNode"}]},"NumberInput":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"disabled","description":"\u662f\u5426\u7981\u7528","type":"boolean"},{"identifier":"value","description":"\u503c","type":"number"},{"identifier":"defaultValue","description":"\u9ed8\u8ba4\u503c","type":"number"},{"identifier":"onChange","description":"change\u56de\u8c03","type":"(value: number) => void"},{"identifier":"placeholder","description":"\u5360\u4f4d\u7b26\u6587\u672c","type":"string"},{"identifier":"pattern","description":"\u5339\u914d\u6a21\u5f0f","type":"string"},{"identifier":"autoFocus","description":"\u81ea\u52a8\u7126\u70b9","type":"boolean"},{"identifier":"maxlength","description":"\u6700\u5927\u5b57\u7b26\u957f\u5ea6","type":"number"},{"identifier":"onFocus","description":"\u8f93\u5165\u6846\u7126\u70b9\u4e8b\u4ef6","type":"(e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void"},{"identifier":"onBlur","description":"\u8f93\u5165\u6846\u5931\u53bb\u7126\u70b9\u4e8b\u4ef6","type":"(e: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void"},{"identifier":"prefix","description":"\u524d\u7f6e\u56fe\u6807","type":"ReactNode"},{"identifier":"suffix","description":"\u540e\u7f6e\u56fe\u6807","type":"ReactNode"},{"identifier":"formatter","description":"\u8f93\u5165\u6846\u5c55\u793a\u503c\u7684\u683c\u5f0f\u5316","type":"InputParser"},{"identifier":"parser","description":"\u4eceformatter\u91cc\u8f6c\u6362\u56de\u6765, \u914d\u5408 formatter\u4f7f\u7528","type":"InputParser"},{"identifier":"precision","description":"\u4e3a\u6574\u6570, \u6bd4\u59823, \u5c31\u662f\u4fdd\u7559\u5230\u5c0f\u6570\u70b93\u4f4d","type":"number"},{"identifier":"max","description":"\u6700\u5927\u503c","type":"number"},{"identifier":"min","description":"\u6700\u5c0f\u503c","type":"number"},{"identifier":"step","description":"\u6b65\u957f","type":"number"},{"identifier":"type","description":"\u8f93\u5165\u6846\u7c7b\u578b","type":"\\"number\\" | \\"amount\\""},{"identifier":"showControl","description":"\u662f\u5426\u663e\u793a\u63a7\u5236\u6309\u94ae","type":"boolean"},{"identifier":"ref","type":"Ref<HTMLDivElement>"},{"identifier":"key","type":"ReactText"}]},"../../../src/Panel/Panel.tsx":{"Panel":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode","required":true},{"identifier":"title","description":"\u6807\u9898","type":"ReactNode","required":true},{"identifier":"footer","description":"\u9875\u811a","type":"ReactNode"}]},"../../../src/Panel/PanelItem.tsx":{"PanelItem":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"title","description":"\u6807\u9898","type":"ReactNode","required":true},{"identifier":"thumb","description":"\u7f29\u7565\u56fe","type":"ReactNode"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode"},{"identifier":"text","description":"\u6587\u672c\u6a21\u5f0f","type":"boolean"},{"identifier":"info","description":"\u6269\u5c55\u4fe1\u606f","type":"ReactNode"},{"identifier":"arrow","description":"\u662f\u5426\u663e\u793a\u7bad\u5934","type":"boolean"},{"identifier":"onClick","description":"\u70b9\u51fb\u4e8b\u4ef6","type":"() => void"}]},"../../../src/Picker/Picker.tsx":{"Picker":[{"identifier":"onConfirm","description":"\u786e\u5b9a\u4e8b\u4ef6","type":"(value: any[], data: PickerItem[]) => void"},{"identifier":"placeholder","description":"\u5360\u4f4d\u7b26","type":"ReactNode"},{"identifier":"popup","description":"\u5f39\u51fa\u6a21\u5f0f, \u7528\u4e8ejs\u89e6\u53d1\u5f39\u51fa\uff0c\u6b64\u65f6\u4e0d\u5c55\u793alabel\u533a\u5757","type":"boolean"},{"identifier":"format","description":"\u683c\u5f0f\u5316\u51fd\u6570. \u9009\u4e2d\u6570\u636e\u5982\u4f55\u5c55\u793a","type":"(pickerData: PickerItem[], separator: string, singleLabel: boolean) => ReactNode"},{"identifier":"singleLabel","description":"\u662f\u5426\u53ea\u663e\u793a\u6700\u7ec8\u4e00\u7ea7\u7684label (\u7528\u4e8e\u9ed8\u8ba4format)","type":"boolean"},{"identifier":"separator","description":"label\u5206\u9694\u7b26 (\u7528\u4e8e\u9ed8\u8ba4format)\\n\u6bd4\u5982\u65e5\u671f: 2019-10-08\\n\u6bd4\u5982\u7c7b\u522b: \u98df\u54c1/\u719f\u98df","type":"string"},{"identifier":"labelField","description":"\u6807\u7b7e\u5b57\u6bb5, \u9ed8\u8ba4label","type":"string"},{"identifier":"title","description":"\u5f39\u51fa\u6846\u6807\u9898","type":"ReactNode"},{"identifier":"pickerValue","description":"\u5f53\u524d\u5373\u65f6\u9009\u62e9\u7684\u503c","type":"any[]"},{"identifier":"onPickerValueChange","description":"\u5f53\u524d\u5373\u65f6\u9009\u62e9\u7684\u503c\u6539\u53d8","type":"(pickerValue: any[]) => void"},{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"subTitle","description":"\u5b50\u6807\u9898","type":"ReactNode"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode"},{"identifier":"exted","description":"\u53f3\u4e0a\u89d2\u6269\u5c55\u5185\u5bb9","type":"ReactNode"},{"identifier":"onExtedClick","description":"\u53f3\u4e0a\u89d2\u6269\u5c55\u70b9\u51fb\u4e8b\u4ef6","type":"(close: Function) => void"},{"identifier":"cancel","description":"\u53d6\u6d88\u6309\u94ae","type":"ReactNode"},{"identifier":"onCancel","description":"\u53d6\u6d88\u6309\u94ae\u70b9\u51fb","type":"() => void"},{"identifier":"confirm","description":"\u786e\u5b9a\u6309\u94ae","type":"ReactNode"},{"identifier":"hideFooter","description":"\u662f\u5426\u9690\u85cf\u9875\u811a","type":"boolean"},{"identifier":"animateClassName","description":"\u52a8\u753b\u7c7b\u540d","type":"string"},{"identifier":"popupClassName","description":"\u5f39\u51fa\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"popupContentClassName","description":"\u5f39\u51fa\u6846\u5185\u5bb9\u5143\u7d20\u7c7b\u540d","type":"string"},{"identifier":"duration","description":"\u6301\u7eed\u65f6\u95f4\uff08\u6beb\u79d2\uff09, \u9ed8\u8ba4 3000 \u6beb\u79d2\u540e\u5173\u95ed","type":"number"},{"identifier":"onUnmount","description":"\u5173\u95ed\u4e8b\u4ef6","type":"Function"},{"identifier":"mask","description":"\u662f\u5426\u663e\u793a\u906e\u7f69\u5c42","type":"boolean"},{"identifier":"maskClose","description":"\u80cc\u666f\u906e\u7f69\u662f\u5426\u53ef\u5173\u95ed","type":"boolean"},{"identifier":"visible","description":"\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"defaultVisible","description":"\u9ed8\u8ba4\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"onVisibleChange","description":"\u663e\u793a\u6539\u53d8","type":"(visible: boolean) => void"},{"identifier":"closeFuncRef","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570","type":"MutableRefObject<Function>"},{"identifier":"getCloseFunc","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570(\u7528\u4e8ejs\u5f39\u51fa)","type":"(close: Function) => void"},{"identifier":"getContainer","description":"\u9ed8\u8ba4\u4e3abody\u5185\u521b\u5efa\u4e00\u4e2adiv\u4f5c\u4e3a\u5bb9\u5668","type":"HTMLElement | GetContainerFun"},{"identifier":"onClose","description":"\u5173\u95ed\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"},{"identifier":"onShow","description":"\u6253\u5f00\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"},{"identifier":"data","description":"\u6570\u636e\u6e90","type":"PickerItem[] | PickerItem[][]","required":true},{"identifier":"cols","description":"\u5217\u6570","type":"number"},{"identifier":"value","description":"\u9009\u4e2d\u503c","type":"any[]"},{"identifier":"defaultValue","description":"\u9ed8\u8ba4\u503c","type":"any[]"},{"identifier":"onChange","description":"\u503c\u6539\u53d8\u4e8b\u4ef6","type":"(value: any[]) => void"},{"identifier":"onPickerChange","description":"\u6bcf\u5217\u6570\u636e\u6539\u53d8","type":"(colIndex: number, value: any[], data: PickerItem[]) => void"},{"identifier":"cascade","description":"\u662f\u5426\u7ea7\u8fde","type":"boolean"},{"identifier":"disabled","description":"\u662f\u5426\u7981\u7528","type":"boolean"},{"identifier":"scrollOffsetRestRef","description":"\u91cd\u7f6e","type":"MutableRefObject<Function>"},{"identifier":"ref","type":"Ref<HTMLDivElement>"},{"identifier":"key","type":"ReactText"}]},"../../../src/Preview/Preview.tsx":{"Preview":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode","required":true},{"identifier":"title","description":"\u6807\u9898","type":"ReactNode"},{"identifier":"subTitle","description":"\u5b50\u6807\u9898","type":"ReactNode"},{"identifier":"footer","description":"\u9875\u811a","type":"ReactNode"},{"identifier":"align","description":"\u503c\u5bf9\u9f50\u65b9\u5f0f, \u9ed8\u8ba4`right`","type":"\\"right\\" | \\"left\\""}]},"../../../src/Preview/PreviewButton.tsx":{"PreviewButton":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"children","description":"\u503c","type":"ReactNode","required":true},{"identifier":"type","description":"\u6309\u94ae\u7c7b\u578b","type":"\\"default\\" | \\"primary\\""},{"identifier":"onClick","description":"\u70b9\u51fb\u4e8b\u4ef6","type":"() => void"}]},"../../../src/Preview/PreviewItem.tsx":{"PreviewItem":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u503c","type":"ReactNode","required":true},{"identifier":"title","description":"\u6807\u9898","type":"ReactNode","required":true},{"identifier":"onClick","description":"\u70b9\u51fb\u4e8b\u4ef6","type":"() => void"}]},"../../../src/PullRefresh/PullRefresh.tsx":{"PullRefresh":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u5305\u88f9\u5185\u5bb9","type":"ReactNode"},{"identifier":"enablePullRefresh","description":"\u662f\u5426\u5f00\u542f\u4e0b\u62c9\u5237\u65b0","type":"boolean"},{"identifier":"enableLoadMore","description":"\u662f\u5426\u5f00\u542f\u4e0a\u6ed1\u52a0\u8f7d\u66f4\u591a,","type":"boolean"},{"identifier":"threshold","description":"\u9608\u503c, \u4e0b\u62c9\u5237\u65b0\u7684\u8ddd\u79bb","type":"number"},{"identifier":"idleTime","description":"\u5237\u65b0\u5b8c\u6210\u7a7a\u95f2\u65f6\u95f4, \u9ed8\u8ba42000","type":"number"},{"identifier":"action","description":"\u72b6\u6001","type":"PullRefreshAction","required":true},{"identifier":"handleAction","description":"\u5904\u7406\u72b6\u6001","type":"(action: PullRefreshAction) => void","required":true},{"identifier":"scrollTarget","description":"\u6eda\u52a8\u5143\u7d20, \u9ed8\u8ba4\u4e3awindow","type":"any"},{"identifier":"autoRefresh","description":"\u662f\u5426\u81ea\u52a8\u5237\u65b0","type":"boolean"}]},"Rate":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"starCount","description":"\u8bc4\u661f\u6570\u91cf(\u9ed8\u8ba45\u661f)","type":"number"},{"identifier":"value","description":"\u9009\u4e2d\u503c","type":"number"},{"identifier":"defaultValue","description":"\u9ed8\u8ba4\u9009\u4e2d\u503c","type":"number"},{"identifier":"onChange","description":"\u6539\u53d8\u4e8b\u4ef6","type":"(val: number) => void"}]},"SafeArea":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode","required":true},{"identifier":"fullHeight","description":"\u662f\u5426\u6700\u5c0f\u9ad8\u5ea6\u4e3a\u5c4f\u5e55\u9ad8\u5ea6","type":"boolean"}]},"Search":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"value","description":"\u503c","type":"string"},{"identifier":"defaultValue","description":"\u9ed8\u8ba4\u503c","type":"string"},{"identifier":"onChange","description":"\u8f93\u5165\u6846change\u4e8b\u4ef6","type":"(value: string) => void"},{"identifier":"onSearch","description":"\u641c\u7d22\u56de\u8c03, \u914d\u5408delay\u9632\u6296","type":"(value: string) => void"},{"identifier":"onConfirm","description":"\u786e\u5b9a\u4e8b\u4ef6","type":"(value: string) => void"},{"identifier":"onCancel","description":"\u70b9\u51fb\u53d6\u6d88\u4e8b\u4ef6","type":"() => void"},{"identifier":"delay","description":"\u9632\u6296\u6beb\u79d2, \u9ed8\u8ba4 500ms, \u5173\u7cfb\u5230onSearch\u89e6\u53d1\u4e8b\u4ef6\u7684\u9891\u7387","type":"number"},{"identifier":"placeholder","description":"\u5360\u4f4d\u7b26\u6587\u672c","type":"string"},{"identifier":"autoFocus","description":"\u81ea\u52a8\u7126\u70b9","type":"boolean"}]},"SegmentedControl":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"data","description":"\u6570\u636e\u6e90","type":"PickerItem[]","required":true},{"identifier":"value","description":"\u503c","type":"any"},{"identifier":"defaultValue","description":"\u9ed8\u8ba4\u503c","type":"any"},{"identifier":"onChange","description":"\u503c\u6539\u53d8\u4e8b\u4ef6","type":"(value: any) => void"}]},"../../../src/Skeleton/Skeleton.tsx":{"Skeleton":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"loading","description":"\u662f\u5426\u663e\u793a\u52a0\u8f7d\u72b6\u6001","type":"boolean"},{"identifier":"rows","description":"\u663e\u793a\u591a\u5c11\u884c\u9aa8\u67b6","type":"number"},{"identifier":"children","description":"\u5305\u88f9\u5185\u5bb9","type":"ReactNode"}]},"../../../src/Skeleton/Stripe.tsx":{"Stripe":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode"}]},"Spin":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u5305\u88f9\u5185\u5bb9","type":"ReactNode"},{"identifier":"inline","description":"\u9ed8\u8ba4\u4e3atrue","type":"boolean"},{"identifier":"indicator","description":"\u81ea\u5b9a\u4e49\u52a0\u8f7d\u6307\u793a\u7b26","type":"ReactNode"},{"identifier":"size","description":"\u5927\u5c0f","type":"\\"small\\" | \\"default\\" | \\"large\\""},{"identifier":"spinning","description":"\u662f\u5426\u52a0\u8f7d\u4e2d","type":"boolean"},{"identifier":"tips","description":"\u81ea\u5b9a\u4e49\u63cf\u8ff0","type":"ReactNode"}]},"SwipeAction":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u5305\u88f9\u5185\u5bb9","type":"ReactNode"},{"identifier":"left","description":"\u5de6\u4fa7\u6309\u94ae\u7ec4","type":"ReactNode[]"},{"identifier":"right","description":"\u53f3\u4fa7\u6309\u94ae\u7ec4","type":"ReactNode[]"},{"identifier":"disabled","description":"\u662f\u5426\u7981\u7528","type":"boolean"},{"identifier":"clickContent","description":"\u662f\u5426\u70b9\u51fb\u5185\u5bb9\u6536\u8d77\u64cd\u4f5c\u6309\u94ae","type":"boolean"}]},"Swiper":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u5305\u88f9\u5185\u5bb9","type":"ReactNode"},{"identifier":"index","description":"\u5f53\u524d\u7d22\u5f15","type":"number"},{"identifier":"onChange","description":"\u7d22\u5f15\u6539\u53d8","type":"(index: number) => void"},{"identifier":"defaultIndex","description":"\u9ed8\u8ba4\u7d22\u5f15","type":"number"},{"identifier":"autoplay","description":"\u662f\u5426\u81ea\u52a8\u64ad\u653e","type":"boolean"},{"identifier":"autoplayInterval","description":"\u81ea\u52a8\u64ad\u653e\u95f4\u9694","type":"number"},{"identifier":"vertical","description":"\u662f\u5426\u5782\u76f4\u5c55\u793a, \u5782\u76f4\u5c55\u793a\u8bf7\u7ed9\u7ec4\u4ef6\u63d0\u4f9b\u56fa\u5b9a\u9ad8\u5ea6","type":"boolean"},{"identifier":"scaleMode","description":"\u662f\u5426\u6ed1\u52a8\u7f29\u653e\u7279\u6548","type":"boolean"},{"identifier":"audoHeight","description":"\u81ea\u52a8\u9ad8\u5ea6. \u6b64\u6a21\u5f0f\u4e0b\u975e\u5f53\u524d\u7d22\u5f15\u7684\u5143\u7d20\u4f1a\u88ab`display: none;`\u5f62\u5f0f\u9690\u85cf","type":"boolean"},{"identifier":"dots","description":"\u662f\u5426\u663e\u793a\u9762\u677f\u6307\u793a\u70b9","type":"boolean"},{"identifier":"swiperDistance","description":"\u62d6\u62fd\u5207\u6362\u8ddd\u79bb, \u9ed8\u8ba40.5\\n\u5982\u679c\u4e3a0.5\u8fd9\u6837\u7684\u767e\u5206\u6bd4\uff0c\u5219\u4ee5\u5143\u7d20\u5c3a\u5bf8\u7684\u767e\u5206\u6bd4\u8ba1\u7b97","type":"number"},{"identifier":"swiperSpeed","description":"\u62d6\u62fd\u5207\u6362\u52a0\u901f\u5ea6, \u9ed8\u8ba44\\n\u52a0\u901f\u5ea6\u8d8a\u5feb\uff0c\u5373\u53ef\u5207\u6362","type":"number"},{"identifier":"disabled","description":"\u662f\u5426\u7981\u7528\u89e6\u6478\u5207\u6362","type":"boolean"}]},"Switch":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"checked","description":"\u590d\u9009\u6846\u662f\u5426\u9009\u4e2d","type":"boolean"},{"identifier":"onChange","description":"Switch\u503c\u66f4\u6539\u4e8b\u4ef6","type":"(chcked: boolean) => void"},{"identifier":"defaultChecked","description":"\u9ed8\u8ba4\u662f\u5426\u9009\u4e2d","type":"boolean"},{"identifier":"disabled","description":"\u662f\u5426\u7981\u7528","type":"boolean"},{"identifier":"checkedNode","description":"\u9009\u4e2d\u65f6\u5f97\u5185\u5bb9","type":"ReactNode"},{"identifier":"unCheckedNode","description":"\u975e\u9009\u4e2d\u65f6\u5f97\u5185\u5bb9","type":"ReactNode"},{"identifier":"size","description":"\u5c3a\u5bf8","type":"\\"default\\" | \\"small\\" | \\"large\\""},{"identifier":"ref","type":"Ref<HTMLSpanElement>"},{"identifier":"key","type":"ReactText"}]},"../../../src/Tabs/Tabs.tsx":{"Tabs":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"lazy","description":"\u975e\u6fc0\u6d3bcontent\u7b2c\u4e00\u6b21\u5ef6\u8fdf\u663e\u793a,","type":"boolean"},{"identifier":"reverse","description":"\u9ed8\u8ba4tabbar\u5728tabcontent\u7684\u4e0a\u9762","type":"boolean"},{"identifier":"destroyInactiveTabPane","description":"\u4e0d\u662f\u6fc0\u6d3b\u7684content\u662f\u5426\u4e0d\u6e32\u67d3\u5728dom\u4e2d, \u9ed8\u8ba4false","type":"boolean"},{"identifier":"activeKey","description":"\u6fc0\u6d3bkey","type":"TabKey"},{"identifier":"defaultActiveKey","description":"\u9ed8\u8ba4\u6fc0\u6d3bkey","type":"TabKey"},{"identifier":"onChange","description":"\u6fc0\u6d3b\u6539\u53d8\u4e8b\u4ef6","type":"(activeKey: TabKey) => void"},{"identifier":"onTabClick","description":"\u4e0eonChange\u4e0d\u540c\u7684\u4ec5\u4ec5\u662f\u591a\u4e86\u539f\u751f\u4e8b\u4ef6\u53c2\u6570","type":"(activeKey: TabKey, event?: any) => void"},{"identifier":"renderTabBar","description":"\u9ed8\u8ba4\u7528div\u5305\u88f9, \u53ef\u81ea\u884c\u5b9e\u73b0, \u6bd4\u5982\u6ea2\u51fa\u663e\u793a\u7bad\u5934","type":"() => Element"},{"identifier":"renderTabContent","description":"\u9ed8\u8ba4\u7528div\u5305\u88f9, \u53ef\u81ea\u884c\u5b9e\u73b0, \u6bd4\u5982\u5207\u6362\u65f6\u5185\u5bb9\u7684\u52a8\u753b\u6ed1\u52a8","type":"() => Element"},{"identifier":"children","description":"TabPanels","type":"ReactNode"},{"identifier":"audoHeight","description":"\u81ea\u52a8\u9ad8\u5ea6. \u6b64\u6a21\u5f0f\u4e0b\u975e\u5f53\u524d\u7d22\u5f15\u7684\u5143\u7d20\u4f1a\u88ab`display: none;`\u5f62\u5f0f\u9690\u85cf","type":"boolean"},{"identifier":"vertical","description":"\u662f\u5426\u5782\u76f4\u5c55\u793a, \u5782\u76f4\u5c55\u793a\u8bf7\u7ed9\u7ec4\u4ef6\u63d0\u4f9b\u56fa\u5b9a\u9ad8\u5ea6","type":"boolean"}]},"../../../src/Tabs/TabPanel.tsx":{"TabPanel":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"active","description":"\u662f\u5426\u6fc0\u6d3b\u6837\u5f0f","type":"boolean"},{"identifier":"disabled","description":"\u662f\u5426\u7981\u7528","type":"boolean"},{"identifier":"children","description":"tab\u5185\u5bb9","type":"ReactNode"},{"identifier":"tab","description":"\u9009\u9879\u5361tab\u5185\u5bb9","type":"ReactNode","required":true},{"identifier":"lazy","description":"\u975e\u6fc0\u6d3bcontent\u7b2c\u4e00\u6b21\u5ef6\u8fdf\u663e\u793a,","type":"boolean"},{"identifier":"tabKey","description":"\u9009\u9879\u5361key(\u552f\u4e00)","type":"ReactText","required":true},{"identifier":"destroyInactiveTabPane","description":"\u4e0d\u662f\u6fc0\u6d3b\u7684content\u662f\u5426\u4e0d\u6e32\u67d3\u5728dom\u4e2d, \u9ed8\u8ba4false","type":"boolean"}]},"TextArea":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"disabled","description":"\u662f\u5426\u7981\u7528","type":"boolean"},{"identifier":"value","description":"\u503c","type":"string"},{"identifier":"defaultValue","description":"\u9ed8\u8ba4\u503c","type":"string"},{"identifier":"onChange","description":"\u8f93\u5165\u6846change\u4e8b\u4ef6","type":"(value: string) => void"},{"identifier":"placeholder","description":"\u5360\u4f4d\u7b26\u6587\u672c","type":"string"},{"identifier":"autoFocus","description":"\u81ea\u52a8\u7126\u70b9","type":"boolean"},{"identifier":"onFocus","description":"\u8f93\u5165\u6846\u7126\u70b9\u4e8b\u4ef6","type":"(e: FocusEvent<HTMLTextAreaElement>) => void"},{"identifier":"onBlur","description":"\u8f93\u5165\u6846\u5931\u53bb\u7126\u70b9\u4e8b\u4ef6","type":"(e: FocusEvent<HTMLTextAreaElement>) => void"},{"identifier":"maxLength","description":"\u6700\u5927\u5b57\u7b26\u957f\u5ea6, \u9ed8\u8ba4200","type":"number"},{"identifier":"cols","description":"\u53ef\u89c1\u5bbd\u5ea6","type":"number"},{"identifier":"rows","description":"\u53ef\u89c1\u884c\u6570","type":"number"},{"identifier":"ref","type":"Ref<HTMLDivElement>"},{"identifier":"key","type":"ReactText"}]},"../../../src/Toast/Toast.tsx":{"Toast":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"content","description":"\u5185\u5bb9","type":"ReactNode","required":true},{"identifier":"type","description":"\u7c7b\u578b","type":"\\"text\\" | \\"success\\" | \\"fail\\" | \\"loading\\""},{"identifier":"animateClassName","description":"\u52a8\u753b\u7c7b\u540d","type":"string"},{"identifier":"popupClassName","description":"\u5f39\u51fa\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"popupContentClassName","description":"\u5f39\u51fa\u6846\u5185\u5bb9\u5143\u7d20\u7c7b\u540d","type":"string"},{"identifier":"duration","description":"\u6301\u7eed\u65f6\u95f4\uff08\u6beb\u79d2\uff09, \u9ed8\u8ba4 3000 \u6beb\u79d2\u540e\u5173\u95ed","type":"number"},{"identifier":"onUnmount","description":"\u5173\u95ed\u4e8b\u4ef6","type":"Function"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode"},{"identifier":"mask","description":"\u662f\u5426\u663e\u793a\u906e\u7f69\u5c42","type":"boolean"},{"identifier":"maskClose","description":"\u80cc\u666f\u906e\u7f69\u662f\u5426\u53ef\u5173\u95ed","type":"boolean"},{"identifier":"visible","description":"\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"defaultVisible","description":"\u9ed8\u8ba4\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"onVisibleChange","description":"\u663e\u793a\u6539\u53d8","type":"(visible: boolean) => void"},{"identifier":"closeFuncRef","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570","type":"MutableRefObject<Function>"},{"identifier":"getCloseFunc","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570(\u7528\u4e8ejs\u5f39\u51fa)","type":"(close: Function) => void"},{"identifier":"getContainer","description":"\u9ed8\u8ba4\u4e3abody\u5185\u521b\u5efa\u4e00\u4e2adiv\u4f5c\u4e3a\u5bb9\u5668","type":"HTMLElement | GetContainerFun"},{"identifier":"onClose","description":"\u5173\u95ed\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"},{"identifier":"onShow","description":"\u6253\u5f00\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"}]},"../../../src/Toptips/Toptips.tsx":{"Toptips":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"type","description":"\u7c7b\u578b","type":"string"},{"identifier":"tips","description":"\u63d0\u793a\u5185\u5bb9","type":"ReactNode"},{"identifier":"visible","description":"\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"defaultVisible","description":"\u9ed8\u8ba4\u662f\u5426\u663e\u793a","type":"boolean"},{"identifier":"onVisibleChange","description":"\u663e\u793a\u6539\u53d8","type":"(visible: boolean) => void"},{"identifier":"closeFuncRef","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570","type":"MutableRefObject<Function>"},{"identifier":"onUnmount","description":"\u5173\u95ed\u4e8b\u4ef6","type":"Function"},{"identifier":"getContainer","description":"\u9ed8\u8ba4\u4e3abody\u5185\u521b\u5efa\u4e00\u4e2adiv\u4f5c\u4e3a\u5bb9\u5668","type":"HTMLElement | GetContainerFun"},{"identifier":"duration","description":"\u6301\u7eed\u65f6\u95f4\uff08\u6beb\u79d2\uff09, \u9ed8\u8ba4 3000 \u6beb\u79d2\u540e\u5173\u95ed","type":"number"},{"identifier":"top","description":"\u8ddd\u79bb\u9876\u90e8\u8fb9\u8ddd, \u9ed8\u8ba4 20px","type":"number"},{"identifier":"animateClassName","description":"\u52a8\u753b\u7c7b\u540d","type":"string"},{"identifier":"popupClassName","description":"\u5f39\u51fa\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"popupContentClassName","description":"\u5f39\u51fa\u6846\u5185\u5bb9\u5143\u7d20\u7c7b\u540d","type":"string"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode"},{"identifier":"mask","description":"\u662f\u5426\u663e\u793a\u906e\u7f69\u5c42","type":"boolean"},{"identifier":"maskClose","description":"\u80cc\u666f\u906e\u7f69\u662f\u5426\u53ef\u5173\u95ed","type":"boolean"},{"identifier":"getCloseFunc","description":"\u83b7\u53d6\u5173\u95ed\u51fd\u6570(\u7528\u4e8ejs\u5f39\u51fa)","type":"(close: Function) => void"},{"identifier":"onClose","description":"\u5173\u95ed\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"},{"identifier":"onShow","description":"\u6253\u5f00\u4e8b\u4ef6 (\u52a8\u753b\u5b8c\u6bd5)","type":"Function"}]},"../../../src/Upload/SingleUpload.tsx":{"SingleUpload":[{"identifier":"value","description":"\u56fe\u7247url","type":"string"},{"identifier":"onChange","description":"\u56fe\u7247url\u6539\u53d8","type":"(url: string) => void"},{"identifier":"getResponse","description":"\u4ece\u4e0a\u4f20\u7684\u54cd\u5e94\u4e2d\u62ff\u5230\u503c, \u6b64\u503c\u5c06\u540c\u6b65\u5230value","type":"(res: T) => string"},{"identifier":"disabled","description":"\u662f\u5426\u7981\u7528","type":"boolean"},{"identifier":"ref","description":"\u8f6c\u53d1ref","type":"any"},{"identifier":"disableDelete","description":"\u662f\u5426\u9690\u85cf\u5220\u9664\u6309\u94ae","type":"boolean"},{"identifier":"onImageView","description":"\u56fe\u7247\u70b9\u51fb\u4e8b\u4ef6","type":"(fileInfo: FileInfo<any>) => void"},{"identifier":"onImageRemove","description":"\u56fe\u7247\u5220\u9664\u4e8b\u4ef6","type":"(fileInfo: FileInfo<any>) => void"},{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"accept","description":"\u6587\u4ef6\u7c7b\u578b, \u9ed8\u8ba4 image/*,\\n\u4e5f\u53ef\u4ee5\u662f: image/gif,image/jpeg,image/jpg,image/png, \u5982\u679cios\u60f3\u4ece\u76f8\u673a\u8bfb\u53d6, \u9700\u8981\u8bbe\u7f6e\\"image/*;capture=camera\\"","type":"string"},{"identifier":"capture","description":"\u56fe\u7247\u6355\u83b7\u8bbe\u7f6e\uff0c \u6bd4\u5982capture=camera\u53ea\u4ece\u76f8\u673a\u8bfb\u53d6","type":"string | boolean"},{"identifier":"multiple","description":"\u662f\u5426\u591a\u9009","type":"boolean"},{"identifier":"beforeUpload","description":"\u8fd4\u56de Promise.reject() \u5219\u62d2\u7edd\u4e0a\u4f20","type":"(file: File) => boolean | Promise<File>"},{"identifier":"maxSize","description":"\u6700\u5927\u4e0a\u4f20\u5c3a\u5bf8\u9650\u5236, \u9ed8\u8ba46MB","type":"number"},{"identifier":"compressOptions","description":"\u538b\u7f29\u9009\u9879","type":"CompressOptions"},{"identifier":"children","description":"\u81ea\u5b9a\u4e49\u4e0a\u4f20\u6309\u94ae\u8282\u70b9","type":"ReactNode"},{"identifier":"onUpload","description":"\u5f00\u59cb\u4e0a\u4f20","type":"(file: File) => void"},{"identifier":"onBatchUpload","description":"\u6279\u91cf\u5f00\u59cb\u4e0a\u4f20","type":"(files: File[]) => void"},{"identifier":"max","description":"\u6700\u5927\u4e0a\u4f20\u6570\u91cf","type":"number"},{"identifier":"onSuccess","description":"\u6210\u529f\u4e8b\u4ef6","type":"(file: File, response: T, xhr: XMLHttpRequest) => void"},{"identifier":"onError","description":"\u5931\u8d25\u4e8b\u4ef6","type":"(file: File, error: Error, response?: T) => void"},{"identifier":"onProgress","description":"\u4e0a\u4f20\u8fdb\u5ea6\u4e8b\u4ef6","type":"(file: File, percent: number, event: ProgressEvent<EventTarget>) => void"},{"identifier":"action","description":"\u4e0a\u4f20\u5730\u5740","type":"string"},{"identifier":"filename","description":"\u4e0a\u4f20\u7684\u6587\u4ef6name, \u7528\u4e8e\u540e\u53f0\u63a5\u6536, \u9ed8\u8ba4 file","type":"string"},{"identifier":"data","description":"\u9644\u52a0\u6570\u636e","type":"Record<string, any>"},{"identifier":"withCredentials","description":"\u662f\u5426\u542f\u7528 withCredentials","type":"boolean"},{"identifier":"headers","description":"\u9644\u52a0\u8bf7\u6c42\u5934","type":"Record<string, string>"}]},"../../../src/Upload/MultiUpload.tsx":{"MultiUpload":[{"identifier":"value","description":"\u56fe\u7247url\u5217\u8868","type":"string[]"},{"identifier":"onChange","description":"\u56fe\u7247url\u5217\u8868\u6539\u53d8","type":"(url: string[]) => void"},{"identifier":"onImageView","description":"\u56fe\u7247\u70b9\u51fb\u4e8b\u4ef6","type":"(index: number, fileInfos: FileInfo<any>[]) => void"},{"identifier":"onImageRemove","description":"\u56fe\u7247\u5220\u9664\u4e8b\u4ef6","type":"(index: number, fileInfos: FileInfo<any>[]) => void"},{"identifier":"max","description":"\u6700\u5927\u4e0a\u4f20\u6570\u91cf","type":"number"},{"identifier":"length","description":"\u5355\u884c\u56fe\u7247\u7684\u6570\u91cf, \u9ed8\u8ba44","type":"number"},{"identifier":"action","description":"\u4e0a\u4f20\u5730\u5740","type":"string"},{"identifier":"filename","description":"\u4e0a\u4f20\u7684\u6587\u4ef6name, \u7528\u4e8e\u540e\u53f0\u63a5\u6536, \u9ed8\u8ba4 file","type":"string"},{"identifier":"data","description":"\u9644\u52a0\u6570\u636e","type":"Record<string, any>"},{"identifier":"withCredentials","description":"\u662f\u5426\u542f\u7528 withCredentials","type":"boolean"},{"identifier":"headers","description":"\u9644\u52a0\u8bf7\u6c42\u5934","type":"Record<string, string>"},{"identifier":"onSuccess","description":"\u6210\u529f\u4e8b\u4ef6","type":"(file: File, response: T, xhr: XMLHttpRequest) => void"},{"identifier":"onError","description":"\u5931\u8d25\u4e8b\u4ef6","type":"(file: File, error: Error, response?: T) => void"},{"identifier":"onProgress","description":"\u4e0a\u4f20\u8fdb\u5ea6\u4e8b\u4ef6","type":"(file: File, percent: number, event: ProgressEvent<EventTarget>) => void"},{"identifier":"getResponse","description":"\u4ece\u4e0a\u4f20\u7684\u54cd\u5e94\u4e2d\u62ff\u5230\u503c, \u6b64\u503c\u5c06\u540c\u6b65\u5230value","type":"(res: T) => string"},{"identifier":"disabled","description":"\u662f\u5426\u7981\u7528","type":"boolean"},{"identifier":"ref","description":"\u8f6c\u53d1ref","type":"any"},{"identifier":"disableDelete","description":"\u662f\u5426\u9690\u85cf\u5220\u9664\u6309\u94ae","type":"boolean"},{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"accept","description":"\u6587\u4ef6\u7c7b\u578b, \u9ed8\u8ba4 image/*,\\n\u4e5f\u53ef\u4ee5\u662f: image/gif,image/jpeg,image/jpg,image/png, \u5982\u679cios\u60f3\u4ece\u76f8\u673a\u8bfb\u53d6, \u9700\u8981\u8bbe\u7f6e\\"image/*;capture=camera\\"","type":"string"},{"identifier":"capture","description":"\u56fe\u7247\u6355\u83b7\u8bbe\u7f6e\uff0c \u6bd4\u5982capture=camera\u53ea\u4ece\u76f8\u673a\u8bfb\u53d6","type":"string | boolean"},{"identifier":"multiple","description":"\u662f\u5426\u591a\u9009","type":"boolean"},{"identifier":"beforeUpload","description":"\u8fd4\u56de Promise.reject() \u5219\u62d2\u7edd\u4e0a\u4f20","type":"(file: File) => boolean | Promise<File>"},{"identifier":"maxSize","description":"\u6700\u5927\u4e0a\u4f20\u5c3a\u5bf8\u9650\u5236, \u9ed8\u8ba46MB","type":"number"},{"identifier":"compressOptions","description":"\u538b\u7f29\u9009\u9879","type":"CompressOptions"},{"identifier":"children","description":"\u81ea\u5b9a\u4e49\u4e0a\u4f20\u6309\u94ae\u8282\u70b9","type":"ReactNode"},{"identifier":"onUpload","description":"\u5f00\u59cb\u4e0a\u4f20","type":"(file: File) => void"},{"identifier":"onBatchUpload","description":"\u6279\u91cf\u5f00\u59cb\u4e0a\u4f20","type":"(files: File[]) => void"}]},"WingBlank":{"default":[{"identifier":"prefixCls","description":"\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"className","description":"\u6839\u8282\u70b9\u7684\u9644\u52a0\u7c7b\u540d","type":"string"},{"identifier":"style","description":"\u5185\u8054\u6837\u5f0f","type":"CSSProperties"},{"identifier":"children","description":"\u5185\u5bb9","type":"ReactNode","required":true},{"identifier":"size","description":"\u4e24\u7ffc\u7559\u767d\u7684\u95f4\u8ddd","type":"\\"lg\\" | \\"sm\\" | \\"md\\""}]}}',
     );
   },
   x6tY: function (e, t, n) {
@@ -60643,7 +60656,7 @@
               dependencies: {
                 react: { version: '17.0.1' },
                 '@ant-design/icons': { version: '4.2.2' },
-                'weui-react-v2': { version: '3.0.7' },
+                'weui-react-v2': { version: '3.1.0' },
               },
               title: '\u8f93\u5165\u6846\u5404\u79cd\u6837\u5f0f\u7ec4\u5408',
               identifier: 'input-demo',
@@ -60749,7 +60762,7 @@
   y4v0: function (e, t, n) {
     'use strict';
     n.d(t, 'a', function () {
-      return Ie;
+      return Ae;
     }),
       n.d(t, 'b', function () {
         return De;
@@ -60944,8 +60957,8 @@
       return n;
     }
     var N = 180,
-      A = 0.15,
-      I = 0.5,
+      I = 0.15,
+      A = 0.5,
       j = 60,
       H = {
         threshold: function (e) {
@@ -60954,7 +60967,7 @@
         rubberband: function (e) {
           switch ((void 0 === e && (e = 0), e)) {
             case !0:
-              return S(A);
+              return S(I);
             case !1:
               return S(0);
             default:
@@ -61056,7 +61069,7 @@
           return (this.filterTaps = r || s[0] + s[1] > 0), s;
         },
         swipeVelocity: function (e) {
-          return void 0 === e && (e = I), S(e);
+          return void 0 === e && (e = A), S(e);
         },
         swipeDistance: function (e) {
           return void 0 === e && (e = j), S(e);
@@ -61761,7 +61774,7 @@
       }
       return e !== e && t !== t;
     }
-    function Ae(e, t) {
+    function Ie(e, t) {
       try {
         return Ne(e, t);
       } catch (n) {
@@ -61770,10 +61783,10 @@
         throw n;
       }
     }
-    function Ie(e, t) {
+    function Ae(e, t) {
       void 0 === t && (t = {}), Q.set('drag', Ce);
       var n = Object(a['useRef'])();
-      return n.current || (n.current = Me(U, Ae)), fe({ drag: e }, n.current(t));
+      return n.current || (n.current = Me(U, Ie)), fe({ drag: e }, n.current(t));
     }
     var je = (function (e) {
         function t() {
@@ -62101,7 +62114,7 @@
     function Te(e, t) {
       void 0 === t && (t = {}), Q.set('scroll', Be);
       var n = Object(a['useRef'])();
-      return n.current || (n.current = Me(q, Ae)), fe({ scroll: e }, n.current(t));
+      return n.current || (n.current = Me(q, Ie)), fe({ scroll: e }, n.current(t));
     }
     var Pe = /^on(Drag|Wheel|Scroll|Move|Pinch|Hover)/;
     function Fe(e) {
@@ -62582,9 +62595,9 @@
     function m(e) {
       return e.indexOf('.');
     }
-    function p(e) {
-      var t = m(e);
-      return !(-1 !== t && e.slice(t).length > 2);
+    function p(e, t) {
+      var n = m(e);
+      return !(-1 !== n && e.slice(n).length > t);
     }
     function h(e, t) {
       (e = String(e)), (t = String(t));
@@ -62597,7 +62610,7 @@
         ? e.replace(/^0/, '')
         : e;
     }
-    function g(e, t) {
+    function g(e, t, n) {
       switch (((void 0 !== e && null !== e) || (e = ''), t)) {
         case 'clear':
           e = '';
@@ -62609,7 +62622,7 @@
           '' == e ? (e = '0.') : -1 == m(e) && e.length >= 1 && (e += '.');
           break;
         default:
-          p(e) && (e = h(e, t));
+          p(e, n) && (e = h(e, t));
           break;
       }
       return (e = v(e)), e;
@@ -62631,8 +62644,10 @@
             : h,
         b = e.cleanBtn,
         y = void 0 === b ? '\u6e05' : b,
-        w = (e.value, e.defaultVlue, e.onChange, e.onConfirm),
-        x = Object(i['a'])(e, [
+        w = (e.value, e.defaultVlue, e.precision),
+        x = void 0 === w ? 2 : w,
+        E = (e.onChange, e.onConfirm),
+        z = Object(i['a'])(e, [
           'prefixCls',
           'className',
           'style',
@@ -62640,57 +62655,58 @@
           'cleanBtn',
           'value',
           'defaultVlue',
+          'precision',
           'onChange',
           'onConfirm',
         ]),
-        E = Object(l['useRef'])(null),
-        z = Object(l['useRef'])(null),
-        k = Object(l['useState'])(Object(u['a'])(e, 'value', 'defaultValue') + '' || ''),
-        O = Object(r['default'])(k, 2),
-        S = O[0],
-        L = O[1];
-      function C(t) {
+        k = Object(l['useRef'])(null),
+        O = Object(l['useRef'])(null),
+        S = Object(l['useState'])(Object(u['a'])(e, 'value', 'defaultValue') + '' || ''),
+        L = Object(r['default'])(S, 2),
+        C = L[0],
+        M = L[1];
+      function N(t) {
         var n = parseFloat(t);
-        '' == t && (n = 0), L(t), e.onChange && e.onChange(n, t);
+        '' == t && (n = 0), M(t), e.onChange && e.onChange(n, t);
       }
-      function M() {
-        z.current && z.current();
+      function I() {
+        O.current && O.current();
       }
-      function N(e) {
-        E.current && E.current.classList.remove('down'), (E.current = e.currentTarget);
+      function A(e) {
+        k.current && k.current.classList.remove('down'), (k.current = e.currentTarget);
         var t = e.currentTarget,
           n = t.getAttribute('data-code');
         void 0 !== n && t.classList.add('down');
       }
-      function A(e) {
+      function j(e) {
         var t = e.currentTarget,
           n = t.getAttribute('data-code');
         if (void 0 !== n && null !== n) {
           var a = window.navigator;
           (a.vibrate = a.vibrate || a.webkitVibrate || a.mozVibrate || a.msVibrate),
             a.vibrate && window.navigator.vibrate(300),
-            C(g(S, n)),
+            N(g(C, n, x)),
             setTimeout(() => {
-              E.current && E.current.classList.remove('down');
+              k.current && k.current.classList.remove('down');
             }, 100);
         }
       }
-      function I() {
-        if (w) {
-          var e = parseFloat(S);
-          '' == S && (e = 0), w(e, S);
+      function H() {
+        if (E) {
+          var e = parseFloat(C);
+          '' == C && (e = 0), E(e, C);
         }
-        M();
+        I();
       }
       return (
         Object(l['useEffect'])(() => {
-          L(e.value + '');
+          M(e.value + '');
         }, [e.value]),
         s.a.createElement(
           d['b'],
-          Object(a['a'])({}, x, {
+          Object(a['a'])({}, z, {
             mask: !1,
-            closeFuncRef: z,
+            closeFuncRef: O,
             animateClassName: 'drill',
             popupContentClassName: ''.concat(f, '-wrapper'),
           }),
@@ -62705,8 +62721,8 @@
                 {
                   className: o()(''.concat(f, '-key'), 'left-0 top-0'),
                   'data-code': '1',
-                  onTouchStart: N,
-                  onTouchEnd: A,
+                  onTouchStart: A,
+                  onTouchEnd: j,
                 },
                 '1',
               ),
@@ -62715,8 +62731,8 @@
                 {
                   className: o()(''.concat(f, '-key'), 'left-1 top-0'),
                   'data-code': '2',
-                  onTouchStart: N,
-                  onTouchEnd: A,
+                  onTouchStart: A,
+                  onTouchEnd: j,
                 },
                 '2',
               ),
@@ -62725,8 +62741,8 @@
                 {
                   className: o()(''.concat(f, '-key'), 'left-2 top-0'),
                   'data-code': '3',
-                  onTouchStart: N,
-                  onTouchEnd: A,
+                  onTouchStart: A,
+                  onTouchEnd: j,
                 },
                 '3',
               ),
@@ -62735,8 +62751,8 @@
                 {
                   className: o()(''.concat(f, '-key'), 'left-0 top-1'),
                   'data-code': '4',
-                  onTouchStart: N,
-                  onTouchEnd: A,
+                  onTouchStart: A,
+                  onTouchEnd: j,
                 },
                 '4',
               ),
@@ -62745,8 +62761,8 @@
                 {
                   className: o()(''.concat(f, '-key'), 'left-1 top-1'),
                   'data-code': '5',
-                  onTouchStart: N,
-                  onTouchEnd: A,
+                  onTouchStart: A,
+                  onTouchEnd: j,
                 },
                 '5',
               ),
@@ -62755,8 +62771,8 @@
                 {
                   className: o()(''.concat(f, '-key'), 'left-2 top-1'),
                   'data-code': '6',
-                  onTouchStart: N,
-                  onTouchEnd: A,
+                  onTouchStart: A,
+                  onTouchEnd: j,
                 },
                 '6',
               ),
@@ -62765,8 +62781,8 @@
                 {
                   className: o()(''.concat(f, '-key'), 'left-0 top-2'),
                   'data-code': '7',
-                  onTouchStart: N,
-                  onTouchEnd: A,
+                  onTouchStart: A,
+                  onTouchEnd: j,
                 },
                 '7',
               ),
@@ -62775,8 +62791,8 @@
                 {
                   className: o()(''.concat(f, '-key'), 'left-1 top-2'),
                   'data-code': '8',
-                  onTouchStart: N,
-                  onTouchEnd: A,
+                  onTouchStart: A,
+                  onTouchEnd: j,
                 },
                 '8',
               ),
@@ -62785,8 +62801,8 @@
                 {
                   className: o()(''.concat(f, '-key'), 'left-2 top-2'),
                   'data-code': '9',
-                  onTouchStart: N,
-                  onTouchEnd: A,
+                  onTouchStart: A,
+                  onTouchEnd: j,
                 },
                 '9',
               ),
@@ -62795,8 +62811,8 @@
                 {
                   className: o()(''.concat(f, '-key'), 'left-0 top-3'),
                   'data-code': 'clear',
-                  onTouchStart: N,
-                  onTouchEnd: A,
+                  onTouchStart: A,
+                  onTouchEnd: j,
                 },
                 y,
               ),
@@ -62805,8 +62821,8 @@
                 {
                   className: o()(''.concat(f, '-key'), 'left-1 top-3'),
                   'data-code': '0',
-                  onTouchStart: N,
-                  onTouchEnd: A,
+                  onTouchStart: A,
+                  onTouchEnd: j,
                 },
                 '0',
               ),
@@ -62815,8 +62831,8 @@
                 {
                   className: o()(''.concat(f, '-key'), 'left-2 top-3'),
                   'data-code': '.',
-                  onTouchStart: N,
-                  onTouchEnd: A,
+                  onTouchStart: A,
+                  onTouchEnd: j,
                 },
                 '.',
               ),
@@ -62825,14 +62841,14 @@
                 {
                   className: o()(''.concat(f, '-key'), 'left-3 top-0'),
                   'data-code': 'backspace',
-                  onTouchStart: N,
-                  onTouchEnd: A,
+                  onTouchStart: A,
+                  onTouchEnd: j,
                 },
                 s.a.createElement('img', { src: n('VDc9'), alt: '' }),
               ),
               s.a.createElement(
                 'a',
-                { className: o()(''.concat(f, '-key'), 'left-3 top-1 confirm-btn'), onClick: I },
+                { className: o()(''.concat(f, '-key'), 'left-3 top-1 confirm-btn'), onClick: H },
                 v,
               ),
             ),
@@ -63239,12 +63255,12 @@
         c.createElement(o.Router, { history: t }, M(n))
       );
     }
-    function A(e) {
-      return I.apply(this, arguments);
+    function I(e) {
+      return A.apply(this, arguments);
     }
-    function I() {
+    function A() {
       return (
-        (I = u(
+        (A = u(
           regeneratorRuntime.mark(function e(t) {
             var n,
               a,
@@ -63286,7 +63302,7 @@
                         e.next = 17;
                         break;
                       }
-                      return (e.next = 16), A(s.routes, n);
+                      return (e.next = 16), I(s.routes, n);
                     case 16:
                       s.routes = e.sent;
                     case 17:
@@ -63312,7 +63328,7 @@
             );
           }),
         )),
-        I.apply(this, arguments)
+        A.apply(this, arguments)
       );
     }
     function j(e) {
@@ -63333,7 +63349,7 @@
         a = e.callback || function () {};
       window.g_useSSR
         ? e.dynamicImport
-          ? A(e.routes).then(function () {
+          ? I(e.routes).then(function () {
               r.hydrate(t, n, a);
             })
           : r.hydrate(t, n, a)

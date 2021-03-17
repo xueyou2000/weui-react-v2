@@ -85,6 +85,7 @@ export default function () {
           imgs: [
             'http://365wifi.oss-cn-zhangjiakou.aliyuncs.com/cabinet/20210104/97013ff8d05e4c4ab39bc0aa0f7f86bf.jpg',
           ],
+          amount: 33.45,
         }}
         getFormMethods={(methods) => (formMethods.current = methods)}
         onSubmit={subamit}
@@ -111,7 +112,7 @@ export default function () {
               />
             </FormItem>
             <FormItem prop="amount" label="金额">
-              <NumberInput type="amount" placeholder="请输入金额" precision={2} />
+              <NumberInput type="amount" placeholder="请输入金额" precision={4} />
             </FormItem>
             <FormItem prop="date" label="日期">
               <DatePicker placeholder="请选择生日" useDefaultFormat={false} separator="" />

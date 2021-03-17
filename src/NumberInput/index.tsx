@@ -296,7 +296,11 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
 
   function handleKeyBardChange(amount: number, amountStr: string) {
     lastRef.current = amount;
-    changeNumber(amountStr);
+    if (onChange) {
+      onChange(amount);
+    }
+    setNumber(amount);
+    setInputValue(amountStr);
   }
 
   useOutsideClick([inputRef.current, keyboardRef.current] as any, () => {
@@ -308,6 +312,13 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
       setFocus(true);
     }
   }, []);
+
+  useEffect(() => {
+    const input = inputRef.current as HTMLInputElement;
+    if (type === 'amount' && input && focus) {
+      input.scrollIntoView({ block: 'center', behavior: 'smooth' });
+    }
+  }, [focus]);
 
   return (
     <div
@@ -352,10 +363,10 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
         <AmountKeyBoard
           ref={keyboardRef}
           value={number || 0}
+          precision={precision}
           visible={focus}
           onVisibleChange={setFocus}
           onChange={handleKeyBardChange}
-          onConfirm={handleKeyBardChange}
         />
       )}
     </div>
