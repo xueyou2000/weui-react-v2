@@ -6,7 +6,7 @@ import { DefineDefaultValue, useOutsideClick } from 'utils-hooks';
 import AmountKeyBoard from '../AmountKeyBoard';
 import Input, { InputParser } from '../Input';
 import './style';
-import { add, defaultFormatter, defaultParser, isEmpy, sub, toNumber } from './utils';
+import { add, checkNumberIntermediate, defaultFormatter, defaultParser, isEmpy, sub, toNumber } from './utils';
 
 export interface NumberInputProps {
   /**
@@ -267,9 +267,9 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
 
   function handleChange(val: string) {
     val = getNumberString(val);
-    // 1. 有效输入，单无效数值，则不触发changeNumber, 仅更改输入框值. 例如(-), (1.)
 
-    if ((precision !== 0 && val === '-') || (precision !== 0 && isTailDot(val))) {
+    // 1. 有效输入，单无效数值，则不触发changeNumber, 仅更改输入框值. 例如(-), (1.), (0.0), (-0.3)
+    if (checkNumberIntermediate(val, precision)) {
       setInputValue(getFormatterInputValue(val));
     } else if (isAmount(val, precision)) {
       // 2. 将非法输入通过正则优化掉

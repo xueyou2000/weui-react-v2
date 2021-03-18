@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.1.1 (Thu Mar 18 2021)
+
+- 修复`InputNumber`小数点输入不支持`-0.0`这种中间状态
+
 ## 3.1.0 (Wed Mar 17 2021)
 
 - 修复`InputNumber`在金额键盘不会弹起问题

@@ -1,4 +1,4 @@
-import { toFixed } from '../utils/number-utils';
+import { isTailDot, toFixed } from '../utils/number-utils';
 
 export function isEmpy(val: any) {
   return val === undefined || val === null;
@@ -39,6 +39,38 @@ export function toNumber(val: string) {
       return number;
     }
   }
+}
+
+/**
+ * 检测数值字符串是否中间状态
+ * @description -, 1., 0., -0. 1.0 这些输入中间状态, 1.1这种完成状态应该返回false
+ *
+ * @param val 数值字符串
+ */
+export function checkNumberIntermediate(val: string, precision: number = 2) {
+  // 尾部小数点
+  if (precision != 0 && isTailDot(val)) {
+    return true;
+  }
+
+  // 小数点后尾部是否为0 且小数点没有超过精度
+  if (precision != 0) {
+    var regexp = new RegExp(`\\.(\\d{1,${precision}}$)`);
+    if (regexp.test(val) && /0$/.test(val)) {
+      return true;
+    }
+  }
+
+  // 开头符号
+  if (/^(-)$/.test(val)) {
+    return true;
+  }
+
+  // if (/^([-|+]?)(\d*)(\.?)(\d*)$/.test(val)) {
+  //   return true;
+  // }
+
+  return false;
 }
 
 const FIX_NUMBER = 1000;
