@@ -45,7 +45,7 @@ export interface TabContentProps {
   /**
    * 自动高度. 此模式下非当前索引的元素会被`display: none;`形式隐藏
    */
-  audoHeight?: boolean;
+  autoHeight?: boolean;
   /**
    * 是否垂直展示, 垂直展示请给组件提供固定高度
    */
@@ -76,7 +76,7 @@ export default function SwipeableTabContent(props: TabContentProps) {
     lazy,
     destroyInactiveTabPane,
     ref,
-    audoHeight,
+    autoHeight,
     vertical,
     onTabClick,
     swiperDistance,
@@ -103,7 +103,7 @@ export default function SwipeableTabContent(props: TabContentProps) {
   return (
     <div className={classNames(prefixCls, className)} style={style} ref={ref}>
       <Swiper
-        audoHeight={audoHeight}
+        autoHeight={autoHeight}
         vertical={vertical}
         scaleMode={false}
         dots={false}

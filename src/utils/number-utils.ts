@@ -17,7 +17,10 @@ export function clamp(i: number, min: number, max: number) {
 /**
  * 同Number.toFixed方法，但是不会四舍五入
  */
-export function toFixed(num: number, fixed: number) {
+export function toFixed(num: number | string, fixed: number) {
+  if (!num) {
+    return num + '';
+  }
   var regexp = new RegExp(`\\.([\\d]{0,${fixed}})?$`);
   const str = num + '';
   if (/\./.test(str) && !regexp.test(str)) {

@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.1.2 (Wed Mar 24 2021)
+
+- 修复`InputNumber`组件清空时不能为 null,而是上一次正确输入的问题
+
 ## 3.1.1 (Thu Mar 18 2021)
 
 - 修复`InputNumber`小数点输入不支持`-0.0`这种中间状态

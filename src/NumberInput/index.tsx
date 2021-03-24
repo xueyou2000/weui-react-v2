@@ -141,51 +141,42 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
    * 改变数值
    */
   function changeNumber(val: string) {
-    let number: number | null | undefined = toNumber(toFixed(getNumberString(val) as any, precision));
+    let fmtStr = getNumberString(val);
+    // 清空输入框时候值是null, 无效数值时值是undefined
+    let number = toNumber(toFixed(fmtStr, precision));
     // 输入不正确，则还原成最后一次正确输入
-    if (number === undefined && !isControll) {
-      number = lastRef.current;
-    }
-    if (number !== null && number !== undefined) {
-      if (min !== undefined && number < min) {
-        number = min;
+    if (number === undefined && !isEmpy(lastRef.current)) {
+      let num: number = lastRef.current as number;
+      // 钳住最大最小
+      if (min !== undefined && num < min) {
+        num = min;
       }
-      if (max !== undefined && number > max) {
-        number = max;
+      if (max !== undefined && num > max) {
+        num = max;
       }
-    }
-    if (getNumberString(val) === '') {
-      number = null;
+      number = num;
     }
 
-    setNumber(number === undefined ? null : number);
-    if (number === null) {
-      setInputValue('');
-    } else if (number === undefined) {
-      setInputValue(getFormatterInputValue(lastRef.current || ''));
-    } else {
-      setInputValue(getFormatterInputValue(number));
-    }
+    let nextInputVal = fmtStr === '' ? '' : isEmpy(number) ? '' : getFormatterInputValue(number as number);
+    let nextNumber = fmtStr === '' || number === undefined ? null : number;
+
+    setInputValue(nextInputVal);
+    setNumber(nextNumber);
 
     if (onChange) {
-      // tips: 修复受控模式下，输入不正确，则还原成最后一次正确输入造成的useEffect不触发问题
-      if (isEmpy(number) && isControll) {
-        onChange(lastRef.current === undefined ? null : lastRef.current);
-      } else {
-        onChange(number === undefined ? null : number);
-      }
+      onChange(nextNumber);
     }
-    lastRef.current = number;
+    lastRef.current = nextNumber;
   }
 
   // 受控组件时从外部更新输入框的值
   useEffect(() => {
     if (isControll) {
-      var newVal = props.value || 0;
+      var newVal = props.value;
       if (newVal !== lastRef.current) {
         setInputValue(getFormatterInputValue(newVal as any));
       }
-      setNumber(newVal);
+      setNumber(isEmpy(newVal) ? null : (newVal as number));
       lastRef.current = newVal;
     }
   }, [props.value]);
@@ -271,7 +262,7 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
     // 1. 有效输入，单无效数值，则不触发changeNumber, 仅更改输入框值. 例如(-), (1.), (0.0), (-0.3)
     if (checkNumberIntermediate(val, precision)) {
       setInputValue(getFormatterInputValue(val));
-    } else if (isAmount(val, precision)) {
+    } else if (!val || isAmount(val, precision)) {
       // 2. 将非法输入通过正则优化掉
       changeNumber(val);
     }

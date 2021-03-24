@@ -54,7 +54,7 @@ export interface SwiperProps {
   /**
    * 自动高度. 此模式下非当前索引的元素会被`display: none;`形式隐藏
    */
-  audoHeight?: boolean;
+  autoHeight?: boolean;
   /**
    * 是否显示面板指示点
    */
@@ -86,7 +86,7 @@ export default function Swiper(props: SwiperProps) {
     autoplayInterval = 3000,
     vertical = false,
     scaleMode = false,
-    audoHeight,
+    autoHeight,
     dots = true,
     swiperDistance = 0.5,
     swiperSpeed = 3,
@@ -104,7 +104,7 @@ export default function Swiper(props: SwiperProps) {
   const sizeRef = useRef({ width: 0, height: 0 });
   const start = useRef(offset.get());
   const isMove = useRef(false);
-  const hideOther = audoHeight && !vertical;
+  const hideOther = autoHeight && !vertical;
   const [displays, setDisplays] = useSprings(items.length, (i) => ({
     display: index === i ? 'block' : 'none',
     top: 0,
@@ -228,7 +228,7 @@ export default function Swiper(props: SwiperProps) {
     const time = window.setTimeout(() => {
       saveSize(insRef.current);
       // 内容变化重新计算
-      if (audoHeight) {
+      if (autoHeight) {
         setDisplays((i) => ({ display: 'block', top: i * sizeRef.current.height, immediate: true }));
       }
       toIndex(index, true);
@@ -250,7 +250,7 @@ export default function Swiper(props: SwiperProps) {
             className={classNames(`${prefixCls}-item`, { active: i === index })}
             key={i}
             style={{
-              display: audoHeight ? display : 'block',
+              display: autoHeight ? display : 'block',
               scale: scaleMode ? scale : 1,
               top: vertical ? top : 0,
             }}
