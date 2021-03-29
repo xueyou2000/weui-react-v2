@@ -1102,7 +1102,7 @@
               },
               dependencies: {
                 react: { version: '17.0.1' },
-                'weui-react-v2': { version: '3.1.2' },
+                'weui-react-v2': { version: '3.1.3' },
                 '@ant-design/icons': { version: '4.2.2' },
               },
               title: '\u4e5d\u5bab\u683c\u6bcf\u884c3\u5217',
@@ -4460,7 +4460,7 @@
                     'import React from \'react\';\nimport { SafeArea, List, ListItem, SingleUpload, MultiUpload } from \'weui-react-v2\';\n\ninterface Res {\n  code: number;\n  filekey: string;\n}\n\nexport default function () {\n  function getResponse(res: Res) {\n    if (res && res.code === 0) {\n      return res.filekey;\n    } else {\n      throw new Error(\'\u540e\u53f0\u4e0a\u4f20\u9519\u8bef\');\n    }\n  }\n\n  return (\n    <SafeArea style={{ margin: \'-0.16rem\', minHeight: \'100vh\', backgroundColor: \'#f4f4f4\', padding: \'5px 0 10px\' }}>\n      <List title="\u5355\u6587\u4ef6\u4e0a\u4f20">\n        <ListItem hd="\u4e0a\u4f20\u6210\u529f" alignItems="flex-start">\n          <SingleUpload<Res> style={{ marginLeft: \'30px\' }} action="/upload" getResponse={getResponse} />\n        </ListItem>\n        <ListItem hd="\u4e0a\u4f20\u5931\u8d25" alignItems="flex-start">\n          <SingleUpload<Res> style={{ marginLeft: \'30px\' }} action="/upload2" getResponse={getResponse} />\n        </ListItem>\n        <ListItem hd="\u9759\u6001\u663e\u793a" alignItems="flex-start">\n          <SingleUpload<Res>\n            style={{ marginLeft: \'30px\' }}\n            value="https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg"\n            disabled={true}\n            action="/upload2"\n            getResponse={getResponse}\n          />\n        </ListItem>\n      </List>\n      <List title="\u591a\u6587\u4ef6\u4e0a\u4f20">\n        <ListItem hd="\u56fe\u7247\u4e0a\u4f20" alignItems="flex-start">\n          <MultiUpload<Res>\n            style={{ marginLeft: \'30px\' }}\n            action="/upload"\n            maxSize={10}\n            length={3}\n            getResponse={getResponse}\n            max={4}\n          />\n        </ListItem>\n        <ListItem hd="\u9759\u6001\u663e\u793a" alignItems="flex-start">\n          <MultiUpload<Res>\n            style={{ marginLeft: \'30px\' }}\n            disabled={true}\n            value={[\n              \'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg\',\n              \'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg\',\n              \'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg\',\n              \'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg\',\n            ]}\n            action="/upload"\n            length={3}\n            getResponse={getResponse}\n            max={6}\n          />\n        </ListItem>\n      </List>\n    </SafeArea>\n  );\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u4e0a\u4f20\u7ec4\u5408',
               identifier: 'upload-demo',
             },
@@ -5150,7 +5150,7 @@
   ANCg: function (e, t, n) {
     'use strict';
     n.d(t, 'a', function () {
-      return zn;
+      return kn;
     });
     var a = n('7EGn'),
       r = n('nLtN');
@@ -5631,18 +5631,19 @@
     var bn = gn,
       yn = n('cDcd'),
       wn = n('Hs5+'),
-      xn = n('n9QG');
-    function En(e, t) {
+      xn = n('n9QG'),
+      En = n('xR71');
+    function zn(e, t) {
       Object(xn['a'])(e.message, 'fail');
     }
-    function zn(e, t) {
+    function kn(e, t) {
       var n = e.defaultModel,
         r = void 0 === n ? {} : n,
         i = e.disabled,
         c = e.onSubmit,
         o = e.onSubmitBefore,
         l = e.onValidateFail,
-        s = void 0 === l ? En : l,
+        s = void 0 === l ? zn : l,
         u = e.onFieldChange,
         d = e.validConfig,
         f = Object(yn['useRef'])(Object.assign({}, r));
@@ -5696,7 +5697,7 @@
           return (
             e.forEach((e, t) => {
               var a = v.getFieldValue(t);
-              bn(n, t, a);
+              console.log(t, a), bn(n, t, a);
             }),
             fn({}, f.current, n)
           );
@@ -5713,8 +5714,9 @@
           );
         },
         getFieldValue(e) {
-          var t;
-          return (null === (t = h(e)) || void 0 === t ? void 0 : t.getValue()) || null;
+          var t,
+            n = null === (t = h(e)) || void 0 === t ? void 0 : t.getValue();
+          return Object(En['b'])(n) ? null : n;
         },
         setFieldValue(e, t) {
           var n;
@@ -5777,10 +5779,8 @@
       n.d(t, 'a', function () {
         return u;
       });
-    var a = n('3j+x');
-    function r(e) {
-      return !!e && /Array/.test(Object.prototype.toString.call(e));
-    }
+    var a = n('3j+x'),
+      r = n('xR71');
     function i(e, t) {
       return !e || e.length <= 0 ? null : e.some((e) => e.value === t) ? t : e[0].value;
     }
@@ -5807,7 +5807,7 @@
         : Object(a['a'])(e, null);
     }
     function l(e, t, n, a) {
-      var i = e.length > 0 && r(e[0]),
+      var i = e.length > 0 && Object(r['a'])(e[0]),
         c = i ? e : [e];
       return t ? s(c, n, a) : c;
     }
@@ -6810,7 +6810,7 @@
                     'import React from \'react\';\nimport { Panel, PanelItem, Brief, ListItem, SafeArea } from \'weui-react-v2\';\n\nexport default () => (\n  <SafeArea style={{ margin: \'-0.16rem\', minHeight: \'100vh\', backgroundColor: \'#f4f4f4\', padding: \'5px 0 10px\' }}>\n    <Panel title="\u56fe\u6587\u7ec4\u5408\u5217\u8868">\n      <PanelItem title="\u6807\u9898\u4e00" thumb={require(\'./icon_tabbar.png\')}>\n        \u7531\u5404\u79cd\u7269\u8d28\u7ec4\u6210\u7684\u5de8\u578b\u7403\u72b6\u5929\u4f53\uff0c\u53eb\u505a\u661f\u7403\u3002\u661f\u7403\u6709\u4e00\u5b9a\u7684\u5f62\u72b6\uff0c\u6709\u81ea\u5df1\u7684\u8fd0\u884c\u8f68\u9053\u3002\n      </PanelItem>\n      <PanelItem title="\u6807\u9898\u4e8c" thumb={require(\'./icon_tabbar.png\')}>\n        \u7531\u5404\u79cd\u7269\u8d28\u7ec4\u6210\u7684\u5de8\u578b\u7403\u72b6\u5929\u4f53\uff0c\u53eb\u505a\u661f\u7403\u3002\u661f\u7403\u6709\u4e00\u5b9a\u7684\u5f62\u72b6\uff0c\u6709\u81ea\u5df1\u7684\u8fd0\u884c\u8f68\u9053\u3002\n      </PanelItem>\n      <ListItem arrow={true}>\n        <a>\u67e5\u770b\u66f4\u591a</a>\n      </ListItem>\n    </Panel>\n    <Panel title="\u6587\u5b57\u7ec4\u5408\u5217\u8868">\n      <PanelItem title="\u6807\u9898\u4e00" text={true}>\n        \u7531\u5404\u79cd\u7269\u8d28\u7ec4\u6210\u7684\u5de8\u578b\u7403\u72b6\u5929\u4f53\uff0c\u53eb\u505a\u661f\u7403\u3002\u661f\u7403\u6709\u4e00\u5b9a\u7684\u5f62\u72b6\uff0c\u6709\u81ea\u5df1\u7684\u8fd0\u884c\u8f68\u9053\u3002\n      </PanelItem>\n      <PanelItem title="\u6807\u9898\u4e8c" text={true}>\n        \u7531\u5404\u79cd\u7269\u8d28\u7ec4\u6210\u7684\u5de8\u578b\u7403\u72b6\u5929\u4f53\uff0c\u53eb\u505a\u661f\u7403\u3002\u661f\u7403\u6709\u4e00\u5b9a\u7684\u5f62\u72b6\uff0c\u6709\u81ea\u5df1\u7684\u8fd0\u884c\u8f68\u9053\u3002\n      </PanelItem>\n    </Panel>\n    <Panel title="\u6587\u5b57\u5217\u8868\u9644\u52a0\u6e90">\n      <PanelItem\n        title="\u6807\u9898\u4e00"\n        text={true}\n        info={\n          <>\n            <Brief>\u6587\u5b57\u6765\u6e90</Brief>\n            <Brief>\u65f6\u95f4</Brief>\n            <Brief divider={true}>\u5176\u4ed6\u4fe1\u606f</Brief>\n          </>\n        }\n      >\n        \u7531\u5404\u79cd\u7269\u8d28\u7ec4\u6210\u7684\u5de8\u578b\u7403\u72b6\u5929\u4f53\uff0c\u53eb\u505a\u661f\u7403\u3002\u661f\u7403\u6709\u4e00\u5b9a\u7684\u5f62\u72b6\uff0c\u6709\u81ea\u5df1\u7684\u8fd0\u884c\u8f68\u9053\u3002\n      </PanelItem>\n    </Panel>\n  </SafeArea>\n);',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u56fe\u6587\u7ec4\u5408\u9762\u677f',
               identifier: 'components-panel',
             },
@@ -7178,7 +7178,7 @@
                     "import React from 'react';\nimport { ActionSheet, Button, WhiteSpace } from 'weui-react-v2';\n\nfunction pop() {\n  ActionSheet({\n    title: '\u8bf7\u9009\u62e9\u559c\u6b22\u7684\u6c34\u679c?',\n    menus: ['\u82f9\u679c', '\u897f\u74dc', '\u68a8\u5b50'],\n    rootSelector: '#root',\n    onClick: (index) => {\n      return new Promise((resolve, reject) => {\n        setTimeout(() => {\n          resolve();\n        }, 2000);\n      });\n    },\n  });\n}\n\nexport default () => (\n  <>\n    <WhiteSpace />\n    <Button block={true} type=\"primary\" size=\"large\" onClick={pop}>\n      \u70b9\u51fb\u9009\u62e9\n    </Button>\n    <WhiteSpace />\n    <img\n      style={{ width: '100%', display: 'block' }}\n      src=\"https://images.pexels.com/photos/1239387/pexels-photo-1239387.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940\"\n      alt=\"\"\n    />\n    <img\n      style={{ width: '100%', display: 'block' }}\n      src=\"https://images.pexels.com/photos/1657110/pexels-photo-1657110.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=650&w=940\"\n      alt=\"\"\n    />\n  </>\n);",
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u914d\u7f6e\u83dc\u5355',
               description:
                 '<div class="markdown"><p>\u8bbe\u7f6e<code>menus</code>\u5c5e\u6027\u6765\u914d\u7f6e\u83dc\u5355\uff0c<code>onClick</code>\u76d1\u542c\u83dc\u5355\u70b9\u51fb\u4e8b\u4ef6</p></div>',
@@ -7528,7 +7528,7 @@
                   content: '.demo-btn-wrap {\n  .weui-btn + .weui-btn {\n    margin-left: 15px;\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u6309\u94ae\u7c7b\u578b',
               description:
                 '<div class="markdown"><p>\u94ae\u6709\u4e94\u79cd\u7c7b\u578b\uff1a\u4e3b\u6309\u94ae\u3001\u6b21\u6309\u94ae\u3001\u865a\u7ebf\u6309\u94ae\u3001\u6587\u672c\u6309\u94ae\u548c\u94fe\u63a5\u6309\u94ae\u3002\u4e3b\u6309\u94ae\u5728\u540c\u4e00\u4e2a\u64cd\u4f5c\u533a\u57df\u6700\u591a\u51fa\u73b0\u4e00\u6b21\u3002</p></div>',
@@ -7552,7 +7552,7 @@
                   content: '.demo-btn-wrap {\n  .weui-btn + .weui-btn {\n    margin-left: 15px;\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u4e0d\u53ef\u7528\u72b6\u6001',
               description:
                 '<div class="markdown"><p>\u6dfb\u52a0 <code>disabled</code> \u5c5e\u6027\u5373\u53ef\u8ba9\u6309\u94ae\u5904\u4e8e\u4e0d\u53ef\u7528\u72b6\u6001\uff0c\u540c\u65f6\u6309\u94ae\u6837\u5f0f\u4e5f\u4f1a\u6539\u53d8\u3002</p></div>',
@@ -7576,7 +7576,7 @@
                   content: '.demo-btn-wrap {\n  .weui-btn + .weui-btn {\n    margin-left: 15px;\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u957f\u6309\u94ae',
               description:
                 '<div class="markdown"><p>\u6309\u94ae\u5c06<code>100%</code>\u586b\u5145\u7236\u5143\u7d20\u5bbd\u5ea6</p></div>',
@@ -7678,7 +7678,7 @@
                     'import React from \'react\';\nimport { Switch, Form, FormItem, List } from \'weui-react-v2\';\n\nexport default () => (\n  <Form labelWidth="20vw">\n    <List title="\u4e0d\u540c\u5c3a\u5bf8">\n      <FormItem label="\u5c0f\u5c3a\u5bf8" access={false} align="right">\n        <Switch defaultChecked={true} size="small" />\n      </FormItem>\n      <FormItem label="\u4e2d\u7b49\u5c3a\u5bf8" access={false} align="right">\n        <Switch defaultChecked={true} size="default" />\n      </FormItem>\n      <FormItem label="\u5927\u5c3a\u5bf8" access={false} align="right">\n        <Switch defaultChecked={true} size="large" />\n      </FormItem>\n    </List>\n    <List title="\u7981\u7528\u6837\u5f0f">\n      <FormItem label="\u5f00\u7981\u7528" access={false} align="right">\n        <Switch disabled={true} checked={true} />\n      </FormItem>\n      <FormItem label="\u5173\u7981\u7528" access={false} align="right">\n        <Switch disabled={true} />\n      </FormItem>\n    </List>\n    <List title="\u81ea\u5b9a\u4e49\u6807\u8bc6\u7b26">\n      <FormItem label="\u4e2d\u6587\u63d0\u793a" access={false} align="right">\n        <Switch checkedNode="\u5f00" unCheckedNode="\u5173" />\n      </FormItem>\n    </List>\n  </Form>\n);',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u4e0d\u540c\u5c3a\u5bf8',
               identifier: 'components-switch',
             },
@@ -7830,7 +7830,7 @@
                     '.weui-half-screen-dialog__tips {\n  padding-top: 32px;\n  font-size: 28px;\n  color: rgba(0, 0, 0, 0.3);\n  line-height: 1.4;\n  margin: 0;\n}\n.weui-half-screen-dialog__desc {\n  padding-top: 8px;\n  font-size: 34px;\n  font-weight: 700;\n  color: rgba(0, 0, 0, 0.9);\n  line-height: 1.4;\n  margin: 0;\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u786e\u5b9a\u6309\u94ae',
               description:
                 '<div class="markdown"><p>\u786e\u5b9a\u6309\u94ae\u4e8b\u4ef6\u662f\u4e00\u4e2a<code>Promise</code>, \u5728\u8fd4\u56de\u4e4b\u524d\u6309\u94ae\u4f1a\u5904\u4e8e\u52a0\u8f7d\u72b6\u6001</p></div>',
@@ -8875,7 +8875,7 @@
                     "import React from 'react';\nimport { Rate } from 'weui-react-v2';\n\nexport default () => (\n  <>\n    <div style={{ textAlign: 'center' }}>\n      <Rate defaultValue={3} />\n    </div>\n  </>\n);",
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: 'count\u53ef\u4ee5\u81ea\u5b9a\u4e49\u661f\u661f\u6570\u91cf',
               identifier: 'components-rate',
             },
@@ -8997,7 +8997,7 @@
                     'import React from \'react\';\nimport { Spin, Flex, WhiteSpace } from \'weui-react-v2\';\n\nexport default () => (\n  <>\n    <Flex justify="center">\n      <Spin spinning={true} size="small" />\n    </Flex>\n    <WhiteSpace size="sm" />\n    <Flex justify="center">\n      <Spin spinning={true} />\n    </Flex>\n\n    <WhiteSpace size="sm" />\n    <Flex justify="center">\n      <Spin spinning={true} size="large" />\n    </Flex>\n  </>\n);',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u4e0d\u540c\u5c3a\u5bf8',
               description:
                 '<div class="markdown"><p>\u5185\u7f6e3\u79cd\u4e0d\u540c\u5c3a\u5bf8\uff0c \u8bbe\u7f6e <code>size</code> \u5c5e\u6027\u4e3a <code>small</code>, <code>large</code>, <code>default</code>\u3002</p></div>',
@@ -9022,7 +9022,7 @@
                     '.spin-demo {\n  .alert-box {\n    font-family: Monospaced Number, Chinese Quote, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC,\n      Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;\n    font-size: 14px;\n    line-height: 1.5;\n    color: rgba(0, 0, 0, 0.65);\n    -webkit-box-sizing: border-box;\n    box-sizing: border-box;\n    margin: 0;\n    padding: 0;\n    list-style: none;\n    position: relative;\n    padding: 8px 15px 8px 37px;\n    border-radius: 4px;\n    border: 1px solid #91d5ff;\n    background-color: #e6f7ff;\n    padding: 15px 15px 15px 64px;\n    position: relative;\n    border-radius: 4px;\n    color: rgba(0, 0, 0, 0.65);\n    line-height: 1.5;\n    padding: 15px;\n  }\n\n  .xy-spin {\n    margin-right: 16px;\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: 'inline/block\u6a21\u5f0f\u5207\u6362',
               description:
                 '<div class="markdown"><p>\u9ed8\u8ba4\u662f\u5185\u8054\u6a21\u5f0f\uff0c<code>Spin</code>\u4e0d\u4f1a\u5bbd\u5ea6100%</p></div>',
@@ -9044,7 +9044,7 @@
               },
               dependencies: {
                 react: { version: '17.0.1' },
-                'weui-react-v2': { version: '3.1.2' },
+                'weui-react-v2': { version: '3.1.3' },
                 '@ant-design/icons': { version: '4.2.2' },
               },
               title: '\u81ea\u5b9a\u4e49\u6307\u793a\u7b26',
@@ -10276,7 +10276,7 @@
                     'import React from \'react\';\nimport { List, ListItem, NumberInput, SafeArea } from \'weui-react-v2\';\n\nexport default function () {\n  return (\n    <SafeArea style={{ margin: \'-0.16rem\', minHeight: \'100vh\', backgroundColor: \'#f4f4f4\', padding: \'5px 0 10px\' }}>\n      <List title="\u8f93\u5165\u683c\u5f0f">\n        <ListItem hd="\u4efb\u610f\u8f93\u5165">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6570\u503c" />\n        </ListItem>\n        <ListItem hd="\u4fdd\u7559\u5c0f\u6570\u70b93\u4f4d">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6570\u503c" precision={3} />\n        </ListItem>\n        <ListItem hd="\u53ea\u80fd\u6574\u6570">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6574\u6570" precision={0} />\n        </ListItem>\n        <ListItem hd="\u91d1\u989d\u8f93\u5165">\n          <NumberInput placeholder="\u5f39\u51fa\u91d1\u989d\u952e\u76d8" type="amount" />\n        </ListItem>\n        <ListItem hd="\u81ea\u5b9a\u4e49\u524d\u7f00">\n          <NumberInput\n            placeholder="\u524d\u7f00\u52a0\u4e0a\u7f8e\u5143\u7b26\u53f7"\n            formatter={(value) => `$ ${value || \'\'}`.replace(/\\B(?=(\\d{3})+(?!\\d))/g, \',\')}\n            parser={(value) => value.replace(/\\$\\s?|(,*)/g, \'\')}\n          />\n        </ListItem>\n        <ListItem hd="\u81ea\u5b9a\u4e49\u540e\u7f00">\n          <NumberInput\n            placeholder="\u540e\u7f00\u52a0\u4e0a\u767e\u5206\u6bd4"\n            min={0}\n            max={100}\n            formatter={(value) => `${value}%`}\n            parser={(value) => (value + \'\').replace(\'%\', \'\')}\n          />\n        </ListItem>\n        <ListItem hd="\u6700\u5927\u6700\u5c0f\u9650\u5236">\n          <NumberInput placeholder="\u6700\u5c0f3,\u6700\u592715" min={3} max={15} />\n        </ListItem>\n        <ListItem hd="\u7981\u7528\u6837\u5f0f">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165" disabled={true} />\n        </ListItem>\n        <ListItem hd="\u7981\u7528\u6837\u5f0f">\n          <NumberInput value={123} disabled={true} />\n        </ListItem>\n        <ListItem hd="\u663e\u793a\u63a7\u5236\u6309\u94ae">\n          <NumberInput defaultValue={1} min={1} max={10} showControl={true} style={{ width: \'30vw\' }} />\n        </ListItem>\n      </List>\n    </SafeArea>\n  );\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u7ec4\u5408\u6837\u5f0f',
               identifier: 'number-input-demo',
             },
@@ -11247,7 +11247,7 @@
                     'import React from \'react\';\nimport { BallLoading, CircleLoading, WaveLoading, MultistageLoading, Flex } from \'weui-react-v2\';\n\nexport default () => (\n  <>\n    <Flex justify="center">\n      <BallLoading />\n    </Flex>\n    <br />\n    <Flex justify="center">\n      <CircleLoading />\n    </Flex>\n    <br />\n    <Flex justify="center">\n      <WaveLoading />\n    </Flex>\n    <br />\n    <Flex justify="center">\n      <MultistageLoading />\n    </Flex>\n  </>\n);',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u52a0\u8f7d\u4e2d',
               identifier: 'components-loading',
             },
@@ -12283,7 +12283,7 @@
                     '.tabs-demo {\n  .block {\n    background-color: antiquewhite;\n    margin: 40px;\n    height: 600px;\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u61d2\u52a0\u8f7d',
               description:
                 '<div class="markdown"><p>F12\u67e5\u770b\u5143\u7d20\uff0c\u53ef\u4ee5\u770b\u5230\u61d2\u52a0\u8f7d\u65f6\uff0c\u5185\u5bb9\u4e0d\u4f1a\u771f\u7684\u63d2\u5165dom,\u800c\u662f\u5360\u4f4d\u7b26\u53d6\u4ee3</p></div>',
@@ -12308,7 +12308,7 @@
                     '.swiper-demo {\n  .fimg {\n    width: 100%;\n    height: 400px;\n    // touch-action: none;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center center;\n    box-shadow: 0 62.5px 125px -25px rgba(50, 50, 73, 0.5), 0 37.5px 75px -37.5px rgba(0, 0, 0, 0.6);\n  }\n}\n.swiper-demo2 {\n  .fimg {\n    width: 100%;\n    height: 100%;\n    // touch-action: none;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center center;\n  }\n}\n\n.tabs-demo {\n  font-size: 32px;\n\n  select {\n    display: block;\n    width: 100%;\n    height: 45px;\n    line-height: 45px;\n    font-size: 35px;\n  }\n\n  .weui-tab-panel {\n    // background-color: #607d8b;\n    text-align: center;\n    padding: 20px;\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u52a8\u6001\u589e\u51cf',
               description:
                 '<div class="markdown"><p>\u5f53tabbar\u6ea2\u51fa\u540e\uff0c\u4f1a\u663e\u793a\u7bad\u5934, \u9ed8\u8ba4\u5f00\u542f\u81ea\u52a8\u9ad8\u5ea6</p></div>',
@@ -12341,7 +12341,7 @@
               dependencies: {
                 classnames: { version: '2.2.6' },
                 react: { version: '17.0.1' },
-                'weui-react-v2': { version: '3.1.2' },
+                'weui-react-v2': { version: '3.1.3' },
               },
               title: '\u5782\u76f4\u663e\u793a',
               description:
@@ -12558,7 +12558,7 @@
                     'import React from \'react\';\nimport { WhiteSpace, Button } from \'weui-react-v2\';\n\nexport default () => (\n  <>\n    <Button block>\u6700\u5c0f\u95f4\u8ddd</Button>\n    <WhiteSpace size="xs" />\n    <Button block>\u5c0f\u95f4\u8ddd</Button>\n    <WhiteSpace size="sm" />\n    <Button block>\u4e2d\u7b49\u95f4\u8ddd(\u9ed8\u8ba4)</Button>\n    <WhiteSpace size="md" />\n    <Button block>\u5927\u95f4\u8ddd</Button>\n    <WhiteSpace size="lg" />\n    <Button block>\u6700\u5927\u95f4\u8ddd</Button>\n    <WhiteSpace size="xl" />\n  </>\n);',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u4e0d\u540c\u5c3a\u5bf8',
               identifier: 'components-white-space',
             },
@@ -13462,7 +13462,7 @@
                     '// html,\n// body {\n//   width: 100%;\n//   height: 100%;\n//   overflow: hidden;\n// }\n// #root {\n//   width: 100%;\n//   height: 100%;\n//   overflow-y: auto;\n//   -webkit-overflow-scrolling: auto;\n// }\n.pull-refresh-demo {\n  .tips {\n    padding: 80px;\n    background-color: antiquewhite;\n    text-align: center;\n    font-size: 28px;\n    color: #000;\n    margin: 0;\n  }\n\n  .fake-list {\n    min-height: 600px;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    padding: 0;\n    margin: 20px 0;\n\n    li {\n      padding: 40px;\n      text-align: center;\n      font-size: 28px;\n      color: #000;\n      background-color: aliceblue;\n      margin-bottom: 20px;\n      overflow: hidden;\n      border-radius: 15px;\n    }\n  }\n}\n\n// html,\n// body {\n//   height: 100%;\n//   overflow: hidden;\n// }\n// #root {\n//   height: 100%;\n//   overflow: auto;\n// }\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u4e0b\u62c9\u5237\u65b0',
               description:
                 '<div class="markdown"><p>\u8bbe\u7f6e\u9608\u503c\u53ef\u4ee5\u6307\u5b9a\u4e0b\u62c9\u591a\u5c11\u8ddd\u79bb\uff0c\u677e\u5f00\u540e\u5237\u65b0</p></div>',
@@ -13605,7 +13605,7 @@
                     ".keyboard-demo {\n  font-size: 24px;\n\n  .payment-page__bd {\n    padding-top: 80px;\n    padding-bottom: 80px;\n  }\n  .paymeny-title {\n    font-size: 48px;\n    line-height: 106px;\n    text-align: center;\n  }\n  .fake-amount-input {\n    padding: 0 30px 24px;\n    position: relative;\n    box-sizing: border-box;\n\n    .amount-placeholder {\n      width: 100%;\n      padding: 0 50px;\n      text-align: left;\n      position: absolute;\n      left: 0;\n      top: 0;\n      z-index: 1;\n      color: #bebebe;\n      font-size: 36px;\n      height: 108px;\n      line-height: 108px;\n      box-sizing: border-box;\n    }\n    .amount-input {\n      z-index: 2;\n      position: relative;\n      padding: 0 20px;\n      border: 2px solid #06bf04;\n      border-radius: 10px;\n      text-align: right;\n      height: 108px;\n      line-height: 108px;\n      font-size: 72px;\n      width: 100%;\n      box-sizing: border-box;\n    }\n    .amount_plan {\n      position: absolute;\n      color: #bebebe;\n      z-index: 1;\n      top: 0;\n      left: 0;\n      padding: 0 50px;\n      height: 108px;\n      line-height: 108px;\n      font-size: 72px;\n      width: 100%;\n      text-align: right;\n      box-sizing: border-box;\n    }\n    .unit {\n      display: inline-block;\n      vertical-align: top;\n    }\n    .amount {\n      display: inline-block;\n      max-width: 62%;\n      color: #000;\n      vertical-align: top;\n      word-break: keep-all;\n      white-space: nowrap;\n      overflow: hidden;\n      text-overflow: ellipsis;\n      font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Helvetica Neue', 'Hiragino Sans GB', 'Microsoft Yahei',\n        sans-serif;\n    }\n  }\n}\n",
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u91d1\u989d\u952e\u76d8',
               description:
                 '<div class="markdown"><p>\u4e00\u822c\u9ed8\u8ba4\u7528Input\u7ec4\u4ef6\u5524\u8d77\u3002</p></div>',
@@ -13741,7 +13741,7 @@
                     'import React from \'react\';\nimport { Checkbox, Form, FormItem, List } from \'weui-react-v2\';\n\nexport default () => (\n  <Form>\n    <List title="\u4e0d\u540c\u5c3a\u5bf8">\n      <FormItem access={true}>\n        <Checkbox defaultChecked={true} size="small">\n          (small) standard is dealt for u.\n        </Checkbox>\n      </FormItem>\n      <FormItem access={true}>\n        <Checkbox defaultChecked={true} size="default">\n          (default) standard is dealicient for u.\n        </Checkbox>\n      </FormItem>\n      <FormItem access={true}>\n        <Checkbox defaultChecked={true} size="large">\n          (big) standard is dealicient for u.\n        </Checkbox>\n      </FormItem>\n    </List>\n    <List title="\u7981\u7528\u6837\u5f0f">\n      <FormItem prop="a" disabled={true} valueKey="checked" defaultValue={true}>\n        <Checkbox>\u9009\u4e2d\u7981\u7528</Checkbox>\n      </FormItem>\n      <FormItem prop="b" disabled={true} valueKey="checked">\n        <Checkbox>\u672a\u9009\u4e2d\u7981\u7528</Checkbox>\n      </FormItem>\n    </List>\n  </Form>\n);',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u4e0d\u540c\u5c3a\u5bf8',
               identifier: 'components-checkbox',
             },
@@ -14203,7 +14203,7 @@
                     'import React from \'react\';\nimport { DatePicker, List, ListItem, SafeArea } from \'weui-react-v2\';\n\nexport default function () {\n  return (\n    <SafeArea style={{ margin: \'-0.16rem\', minHeight: \'100vh\', backgroundColor: \'#f4f4f4\', padding: \'5px 0 10px\' }}>\n      <List title="\u4e0d\u540c\u6a21\u5f0f">\n        <DatePicker placeholder="\u8bf7\u9009\u62e9" defaultValue={null} useDefaultFormat={false} separator="">\n          <ListItem hd="date" arrow={true} />\n        </DatePicker>\n        <DatePicker placeholder="\u8bf7\u9009\u62e9" mode="datetime" defaultValue={null}>\n          <ListItem hd="datetime" arrow={true} />\n        </DatePicker>\n        <DatePicker placeholder="\u8bf7\u9009\u62e9" mode="time" defaultValue={null} useDefaultFormat={false} separator="">\n          <ListItem hd="time" arrow={true} />\n        </DatePicker>\n        <DatePicker placeholder="\u8bf7\u9009\u62e9" mode="year" defaultValue={null}>\n          <ListItem hd="year" arrow={true} />\n        </DatePicker>\n        <DatePicker placeholder="\u8bf7\u9009\u62e9" mode="month" defaultValue={null}>\n          <ListItem hd="month" arrow={true} />\n        </DatePicker>\n      </List>\n    </SafeArea>\n  );\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u65e5\u671f\u9009\u62e9\u5668',
               description:
                 '<div class="markdown"><p>\u9ed8\u8ba4\u9009\u4e2d\u7684\u6807\u7b7e\u683c\u5f0f\u5316\u4e3a (\u5e74-\u6708-\u65e5 \u65f6:\u5206:\u79d2)</p></div>',
@@ -14709,7 +14709,7 @@
                     "import React from 'react';\nimport { SegmentedControl, PickerItem } from 'weui-react-v2';\n\nconst data: PickerItem[] = [\n  {\n    label: '\u65e5',\n    value: 'day',\n  },\n  {\n    label: '\u6708',\n    value: 'month',\n  },\n  {\n    label: '\u5e74',\n    value: 'year',\n  },\n];\n\nexport default () => (\n  <>\n    <SegmentedControl data={data} defaultValue=\"month\" onChange={(val) => console.log('\u9009\u62e9', val)} />\n  </>\n);",
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u5206\u6bb5\u5668',
               identifier: 'components-segmented-control',
             },
@@ -39001,7 +39001,7 @@
                 "import React from 'react';\nimport { ActionSheet, Button, WhiteSpace } from 'weui-react-v2';\n\nfunction pop() {\n  ActionSheet({\n    title: '\u8bf7\u9009\u62e9\u559c\u6b22\u7684\u6c34\u679c?',\n    menus: ['\u82f9\u679c', '\u897f\u74dc', '\u68a8\u5b50'],\n    rootSelector: '#root',\n    onClick: (index) => {\n      return new Promise((resolve, reject) => {\n        setTimeout(() => {\n          resolve();\n        }, 2000);\n      });\n    },\n  });\n}\n\nexport default () => (\n  <>\n    <WhiteSpace />\n    <Button block={true} type=\"primary\" size=\"large\" onClick={pop}>\n      \u70b9\u51fb\u9009\u62e9\n    </Button>\n    <WhiteSpace />\n    <img\n      style={{ width: '100%', display: 'block' }}\n      src=\"https://images.pexels.com/photos/1239387/pexels-photo-1239387.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940\"\n      alt=\"\"\n    />\n    <img\n      style={{ width: '100%', display: 'block' }}\n      src=\"https://images.pexels.com/photos/1657110/pexels-photo-1657110.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=650&w=940\"\n      alt=\"\"\n    />\n  </>\n);",
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u914d\u7f6e\u83dc\u5355',
           description:
             '"<div class=\\"markdown\\"><p>\u8bbe\u7f6e<code>menus</code>\u5c5e\u6027\u6765\u914d\u7f6e\u83dc\u5355\uff0c<code>onClick</code>\u76d1\u542c\u83dc\u5355\u70b9\u51fb\u4e8b\u4ef6</p></div>"',
@@ -39032,7 +39032,7 @@
                 ".keyboard-demo {\n  font-size: 24px;\n\n  .payment-page__bd {\n    padding-top: 80px;\n    padding-bottom: 80px;\n  }\n  .paymeny-title {\n    font-size: 48px;\n    line-height: 106px;\n    text-align: center;\n  }\n  .fake-amount-input {\n    padding: 0 30px 24px;\n    position: relative;\n    box-sizing: border-box;\n\n    .amount-placeholder {\n      width: 100%;\n      padding: 0 50px;\n      text-align: left;\n      position: absolute;\n      left: 0;\n      top: 0;\n      z-index: 1;\n      color: #bebebe;\n      font-size: 36px;\n      height: 108px;\n      line-height: 108px;\n      box-sizing: border-box;\n    }\n    .amount-input {\n      z-index: 2;\n      position: relative;\n      padding: 0 20px;\n      border: 2px solid #06bf04;\n      border-radius: 10px;\n      text-align: right;\n      height: 108px;\n      line-height: 108px;\n      font-size: 72px;\n      width: 100%;\n      box-sizing: border-box;\n    }\n    .amount_plan {\n      position: absolute;\n      color: #bebebe;\n      z-index: 1;\n      top: 0;\n      left: 0;\n      padding: 0 50px;\n      height: 108px;\n      line-height: 108px;\n      font-size: 72px;\n      width: 100%;\n      text-align: right;\n      box-sizing: border-box;\n    }\n    .unit {\n      display: inline-block;\n      vertical-align: top;\n    }\n    .amount {\n      display: inline-block;\n      max-width: 62%;\n      color: #000;\n      vertical-align: top;\n      word-break: keep-all;\n      white-space: nowrap;\n      overflow: hidden;\n      text-overflow: ellipsis;\n      font-family: 'Lucida Grande', 'Lucida Sans Unicode', 'Helvetica Neue', 'Hiragino Sans GB', 'Microsoft Yahei',\n        sans-serif;\n    }\n  }\n}\n",
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u91d1\u989d\u952e\u76d8',
           description:
             '"<div class=\\"markdown\\"><p>\u4e00\u822c\u9ed8\u8ba4\u7528Input\u7ec4\u4ef6\u5524\u8d77\u3002</p></div>"',
@@ -39062,7 +39062,7 @@
               content: '.demo-btn-wrap {\n  .weui-btn + .weui-btn {\n    margin-left: 15px;\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u6309\u94ae\u7c7b\u578b',
           description:
             '"<div class=\\"markdown\\"><p>\u94ae\u6709\u4e94\u79cd\u7c7b\u578b\uff1a\u4e3b\u6309\u94ae\u3001\u6b21\u6309\u94ae\u3001\u865a\u7ebf\u6309\u94ae\u3001\u6587\u672c\u6309\u94ae\u548c\u94fe\u63a5\u6309\u94ae\u3002\u4e3b\u6309\u94ae\u5728\u540c\u4e00\u4e2a\u64cd\u4f5c\u533a\u57df\u6700\u591a\u51fa\u73b0\u4e00\u6b21\u3002</p></div>"',
@@ -39092,7 +39092,7 @@
               content: '.demo-btn-wrap {\n  .weui-btn + .weui-btn {\n    margin-left: 15px;\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u4e0d\u53ef\u7528\u72b6\u6001',
           description:
             '"<div class=\\"markdown\\"><p>\u6dfb\u52a0 <code>disabled</code> \u5c5e\u6027\u5373\u53ef\u8ba9\u6309\u94ae\u5904\u4e8e\u4e0d\u53ef\u7528\u72b6\u6001\uff0c\u540c\u65f6\u6309\u94ae\u6837\u5f0f\u4e5f\u4f1a\u6539\u53d8\u3002</p></div>"',
@@ -39122,7 +39122,7 @@
               content: '.demo-btn-wrap {\n  .weui-btn + .weui-btn {\n    margin-left: 15px;\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u957f\u6309\u94ae',
           description:
             '"<div class=\\"markdown\\"><p>\u6309\u94ae\u5c06<code>100%</code>\u586b\u5145\u7236\u5143\u7d20\u5bbd\u5ea6</p></div>"',
@@ -39196,7 +39196,7 @@
                 'import React from \'react\';\nimport { Checkbox, Form, FormItem, List } from \'weui-react-v2\';\n\nexport default () => (\n  <Form>\n    <List title="\u4e0d\u540c\u5c3a\u5bf8">\n      <FormItem access={true}>\n        <Checkbox defaultChecked={true} size="small">\n          (small) standard is dealt for u.\n        </Checkbox>\n      </FormItem>\n      <FormItem access={true}>\n        <Checkbox defaultChecked={true} size="default">\n          (default) standard is dealicient for u.\n        </Checkbox>\n      </FormItem>\n      <FormItem access={true}>\n        <Checkbox defaultChecked={true} size="large">\n          (big) standard is dealicient for u.\n        </Checkbox>\n      </FormItem>\n    </List>\n    <List title="\u7981\u7528\u6837\u5f0f">\n      <FormItem prop="a" disabled={true} valueKey="checked" defaultValue={true}>\n        <Checkbox>\u9009\u4e2d\u7981\u7528</Checkbox>\n      </FormItem>\n      <FormItem prop="b" disabled={true} valueKey="checked">\n        <Checkbox>\u672a\u9009\u4e2d\u7981\u7528</Checkbox>\n      </FormItem>\n    </List>\n  </Form>\n);',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u4e0d\u540c\u5c3a\u5bf8',
           identifier: 'components-checkbox',
         },
@@ -39220,7 +39220,7 @@
                 'import React from \'react\';\nimport { DatePicker, List, ListItem, SafeArea } from \'weui-react-v2\';\n\nexport default function () {\n  return (\n    <SafeArea style={{ margin: \'-0.16rem\', minHeight: \'100vh\', backgroundColor: \'#f4f4f4\', padding: \'5px 0 10px\' }}>\n      <List title="\u4e0d\u540c\u6a21\u5f0f">\n        <DatePicker placeholder="\u8bf7\u9009\u62e9" defaultValue={null} useDefaultFormat={false} separator="">\n          <ListItem hd="date" arrow={true} />\n        </DatePicker>\n        <DatePicker placeholder="\u8bf7\u9009\u62e9" mode="datetime" defaultValue={null}>\n          <ListItem hd="datetime" arrow={true} />\n        </DatePicker>\n        <DatePicker placeholder="\u8bf7\u9009\u62e9" mode="time" defaultValue={null} useDefaultFormat={false} separator="">\n          <ListItem hd="time" arrow={true} />\n        </DatePicker>\n        <DatePicker placeholder="\u8bf7\u9009\u62e9" mode="year" defaultValue={null}>\n          <ListItem hd="year" arrow={true} />\n        </DatePicker>\n        <DatePicker placeholder="\u8bf7\u9009\u62e9" mode="month" defaultValue={null}>\n          <ListItem hd="month" arrow={true} />\n        </DatePicker>\n      </List>\n    </SafeArea>\n  );\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u65e5\u671f\u9009\u62e9\u5668',
           description:
             '"<div class=\\"markdown\\"><p>\u9ed8\u8ba4\u9009\u4e2d\u7684\u6807\u7b7e\u683c\u5f0f\u5316\u4e3a (\u5e74-\u6708-\u65e5 \u65f6:\u5206:\u79d2)</p></div>"',
@@ -39246,7 +39246,7 @@
                 "import React from 'react';\nimport { Button, WhiteSpace, DialogPop } from 'weui-react-v2';\n\nexport default function () {\n  function pop() {\n    DialogPop({\n      title: '\u5bf9\u8bdd\u6846\u6807\u9898',\n      children: '\u5f39\u7a97\u5185\u5bb9\uff0c\u544a\u77e5\u5f53\u524d\u72b6\u6001\u3001\u4fe1\u606f\u548c\u89e3\u51b3\u65b9\u6cd5\uff0c\u63cf\u8ff0\u6587\u5b57\u5c3d\u91cf\u63a7\u5236\u5728\u4e09\u884c\u5185',\n      onConfirm: () => {\n        return new Promise((resolve) => {\n          setTimeout(() => {\n            resolve(true);\n          }, 2000);\n        });\n      },\n    });\n  }\n\n  return (\n    <div>\n      <WhiteSpace />\n      <Button block={true} size=\"large\" type=\"primary\" onClick={pop}>\n        \u663e\u793a\n      </Button>\n    </div>\n  );\n}\n",
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u6a21\u6001\u5bf9\u8bdd\u6846',
           description:
             '"<div class=\\"markdown\\"><p>\u5c5e\u6027\u57fa\u672c\u4e0e<code>HalfScreenDialog</code>\u4fdd\u6301\u4e00\u81f4</p></div>"',
@@ -39277,7 +39277,7 @@
                 '.demo-prompt {\n  .title {\n    font-size: 30px;\n    color: #888;\n    line-height: 1.5;\n  }\n  .tips {\n    font-size: 26px;\n    color: #ff4d4f;\n    margin-top: 10px;\n    margin-bottom: 0;\n    text-align: left;\n  }\n  .input-container {\n    margin-top: 18px;\n    border: 2px solid #ddd;\n    border-radius: 6px;\n    height: 72px;\n    line-height: 1;\n    min-width: 65vw;\n\n    input {\n      font-size: 30px;\n      position: relative;\n      border: 0;\n      width: 100%;\n      height: 100%;\n      box-sizing: border-box;\n      margin: 0;\n      padding: 0 15px;\n    }\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u5c01\u88c5\u8f93\u5165\u6846',
           description:
             '"<div class=\\"markdown\\"><p>\u6839\u636e\u4e1a\u52a1\u548c\u6837\u5f0f\u9700\u8981\uff0c\u81ea\u884c\u5c01\u88c5</p></div>"',
@@ -39308,7 +39308,7 @@
                 '.flex-demo {\n  .title {\n    font-size: 34px;\n    padding: 20px 10px;\n    font-weight: bold;\n  }\n\n  .title + .title {\n    margin-top: 50px;\n  }\n\n  .ant-col {\n    min-height: 30px;\n    margin-top: 8px;\n    margin-bottom: 8px;\n    padding: 5px 0;\n    color: #fff;\n    text-align: center;\n    border-radius: 0;\n    font-size: 24px;\n    padding: 16px 0;\n    background: #00a0e9;\n\n    &:nth-child(2n + 1) {\n      background: rgba(0, 160, 233, 0.7);\n    }\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u5bf9\u5176\u65b9\u5f0f',
           description:
             '"<div class=\\"markdown\\"><p>\u6839\u636e\u4e3b\u8f74\u8fdb\u884c\u5de6\u5bf9\u9f50\uff0c\u5c45\u4e2d\u5bf9\u9f50\uff0c\u53f3\u5bf9\u9f50</p></div>"',
@@ -39344,7 +39344,7 @@
                 '.form-demo {\n  padding: 112px 0 40px;\n  display: flex;\n  flex-direction: column;\n  min-height: 100%;\n  background-color: #ffffff;\n  box-sizing: border-box;\n  line-height: 1.4;\n  font-size: 28px;\n\n  .form-margin {\n    margin: 96px 0;\n  }\n\n  .form-text-area {\n    padding: 0 64px;\n    color: rgba(0, 0, 0, 0.9);\n    text-align: center;\n\n    .form-title {\n      font-size: 44px;\n      font-weight: 700;\n      line-height: 1.36;\n    }\n    .form-desc {\n      font-size: 30px;\n      margin-top: 32px;\n      line-height: 60px;\n    }\n  }\n\n  .form-tips {\n    overflow: hidden;\n    margin-bottom: 48px;\n    text-align: center;\n    color: rgba(0, 0, 0, 0.5);\n\n    .weui-checkbox {\n      font-size: 28px;\n    }\n\n    a {\n      color: #576b95;\n    }\n  }\n\n  .form-btns {\n    text-align: center;\n\n    .weui-btn {\n      width: 368px;\n      margin: auto;\n    }\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u8868\u5355\u9a8c\u8bc1',
           description:
             '"<div class=\\"markdown\\"><p>\u8868\u5355\u9a8c\u8bc1\u975e\u5e38\u81ea\u7136\uff0c\u6302\u63a5\u4e86\u539f\u751f\u7684\u8868\u5355</p></div>"',
@@ -39427,7 +39427,7 @@
           },
           dependencies: {
             react: { version: '17.0.1' },
-            'weui-react-v2': { version: '3.1.2' },
+            'weui-react-v2': { version: '3.1.3' },
             '@ant-design/icons': { version: '4.2.2' },
           },
           title: '\u4e5d\u5bab\u683c\u6bcf\u884c3\u5217',
@@ -39458,7 +39458,7 @@
                 '.weui-half-screen-dialog__tips {\n  padding-top: 32px;\n  font-size: 28px;\n  color: rgba(0, 0, 0, 0.3);\n  line-height: 1.4;\n  margin: 0;\n}\n.weui-half-screen-dialog__desc {\n  padding-top: 8px;\n  font-size: 34px;\n  font-weight: 700;\n  color: rgba(0, 0, 0, 0.9);\n  line-height: 1.4;\n  margin: 0;\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u786e\u5b9a\u6309\u94ae',
           description:
             '"<div class=\\"markdown\\"><p>\u786e\u5b9a\u6309\u94ae\u4e8b\u4ef6\u662f\u4e00\u4e2a<code>Promise</code>, \u5728\u8fd4\u56de\u4e4b\u524d\u6309\u94ae\u4f1a\u5904\u4e8e\u52a0\u8f7d\u72b6\u6001</p></div>"',
@@ -39484,7 +39484,7 @@
                 "import React, { useState } from 'react';\nimport { Gallery, Button, WhiteSpace } from 'weui-react-v2';\n\nconst images = [\n  {\n    src: require('../../swiper/pexels-photo-296878.jpeg'),\n    title: 'Photo: Michael Hull',\n    desc: \"Dummy caption. It's Greek to you. Unless, of course, you're Greek, in which case, it really makes no sense.\",\n  },\n  {\n    src: require('./15008465772_d50c8f0531_h.jpg'),\n    title: '\u4e00\u53ea\u718a',\n    desc: '\u61a8\u61a8\u7684\u718a\uff0c \u77ed\u77ed\u7684\u5c3e\u5df4',\n  },\n  {\n    src: require('./15008518202_c265dfa55f_h.jpg'),\n  },\n  {\n    src: require('./15008867125_b61960af01_h.jpg'),\n  },\n];\n\nexport default () => {\n  const [visible, setVisible] = useState(true);\n  return (\n    <div>\n      <WhiteSpace size=\"xl\" />\n      <WhiteSpace size=\"xl\" />\n      <Button block={true} type=\"primary\" size=\"large\" onClick={() => setVisible(true)}>\n        \u6253\u5f00\n      </Button>\n      <Gallery className=\"image-view-demo\" data={images} visible={visible} onVisibleChange={setVisible} />\n    </div>\n  );\n};\n",
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u53d7\u63a7\u5c55\u793a',
           description:
             '"<div class=\\"markdown\\"><p>\u53ef\u8bbe\u7f6e\u9ed8\u8ba4\u67e5\u770b\u54ea\u4e00\u5f20\u56fe\u7247</p></div>"',
@@ -39513,7 +39513,7 @@
           dependencies: {
             react: { version: '17.0.1' },
             '@ant-design/icons': { version: '4.2.2' },
-            'weui-react-v2': { version: '3.1.2' },
+            'weui-react-v2': { version: '3.1.3' },
           },
           title: '\u8f93\u5165\u6846\u5404\u79cd\u6837\u5f0f\u7ec4\u5408',
           identifier: 'input-demo',
@@ -39629,7 +39629,7 @@
           },
           dependencies: {
             react: { version: '17.0.1' },
-            'weui-react-v2': { version: '3.1.2' },
+            'weui-react-v2': { version: '3.1.3' },
             '@ant-design/icons': { version: '4.2.2' },
           },
           title: '\u5217\u8868\u7ec4\u5408\u5c55\u793a',
@@ -39681,7 +39681,7 @@
                 'import React from \'react\';\nimport { BallLoading, CircleLoading, WaveLoading, MultistageLoading, Flex } from \'weui-react-v2\';\n\nexport default () => (\n  <>\n    <Flex justify="center">\n      <BallLoading />\n    </Flex>\n    <br />\n    <Flex justify="center">\n      <CircleLoading />\n    </Flex>\n    <br />\n    <Flex justify="center">\n      <WaveLoading />\n    </Flex>\n    <br />\n    <Flex justify="center">\n      <MultistageLoading />\n    </Flex>\n  </>\n);',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u52a0\u8f7d\u4e2d',
           identifier: 'components-loading',
         },
@@ -39714,7 +39714,7 @@
                 'import React from \'react\';\nimport { Loadmore } from \'weui-react-v2\';\n\nexport default () => (\n  <>\n    <Loadmore tips="\u6b63\u5728\u52a0\u8f7d" loading={true} />\n    <br />\n    <Loadmore tips="\u6682\u65e0\u6570\u636e" />\n    <br />\n    <Loadmore dot={true} />\n    <br />\n  </>\n);',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u52a0\u8f7d\u66f4\u591a',
           identifier: 'components-loadmore',
         },
@@ -39738,7 +39738,7 @@
                 'import React from \'react\';\nimport { List, ListItem, NumberInput, SafeArea } from \'weui-react-v2\';\n\nexport default function () {\n  return (\n    <SafeArea style={{ margin: \'-0.16rem\', minHeight: \'100vh\', backgroundColor: \'#f4f4f4\', padding: \'5px 0 10px\' }}>\n      <List title="\u8f93\u5165\u683c\u5f0f">\n        <ListItem hd="\u4efb\u610f\u8f93\u5165">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6570\u503c" />\n        </ListItem>\n        <ListItem hd="\u4fdd\u7559\u5c0f\u6570\u70b93\u4f4d">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6570\u503c" precision={3} />\n        </ListItem>\n        <ListItem hd="\u53ea\u80fd\u6574\u6570">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165\u6574\u6570" precision={0} />\n        </ListItem>\n        <ListItem hd="\u91d1\u989d\u8f93\u5165">\n          <NumberInput placeholder="\u5f39\u51fa\u91d1\u989d\u952e\u76d8" type="amount" />\n        </ListItem>\n        <ListItem hd="\u81ea\u5b9a\u4e49\u524d\u7f00">\n          <NumberInput\n            placeholder="\u524d\u7f00\u52a0\u4e0a\u7f8e\u5143\u7b26\u53f7"\n            formatter={(value) => `$ ${value || \'\'}`.replace(/\\B(?=(\\d{3})+(?!\\d))/g, \',\')}\n            parser={(value) => value.replace(/\\$\\s?|(,*)/g, \'\')}\n          />\n        </ListItem>\n        <ListItem hd="\u81ea\u5b9a\u4e49\u540e\u7f00">\n          <NumberInput\n            placeholder="\u540e\u7f00\u52a0\u4e0a\u767e\u5206\u6bd4"\n            min={0}\n            max={100}\n            formatter={(value) => `${value}%`}\n            parser={(value) => (value + \'\').replace(\'%\', \'\')}\n          />\n        </ListItem>\n        <ListItem hd="\u6700\u5927\u6700\u5c0f\u9650\u5236">\n          <NumberInput placeholder="\u6700\u5c0f3,\u6700\u592715" min={3} max={15} />\n        </ListItem>\n        <ListItem hd="\u7981\u7528\u6837\u5f0f">\n          <NumberInput placeholder="\u8bf7\u8f93\u5165" disabled={true} />\n        </ListItem>\n        <ListItem hd="\u7981\u7528\u6837\u5f0f">\n          <NumberInput value={123} disabled={true} />\n        </ListItem>\n        <ListItem hd="\u663e\u793a\u63a7\u5236\u6309\u94ae">\n          <NumberInput defaultValue={1} min={1} max={10} showControl={true} style={{ width: \'30vw\' }} />\n        </ListItem>\n      </List>\n    </SafeArea>\n  );\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u7ec4\u5408\u6837\u5f0f',
           identifier: 'number-input-demo',
         },
@@ -39819,7 +39819,7 @@
                 'import React from \'react\';\nimport { Panel, PanelItem, Brief, ListItem, SafeArea } from \'weui-react-v2\';\n\nexport default () => (\n  <SafeArea style={{ margin: \'-0.16rem\', minHeight: \'100vh\', backgroundColor: \'#f4f4f4\', padding: \'5px 0 10px\' }}>\n    <Panel title="\u56fe\u6587\u7ec4\u5408\u5217\u8868">\n      <PanelItem title="\u6807\u9898\u4e00" thumb={require(\'./icon_tabbar.png\')}>\n        \u7531\u5404\u79cd\u7269\u8d28\u7ec4\u6210\u7684\u5de8\u578b\u7403\u72b6\u5929\u4f53\uff0c\u53eb\u505a\u661f\u7403\u3002\u661f\u7403\u6709\u4e00\u5b9a\u7684\u5f62\u72b6\uff0c\u6709\u81ea\u5df1\u7684\u8fd0\u884c\u8f68\u9053\u3002\n      </PanelItem>\n      <PanelItem title="\u6807\u9898\u4e8c" thumb={require(\'./icon_tabbar.png\')}>\n        \u7531\u5404\u79cd\u7269\u8d28\u7ec4\u6210\u7684\u5de8\u578b\u7403\u72b6\u5929\u4f53\uff0c\u53eb\u505a\u661f\u7403\u3002\u661f\u7403\u6709\u4e00\u5b9a\u7684\u5f62\u72b6\uff0c\u6709\u81ea\u5df1\u7684\u8fd0\u884c\u8f68\u9053\u3002\n      </PanelItem>\n      <ListItem arrow={true}>\n        <a>\u67e5\u770b\u66f4\u591a</a>\n      </ListItem>\n    </Panel>\n    <Panel title="\u6587\u5b57\u7ec4\u5408\u5217\u8868">\n      <PanelItem title="\u6807\u9898\u4e00" text={true}>\n        \u7531\u5404\u79cd\u7269\u8d28\u7ec4\u6210\u7684\u5de8\u578b\u7403\u72b6\u5929\u4f53\uff0c\u53eb\u505a\u661f\u7403\u3002\u661f\u7403\u6709\u4e00\u5b9a\u7684\u5f62\u72b6\uff0c\u6709\u81ea\u5df1\u7684\u8fd0\u884c\u8f68\u9053\u3002\n      </PanelItem>\n      <PanelItem title="\u6807\u9898\u4e8c" text={true}>\n        \u7531\u5404\u79cd\u7269\u8d28\u7ec4\u6210\u7684\u5de8\u578b\u7403\u72b6\u5929\u4f53\uff0c\u53eb\u505a\u661f\u7403\u3002\u661f\u7403\u6709\u4e00\u5b9a\u7684\u5f62\u72b6\uff0c\u6709\u81ea\u5df1\u7684\u8fd0\u884c\u8f68\u9053\u3002\n      </PanelItem>\n    </Panel>\n    <Panel title="\u6587\u5b57\u5217\u8868\u9644\u52a0\u6e90">\n      <PanelItem\n        title="\u6807\u9898\u4e00"\n        text={true}\n        info={\n          <>\n            <Brief>\u6587\u5b57\u6765\u6e90</Brief>\n            <Brief>\u65f6\u95f4</Brief>\n            <Brief divider={true}>\u5176\u4ed6\u4fe1\u606f</Brief>\n          </>\n        }\n      >\n        \u7531\u5404\u79cd\u7269\u8d28\u7ec4\u6210\u7684\u5de8\u578b\u7403\u72b6\u5929\u4f53\uff0c\u53eb\u505a\u661f\u7403\u3002\u661f\u7403\u6709\u4e00\u5b9a\u7684\u5f62\u72b6\uff0c\u6709\u81ea\u5df1\u7684\u8fd0\u884c\u8f68\u9053\u3002\n      </PanelItem>\n    </Panel>\n  </SafeArea>\n);',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u56fe\u6587\u7ec4\u5408\u9762\u677f',
           identifier: 'components-panel',
         },
@@ -39848,7 +39848,7 @@
                 "import { PickerItem } from 'weui-react-v2';\n\n/**\n * \u5355\u5217\u6570\u636e\n */\nexport const singlePickerData: PickerItem[] = [\n  {\n    label: '\u98de\u673a\u7968',\n    value: '\u98de\u673a\u7968',\n  },\n  {\n    label: '\u706b\u8f66\u7968',\n    value: '\u706b\u8f66\u7968',\n  },\n  {\n    label: '\u7684\u58eb\u7968',\n    value: '\u7684\u58eb\u7968',\n  },\n  {\n    label: '\u4f4f\u5bbf\u8d39',\n    value: '\u4f4f\u5bbf\u8d39',\n  },\n  {\n    label: '\u793c\u54c1\u8d39(disabled)',\n    value: '\u793c\u54c1\u8d39',\n    disabled: true,\n  },\n  {\n    label: '\u6d3b\u52a8\u8d39',\n    value: '\u6d3b\u52a8\u8d39',\n  },\n  {\n    label: '\u901a\u8baf\u8d39',\n    value: '\u901a\u8baf\u8d39',\n  },\n  {\n    label: '\u8865\u52a9',\n    value: '\u8865\u52a9',\n  },\n  {\n    label: '\u901a\u8baf\u8d392',\n    value: '\u901a\u8baf\u8d392',\n  },\n  {\n    label: '\u5176\u4ed6',\n    value: '\u5176\u4ed6',\n  },\n];\n\n/**\n * \u53cc\u5217\u6570\u636e\n */\nexport const miltiplePickerData: PickerItem[][] = [\n  [\n    {\n      label: '\u98de\u673a\u7968',\n      value: '\u98de\u673a\u7968',\n    },\n    {\n      label: '\u706b\u8f66\u7968',\n      value: '\u706b\u8f66\u7968',\n    },\n    {\n      label: '\u7684\u58eb\u7968',\n      value: '\u7684\u58eb\u7968',\n    },\n    {\n      label: '\u6253\u5370\u7968',\n      value: '\u6253\u5370\u7968',\n    },\n  ],\n  [\n    {\n      label: '\u4f4f\u5bbf\u8d39',\n      value: '\u4f4f\u5bbf\u8d39',\n    },\n    {\n      label: '\u793c\u54c1\u8d39',\n      value: '\u793c\u54c1\u8d39',\n    },\n    {\n      label: '\u6d3b\u52a8\u8d39',\n      value: '\u6d3b\u52a8\u8d39',\n    },\n    {\n      label: '\u901a\u8baf\u8d39',\n      value: '\u901a\u8baf\u8d39',\n    },\n    {\n      label: '\u8865\u52a9',\n      value: '\u8865\u52a9',\n    },\n  ],\n];\n\n/**\n * \u7ea7\u8054\u6570\u636e\n */\nexport const cascadePickerData: PickerItem[] = [\n  {\n    label: '\u7968\u636e',\n    value: '\u7968\u636e',\n    children: [\n      {\n        label: '\u98de\u673a\u7968',\n        value: '\u98de\u673a\u7968',\n      },\n      {\n        label: '\u706b\u8f66\u7968',\n        value: '\u706b\u8f66\u7968',\n      },\n      {\n        label: '\u7684\u58eb\u7968',\n        value: '\u7684\u58eb\u7968',\n      },\n      {\n        label: '\u540c\u503c\u6d4b\u8bd5',\n        value: '\u540c\u503c\u6d4b\u8bd5',\n      },\n      {\n        label: '\u6253\u5370\u7968',\n        value: '\u6253\u5370\u7968',\n      },\n    ],\n  },\n  {\n    label: '\u8d39\u7528',\n    value: '\u8d39\u7528',\n    children: [\n      {\n        label: '\u4f4f\u5bbf\u8d39',\n        value: '\u4f4f\u5bbf\u8d39',\n      },\n      {\n        label: '\u793c\u54c1\u8d39',\n        value: '\u793c\u54c1\u8d39',\n      },\n      {\n        label: '\u6d3b\u52a8\u8d39',\n        value: '\u6d3b\u52a8\u8d39',\n      },\n      {\n        label: '\u540c\u503c\u6d4b\u8bd5',\n        value: '\u540c\u503c\u6d4b\u8bd5',\n      },\n      {\n        label: '\u901a\u8baf\u8d39',\n        value: '\u901a\u8baf\u8d39',\n      },\n      {\n        label: '\u8865\u52a9',\n        value: '\u8865\u52a9',\n      },\n    ],\n  },\n];\n",
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: 'Picker\u9009\u62e9\u5668',
           identifier: 'picker-picker',
         },
@@ -39877,7 +39877,7 @@
                 "import { PickerItem } from 'weui-react-v2';\n\n/**\n * \u5355\u5217\u6570\u636e\n */\nexport const singlePickerData: PickerItem[] = [\n  {\n    label: '\u98de\u673a\u7968',\n    value: '\u98de\u673a\u7968',\n  },\n  {\n    label: '\u706b\u8f66\u7968',\n    value: '\u706b\u8f66\u7968',\n  },\n  {\n    label: '\u7684\u58eb\u7968',\n    value: '\u7684\u58eb\u7968',\n  },\n  {\n    label: '\u4f4f\u5bbf\u8d39',\n    value: '\u4f4f\u5bbf\u8d39',\n  },\n  {\n    label: '\u793c\u54c1\u8d39(disabled)',\n    value: '\u793c\u54c1\u8d39',\n    disabled: true,\n  },\n  {\n    label: '\u6d3b\u52a8\u8d39',\n    value: '\u6d3b\u52a8\u8d39',\n  },\n  {\n    label: '\u901a\u8baf\u8d39',\n    value: '\u901a\u8baf\u8d39',\n  },\n  {\n    label: '\u8865\u52a9',\n    value: '\u8865\u52a9',\n  },\n  {\n    label: '\u901a\u8baf\u8d392',\n    value: '\u901a\u8baf\u8d392',\n  },\n  {\n    label: '\u5176\u4ed6',\n    value: '\u5176\u4ed6',\n  },\n];\n\n/**\n * \u53cc\u5217\u6570\u636e\n */\nexport const miltiplePickerData: PickerItem[][] = [\n  [\n    {\n      label: '\u98de\u673a\u7968',\n      value: '\u98de\u673a\u7968',\n    },\n    {\n      label: '\u706b\u8f66\u7968',\n      value: '\u706b\u8f66\u7968',\n    },\n    {\n      label: '\u7684\u58eb\u7968',\n      value: '\u7684\u58eb\u7968',\n    },\n    {\n      label: '\u6253\u5370\u7968',\n      value: '\u6253\u5370\u7968',\n    },\n  ],\n  [\n    {\n      label: '\u4f4f\u5bbf\u8d39',\n      value: '\u4f4f\u5bbf\u8d39',\n    },\n    {\n      label: '\u793c\u54c1\u8d39',\n      value: '\u793c\u54c1\u8d39',\n    },\n    {\n      label: '\u6d3b\u52a8\u8d39',\n      value: '\u6d3b\u52a8\u8d39',\n    },\n    {\n      label: '\u901a\u8baf\u8d39',\n      value: '\u901a\u8baf\u8d39',\n    },\n    {\n      label: '\u8865\u52a9',\n      value: '\u8865\u52a9',\n    },\n  ],\n];\n\n/**\n * \u7ea7\u8054\u6570\u636e\n */\nexport const cascadePickerData: PickerItem[] = [\n  {\n    label: '\u7968\u636e',\n    value: '\u7968\u636e',\n    children: [\n      {\n        label: '\u98de\u673a\u7968',\n        value: '\u98de\u673a\u7968',\n      },\n      {\n        label: '\u706b\u8f66\u7968',\n        value: '\u706b\u8f66\u7968',\n      },\n      {\n        label: '\u7684\u58eb\u7968',\n        value: '\u7684\u58eb\u7968',\n      },\n      {\n        label: '\u540c\u503c\u6d4b\u8bd5',\n        value: '\u540c\u503c\u6d4b\u8bd5',\n      },\n      {\n        label: '\u6253\u5370\u7968',\n        value: '\u6253\u5370\u7968',\n      },\n    ],\n  },\n  {\n    label: '\u8d39\u7528',\n    value: '\u8d39\u7528',\n    children: [\n      {\n        label: '\u4f4f\u5bbf\u8d39',\n        value: '\u4f4f\u5bbf\u8d39',\n      },\n      {\n        label: '\u793c\u54c1\u8d39',\n        value: '\u793c\u54c1\u8d39',\n      },\n      {\n        label: '\u6d3b\u52a8\u8d39',\n        value: '\u6d3b\u52a8\u8d39',\n      },\n      {\n        label: '\u540c\u503c\u6d4b\u8bd5',\n        value: '\u540c\u503c\u6d4b\u8bd5',\n      },\n      {\n        label: '\u901a\u8baf\u8d39',\n        value: '\u901a\u8baf\u8d39',\n      },\n      {\n        label: '\u8865\u52a9',\n        value: '\u8865\u52a9',\n      },\n    ],\n  },\n];\n",
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: 'Picker\u9762\u677f',
           identifier: 'picker-demo',
         },
@@ -39901,7 +39901,7 @@
                 "import React, { useState } from 'react';\nimport { List, ListItem, Picker, SafeArea, PickerItem, Button } from 'weui-react-v2';\n\nfunction getRandom(): PickerItem {\n  const n = Math.random();\n  return { label: n, value: n };\n}\n\nexport default function () {\n  const [data, setData] = useState<PickerItem[]>([]);\n  const [val, setVal] = useState<any>(null);\n\n  function switchData() {\n    setTimeout(() => {\n      setData([getRandom(), getRandom(), getRandom()]);\n    }, 300);\n  }\n\n  return (\n    <SafeArea style={{ margin: '-0.16rem', minHeight: '100vh', backgroundColor: '#f4f4f4', padding: '5px 0 10px' }}>\n      <List>\n        <Picker placeholder=\"\u8bf7\u9009\u62e9\" data={data} value={val} onChange={setVal}>\n          <ListItem hd=\"\u968f\u673a\" arrow={true} />\n        </Picker>\n        <ListItem>\n          <Button onClick={switchData}>\u5207\u6362\u6570\u636e\u6e90</Button>\n        </ListItem>\n      </List>\n    </SafeArea>\n  );\n}\n",
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u5f02\u6b65\u8bbe\u7f6e\u6570\u636e\u6e90',
           identifier: 'picker-async',
         },
@@ -39992,7 +39992,7 @@
                 'import React from \'react\';\nimport { SafeArea, Preview, PreviewItem, PreviewButton, WhiteSpace } from \'weui-react-v2\';\n\nexport default () => (\n  <SafeArea style={{ margin: \'-0.16rem\', minHeight: \'100vh\', backgroundColor: \'#f4f4f4\', padding: \'5px 0 10px\' }}>\n    <Preview subTitle="\u4ed8\u6b3e\u91d1\u989d" title="\xa52400.00" footer={<PreviewButton key="c">\u64cd\u4f5c</PreviewButton>}>\n      <PreviewItem title="\u5546\u54c1">\u7535\u52a8\u6253\u5355\u673a</PreviewItem>\n      <PreviewItem title="\u6807\u9898\u6807\u9898">\u540d\u5b57\u540d\u5b57\u540d\u5b57</PreviewItem>\n      <PreviewItem title="\u6807\u9898\u6807\u9898">\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57</PreviewItem>\n    </Preview>\n\n    <WhiteSpace size="xl" />\n\n    <Preview\n      subTitle="\u4ed8\u6b3e\u91d1\u989d"\n      title="\xa52400.00"\n      footer={[\n        <PreviewButton key="a">\u8f85\u52a9\u64cd\u4f5c</PreviewButton>,\n        <PreviewButton type="primary" key="b">\n          \u63d0\u4ea4\n        </PreviewButton>,\n      ]}\n    >\n      <PreviewItem title="\u5546\u54c1">\u7535\u52a8\u6253\u5355\u673a</PreviewItem>\n      <PreviewItem title="\u6807\u9898\u6807\u9898">\u540d\u5b57\u540d\u5b57\u540d\u5b57</PreviewItem>\n      <PreviewItem title="\u6807\u9898\u6807\u9898">\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57</PreviewItem>\n    </Preview>\n\n    <WhiteSpace size="xl" />\n\n    <Preview subTitle="\u5de6\u5bf9\u9f50" align="left">\n      <PreviewItem title="\u59d3\u540d">XueYou</PreviewItem>\n      <PreviewItem title="\u5e74\u9f84">666</PreviewItem>\n      <PreviewItem title="\u559c\u597d">\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57</PreviewItem>\n    </Preview>\n  </SafeArea>\n);',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u9884\u89c8\u5185\u5bb9',
           identifier: 'components-preview',
         },
@@ -40021,7 +40021,7 @@
                 '// html,\n// body {\n//   width: 100%;\n//   height: 100%;\n//   overflow: hidden;\n// }\n// #root {\n//   width: 100%;\n//   height: 100%;\n//   overflow-y: auto;\n//   -webkit-overflow-scrolling: auto;\n// }\n.pull-refresh-demo {\n  .tips {\n    padding: 80px;\n    background-color: antiquewhite;\n    text-align: center;\n    font-size: 28px;\n    color: #000;\n    margin: 0;\n  }\n\n  .fake-list {\n    min-height: 600px;\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    padding: 0;\n    margin: 20px 0;\n\n    li {\n      padding: 40px;\n      text-align: center;\n      font-size: 28px;\n      color: #000;\n      background-color: aliceblue;\n      margin-bottom: 20px;\n      overflow: hidden;\n      border-radius: 15px;\n    }\n  }\n}\n\n// html,\n// body {\n//   height: 100%;\n//   overflow: hidden;\n// }\n// #root {\n//   height: 100%;\n//   overflow: auto;\n// }\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u4e0b\u62c9\u5237\u65b0',
           description:
             '"<div class=\\"markdown\\"><p>\u8bbe\u7f6e\u9608\u503c\u53ef\u4ee5\u6307\u5b9a\u4e0b\u62c9\u591a\u5c11\u8ddd\u79bb\uff0c\u677e\u5f00\u540e\u5237\u65b0</p></div>"',
@@ -40055,7 +40055,7 @@
                 "import React from 'react';\nimport { Rate } from 'weui-react-v2';\n\nexport default () => (\n  <>\n    <div style={{ textAlign: 'center' }}>\n      <Rate defaultValue={3} />\n    </div>\n  </>\n);",
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: 'count\u53ef\u4ee5\u81ea\u5b9a\u4e49\u661f\u661f\u6570\u91cf',
           identifier: 'components-rate',
         },
@@ -40096,7 +40096,7 @@
                 '.safearea-demo {\n  .block {\n    font-size: 60px;\n    color: #fff;\n    display: block;\n    width: 100%;\n    text-align: center;\n    height: 600px;\n    line-height: 600px;\n    background-color: #009a61;\n    background-image: linear-gradient(\n      -45deg,\n      rgba(255, 255, 255, 0.2) 25%,\n      transparent 25%,\n      transparent 50%,\n      rgba(255, 255, 255, 0.2) 50%,\n      rgba(255, 255, 255, 0.2) 75%,\n      transparent 75%,\n      transparent\n    );\n\n    &:nth-child(odd) {\n      background: repeating-linear-gradient(135deg, #ffeb3b, #ffeb3b 0.25em, #0092b7 0, #0092b7 0.75em);\n    }\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u56db\u5468\u4fdd\u7559\u5b89\u5168\u8fb9\u8ddd',
           identifier: 'components-safe-area',
         },
@@ -40120,7 +40120,7 @@
                 "import React from 'react';\nimport { SafeArea, Search } from 'weui-react-v2';\n\nexport default () => {\n  return (\n    <SafeArea style={{ margin: '-0.16rem' }}>\n      <Search\n        placeholder=\"\u641c\u7d22\"\n        onConfirm={(val) => console.log('\u786e\u8ba4\u8f93\u5165: ', val)}\n        onSearch={(val) => console.log('search: ', val)}\n        onCancel={() => console.log('\u53d6\u6d88\u641c\u7d22')}\n      />\n    </SafeArea>\n  );\n};\n",
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u641c\u7d22\u680f',
           identifier: 'search-demo',
         },
@@ -40159,7 +40159,7 @@
                 "import React from 'react';\nimport { SegmentedControl, PickerItem } from 'weui-react-v2';\n\nconst data: PickerItem[] = [\n  {\n    label: '\u65e5',\n    value: 'day',\n  },\n  {\n    label: '\u6708',\n    value: 'month',\n  },\n  {\n    label: '\u5e74',\n    value: 'year',\n  },\n];\n\nexport default () => (\n  <>\n    <SegmentedControl data={data} defaultValue=\"month\" onChange={(val) => console.log('\u9009\u62e9', val)} />\n  </>\n);",
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u5206\u6bb5\u5668',
           identifier: 'components-segmented-control',
         },
@@ -40212,7 +40212,7 @@
                 '.skeleton-demo {\n  .weui-item-bd {\n    flex: 0 0 160px;\n  }\n\n  .weui-item-ft {\n    flex: 1;\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u5207\u6362\u52a0\u8f7d\u72b6\u6001',
           identifier: 'components-skeleton',
         },
@@ -40258,7 +40258,7 @@
                 '.skeleton-demo {\n  .weui-item-bd {\n    flex: 0 0 160px;\n  }\n\n  .weui-item-ft {\n    flex: 1;\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: 'Stripe\u7528\u4e8e\u884c\u5185\u6570\u636e',
           identifier: 'components-skeleton-1',
         },
@@ -40302,7 +40302,7 @@
                 'import React from \'react\';\nimport { Spin, Flex, WhiteSpace } from \'weui-react-v2\';\n\nexport default () => (\n  <>\n    <Flex justify="center">\n      <Spin spinning={true} size="small" />\n    </Flex>\n    <WhiteSpace size="sm" />\n    <Flex justify="center">\n      <Spin spinning={true} />\n    </Flex>\n\n    <WhiteSpace size="sm" />\n    <Flex justify="center">\n      <Spin spinning={true} size="large" />\n    </Flex>\n  </>\n);',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u4e0d\u540c\u5c3a\u5bf8',
           description:
             '"<div class=\\"markdown\\"><p>\u5185\u7f6e3\u79cd\u4e0d\u540c\u5c3a\u5bf8\uff0c \u8bbe\u7f6e <code>size</code> \u5c5e\u6027\u4e3a <code>small</code>, <code>large</code>, <code>default</code>\u3002</p></div>"',
@@ -40333,7 +40333,7 @@
                 '.spin-demo {\n  .alert-box {\n    font-family: Monospaced Number, Chinese Quote, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, PingFang SC,\n      Hiragino Sans GB, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif;\n    font-size: 14px;\n    line-height: 1.5;\n    color: rgba(0, 0, 0, 0.65);\n    -webkit-box-sizing: border-box;\n    box-sizing: border-box;\n    margin: 0;\n    padding: 0;\n    list-style: none;\n    position: relative;\n    padding: 8px 15px 8px 37px;\n    border-radius: 4px;\n    border: 1px solid #91d5ff;\n    background-color: #e6f7ff;\n    padding: 15px 15px 15px 64px;\n    position: relative;\n    border-radius: 4px;\n    color: rgba(0, 0, 0, 0.65);\n    line-height: 1.5;\n    padding: 15px;\n  }\n\n  .xy-spin {\n    margin-right: 16px;\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: 'inline/block\u6a21\u5f0f\u5207\u6362',
           description:
             '"<div class=\\"markdown\\"><p>\u9ed8\u8ba4\u662f\u5185\u8054\u6a21\u5f0f\uff0c<code>Spin</code>\u4e0d\u4f1a\u5bbd\u5ea6100%</p></div>"',
@@ -40393,7 +40393,7 @@
           },
           dependencies: {
             react: { version: '17.0.1' },
-            'weui-react-v2': { version: '3.1.2' },
+            'weui-react-v2': { version: '3.1.3' },
             '@ant-design/icons': { version: '4.2.2' },
           },
           title: '\u81ea\u5b9a\u4e49\u6307\u793a\u7b26',
@@ -40426,7 +40426,7 @@
                 '// html,\n// body {\n//   width: 100%;\n//   height: 100%;\n//   overflow: hidden;\n// }\n// #root {\n//   width: 100%;\n//   height: 100%;\n//   // background-color: rgb(244, 244, 244);\n//   overflow-y: auto;\n//   -webkit-overflow-scrolling: auto;\n// }\n// #root .__dumi-default-mobile-demo-layout {\n//   padding: 0;\n//   width: 100%;\n//   height: 100%;\n//   overflow: auto;\n// }\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u5de6\u53f3\u6ed1\u52a8\u663e\u793a\u6309\u94ae',
           description:
             '"<div class=\\"markdown\\"><p>\u53ef\u8bbe\u7f6e\u6ed1\u52a8\u6253\u5f00\u8ddd\u79bb</p></div>"',
@@ -40481,7 +40481,7 @@
                 '.swiper-demo {\n  .fimg {\n    width: 100%;\n    height: 400px;\n    // touch-action: none;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center center;\n    box-shadow: 0 62.5px 125px -25px rgba(50, 50, 73, 0.5), 0 37.5px 75px -37.5px rgba(0, 0, 0, 0.6);\n  }\n}\n.swiper-demo2 {\n  .fimg {\n    width: 100%;\n    height: 100%;\n    // touch-action: none;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center center;\n  }\n}\n\n.tabs-demo {\n  font-size: 32px;\n\n  select {\n    display: block;\n    width: 100%;\n    height: 45px;\n    line-height: 45px;\n    font-size: 35px;\n  }\n\n  .weui-tab-panel {\n    // background-color: #607d8b;\n    text-align: center;\n    padding: 20px;\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u81ea\u52a8\u8f6e\u64ad',
           description:
             '"<div class=\\"markdown\\"><p>scaleMode\u5f00\u542f\u62d6\u62fd\u7f29\u653e\u6548\u679c</p></div>"',
@@ -40543,7 +40543,7 @@
                 '.swiper-demo {\n  .fimg {\n    width: 100%;\n    height: 400px;\n    // touch-action: none;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center center;\n    box-shadow: 0 62.5px 125px -25px rgba(50, 50, 73, 0.5), 0 37.5px 75px -37.5px rgba(0, 0, 0, 0.6);\n  }\n}\n.swiper-demo2 {\n  .fimg {\n    width: 100%;\n    height: 100%;\n    // touch-action: none;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center center;\n  }\n}\n\n.tabs-demo {\n  font-size: 32px;\n\n  select {\n    display: block;\n    width: 100%;\n    height: 45px;\n    line-height: 45px;\n    font-size: 35px;\n  }\n\n  .weui-tab-panel {\n    // background-color: #607d8b;\n    text-align: center;\n    padding: 20px;\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u5782\u76f4\u6eda\u52a8',
           description:
             '"<div class=\\"markdown\\"><p>\u5782\u76f4\u6eda\u52a8\u65f6\u5fc5\u987b\u7ed9\u5bb9\u5668\u8bbe\u7f6e\u56fa\u5b9a\u9ad8\u5ea6</p></div>"',
@@ -40614,7 +40614,7 @@
                 'import React from \'react\';\nimport { Switch, Form, FormItem, List } from \'weui-react-v2\';\n\nexport default () => (\n  <Form labelWidth="20vw">\n    <List title="\u4e0d\u540c\u5c3a\u5bf8">\n      <FormItem label="\u5c0f\u5c3a\u5bf8" access={false} align="right">\n        <Switch defaultChecked={true} size="small" />\n      </FormItem>\n      <FormItem label="\u4e2d\u7b49\u5c3a\u5bf8" access={false} align="right">\n        <Switch defaultChecked={true} size="default" />\n      </FormItem>\n      <FormItem label="\u5927\u5c3a\u5bf8" access={false} align="right">\n        <Switch defaultChecked={true} size="large" />\n      </FormItem>\n    </List>\n    <List title="\u7981\u7528\u6837\u5f0f">\n      <FormItem label="\u5f00\u7981\u7528" access={false} align="right">\n        <Switch disabled={true} checked={true} />\n      </FormItem>\n      <FormItem label="\u5173\u7981\u7528" access={false} align="right">\n        <Switch disabled={true} />\n      </FormItem>\n    </List>\n    <List title="\u81ea\u5b9a\u4e49\u6807\u8bc6\u7b26">\n      <FormItem label="\u4e2d\u6587\u63d0\u793a" access={false} align="right">\n        <Switch checkedNode="\u5f00" unCheckedNode="\u5173" />\n      </FormItem>\n    </List>\n  </Form>\n);',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u4e0d\u540c\u5c3a\u5bf8',
           identifier: 'components-switch',
         },
@@ -40680,7 +40680,7 @@
                 '.tabs-demo {\n  .block {\n    background-color: antiquewhite;\n    margin: 40px;\n    height: 600px;\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u61d2\u52a0\u8f7d',
           description:
             '"<div class=\\"markdown\\"><p>F12\u67e5\u770b\u5143\u7d20\uff0c\u53ef\u4ee5\u770b\u5230\u61d2\u52a0\u8f7d\u65f6\uff0c\u5185\u5bb9\u4e0d\u4f1a\u771f\u7684\u63d2\u5165dom,\u800c\u662f\u5360\u4f4d\u7b26\u53d6\u4ee3</p></div>"',
@@ -40776,7 +40776,7 @@
                 '.swiper-demo {\n  .fimg {\n    width: 100%;\n    height: 400px;\n    // touch-action: none;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center center;\n    box-shadow: 0 62.5px 125px -25px rgba(50, 50, 73, 0.5), 0 37.5px 75px -37.5px rgba(0, 0, 0, 0.6);\n  }\n}\n.swiper-demo2 {\n  .fimg {\n    width: 100%;\n    height: 100%;\n    // touch-action: none;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center center;\n  }\n}\n\n.tabs-demo {\n  font-size: 32px;\n\n  select {\n    display: block;\n    width: 100%;\n    height: 45px;\n    line-height: 45px;\n    font-size: 35px;\n  }\n\n  .weui-tab-panel {\n    // background-color: #607d8b;\n    text-align: center;\n    padding: 20px;\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u52a8\u6001\u589e\u51cf',
           description:
             '"<div class=\\"markdown\\"><p>\u5f53tabbar\u6ea2\u51fa\u540e\uff0c\u4f1a\u663e\u793a\u7bad\u5934, \u9ed8\u8ba4\u5f00\u542f\u81ea\u52a8\u9ad8\u5ea6</p></div>"',
@@ -40815,7 +40815,7 @@
           dependencies: {
             classnames: { version: '2.2.6' },
             react: { version: '17.0.1' },
-            'weui-react-v2': { version: '3.1.2' },
+            'weui-react-v2': { version: '3.1.3' },
           },
           title: '\u5782\u76f4\u663e\u793a',
           description:
@@ -40842,7 +40842,7 @@
                 'import React from \'react\';\nimport { SafeArea, List, ListItem, TextArea } from \'weui-react-v2\';\n\nexport default function () {\n  return (\n    <SafeArea style={{ margin: \'-0.16rem\', minHeight: \'100vh\', backgroundColor: \'#f4f4f4\', padding: \'5px 0 10px\' }}>\n      <List>\n        <ListItem hd="\u914d\u5408\u6807\u9898:" alignItems="flex-start">\n          <TextArea placeholder="\u8bf7\u63cf\u8ff0\u4f60\u6240\u53d1\u751f\u7684\u95ee\u9898" />\n        </ListItem>\n        <ListItem>\n          <TextArea disabled={true} defaultValue="\u6211\u662f\u7981\u7528\u7684, ---\u606d\u559c\u53d1\u8d22\ud83c\udf89---" placeholder="\u8bf7\u63cf\u8ff0\u4f60\u6240\u53d1\u751f\u7684\u95ee\u9898" />\n        </ListItem>\n      </List>\n\n      <List title="\u95ee\u9898\u63cf\u8ff0">\n        <ListItem>\n          <TextArea placeholder="\u8bf7\u63cf\u8ff0\u4f60\u6240\u53d1\u751f\u7684\u95ee\u9898" />\n        </ListItem>\n      </List>\n    </SafeArea>\n  );\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u6587\u672c\u57df',
           description: '"<div class=\\"markdown\\"><p>\u9ed8\u8ba4\u6700\u5927\u5b57\u7b26\u6570\u4e3a200</p></div>"',
           identifier: 'textarea-demo',
@@ -40871,7 +40871,7 @@
               content: '.toast-demo {\n  .weui-btn {\n    margin-top: 20px;\n  }\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u8f7b\u63d0\u793a',
           description:
             '"<div class=\\"markdown\\"><p>\u5927\u90e8\u5206\u90fd\u662f\u7531js\u5f39\u51fa\u64cd\u4f5c, <code>duration</code>\u6301\u7eed\u4e8b\u4ef6\u8bbe\u4e3a0\u5219\u4e0d\u4f1a\u81ea\u52a8\u5173\u95ed</p></div>"',
@@ -40934,7 +40934,7 @@
                 "import React, { useState } from 'react';\nimport { Toptips, Button, WhiteSpace } from 'weui-react-v2';\n\nexport default () => {\n  return (\n    <>\n      <WhiteSpace size=\"xl\" />\n      <Button\n        block={true}\n        onClick={() => {\n          console.log('\u6253\u5f00\u6210\u63d0\u793a');\n          Toptips('\u63d0\u4ea4\u6210\u529f', 'success');\n        }}\n      >\n        \u6210\u529f\u63d0\u793a\n      </Button>\n      <WhiteSpace />\n      <Button block={true} onClick={() => Toptips('\u8bf7\u586b\u5199\u624b\u673a\u53f7', 'fail')}>\n        \u5931\u8d25\u63d0\u793a\n      </Button>\n      <WhiteSpace />\n      <Button block={true} onClick={() => Toptips('\u8bf7\u586b\u5199\u624b\u673a\u53f7', 'default')}>\n        \u666e\u901a\u7c7b\u578b\n      </Button>\n    </>\n  );\n};",
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u4e24\u79cd\u63d0\u793a',
           description:
             '"<div class=\\"markdown\\"><p>\u5185\u7f6e\u6210\u529f\u548c\u5931\u8d25\u4e24\u79cd\u63d0\u793a \u8bbe\u7f6e <code>type</code> \u5c5e\u6027\u4e3a <code>success</code>, <code>fail</code>\u3002</p></div>"',
@@ -40960,7 +40960,7 @@
                 'import React from \'react\';\nimport { SafeArea, List, ListItem, SingleUpload, MultiUpload } from \'weui-react-v2\';\n\ninterface Res {\n  code: number;\n  filekey: string;\n}\n\nexport default function () {\n  function getResponse(res: Res) {\n    if (res && res.code === 0) {\n      return res.filekey;\n    } else {\n      throw new Error(\'\u540e\u53f0\u4e0a\u4f20\u9519\u8bef\');\n    }\n  }\n\n  return (\n    <SafeArea style={{ margin: \'-0.16rem\', minHeight: \'100vh\', backgroundColor: \'#f4f4f4\', padding: \'5px 0 10px\' }}>\n      <List title="\u5355\u6587\u4ef6\u4e0a\u4f20">\n        <ListItem hd="\u4e0a\u4f20\u6210\u529f" alignItems="flex-start">\n          <SingleUpload<Res> style={{ marginLeft: \'30px\' }} action="/upload" getResponse={getResponse} />\n        </ListItem>\n        <ListItem hd="\u4e0a\u4f20\u5931\u8d25" alignItems="flex-start">\n          <SingleUpload<Res> style={{ marginLeft: \'30px\' }} action="/upload2" getResponse={getResponse} />\n        </ListItem>\n        <ListItem hd="\u9759\u6001\u663e\u793a" alignItems="flex-start">\n          <SingleUpload<Res>\n            style={{ marginLeft: \'30px\' }}\n            value="https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg"\n            disabled={true}\n            action="/upload2"\n            getResponse={getResponse}\n          />\n        </ListItem>\n      </List>\n      <List title="\u591a\u6587\u4ef6\u4e0a\u4f20">\n        <ListItem hd="\u56fe\u7247\u4e0a\u4f20" alignItems="flex-start">\n          <MultiUpload<Res>\n            style={{ marginLeft: \'30px\' }}\n            action="/upload"\n            maxSize={10}\n            length={3}\n            getResponse={getResponse}\n            max={4}\n          />\n        </ListItem>\n        <ListItem hd="\u9759\u6001\u663e\u793a" alignItems="flex-start">\n          <MultiUpload<Res>\n            style={{ marginLeft: \'30px\' }}\n            disabled={true}\n            value={[\n              \'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg\',\n              \'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg\',\n              \'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg\',\n              \'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg\',\n            ]}\n            action="/upload"\n            length={3}\n            getResponse={getResponse}\n            max={6}\n          />\n        </ListItem>\n      </List>\n    </SafeArea>\n  );\n}\n',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u4e0a\u4f20\u7ec4\u5408',
           identifier: 'upload-demo',
         },
@@ -40997,7 +40997,7 @@
                 'import React from \'react\';\nimport { WhiteSpace, Button } from \'weui-react-v2\';\n\nexport default () => (\n  <>\n    <Button block>\u6700\u5c0f\u95f4\u8ddd</Button>\n    <WhiteSpace size="xs" />\n    <Button block>\u5c0f\u95f4\u8ddd</Button>\n    <WhiteSpace size="sm" />\n    <Button block>\u4e2d\u7b49\u95f4\u8ddd(\u9ed8\u8ba4)</Button>\n    <WhiteSpace size="md" />\n    <Button block>\u5927\u95f4\u8ddd</Button>\n    <WhiteSpace size="lg" />\n    <Button block>\u6700\u5927\u95f4\u8ddd</Button>\n    <WhiteSpace size="xl" />\n  </>\n);',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u4e0d\u540c\u5c3a\u5bf8',
           identifier: 'components-white-space',
         },
@@ -41041,7 +41041,7 @@
                 'import React from \'react\';\nimport { WingBlank, WhiteSpace, Button } from \'weui-react-v2\';\n\nexport default () => (\n  <>\n    <WingBlank size="sm">\n      <Button block>\u5c0f\u5c3a\u5bf8</Button>\n    </WingBlank>\n    <WhiteSpace />\n    <WingBlank size="md">\n      <Button block>\u4e2d\u7b49\u5c3a\u5bf8(\u9ed8\u8ba4)</Button>\n    </WingBlank>\n    <WhiteSpace />\n    <WingBlank size="lg">\n      <Button block>\u5927\u5c3a\u5bf8</Button>\n    </WingBlank>\n  </>\n);',
             },
           },
-          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+          dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
           title: '\u4e0d\u540c\u5c3a\u5bf8',
           identifier: 'components-wing-blank',
         },
@@ -41143,7 +41143,7 @@
                     "import { PickerItem } from 'weui-react-v2';\n\n/**\n * \u5355\u5217\u6570\u636e\n */\nexport const singlePickerData: PickerItem[] = [\n  {\n    label: '\u98de\u673a\u7968',\n    value: '\u98de\u673a\u7968',\n  },\n  {\n    label: '\u706b\u8f66\u7968',\n    value: '\u706b\u8f66\u7968',\n  },\n  {\n    label: '\u7684\u58eb\u7968',\n    value: '\u7684\u58eb\u7968',\n  },\n  {\n    label: '\u4f4f\u5bbf\u8d39',\n    value: '\u4f4f\u5bbf\u8d39',\n  },\n  {\n    label: '\u793c\u54c1\u8d39(disabled)',\n    value: '\u793c\u54c1\u8d39',\n    disabled: true,\n  },\n  {\n    label: '\u6d3b\u52a8\u8d39',\n    value: '\u6d3b\u52a8\u8d39',\n  },\n  {\n    label: '\u901a\u8baf\u8d39',\n    value: '\u901a\u8baf\u8d39',\n  },\n  {\n    label: '\u8865\u52a9',\n    value: '\u8865\u52a9',\n  },\n  {\n    label: '\u901a\u8baf\u8d392',\n    value: '\u901a\u8baf\u8d392',\n  },\n  {\n    label: '\u5176\u4ed6',\n    value: '\u5176\u4ed6',\n  },\n];\n\n/**\n * \u53cc\u5217\u6570\u636e\n */\nexport const miltiplePickerData: PickerItem[][] = [\n  [\n    {\n      label: '\u98de\u673a\u7968',\n      value: '\u98de\u673a\u7968',\n    },\n    {\n      label: '\u706b\u8f66\u7968',\n      value: '\u706b\u8f66\u7968',\n    },\n    {\n      label: '\u7684\u58eb\u7968',\n      value: '\u7684\u58eb\u7968',\n    },\n    {\n      label: '\u6253\u5370\u7968',\n      value: '\u6253\u5370\u7968',\n    },\n  ],\n  [\n    {\n      label: '\u4f4f\u5bbf\u8d39',\n      value: '\u4f4f\u5bbf\u8d39',\n    },\n    {\n      label: '\u793c\u54c1\u8d39',\n      value: '\u793c\u54c1\u8d39',\n    },\n    {\n      label: '\u6d3b\u52a8\u8d39',\n      value: '\u6d3b\u52a8\u8d39',\n    },\n    {\n      label: '\u901a\u8baf\u8d39',\n      value: '\u901a\u8baf\u8d39',\n    },\n    {\n      label: '\u8865\u52a9',\n      value: '\u8865\u52a9',\n    },\n  ],\n];\n\n/**\n * \u7ea7\u8054\u6570\u636e\n */\nexport const cascadePickerData: PickerItem[] = [\n  {\n    label: '\u7968\u636e',\n    value: '\u7968\u636e',\n    children: [\n      {\n        label: '\u98de\u673a\u7968',\n        value: '\u98de\u673a\u7968',\n      },\n      {\n        label: '\u706b\u8f66\u7968',\n        value: '\u706b\u8f66\u7968',\n      },\n      {\n        label: '\u7684\u58eb\u7968',\n        value: '\u7684\u58eb\u7968',\n      },\n      {\n        label: '\u540c\u503c\u6d4b\u8bd5',\n        value: '\u540c\u503c\u6d4b\u8bd5',\n      },\n      {\n        label: '\u6253\u5370\u7968',\n        value: '\u6253\u5370\u7968',\n      },\n    ],\n  },\n  {\n    label: '\u8d39\u7528',\n    value: '\u8d39\u7528',\n    children: [\n      {\n        label: '\u4f4f\u5bbf\u8d39',\n        value: '\u4f4f\u5bbf\u8d39',\n      },\n      {\n        label: '\u793c\u54c1\u8d39',\n        value: '\u793c\u54c1\u8d39',\n      },\n      {\n        label: '\u6d3b\u52a8\u8d39',\n        value: '\u6d3b\u52a8\u8d39',\n      },\n      {\n        label: '\u540c\u503c\u6d4b\u8bd5',\n        value: '\u540c\u503c\u6d4b\u8bd5',\n      },\n      {\n        label: '\u901a\u8baf\u8d39',\n        value: '\u901a\u8baf\u8d39',\n      },\n      {\n        label: '\u8865\u52a9',\n        value: '\u8865\u52a9',\n      },\n    ],\n  },\n];\n",
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: 'Picker\u9009\u62e9\u5668',
               identifier: 'picker-picker',
             },
@@ -41166,7 +41166,7 @@
                     "import { PickerItem } from 'weui-react-v2';\n\n/**\n * \u5355\u5217\u6570\u636e\n */\nexport const singlePickerData: PickerItem[] = [\n  {\n    label: '\u98de\u673a\u7968',\n    value: '\u98de\u673a\u7968',\n  },\n  {\n    label: '\u706b\u8f66\u7968',\n    value: '\u706b\u8f66\u7968',\n  },\n  {\n    label: '\u7684\u58eb\u7968',\n    value: '\u7684\u58eb\u7968',\n  },\n  {\n    label: '\u4f4f\u5bbf\u8d39',\n    value: '\u4f4f\u5bbf\u8d39',\n  },\n  {\n    label: '\u793c\u54c1\u8d39(disabled)',\n    value: '\u793c\u54c1\u8d39',\n    disabled: true,\n  },\n  {\n    label: '\u6d3b\u52a8\u8d39',\n    value: '\u6d3b\u52a8\u8d39',\n  },\n  {\n    label: '\u901a\u8baf\u8d39',\n    value: '\u901a\u8baf\u8d39',\n  },\n  {\n    label: '\u8865\u52a9',\n    value: '\u8865\u52a9',\n  },\n  {\n    label: '\u901a\u8baf\u8d392',\n    value: '\u901a\u8baf\u8d392',\n  },\n  {\n    label: '\u5176\u4ed6',\n    value: '\u5176\u4ed6',\n  },\n];\n\n/**\n * \u53cc\u5217\u6570\u636e\n */\nexport const miltiplePickerData: PickerItem[][] = [\n  [\n    {\n      label: '\u98de\u673a\u7968',\n      value: '\u98de\u673a\u7968',\n    },\n    {\n      label: '\u706b\u8f66\u7968',\n      value: '\u706b\u8f66\u7968',\n    },\n    {\n      label: '\u7684\u58eb\u7968',\n      value: '\u7684\u58eb\u7968',\n    },\n    {\n      label: '\u6253\u5370\u7968',\n      value: '\u6253\u5370\u7968',\n    },\n  ],\n  [\n    {\n      label: '\u4f4f\u5bbf\u8d39',\n      value: '\u4f4f\u5bbf\u8d39',\n    },\n    {\n      label: '\u793c\u54c1\u8d39',\n      value: '\u793c\u54c1\u8d39',\n    },\n    {\n      label: '\u6d3b\u52a8\u8d39',\n      value: '\u6d3b\u52a8\u8d39',\n    },\n    {\n      label: '\u901a\u8baf\u8d39',\n      value: '\u901a\u8baf\u8d39',\n    },\n    {\n      label: '\u8865\u52a9',\n      value: '\u8865\u52a9',\n    },\n  ],\n];\n\n/**\n * \u7ea7\u8054\u6570\u636e\n */\nexport const cascadePickerData: PickerItem[] = [\n  {\n    label: '\u7968\u636e',\n    value: '\u7968\u636e',\n    children: [\n      {\n        label: '\u98de\u673a\u7968',\n        value: '\u98de\u673a\u7968',\n      },\n      {\n        label: '\u706b\u8f66\u7968',\n        value: '\u706b\u8f66\u7968',\n      },\n      {\n        label: '\u7684\u58eb\u7968',\n        value: '\u7684\u58eb\u7968',\n      },\n      {\n        label: '\u540c\u503c\u6d4b\u8bd5',\n        value: '\u540c\u503c\u6d4b\u8bd5',\n      },\n      {\n        label: '\u6253\u5370\u7968',\n        value: '\u6253\u5370\u7968',\n      },\n    ],\n  },\n  {\n    label: '\u8d39\u7528',\n    value: '\u8d39\u7528',\n    children: [\n      {\n        label: '\u4f4f\u5bbf\u8d39',\n        value: '\u4f4f\u5bbf\u8d39',\n      },\n      {\n        label: '\u793c\u54c1\u8d39',\n        value: '\u793c\u54c1\u8d39',\n      },\n      {\n        label: '\u6d3b\u52a8\u8d39',\n        value: '\u6d3b\u52a8\u8d39',\n      },\n      {\n        label: '\u540c\u503c\u6d4b\u8bd5',\n        value: '\u540c\u503c\u6d4b\u8bd5',\n      },\n      {\n        label: '\u901a\u8baf\u8d39',\n        value: '\u901a\u8baf\u8d39',\n      },\n      {\n        label: '\u8865\u52a9',\n        value: '\u8865\u52a9',\n      },\n    ],\n  },\n];\n",
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: 'Picker\u9762\u677f',
               identifier: 'picker-demo',
             },
@@ -41184,7 +41184,7 @@
                     "import React, { useState } from 'react';\nimport { List, ListItem, Picker, SafeArea, PickerItem, Button } from 'weui-react-v2';\n\nfunction getRandom(): PickerItem {\n  const n = Math.random();\n  return { label: n, value: n };\n}\n\nexport default function () {\n  const [data, setData] = useState<PickerItem[]>([]);\n  const [val, setVal] = useState<any>(null);\n\n  function switchData() {\n    setTimeout(() => {\n      setData([getRandom(), getRandom(), getRandom()]);\n    }, 300);\n  }\n\n  return (\n    <SafeArea style={{ margin: '-0.16rem', minHeight: '100vh', backgroundColor: '#f4f4f4', padding: '5px 0 10px' }}>\n      <List>\n        <Picker placeholder=\"\u8bf7\u9009\u62e9\" data={data} value={val} onChange={setVal}>\n          <ListItem hd=\"\u968f\u673a\" arrow={true} />\n        </Picker>\n        <ListItem>\n          <Button onClick={switchData}>\u5207\u6362\u6570\u636e\u6e90</Button>\n        </ListItem>\n      </List>\n    </SafeArea>\n  );\n}\n",
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u5f02\u6b65\u8bbe\u7f6e\u6570\u636e\u6e90',
               identifier: 'picker-async',
             },
@@ -42559,7 +42559,7 @@
                   content: '.toast-demo {\n  .weui-btn {\n    margin-top: 20px;\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u8f7b\u63d0\u793a',
               description:
                 '<div class="markdown"><p>\u5927\u90e8\u5206\u90fd\u662f\u7531js\u5f39\u51fa\u64cd\u4f5c, <code>duration</code>\u6301\u7eed\u4e8b\u4ef6\u8bbe\u4e3a0\u5219\u4e0d\u4f1a\u81ea\u52a8\u5173\u95ed</p></div>',
@@ -43345,7 +43345,7 @@
                     '.skeleton-demo {\n  .weui-item-bd {\n    flex: 0 0 160px;\n  }\n\n  .weui-item-ft {\n    flex: 1;\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u5207\u6362\u52a0\u8f7d\u72b6\u6001',
               identifier: 'components-skeleton',
             },
@@ -43368,7 +43368,7 @@
                     '.skeleton-demo {\n  .weui-item-bd {\n    flex: 0 0 160px;\n  }\n\n  .weui-item-ft {\n    flex: 1;\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: 'Stripe\u7528\u4e8e\u884c\u5185\u6570\u636e',
               identifier: 'components-skeleton-1',
             },
@@ -44808,7 +44808,7 @@
                     'import React from \'react\';\nimport { SafeArea, List, ListItem, TextArea } from \'weui-react-v2\';\n\nexport default function () {\n  return (\n    <SafeArea style={{ margin: \'-0.16rem\', minHeight: \'100vh\', backgroundColor: \'#f4f4f4\', padding: \'5px 0 10px\' }}>\n      <List>\n        <ListItem hd="\u914d\u5408\u6807\u9898:" alignItems="flex-start">\n          <TextArea placeholder="\u8bf7\u63cf\u8ff0\u4f60\u6240\u53d1\u751f\u7684\u95ee\u9898" />\n        </ListItem>\n        <ListItem>\n          <TextArea disabled={true} defaultValue="\u6211\u662f\u7981\u7528\u7684, ---\u606d\u559c\u53d1\u8d22\ud83c\udf89---" placeholder="\u8bf7\u63cf\u8ff0\u4f60\u6240\u53d1\u751f\u7684\u95ee\u9898" />\n        </ListItem>\n      </List>\n\n      <List title="\u95ee\u9898\u63cf\u8ff0">\n        <ListItem>\n          <TextArea placeholder="\u8bf7\u63cf\u8ff0\u4f60\u6240\u53d1\u751f\u7684\u95ee\u9898" />\n        </ListItem>\n      </List>\n    </SafeArea>\n  );\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u6587\u672c\u57df',
               description: '<div class="markdown"><p>\u9ed8\u8ba4\u6700\u5927\u5b57\u7b26\u6570\u4e3a200</p></div>',
               identifier: 'textarea-demo',
@@ -44908,7 +44908,7 @@
                     'import React from \'react\';\nimport { WingBlank, WhiteSpace, Button } from \'weui-react-v2\';\n\nexport default () => (\n  <>\n    <WingBlank size="sm">\n      <Button block>\u5c0f\u5c3a\u5bf8</Button>\n    </WingBlank>\n    <WhiteSpace />\n    <WingBlank size="md">\n      <Button block>\u4e2d\u7b49\u5c3a\u5bf8(\u9ed8\u8ba4)</Button>\n    </WingBlank>\n    <WhiteSpace />\n    <WingBlank size="lg">\n      <Button block>\u5927\u5c3a\u5bf8</Button>\n    </WingBlank>\n  </>\n);',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u4e0d\u540c\u5c3a\u5bf8',
               identifier: 'components-wing-blank',
             },
@@ -49014,7 +49014,7 @@
                     'import React from \'react\';\nimport { SafeArea, Preview, PreviewItem, PreviewButton, WhiteSpace } from \'weui-react-v2\';\n\nexport default () => (\n  <SafeArea style={{ margin: \'-0.16rem\', minHeight: \'100vh\', backgroundColor: \'#f4f4f4\', padding: \'5px 0 10px\' }}>\n    <Preview subTitle="\u4ed8\u6b3e\u91d1\u989d" title="\xa52400.00" footer={<PreviewButton key="c">\u64cd\u4f5c</PreviewButton>}>\n      <PreviewItem title="\u5546\u54c1">\u7535\u52a8\u6253\u5355\u673a</PreviewItem>\n      <PreviewItem title="\u6807\u9898\u6807\u9898">\u540d\u5b57\u540d\u5b57\u540d\u5b57</PreviewItem>\n      <PreviewItem title="\u6807\u9898\u6807\u9898">\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57</PreviewItem>\n    </Preview>\n\n    <WhiteSpace size="xl" />\n\n    <Preview\n      subTitle="\u4ed8\u6b3e\u91d1\u989d"\n      title="\xa52400.00"\n      footer={[\n        <PreviewButton key="a">\u8f85\u52a9\u64cd\u4f5c</PreviewButton>,\n        <PreviewButton type="primary" key="b">\n          \u63d0\u4ea4\n        </PreviewButton>,\n      ]}\n    >\n      <PreviewItem title="\u5546\u54c1">\u7535\u52a8\u6253\u5355\u673a</PreviewItem>\n      <PreviewItem title="\u6807\u9898\u6807\u9898">\u540d\u5b57\u540d\u5b57\u540d\u5b57</PreviewItem>\n      <PreviewItem title="\u6807\u9898\u6807\u9898">\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57</PreviewItem>\n    </Preview>\n\n    <WhiteSpace size="xl" />\n\n    <Preview subTitle="\u5de6\u5bf9\u9f50" align="left">\n      <PreviewItem title="\u59d3\u540d">XueYou</PreviewItem>\n      <PreviewItem title="\u5e74\u9f84">666</PreviewItem>\n      <PreviewItem title="\u559c\u597d">\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57\u5f88\u957f\u5f88\u957f\u7684\u540d\u5b57</PreviewItem>\n    </Preview>\n  </SafeArea>\n);',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u9884\u89c8\u5185\u5bb9',
               identifier: 'components-preview',
             },
@@ -51316,7 +51316,7 @@
                     "import React from 'react';\nimport { Button, WhiteSpace, DialogPop } from 'weui-react-v2';\n\nexport default function () {\n  function pop() {\n    DialogPop({\n      title: '\u5bf9\u8bdd\u6846\u6807\u9898',\n      children: '\u5f39\u7a97\u5185\u5bb9\uff0c\u544a\u77e5\u5f53\u524d\u72b6\u6001\u3001\u4fe1\u606f\u548c\u89e3\u51b3\u65b9\u6cd5\uff0c\u63cf\u8ff0\u6587\u5b57\u5c3d\u91cf\u63a7\u5236\u5728\u4e09\u884c\u5185',\n      onConfirm: () => {\n        return new Promise((resolve) => {\n          setTimeout(() => {\n            resolve(true);\n          }, 2000);\n        });\n      },\n    });\n  }\n\n  return (\n    <div>\n      <WhiteSpace />\n      <Button block={true} size=\"large\" type=\"primary\" onClick={pop}>\n        \u663e\u793a\n      </Button>\n    </div>\n  );\n}\n",
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u6a21\u6001\u5bf9\u8bdd\u6846',
               description:
                 '<div class="markdown"><p>\u5c5e\u6027\u57fa\u672c\u4e0e<code>HalfScreenDialog</code>\u4fdd\u6301\u4e00\u81f4</p></div>',
@@ -51341,7 +51341,7 @@
                     '.demo-prompt {\n  .title {\n    font-size: 30px;\n    color: #888;\n    line-height: 1.5;\n  }\n  .tips {\n    font-size: 26px;\n    color: #ff4d4f;\n    margin-top: 10px;\n    margin-bottom: 0;\n    text-align: left;\n  }\n  .input-container {\n    margin-top: 18px;\n    border: 2px solid #ddd;\n    border-radius: 6px;\n    height: 72px;\n    line-height: 1;\n    min-width: 65vw;\n\n    input {\n      font-size: 30px;\n      position: relative;\n      border: 0;\n      width: 100%;\n      height: 100%;\n      box-sizing: border-box;\n      margin: 0;\n      padding: 0 15px;\n    }\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u5c01\u88c5\u8f93\u5165\u6846',
               description:
                 '<div class="markdown"><p>\u6839\u636e\u4e1a\u52a1\u548c\u6837\u5f0f\u9700\u8981\uff0c\u81ea\u884c\u5c01\u88c5</p></div>',
@@ -52285,7 +52285,7 @@
                     '// html,\n// body {\n//   width: 100%;\n//   height: 100%;\n//   overflow: hidden;\n// }\n// #root {\n//   width: 100%;\n//   height: 100%;\n//   // background-color: rgb(244, 244, 244);\n//   overflow-y: auto;\n//   -webkit-overflow-scrolling: auto;\n// }\n// #root .__dumi-default-mobile-demo-layout {\n//   padding: 0;\n//   width: 100%;\n//   height: 100%;\n//   overflow: auto;\n// }\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u5de6\u53f3\u6ed1\u52a8\u663e\u793a\u6309\u94ae',
               description: '<div class="markdown"><p>\u53ef\u8bbe\u7f6e\u6ed1\u52a8\u6253\u5f00\u8ddd\u79bb</p></div>',
               identifier: 'swipe-action-demo',
@@ -52952,7 +52952,7 @@
                     '.flex-demo {\n  .title {\n    font-size: 34px;\n    padding: 20px 10px;\n    font-weight: bold;\n  }\n\n  .title + .title {\n    margin-top: 50px;\n  }\n\n  .ant-col {\n    min-height: 30px;\n    margin-top: 8px;\n    margin-bottom: 8px;\n    padding: 5px 0;\n    color: #fff;\n    text-align: center;\n    border-radius: 0;\n    font-size: 24px;\n    padding: 16px 0;\n    background: #00a0e9;\n\n    &:nth-child(2n + 1) {\n      background: rgba(0, 160, 233, 0.7);\n    }\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u5bf9\u5176\u65b9\u5f0f',
               description:
                 '<div class="markdown"><p>\u6839\u636e\u4e3b\u8f74\u8fdb\u884c\u5de6\u5bf9\u9f50\uff0c\u5c45\u4e2d\u5bf9\u9f50\uff0c\u53f3\u5bf9\u9f50</p></div>',
@@ -53673,7 +53673,7 @@
                     "import React, { useState } from 'react';\nimport { Gallery, Button, WhiteSpace } from 'weui-react-v2';\n\nconst images = [\n  {\n    src: require('../../swiper/pexels-photo-296878.jpeg'),\n    title: 'Photo: Michael Hull',\n    desc: \"Dummy caption. It's Greek to you. Unless, of course, you're Greek, in which case, it really makes no sense.\",\n  },\n  {\n    src: require('./15008465772_d50c8f0531_h.jpg'),\n    title: '\u4e00\u53ea\u718a',\n    desc: '\u61a8\u61a8\u7684\u718a\uff0c \u77ed\u77ed\u7684\u5c3e\u5df4',\n  },\n  {\n    src: require('./15008518202_c265dfa55f_h.jpg'),\n  },\n  {\n    src: require('./15008867125_b61960af01_h.jpg'),\n  },\n];\n\nexport default () => {\n  const [visible, setVisible] = useState(true);\n  return (\n    <div>\n      <WhiteSpace size=\"xl\" />\n      <WhiteSpace size=\"xl\" />\n      <Button block={true} type=\"primary\" size=\"large\" onClick={() => setVisible(true)}>\n        \u6253\u5f00\n      </Button>\n      <Gallery className=\"image-view-demo\" data={images} visible={visible} onVisibleChange={setVisible} />\n    </div>\n  );\n};\n",
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u53d7\u63a7\u5c55\u793a',
               description:
                 '<div class="markdown"><p>\u53ef\u8bbe\u7f6e\u9ed8\u8ba4\u67e5\u770b\u54ea\u4e00\u5f20\u56fe\u7247</p></div>',
@@ -54297,7 +54297,7 @@
                     '.swiper-demo {\n  .fimg {\n    width: 100%;\n    height: 400px;\n    // touch-action: none;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center center;\n    box-shadow: 0 62.5px 125px -25px rgba(50, 50, 73, 0.5), 0 37.5px 75px -37.5px rgba(0, 0, 0, 0.6);\n  }\n}\n.swiper-demo2 {\n  .fimg {\n    width: 100%;\n    height: 100%;\n    // touch-action: none;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center center;\n  }\n}\n\n.tabs-demo {\n  font-size: 32px;\n\n  select {\n    display: block;\n    width: 100%;\n    height: 45px;\n    line-height: 45px;\n    font-size: 35px;\n  }\n\n  .weui-tab-panel {\n    // background-color: #607d8b;\n    text-align: center;\n    padding: 20px;\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u81ea\u52a8\u8f6e\u64ad',
               description:
                 '<div class="markdown"><p>scaleMode\u5f00\u542f\u62d6\u62fd\u7f29\u653e\u6548\u679c</p></div>',
@@ -54322,7 +54322,7 @@
                     '.swiper-demo {\n  .fimg {\n    width: 100%;\n    height: 400px;\n    // touch-action: none;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center center;\n    box-shadow: 0 62.5px 125px -25px rgba(50, 50, 73, 0.5), 0 37.5px 75px -37.5px rgba(0, 0, 0, 0.6);\n  }\n}\n.swiper-demo2 {\n  .fimg {\n    width: 100%;\n    height: 100%;\n    // touch-action: none;\n    background-size: cover;\n    background-repeat: no-repeat;\n    background-position: center center;\n  }\n}\n\n.tabs-demo {\n  font-size: 32px;\n\n  select {\n    display: block;\n    width: 100%;\n    height: 45px;\n    line-height: 45px;\n    font-size: 35px;\n  }\n\n  .weui-tab-panel {\n    // background-color: #607d8b;\n    text-align: center;\n    padding: 20px;\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u5782\u76f4\u6eda\u52a8',
               description:
                 '<div class="markdown"><p>\u5782\u76f4\u6eda\u52a8\u65f6\u5fc5\u987b\u7ed9\u5bb9\u5668\u8bbe\u7f6e\u56fa\u5b9a\u9ad8\u5ea6</p></div>',
@@ -55772,7 +55772,7 @@
                     '.form-demo {\n  padding: 112px 0 40px;\n  display: flex;\n  flex-direction: column;\n  min-height: 100%;\n  background-color: #ffffff;\n  box-sizing: border-box;\n  line-height: 1.4;\n  font-size: 28px;\n\n  .form-margin {\n    margin: 96px 0;\n  }\n\n  .form-text-area {\n    padding: 0 64px;\n    color: rgba(0, 0, 0, 0.9);\n    text-align: center;\n\n    .form-title {\n      font-size: 44px;\n      font-weight: 700;\n      line-height: 1.36;\n    }\n    .form-desc {\n      font-size: 30px;\n      margin-top: 32px;\n      line-height: 60px;\n    }\n  }\n\n  .form-tips {\n    overflow: hidden;\n    margin-bottom: 48px;\n    text-align: center;\n    color: rgba(0, 0, 0, 0.5);\n\n    .weui-checkbox {\n      font-size: 28px;\n    }\n\n    a {\n      color: #576b95;\n    }\n  }\n\n  .form-btns {\n    text-align: center;\n\n    .weui-btn {\n      width: 368px;\n      margin: auto;\n    }\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u8868\u5355\u9a8c\u8bc1',
               description:
                 '<div class="markdown"><p>\u8868\u5355\u9a8c\u8bc1\u975e\u5e38\u81ea\u7136\uff0c\u6302\u63a5\u4e86\u539f\u751f\u7684\u8868\u5355</p></div>',
@@ -56000,7 +56000,7 @@
                     "import React from 'react';\nimport { SafeArea, Search } from 'weui-react-v2';\n\nexport default () => {\n  return (\n    <SafeArea style={{ margin: '-0.16rem' }}>\n      <Search\n        placeholder=\"\u641c\u7d22\"\n        onConfirm={(val) => console.log('\u786e\u8ba4\u8f93\u5165: ', val)}\n        onSearch={(val) => console.log('search: ', val)}\n        onCancel={() => console.log('\u53d6\u6d88\u641c\u7d22')}\n      />\n    </SafeArea>\n  );\n};\n",
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u641c\u7d22\u680f',
               identifier: 'search-demo',
             },
@@ -58467,7 +58467,7 @@
                     'import React from \'react\';\nimport { Loadmore } from \'weui-react-v2\';\n\nexport default () => (\n  <>\n    <Loadmore tips="\u6b63\u5728\u52a0\u8f7d" loading={true} />\n    <br />\n    <Loadmore tips="\u6682\u65e0\u6570\u636e" />\n    <br />\n    <Loadmore dot={true} />\n    <br />\n  </>\n);',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u52a0\u8f7d\u66f4\u591a',
               identifier: 'components-loadmore',
             },
@@ -58650,7 +58650,7 @@
                     '.safearea-demo {\n  .block {\n    font-size: 60px;\n    color: #fff;\n    display: block;\n    width: 100%;\n    text-align: center;\n    height: 600px;\n    line-height: 600px;\n    background-color: #009a61;\n    background-image: linear-gradient(\n      -45deg,\n      rgba(255, 255, 255, 0.2) 25%,\n      transparent 25%,\n      transparent 50%,\n      rgba(255, 255, 255, 0.2) 50%,\n      rgba(255, 255, 255, 0.2) 75%,\n      transparent 75%,\n      transparent\n    );\n\n    &:nth-child(odd) {\n      background: repeating-linear-gradient(135deg, #ffeb3b, #ffeb3b 0.25em, #0092b7 0, #0092b7 0.75em);\n    }\n  }\n}\n',
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u56db\u5468\u4fdd\u7559\u5b89\u5168\u8fb9\u8ddd',
               identifier: 'components-safe-area',
             },
@@ -59389,7 +59389,7 @@
                     "import React, { useState } from 'react';\nimport { Toptips, Button, WhiteSpace } from 'weui-react-v2';\n\nexport default () => {\n  return (\n    <>\n      <WhiteSpace size=\"xl\" />\n      <Button\n        block={true}\n        onClick={() => {\n          console.log('\u6253\u5f00\u6210\u63d0\u793a');\n          Toptips('\u63d0\u4ea4\u6210\u529f', 'success');\n        }}\n      >\n        \u6210\u529f\u63d0\u793a\n      </Button>\n      <WhiteSpace />\n      <Button block={true} onClick={() => Toptips('\u8bf7\u586b\u5199\u624b\u673a\u53f7', 'fail')}>\n        \u5931\u8d25\u63d0\u793a\n      </Button>\n      <WhiteSpace />\n      <Button block={true} onClick={() => Toptips('\u8bf7\u586b\u5199\u624b\u673a\u53f7', 'default')}>\n        \u666e\u901a\u7c7b\u578b\n      </Button>\n    </>\n  );\n};",
                 },
               },
-              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.2' } },
+              dependencies: { react: { version: '17.0.1' }, 'weui-react-v2': { version: '3.1.3' } },
               title: '\u4e24\u79cd\u63d0\u793a',
               description:
                 '<div class="markdown"><p>\u5185\u7f6e\u6210\u529f\u548c\u5931\u8d25\u4e24\u79cd\u63d0\u793a \u8bbe\u7f6e <code>type</code> \u5c5e\u6027\u4e3a <code>success</code>, <code>fail</code>\u3002</p></div>',
@@ -59512,7 +59512,7 @@
               },
               dependencies: {
                 react: { version: '17.0.1' },
-                'weui-react-v2': { version: '3.1.2' },
+                'weui-react-v2': { version: '3.1.3' },
                 '@ant-design/icons': { version: '4.2.2' },
               },
               title: '\u5217\u8868\u7ec4\u5408\u5c55\u793a',
@@ -60472,6 +60472,21 @@
   xDBR: function (e, t) {
     e.exports = !1;
   },
+  xR71: function (e, t, n) {
+    'use strict';
+    function a(e) {
+      return !!e && /Array/.test(Object.prototype.toString.call(e));
+    }
+    function r(e) {
+      return void 0 === e || null === e;
+    }
+    n.d(t, 'a', function () {
+      return a;
+    }),
+      n.d(t, 'b', function () {
+        return r;
+      });
+  },
   xWY6: function (e, t, n) {
     'use strict';
     n.r(t);
@@ -60666,7 +60681,7 @@
               dependencies: {
                 react: { version: '17.0.1' },
                 '@ant-design/icons': { version: '4.2.2' },
-                'weui-react-v2': { version: '3.1.2' },
+                'weui-react-v2': { version: '3.1.3' },
               },
               title: '\u8f93\u5165\u6846\u5404\u79cd\u6837\u5f0f\u7ec4\u5408',
               identifier: 'input-demo',

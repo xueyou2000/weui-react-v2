@@ -19,3 +19,10 @@ export function isFunction(obj: any) {
   }
   return /Function/.test(Object.prototype.toString.call(obj));
 }
+
+/**
+ * 是否为空
+ */
+export function isEmpy(val: any) {
+  return val === undefined || val === null;
+}

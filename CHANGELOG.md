@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.1.3 (Mon Mar 29 2021)
+
+- 修复`useFormMethods::getFieldValue`使用三木运算符比较空值，导致数值 0 也认为空，返回 null 值的问题
+
 ## 3.1.2 (Wed Mar 24 2021)
 
 - 修复`InputNumber`组件清空时不能为 null,而是上一次正确输入的问题

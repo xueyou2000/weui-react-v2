@@ -6,6 +6,7 @@ import { FormItemState } from '../context/FormContext';
 import { FormProps } from '../Form';
 import { FieldConfig, Validate, ValidateResult, ValidateTrigger } from '../utils/validate';
 import Toptips from '../../Toptips';
+import { isEmpy } from '../../utils/object-utils';
 
 export interface FormMethods {
   /**
@@ -175,6 +176,7 @@ export default function useFormMethods<T>(
       let model: any = {};
       mapper.forEach((_, prop) => {
         const value = methods.getFieldValue(prop);
+        console.log(prop, value);
         set(model, prop, value);
       });
       return merge({}, modelRef.current, model);
@@ -199,7 +201,8 @@ export default function useFormMethods<T>(
      * @param prop 字段名
      */
     getFieldValue(prop: string) {
-      return getFieldItemState(prop)?.getValue() || null;
+      var val = getFieldItemState(prop)?.getValue();
+      return isEmpy(val) ? null : val;
     },
     /**
      * 设置字段值
