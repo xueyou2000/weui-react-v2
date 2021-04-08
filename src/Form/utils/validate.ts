@@ -118,8 +118,15 @@ export function Validate(value: any, configs: FieldConfig[] = [], params: Valida
   const runner = new ValidateRunnerAll(provider);
   const { label, input, trigger } = params;
 
+  const requireRule = configs.find((x) => x.name === 'Required');
+  const hasRequire = requireRule && (requireRule.on ? requireRule.on(value, params, requireRule) : true);
+
   // 转换验证 配置
   configs.forEach((config) => {
+    // 没有必填验证时，忽略空值的验证
+    if (!hasRequire && (value === null || value === undefined || value === '')) {
+      return;
+    }
     if (!config.trigger || !trigger || (config.trigger && trigger && (trigger & config.trigger) !== 0)) {
       if (config.on && !config.on(value, params, config)) {
         return;

@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.1.4 (Wed Apr 07 2021)
+
+- 新增表单验证没有必填验证配置且值为空时，其他验证忽略
+
 ## 3.1.3 (Mon Mar 29 2021)
 
 - 修复`useFormMethods::getFieldValue`使用三木运算符比较空值，导致数值 0 也认为空，返回 null 值的问题

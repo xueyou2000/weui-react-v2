@@ -176,7 +176,6 @@ export default function useFormMethods<T>(
       let model: any = {};
       mapper.forEach((_, prop) => {
         const value = methods.getFieldValue(prop);
-        console.log(prop, value);
         set(model, prop, value);
       });
       return merge({}, modelRef.current, model);
