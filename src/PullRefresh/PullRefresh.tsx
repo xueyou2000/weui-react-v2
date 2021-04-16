@@ -115,9 +115,22 @@ export default function PullRefresh(props: PullRefreshProps) {
     const direction =
       scrollTop <= 0 && delta > 0
         ? Direction.up
-        : scrollTop >= findScrollHeight(scrollTarget) - clientHeight && delta < 0
+        : scrollTop + 1 >= findScrollHeight(scrollTarget) - clientHeight && delta < 0
         ? Direction.down
         : Direction.middle;
+
+    console.log(
+      '方向',
+      direction,
+      ' scrollTop',
+      scrollTop,
+      'ScrollHeight',
+      findScrollHeight(scrollTarget),
+      'clientHeight',
+      clientHeight,
+      'delta',
+      delta,
+    );
 
     if (directionRef.current !== Direction.middle || direction !== Direction.middle) {
       if (directionRef.current === Direction.middle) {
@@ -186,7 +199,7 @@ export default function PullRefresh(props: PullRefreshProps) {
       const direction =
         scrollTop <= 0
           ? Direction.up
-          : scrollTop >= findScrollHeight(scrollTarget) - clientHeight
+          : scrollTop + 1 >= findScrollHeight(scrollTarget) - clientHeight
           ? Direction.down
           : Direction.middle;
 
