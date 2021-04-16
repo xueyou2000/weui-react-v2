@@ -23,7 +23,7 @@ export default () => {
           ]}
           right={[<a style={{ backgroundColor: 'red' }}>删除</a>, <a>归档</a>]}
         >
-          <ListItem>秘笈： 左右操作</ListItem>
+          <ListItem onClick={() => console.log('点击了内容')}>秘笈： 左右操作</ListItem>
         </SwipeAction>
       </List>
     </div>

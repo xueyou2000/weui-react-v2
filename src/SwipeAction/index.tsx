@@ -62,6 +62,7 @@ function SwiperAction(props: SwiperActionProps) {
   const [rightWidth, setRightWidth] = useState(0);
   const [{ x }, set] = useSpring(() => ({ x: 0 }));
   const directionRef = useRef(Direction.None);
+  const downRef = useRef(false);
 
   function show() {
     set({
@@ -91,6 +92,7 @@ function SwiperAction(props: SwiperActionProps) {
           mx < -rightWidth * 0.5 ? show() : hide();
         }
       } else {
+        downRef.current = down;
         if (down) {
           set({ x: mx, immediate: true });
         } else if (clickContent) {
@@ -126,13 +128,26 @@ function SwiperAction(props: SwiperActionProps) {
     }
   }
 
+  function handleClick(event: React.MouseEvent<HTMLElement>) {
+    if (downRef.current === false) {
+      hide();
+      if (x.get() !== 0) {
+        event.stopPropagation();
+        event.preventDefault();
+      }
+    } else {
+      event.stopPropagation();
+      event.preventDefault();
+    }
+  }
+
   useOutsideClick([warpRef.current] as any, () => {
     hide();
   });
 
   return (
     <div className={classNames(prefixCls, className)} style={style} ref={warpRef}>
-      <animated.div className={`${prefixCls}-content`} {...bind()} style={{ x }} onClick={hide}>
+      <animated.div className={`${prefixCls}-content`} {...bind()} style={{ x }} onClickCapture={handleClick}>
         {children}
       </animated.div>
       {left && (
