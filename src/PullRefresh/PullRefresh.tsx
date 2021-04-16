@@ -119,19 +119,6 @@ export default function PullRefresh(props: PullRefreshProps) {
         ? Direction.down
         : Direction.middle;
 
-    console.log(
-      '方向',
-      direction,
-      ' scrollTop',
-      scrollTop,
-      'ScrollHeight',
-      findScrollHeight(scrollTarget),
-      'clientHeight',
-      clientHeight,
-      'delta',
-      delta,
-    );
-
     if (directionRef.current !== Direction.middle || direction !== Direction.middle) {
       if (directionRef.current === Direction.middle) {
         // 设置此次触摸方向
