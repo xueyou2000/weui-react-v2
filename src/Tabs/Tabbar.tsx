@@ -50,4 +50,4 @@ const TabBar = React.forwardRef((props: TabBarProps, ref: any) => {
   );
 });
 
-export default TabBar;
+export default React.memo(TabBar);

@@ -47,7 +47,7 @@ export interface TablePanelProps {
   destroyInactiveTabPane?: boolean;
 }
 
-export default function TabPanel(props: TablePanelProps) {
+function TabPanel(props: TablePanelProps) {
   const {
     prefixCls = 'weui-tab-panel',
     className,
@@ -81,3 +81,5 @@ export default function TabPanel(props: TablePanelProps) {
     </div>
   );
 }
+
+export default React.memo(TabPanel);

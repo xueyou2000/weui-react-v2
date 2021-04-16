@@ -117,4 +117,4 @@ const DatePicker = React.forwardRef<HTMLDivElement, DatePickerProps>((props, ref
   );
 });
 
-export default DatePicker;
+export default React.memo(DatePicker);

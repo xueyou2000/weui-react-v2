@@ -17,12 +17,12 @@ export default defineConfig({
   externals: {
     react: 'window.React',
     'react-dom': 'window.ReactDOM',
-    'react-spring': 'window.ReactSpring',
+    // 'react-spring': 'window.ReactSpring',
   },
   scripts: [
     'https://gw.alipayobjects.com/os/lib/react/17.0.1/umd/react.development.js',
     'https://gw.alipayobjects.com/os/lib/react-dom/17.0.1/umd/react-dom.development.js',
-    'https://cdn.jsdelivr.net/npm/@react-spring/web@9.0.0-rc.3/index.umd.min.js',
+    // 'https://cdn.jsdelivr.net/npm/@react-spring/web@9.0.0-rc.3/index.umd.min.js',
   ],
   extraPostCSSPlugins: [
     pxtoviewport({

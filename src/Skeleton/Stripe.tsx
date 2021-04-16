@@ -21,7 +21,7 @@ export interface StripeProps {
   children?: React.ReactNode;
 }
 
-export default function Stripe(props: StripeProps) {
+function Stripe(props: StripeProps) {
   const { prefixCls = 'weui-stripe', className, style, children } = props;
   return (
     <div className={classNames(prefixCls, className)} style={style}>
@@ -29,3 +29,5 @@ export default function Stripe(props: StripeProps) {
     </div>
   );
 }
+
+export default React.memo(Stripe);

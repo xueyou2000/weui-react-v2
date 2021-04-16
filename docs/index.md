@@ -26,10 +26,6 @@ footer: Open-source MIT Licensed | Copyright © 2020<br />Powered by [dumi](http
 yarn add weui-react-v2
 ```
 
-### 重要提醒
-
-> 目前由于`react-spring@9.0.0-rc.2`存在循环依赖问题，会在打包生产代码时造成错误。此问题将在`react-spring@9.0.0-rc.4`后修复。在此之前，请将`react-spring`库增加到`externals`里打包排除. [See Issues](https://github.com/pmndrs/react-spring/issues/1078)
-
 ### 使用
 
 `weui-react-v2`无缝贴合`umi`生态，在`umi`项目中直接运行就支持树摇，不用显示引入样式，非常方便。而且可基于`umi`的主题配置定义主题样式.

@@ -1,9 +1,9 @@
-import { clamp } from '../utils/number-utils';
 import classNames from 'classnames';
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef } from 'react';
 import { animated, useSpring, useSprings } from 'react-spring';
-import { useDrag, useGesture } from 'react-use-gesture';
+import { useDrag } from 'react-use-gesture';
 import useMergeValue from 'use-merge-value';
+import { clamp } from '../utils/number-utils';
 import './style';
 
 export interface SwiperProps {
@@ -75,7 +75,7 @@ export interface SwiperProps {
   disabled?: boolean;
 }
 
-export default function Swiper(props: SwiperProps) {
+function Swiper(props: SwiperProps) {
   const {
     prefixCls = 'weui-swiper',
     className,
@@ -104,7 +104,7 @@ export default function Swiper(props: SwiperProps) {
   const sizeRef = useRef({ width: 0, height: 0 });
   const start = useRef(offset.get());
   const isMove = useRef(false);
-  const hideOther = autoHeight && !vertical;
+  const hideOther = autoHeight || !vertical;
   const [displays, setDisplays] = useSprings(items.length, (i) => ({
     display: index === i ? 'block' : 'none',
     top: 0,
@@ -142,7 +142,7 @@ export default function Swiper(props: SwiperProps) {
       immediate,
       // onRest: complete,
       onChange: (res) => {
-        if (res.offset === nextOffset) {
+        if (res.value.offset === nextOffset) {
           complete();
         }
       },
@@ -273,3 +273,5 @@ export default function Swiper(props: SwiperProps) {
     </div>
   );
 }
+
+export default React.memo(Swiper);

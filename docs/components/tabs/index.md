@@ -65,7 +65,7 @@ export default () => (
  * desc: 当tabbar溢出后，会显示箭头, 默认开启自动高度
  */
 import React, { useState, useRef } from 'react';
-import { Tabs, TabPanel, ScrollableTabBar, Button, WhiteSpace } from 'weui-react-v2';
+import { Tabs, TabPanel, ScrollableTabBar, SwipeableTabContent, Button, WhiteSpace } from 'weui-react-v2';
 import '../swiper/index.less';
 
 function makeSection(count: number) {
@@ -120,7 +120,10 @@ export default () => {
         滚动到指定tab
       </Button>
 
-      <Tabs renderTabBar={() => <ScrollableTabBar scrollToRef={scrollToRef} />}>
+      <Tabs
+        renderTabBar={() => <ScrollableTabBar scrollToRef={scrollToRef} />}
+        renderTabContent={() => <SwipeableTabContent autoHeight={true} />}
+      >
         {tabs.map((tab, i) => (
           <TabPanel key={i} tabKey={tab} tab={<span className="tab_point">{tab}</span>}>
             {makeSection(i)}

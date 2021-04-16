@@ -1,11 +1,11 @@
-import HalfScreenDialog, { HalfScreenDialogProps } from '../HalfScreenDialog/HalfScreenDialog';
 import classNames from 'classnames';
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import useMergeValue from 'use-merge-value';
+import HalfScreenDialog, { HalfScreenDialogProps } from '../HalfScreenDialog/HalfScreenDialog';
+import { PickerItem } from './interface';
 import PickerPanel, { PickerPanelProps } from './PickerPanel';
 import './style';
 import { findMatchData, getDefaultPickerValues, getValues, toDataCols } from './utils';
-import { PickerItem } from './interface';
 
 export interface PickerProps
   extends Pick<HalfScreenDialogProps, Exclude<keyof HalfScreenDialogProps, 'onConfirm' | 'title'>>,
@@ -227,4 +227,4 @@ const Picker = React.forwardRef<HTMLDivElement, PickerProps>((props, ref) => {
   );
 });
 
-export default Picker;
+export default React.memo(Picker);

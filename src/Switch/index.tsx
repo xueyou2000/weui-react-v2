@@ -94,4 +94,4 @@ const Switch = React.forwardRef<HTMLSpanElement, SwitchProps>((props, ref) => {
   );
 });
 
-export default Switch;
+export default React.memo(Switch);

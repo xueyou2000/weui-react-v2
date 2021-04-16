@@ -25,7 +25,7 @@ export interface WhiteSpaceProps {
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 }
 
-export default function WhiteSpace(props: WhiteSpaceProps) {
+function WhiteSpace(props: WhiteSpaceProps) {
   const { prefixCls = 'weui-whitespace', className, style, children, size = 'md' } = props;
   return (
     <div className={classNames(prefixCls, className, `${prefixCls}-${size}`)} style={style}>
@@ -33,3 +33,5 @@ export default function WhiteSpace(props: WhiteSpaceProps) {
     </div>
   );
 }
+
+export default React.memo(WhiteSpace);

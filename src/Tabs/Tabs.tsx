@@ -79,7 +79,7 @@ export interface TabsProps {
 const DEFAULT_RenderTabBar = () => <ScrollableTabBar />;
 const DEFAULT_renderTabContent = () => <SwipeableTabContent />;
 
-export default function Tabs(props: TabsProps) {
+function Tabs(props: TabsProps) {
   const {
     prefixCls = 'weui-tabs',
     className,
@@ -169,3 +169,5 @@ export default function Tabs(props: TabsProps) {
     </TabsContext.Provider>
   );
 }
+
+export default React.memo(Tabs);

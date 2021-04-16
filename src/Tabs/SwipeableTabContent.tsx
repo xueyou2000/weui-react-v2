@@ -66,7 +66,7 @@ export interface TabContentProps {
   disabled?: boolean;
 }
 
-export default function SwipeableTabContent(props: TabContentProps) {
+function SwipeableTabContent(props: TabContentProps) {
   const {
     prefixCls = 'weui-swiper-tabcontent',
     className,
@@ -125,3 +125,5 @@ export default function SwipeableTabContent(props: TabContentProps) {
     </div>
   );
 }
+
+export default React.memo(SwipeableTabContent);

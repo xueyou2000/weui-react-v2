@@ -80,7 +80,7 @@ export interface PopupProps {
   onShow?: Function;
 }
 
-export default function Popup(props: PopupProps) {
+function Popup(props: PopupProps) {
   const {
     prefixCls = 'weui-popup',
     animateClassName = 'fade',
@@ -156,3 +156,5 @@ export default function Popup(props: PopupProps) {
     </div>,
   );
 }
+
+export default React.memo(Popup);

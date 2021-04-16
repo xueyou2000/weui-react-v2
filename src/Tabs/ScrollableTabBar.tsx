@@ -45,7 +45,7 @@ export interface TabbarProps {
   arrow?: boolean;
 }
 
-export default function ScrollableTabBar(props: TabbarProps) {
+function ScrollableTabBar(props: TabbarProps) {
   const {
     prefixCls = 'weui-scrollable-tabbar',
     className,
@@ -179,3 +179,5 @@ export default function ScrollableTabBar(props: TabbarProps) {
     </div>
   );
 }
+
+export default React.memo(ScrollableTabBar);

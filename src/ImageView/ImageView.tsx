@@ -33,11 +33,12 @@ export interface ImageViewProps {
   onScaleChange?: (scale: number) => void;
 }
 
-export default function ImageView(props: ImageViewProps) {
+function ImageView(props: ImageViewProps) {
   const { prefixCls = 'weui-image-view', className, style, src, index, onScaleChange } = props;
   const [spring, setSpring] = useSpring(() => ({ from: { zoom: 1, rotate: 0, scale: 1, x: 0, y: 0 } }));
   const context = useContext(GalleryContext);
   const lastRotateGoal = useRef(0);
+  const pinchTarget = useRef<HTMLImageElement | null>(null);
 
   function rotate() {
     const r = (lastRotateGoal.current + 90) % 361;
@@ -118,6 +119,7 @@ export default function ImageView(props: ImageViewProps) {
           if (onScaleChange) {
             onScaleChange(scale);
           }
+          pinchTarget.current = event.target as HTMLImageElement;
           event.stopPropagation();
           event.preventDefault();
         }
@@ -130,10 +132,11 @@ export default function ImageView(props: ImageViewProps) {
         filterTaps: true,
         initial: () => [spring.x.get(), spring.y.get()],
         bounds: ({ event }) => {
-          const target = event?.target as HTMLElement;
+          const target = (event?.target as HTMLElement) || pinchTarget.current;
           const scale = spring.scale.get();
           const rotate = spring.rotate.get();
-          if (scale <= 1) {
+
+          if (scale <= 1 || !target) {
             return {
               left: 0,
               top: 0,
@@ -172,10 +175,18 @@ export default function ImageView(props: ImageViewProps) {
 
   return (
     <div className={classNames(prefixCls, className)} style={style} onDoubleClick={() => zoom()}>
-      <animated.img src={src || require('./image-placeholder.png')} alt="" {...bind()} style={spring as any} />
+      <animated.img
+        src={src || require('./image-placeholder.png')}
+        alt=""
+        {...bind()}
+        ref={pinchTarget}
+        style={spring as any}
+      />
     </div>
   );
 }
+
+export default React.memo(ImageView);
 
 document.addEventListener('gesturestart', (e) => e.preventDefault());
 document.addEventListener('gesturechange', (e) => e.preventDefault());

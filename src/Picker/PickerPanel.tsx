@@ -57,7 +57,7 @@ export interface PickerPanelProps {
   scrollOffsetRestRef?: React.MutableRefObject<Function | null>;
 }
 
-export default function PickerPanel(props: PickerPanelProps) {
+function PickerPanel(props: PickerPanelProps) {
   const {
     prefixCls = 'weui-picker',
     className,
@@ -137,3 +137,5 @@ export default function PickerPanel(props: PickerPanelProps) {
     </div>
   );
 }
+
+export default React.memo(PickerPanel);

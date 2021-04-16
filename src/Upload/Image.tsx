@@ -61,7 +61,7 @@ export interface ImageProps {
   fileInfo: FileInfo;
 }
 
-export default function Image(props: ImageProps) {
+function Image(props: ImageProps) {
   const {
     prefixCls = 'weui-image-item',
     className,
@@ -104,3 +104,5 @@ export default function Image(props: ImageProps) {
     </div>
   );
 }
+
+export default React.memo(Image);

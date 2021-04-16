@@ -45,7 +45,7 @@ export interface MultiUploadProps<T = any>
   length?: number;
 }
 
-export default function MultiUpload<T>(props: MultiUploadProps<T>) {
+function MultiUpload<T>(props: MultiUploadProps<T>) {
   const {
     prefixCls = 'weui-multi-upload',
     className,
@@ -205,7 +205,7 @@ export default function MultiUpload<T>(props: MultiUploadProps<T>) {
             {(fileInfo as any) === 'btn'
               ? fileInfos.length < max &&
                 !disabled && (
-                  <Upload
+                  <Upload<T>
                     {...uploadProps}
                     multiple={max <= 1 ? false : multiple}
                     disabled={disabled}
@@ -241,3 +241,5 @@ export default function MultiUpload<T>(props: MultiUploadProps<T>) {
     </div>
   );
 }
+
+export default React.memo(MultiUpload);

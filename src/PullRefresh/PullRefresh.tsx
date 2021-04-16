@@ -60,7 +60,7 @@ export interface PullRefreshProps {
   autoRefresh?: boolean;
 }
 
-export default function PullRefresh(props: PullRefreshProps) {
+function PullRefresh(props: PullRefreshProps) {
   const {
     prefixCls = 'weui-pull-refresh',
     className,
@@ -296,3 +296,5 @@ export default function PullRefresh(props: PullRefreshProps) {
     </div>
   );
 }
+
+export default React.memo(PullRefresh);

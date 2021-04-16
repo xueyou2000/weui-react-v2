@@ -61,7 +61,7 @@ export interface ButtonProps {
   size?: 'default' | 'small' | 'large';
 }
 
-export default function Button(props: ButtonProps) {
+function Button(props: ButtonProps) {
   const {
     prefixCls = 'weui-btn',
     className,
@@ -97,3 +97,5 @@ export default function Button(props: ButtonProps) {
     </button>
   );
 }
+
+export default React.memo(Button);

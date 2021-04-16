@@ -57,7 +57,7 @@ export interface ListItemProps {
   alignItems?: 'center' | 'flex-end' | 'flex-start';
 }
 
-export default function ListItem(props: ListItemProps) {
+function ListItem(props: ListItemProps) {
   const {
     prefixCls = 'weui-item',
     className,
@@ -90,3 +90,5 @@ export default function ListItem(props: ListItemProps) {
     </div>
   );
 }
+
+export default React.memo(ListItem);

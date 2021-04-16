@@ -38,7 +38,7 @@ export interface LoadmoreProps {
   icon?: React.ReactNode;
 }
 
-export default function Loadmore(props: LoadmoreProps) {
+function Loadmore(props: LoadmoreProps) {
   const { prefixCls = 'weui-loadmore', className, style, loading, line, dot, tips, icon } = props;
   const classString = classNames(prefixCls, className, {
     [`${prefixCls}-dot`]: dot || !tips,
@@ -53,3 +53,5 @@ export default function Loadmore(props: LoadmoreProps) {
     </div>
   );
 }
+
+export default React.memo(Loadmore);

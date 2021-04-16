@@ -57,7 +57,7 @@ export interface SearchProps {
   autoFocus?: boolean;
 }
 
-export default function Search(props: SearchProps) {
+function Search(props: SearchProps) {
   const {
     prefixCls = 'weui-search',
     className,
@@ -179,3 +179,5 @@ export default function Search(props: SearchProps) {
     </div>
   );
 }
+
+export default React.memo(Search);

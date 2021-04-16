@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.1.6 (Fri Apr 16 2021)
+
+- 修复 InputNumber 最大最小限制
+- 修复 react-spring 库更新后,ImageView 事件对象可能为空的异常
+- 更新 react-spring, react-use-gesture 版本到稳定版
+
 ## 3.1.5 (Fri Apr 16 2021)
 
 - 修复`PullRefresh`下滑刷新因为`scrollTop`属性精度问题导致的方向判断失效

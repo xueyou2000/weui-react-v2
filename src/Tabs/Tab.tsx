@@ -41,7 +41,7 @@ export interface TabProps {
   onClick?: (activeKey: TabKey, event: any) => void;
 }
 
-export default function Tab(props: TabProps) {
+function Tab(props: TabProps) {
   const { prefixCls = 'weui-tab', className, style, tabKey, active, disabled, children, tabIndex, onClick } = props;
 
   function handleClick(event: React.MouseEvent<HTMLDivElement>) {
@@ -65,3 +65,5 @@ export default function Tab(props: TabProps) {
     </div>
   );
 }
+
+export default React.memo(Tab);

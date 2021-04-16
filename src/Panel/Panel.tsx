@@ -29,7 +29,7 @@ export interface PanelProps {
   footer?: React.ReactNode;
 }
 
-export default function Panel(props: PanelProps) {
+function Panel(props: PanelProps) {
   const { prefixCls = 'weui-panel', className, style, children, title, footer } = props;
 
   return (
@@ -40,3 +40,5 @@ export default function Panel(props: PanelProps) {
     </div>
   );
 }
+
+export default React.memo(Panel);

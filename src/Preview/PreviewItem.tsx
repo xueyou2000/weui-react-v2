@@ -29,7 +29,7 @@ export interface PreviewItemProps {
   onClick?: () => void;
 }
 
-export default function PreviewItem(props: PreviewItemProps) {
+function PreviewItem(props: PreviewItemProps) {
   const { prefixCls = 'weui-preview', className, style, children, title, onClick } = props;
 
   return (
@@ -39,3 +39,5 @@ export default function PreviewItem(props: PreviewItemProps) {
     </div>
   );
 }
+
+export default React.memo(PreviewItem);

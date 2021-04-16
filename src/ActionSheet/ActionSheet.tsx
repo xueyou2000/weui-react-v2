@@ -83,7 +83,7 @@ function calcHeight(div: HTMLDivElement | null, menuSize: number) {
   return height;
 }
 
-export default function ActionSheet(props: ActionSheetProps) {
+function ActionSheet(props: ActionSheetProps) {
   const {
     prefixCls = 'weui-actionsheet',
     className,
@@ -238,3 +238,5 @@ export default function ActionSheet(props: ActionSheetProps) {
     </div>,
   );
 }
+
+export default React.memo(ActionSheet);

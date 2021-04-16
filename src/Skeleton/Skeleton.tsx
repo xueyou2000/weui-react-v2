@@ -33,7 +33,7 @@ export interface SkeletonProps {
 
 const ColConfig = [[22], [8, 15], [6, 18], [13, 9], [4, 3, 16], [8, 6, 8]];
 
-export default function Skeleton(props: SkeletonProps) {
+function Skeleton(props: SkeletonProps) {
   const { prefixCls = 'weui-skeleton', className, style, loading, rows = 6, children } = props;
 
   const content = [];
@@ -56,3 +56,5 @@ export default function Skeleton(props: SkeletonProps) {
     </div>
   );
 }
+
+export default React.memo(Skeleton);

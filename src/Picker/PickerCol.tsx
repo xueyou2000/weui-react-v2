@@ -42,7 +42,7 @@ export interface PickerColProps {
   getScrollOffsetRest?: (func: Function) => void;
 }
 
-export default function PickerCol(props: PickerColProps) {
+function PickerCol(props: PickerColProps) {
   const { prefixCls = 'weui-picker', className, style, data, onChange, disabled, getScrollOffsetRest } = props;
   const wrapperRef = useRef<HTMLDivElement | null>(null);
   const [value, setValue] = useState(getDefaultPickerValue(data, props.value));
@@ -162,3 +162,5 @@ export default function PickerCol(props: PickerColProps) {
     </div>
   );
 }
+
+export default React.memo(PickerCol);

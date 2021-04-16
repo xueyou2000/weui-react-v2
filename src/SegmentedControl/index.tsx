@@ -35,7 +35,7 @@ export interface SegmentedControlProps {
   onChange?: (value: any) => void;
 }
 
-export default function SegmentedControl(props: SegmentedControlProps) {
+function SegmentedControl(props: SegmentedControlProps) {
   const { prefixCls = 'weui-segmented', className, style, data, defaultValue = null } = props;
   const [value, setValue] = useMergeValue<any>(defaultValue, {
     value: props.value,
@@ -56,3 +56,5 @@ export default function SegmentedControl(props: SegmentedControlProps) {
     </div>
   );
 }
+
+export default React.memo(SegmentedControl);

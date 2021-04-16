@@ -96,4 +96,4 @@ const CheckBox = React.forwardRef<HTMLSpanElement, SwitchProps>((props, ref) => 
   );
 });
 
-export default CheckBox;
+export default React.memo(CheckBox);

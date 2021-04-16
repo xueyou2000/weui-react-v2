@@ -56,7 +56,7 @@ export interface DialogProps extends PopupProps {
   onClick?: (index: number) => Promise<any>;
 }
 
-export default function Dialog(props: DialogProps) {
+function Dialog(props: DialogProps) {
   const {
     prefixCls = 'weui-dialog',
     className,
@@ -159,3 +159,5 @@ export default function Dialog(props: DialogProps) {
     </Popup>
   );
 }
+
+export default React.memo(Dialog);

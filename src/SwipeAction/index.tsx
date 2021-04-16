@@ -46,7 +46,7 @@ enum Direction {
   None,
 }
 
-export default function SwiperAction(props: SwiperActionProps) {
+function SwiperAction(props: SwiperActionProps) {
   const {
     prefixCls = 'weui-swiper-action',
     className,
@@ -164,3 +164,5 @@ export default function SwiperAction(props: SwiperActionProps) {
     </div>
   );
 }
+
+export default React.memo(SwiperAction);

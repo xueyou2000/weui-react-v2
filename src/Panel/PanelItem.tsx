@@ -45,7 +45,7 @@ export interface PanelItemProps {
   onClick?: () => void;
 }
 
-export default function PanelItem(props: PanelItemProps) {
+function PanelItem(props: PanelItemProps) {
   const { prefixCls = 'weui-panel-item', className, style, title, thumb, children, text, info, arrow, onClick } = props;
 
   const content = (
@@ -78,3 +78,5 @@ export default function PanelItem(props: PanelItemProps) {
     </div>
   );
 }
+
+export default React.memo(PanelItem);

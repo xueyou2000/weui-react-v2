@@ -25,7 +25,7 @@ export interface ListProps {
   children?: React.ReactNode;
 }
 
-export default function List(props: ListProps) {
+function List(props: ListProps) {
   const { prefixCls = 'weui-list', className, style, title, children } = props;
 
   return (
@@ -35,3 +35,5 @@ export default function List(props: ListProps) {
     </div>
   );
 }
+
+export default React.memo(List);

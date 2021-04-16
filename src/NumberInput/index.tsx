@@ -145,8 +145,8 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
     // 清空输入框时候值是null, 无效数值时值是undefined
     let number = toNumber(toFixed(fmtStr, precision));
     // 输入不正确，则还原成最后一次正确输入
-    if (number === undefined && !isEmpy(lastRef.current)) {
-      let num: number = lastRef.current as number;
+    if (!isEmpy(lastRef.current)) {
+      let num: number = number === undefined ? (lastRef.current as number) : number;
       // 钳住最大最小
       if (min !== undefined && num < min) {
         num = min;
@@ -364,4 +364,4 @@ const NumberInput = React.forwardRef<HTMLDivElement, NumberInputProps>((props, r
   );
 });
 
-export default NumberInput;
+export default React.memo(NumberInput);

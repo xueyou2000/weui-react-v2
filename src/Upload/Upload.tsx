@@ -82,7 +82,7 @@ export interface UploadProps<T>
   onProgress?: (file: File, percent: number, event: ProgressEvent) => void;
 }
 
-export default function Upload<T>(props: UploadProps<T>) {
+function Upload<T>(props: UploadProps<T>) {
   const {
     prefixCls = 'weui-upload',
     className,
@@ -224,3 +224,5 @@ export default function Upload<T>(props: UploadProps<T>) {
     </div>
   );
 }
+
+export default Upload;

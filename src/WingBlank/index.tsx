@@ -25,7 +25,7 @@ export interface WingBlankProps {
   size?: 'lg' | 'sm' | 'md';
 }
 
-export default function WingBlank(props: WingBlankProps) {
+function WingBlank(props: WingBlankProps) {
   const { prefixCls = 'weui-wingblank', className, style, children, size = 'md' } = props;
   return (
     <div className={classNames(prefixCls, className, `${prefixCls}-${size}`)} style={style}>
@@ -33,3 +33,5 @@ export default function WingBlank(props: WingBlankProps) {
     </div>
   );
 }
+
+export default React.memo(WingBlank);

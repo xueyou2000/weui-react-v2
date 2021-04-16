@@ -40,7 +40,7 @@ export interface SingleUploadProps<T = any> extends UploadProps<T> {
   onImageRemove?: (fileInfo: FileInfo) => void;
 }
 
-export default function SingleUpload<T>(props: SingleUploadProps<T>) {
+function SingleUpload<T>(props: SingleUploadProps<T>) {
   const {
     prefixCls = 'weui-single-upload',
     className,
@@ -168,3 +168,5 @@ export default function SingleUpload<T>(props: SingleUploadProps<T>) {
     </div>
   );
 }
+
+export default React.memo(SingleUpload);

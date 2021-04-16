@@ -39,7 +39,7 @@ export interface PreviewProps {
   align?: 'right' | 'left';
 }
 
-export default function Preview(props: PreviewProps) {
+function Preview(props: PreviewProps) {
   const { prefixCls = 'weui-preview', className, style, title, subTitle, children, footer, align = 'right' } = props;
 
   return (
@@ -56,3 +56,5 @@ export default function Preview(props: PreviewProps) {
     </div>
   );
 }
+
+export default React.memo(Preview);

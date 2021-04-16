@@ -61,7 +61,7 @@ export interface HalfScreenDialogProps extends PopupProps {
   hideFooter?: boolean;
 }
 
-export default function HalfScreenDialog(props: HalfScreenDialogProps) {
+function HalfScreenDialog(props: HalfScreenDialogProps) {
   const {
     prefixCls = 'weui-half-screen-dialog',
     className,
@@ -155,3 +155,5 @@ export default function HalfScreenDialog(props: HalfScreenDialogProps) {
     </Popup>
   );
 }
+
+export default React.memo(HalfScreenDialog);
