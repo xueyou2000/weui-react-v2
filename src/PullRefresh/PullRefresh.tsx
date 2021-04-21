@@ -120,16 +120,6 @@ function PullRefresh(props: PullRefreshProps) {
         ? Direction.down
         : Direction.middle;
 
-    // 防止浏览器顶/地部拖拽背景，进行补偿
-    if (delta > 0 && scrollTop <= 0) {
-      // 上边界补偿
-      distance += scrollTop;
-    }
-    if (delta < 0 && scrollTop + 1 >= scrollHeight - clientHeight) {
-      // 下边界补偿
-      distance -= scrollTop - scrollHeight - clientHeight;
-    }
-
     if (directionRef.current !== Direction.middle || direction !== Direction.middle) {
       if (directionRef.current === Direction.middle) {
         // 设置此次触摸方向
