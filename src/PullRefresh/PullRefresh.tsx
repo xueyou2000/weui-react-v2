@@ -107,17 +107,28 @@ function PullRefresh(props: PullRefreshProps) {
     const touchY = event.touches[0].clientY;
     const clientHeight = findClientHeight(scrollTarget);
     const scrollTop = findScrollTop(scrollTarget);
+    const scrollHeight = findScrollHeight(scrollTarget);
     // 当前触摸方向, delta > 0 = 下滑刷新, delta < 0 = 上滑加载
     const delta = touchY - lastYRef.current;
     // tip: 0.3为了模拟阻感
-    const distance = (touchY - touchYRef.current) * 0.3;
+    let distance = (touchY - touchYRef.current) * 0.3;
     // 方向
     const direction =
       scrollTop <= 0 && delta > 0
         ? Direction.up
-        : scrollTop + 1 >= findScrollHeight(scrollTarget) - clientHeight && delta < 0
+        : scrollTop + 1 >= scrollHeight - clientHeight && delta < 0
         ? Direction.down
         : Direction.middle;
+
+    // 防止浏览器顶/地部拖拽背景，进行补偿
+    if (delta > 0 && scrollTop <= 0) {
+      // 上边界补偿
+      distance += scrollTop;
+    }
+    if (delta < 0 && scrollTop + 1 >= scrollHeight - clientHeight) {
+      // 下边界补偿
+      distance -= scrollTop - scrollHeight - clientHeight;
+    }
 
     if (directionRef.current !== Direction.middle || direction !== Direction.middle) {
       if (directionRef.current === Direction.middle) {
