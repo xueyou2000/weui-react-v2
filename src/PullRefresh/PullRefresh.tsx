@@ -97,11 +97,6 @@ function PullRefresh(props: PullRefreshProps) {
   }
 
   function onTouchMove(event: React.TouchEvent<HTMLElement>) {
-    // 忽略刷新中的拖拽操作
-    if (tempActionRef.current == PullRefreshAction.refreshing || tempActionRef.current == PullRefreshAction.refreshed) {
-      return;
-    }
-
     const target = event.target as any;
     target.stopScroll = false;
     const touchY = event.touches[0].clientY;
@@ -119,6 +114,16 @@ function PullRefresh(props: PullRefreshProps) {
         : scrollTop + 1 >= scrollHeight - clientHeight && delta < 0
         ? Direction.down
         : Direction.middle;
+
+    // 忽略刷新中的拖拽操作
+    if (tempActionRef.current == PullRefreshAction.refreshing || tempActionRef.current == PullRefreshAction.refreshed) {
+      if (direction !== Direction.middle) {
+        // 防止拖拽出浏览器底色
+        target.stopScroll = true;
+        event.preventDefault();
+      }
+      return;
+    }
 
     if (directionRef.current !== Direction.middle || direction !== Direction.middle) {
       if (directionRef.current === Direction.middle) {
