@@ -1,5 +1,10 @@
 # Change Log
 
+## 3.1.7 (Tue Apr 27 2021)
+
+- 修复`SwipeAction`滑开后点击自身项触发 onClick 事件问题
+- 下拉刷新修复刷新中拖拽出浏览器背景问题
+
 ## 3.1.6 (Fri Apr 16 2021)
 
 - 修复 InputNumber 最大最小限制
