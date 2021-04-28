@@ -104,6 +104,18 @@ function PickerCol(props: PickerColProps) {
     return Math.round((offsetTop - offset) / itemHeight);
   }
 
+  function handleClick(item: PickerItem) {
+    if (!item.disabled) {
+      rest(false, item.value);
+      if (value !== item.value) {
+        setValue(item.value);
+        if (onChange) {
+          onChange(item.value);
+        }
+      }
+    }
+  }
+
   const bind = useDrag(
     ({ last, vxvy: [, vy], movement: [, my], down, cancel, canceled }) => {
       if (last) {
@@ -154,6 +166,7 @@ function PickerCol(props: PickerColProps) {
               [`${prefixCls}__disabled`]: x.disabled,
             })}
             key={i}
+            onClickCapture={() => handleClick(x)}
           >
             {x.label}
           </div>
