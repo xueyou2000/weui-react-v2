@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import useMergeValue from 'use-merge-value';
 import './style';
 import Input from '../Input';
@@ -78,6 +78,7 @@ function Search(props: SearchProps) {
   const [focus, setFocus] = useState(autoFocus);
   const [phWidth, setPhWidth] = useState(0);
   const [btnWidth, setBtnWidth] = useState(0);
+  const btnRef = useRef<HTMLElement | null>(null);
 
   function savePh(ins: HTMLDivElement | null) {
     if (ins) {
@@ -87,6 +88,9 @@ function Search(props: SearchProps) {
 
   function saveBtn(ins: HTMLElement | null) {
     if (ins) {
+      btnRef.current = ins;
+    }
+    if (ins && ins.clientWidth !== 0) {
       setBtnWidth(ins.clientWidth);
     }
   }
@@ -141,6 +145,17 @@ function Search(props: SearchProps) {
       inputFocus();
     }
   }, [focus]);
+
+  useLayoutEffect(() => {
+    // 修复btn尺寸一开始不正确的问题
+    const time = window.setTimeout(() => {
+      const btn = btnRef.current;
+      if (btn && btn.clientWidth !== 0) {
+        setBtnWidth(btn.clientWidth);
+      }
+    }, 60);
+    return () => window.clearTimeout(time);
+  }, [btnRef.current]);
 
   return (
     <div className={classNames(prefixCls, className, { focus, 'has-value': !!value })} style={style}>
