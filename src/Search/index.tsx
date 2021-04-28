@@ -89,9 +89,13 @@ function Search(props: SearchProps) {
   function saveBtn(ins: HTMLElement | null) {
     if (ins) {
       btnRef.current = ins;
-    }
-    if (ins && ins.clientWidth !== 0) {
-      setBtnWidth(ins.clientWidth);
+      // 去除transition才能及时获取正确宽度
+      const backup = ins.style.transition;
+      ins.style.transition = 'none';
+      if (ins.clientWidth !== 0) {
+        setBtnWidth(ins.clientWidth);
+      }
+      ins.style.transition = backup;
     }
   }
 
