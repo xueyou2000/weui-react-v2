@@ -5,11 +5,12 @@ import { PickerItem } from '../Picker/interface';
  * 日期模式
  * date = 年月日
  * datetime = 年月日 时分秒
- * time = 十分秒
+ * time = 时分秒
+ * shortTime = 时分
  * year = 年
  * month = 月
  */
-export type DatePickerMode = 'date' | 'datetime' | 'time' | 'year' | 'month';
+export type DatePickerMode = 'date' | 'datetime' | 'time' | 'year' | 'month' | 'shortTime';
 
 /**
  * 获取日期格式化字符串
@@ -28,6 +29,8 @@ export function getDateFormat(mode: DatePickerMode) {
       return 'yyyy';
     case 'month':
       return 'MM';
+    case 'shortTime':
+      return 'HH:mm';
   }
 }
 

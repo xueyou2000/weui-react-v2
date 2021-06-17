@@ -18,6 +18,9 @@ export default function () {
         <DatePicker placeholder="请选择" mode="time" defaultValue={null} useDefaultFormat={false} separator="">
           <ListItem hd="time" arrow={true} />
         </DatePicker>
+        <DatePicker placeholder="请选择" mode="shortTime" defaultValue={null}>
+          <ListItem hd="shortTime" arrow={true} />
+        </DatePicker>
         <DatePicker placeholder="请选择" mode="year" defaultValue={null}>
           <ListItem hd="year" arrow={true} />
         </DatePicker>
