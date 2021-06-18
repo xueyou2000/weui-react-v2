@@ -1,5 +1,9 @@
 # Change Log
 
+## 3.1.9 (Fri Jun 18 2021)
+
+- 修复`shortTime`的选择 BUG,修复时分秒从 0 开始
+
 ## 3.1.8 (Thu Jun 17 2021)
 
 - `DatePicker`增加`shortTime`模式来选择时间

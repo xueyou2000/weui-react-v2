@@ -78,7 +78,7 @@ function defaultFormat(
 }
 
 function isEmpty(value: any[]) {
-  return !value || value.some((x) => !x);
+  return !value || value.some((x) => x === undefined || x === null);
 }
 
 /**

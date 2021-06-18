@@ -1,6 +1,6 @@
 {
   "name": "weui-react-v2",
-  "version": "3.1.8",
+  "version": "3.1.9",
   "description": "weui的react实现",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -92,6 +92,7 @@
     "prettier": "^2.1.2",
     "react-test-renderer": "^17.0.1",
     "roadhog-api-doc": "^1.1.2",
+    "utils-dom": "^0.0.71",
     "vfile-message": "^2.0.4",
     "yorkie": "^2.0.0"
   }

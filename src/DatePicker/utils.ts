@@ -99,6 +99,9 @@ export function numsToDate(value: any[], mode: DatePickerMode) {
         d.setHours(value[0]);
         d.setMinutes(value[1]);
         d.setSeconds(value[2]);
+      case 'shortTime':
+        d.setHours(value[0]);
+        d.setMinutes(value[1]);
       case 'year':
         d.setFullYear(value[0]);
         break;
@@ -151,13 +154,13 @@ export function createPickerDate(d: Date, minDate: Date, maxDate: Date, mode: Da
         dataSource.push(createRangeData(1, daysInMonth(d), colSuffix));
         break;
       case '时':
-        dataSource.push(createRangeData(1, 23, colSuffix));
+        dataSource.push(createRangeData(0, 23, colSuffix));
         break;
       case '分':
-        dataSource.push(createRangeData(1, 59, colSuffix));
+        dataSource.push(createRangeData(0, 59, colSuffix));
         break;
       case '秒':
-        dataSource.push(createRangeData(1, 59, colSuffix));
+        dataSource.push(createRangeData(0, 59, colSuffix));
         break;
     }
   }
