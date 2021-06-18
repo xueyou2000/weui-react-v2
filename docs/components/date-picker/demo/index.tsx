@@ -10,7 +10,7 @@ export default function () {
   return (
     <SafeArea style={{ margin: '-0.16rem', minHeight: '100vh', backgroundColor: '#f4f4f4', padding: '5px 0 10px' }}>
       <List title="不同模式">
-        {/* <DatePicker placeholder="请选择" defaultValue={null} useDefaultFormat={false} separator="">
+        <DatePicker placeholder="请选择" defaultValue={null} useDefaultFormat={false} separator="">
           <ListItem hd="date" arrow={true} />
         </DatePicker>
         <DatePicker placeholder="请选择" mode="datetime" defaultValue={null}>
@@ -18,16 +18,16 @@ export default function () {
         </DatePicker>
         <DatePicker placeholder="请选择" mode="time" defaultValue={null} useDefaultFormat={false} separator="">
           <ListItem hd="time" arrow={true} />
-        </DatePicker> */}
+        </DatePicker>
         <DatePicker placeholder="请选择" mode="shortTime" defaultValue={timeParse('08:00')}>
           <ListItem hd="shortTime" arrow={true} />
         </DatePicker>
-        {/* <DatePicker placeholder="请选择" mode="year" defaultValue={null}>
+        <DatePicker placeholder="请选择" mode="year" defaultValue={null}>
           <ListItem hd="year" arrow={true} />
         </DatePicker>
         <DatePicker placeholder="请选择" mode="month" defaultValue={null}>
           <ListItem hd="month" arrow={true} />
-        </DatePicker> */}
+        </DatePicker>
       </List>
     </SafeArea>
   );
