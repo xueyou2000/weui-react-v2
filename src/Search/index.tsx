@@ -79,6 +79,7 @@ function Search(props: SearchProps) {
   const [phWidth, setPhWidth] = useState(0);
   const [btnWidth, setBtnWidth] = useState(0);
   const btnRef = useRef<HTMLElement | null>(null);
+  const isChange = useRef(false);
 
   function savePh(ins: HTMLDivElement | null) {
     if (ins) {
@@ -103,6 +104,7 @@ function Search(props: SearchProps) {
     if (onConfirm) {
       onConfirm(value);
     }
+    isChange.current = true;
     inputBlur();
     event.stopPropagation();
     event.preventDefault();
@@ -123,8 +125,12 @@ function Search(props: SearchProps) {
     setValue('');
     inputBlur();
     setFocus(false);
-    if (onCancel) {
-      onCancel();
+
+    if (isChange.current) {
+      isChange.current = false;
+      if (onCancel) {
+        onCancel();
+      }
     }
   }
 
@@ -153,9 +159,15 @@ function Search(props: SearchProps) {
   useLayoutEffect(() => {
     // 修复btn尺寸一开始不正确的问题
     const time = window.setTimeout(() => {
-      const btn = btnRef.current;
-      if (btn && btn.clientWidth !== 0) {
-        setBtnWidth(btn.clientWidth);
+      const btn = btnRef.current as HTMLElement;
+      if (btn) {
+        // 去除transition才能及时获取正确宽度
+        const backup = btn.style.transition;
+        btn.style.transition = 'none';
+        if (btn.clientWidth !== 0) {
+          setBtnWidth(btn.clientWidth);
+        }
+        btn.style.transition = backup;
       }
     }, 60);
     return () => window.clearTimeout(time);
