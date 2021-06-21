@@ -1,0 +1,102 @@
+.weui-keyboard {
+  background-color: #ededed;
+}
+.weui-keyboard-wrapper {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 4000;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  user-select: none;
+  -webkit-user-select: none;
+  background-color: #ededed;
+}
+.weui-keyboard-inner {
+  height: 480px;
+  position: relative;
+  background-color: #fff;
+}
+.weui-keyboard-key {
+  position: absolute;
+  font-size: 48px;
+  font-family: sans-serif;
+  color: #000;
+  display: block;
+  width: 25%;
+  border: 2px solid #dedfe2;
+  margin: -2px;
+  background-color: #fafafb;
+  font-family: 'PingFang SC', 'Microsoft yahei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  height: 120px;
+  line-height: 120px;
+  box-sizing: content-box;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  transition: 0.3s;
+  overflow: hidden;
+  text-align: center;
+}
+.weui-keyboard-key.down {
+  background: #eaeaea;
+}
+.weui-keyboard-key.confirm-btn {
+  height: 360px;
+}
+.weui-keyboard .left-0 {
+  left: 0;
+}
+.weui-keyboard .left-1 {
+  left: 25%;
+}
+.weui-keyboard .left-2 {
+  left: 50%;
+}
+.weui-keyboard .left-3 {
+  left: 75%;
+}
+.weui-keyboard .top-0 {
+  top: 0;
+}
+.weui-keyboard .top-1 {
+  top: 120px;
+}
+.weui-keyboard .top-2 {
+  top: 240px;
+}
+.weui-keyboard .top-3 {
+  top: 360px;
+}
+.weui-keyboard [data-code='backspace'] img {
+  width: 66px;
+  border: 0;
+  box-sizing: border-box;
+}
+.weui-keyboard-key:active .submit-btn {
+  background-color: #048140;
+}
+.weui-keyboard .submit-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  background-color: #06ad56;
+  letter-spacing: 2px;
+  transition: 0.3s;
+  line-height: 1.5;
+}
+.weui-keyboard .submit-btn.disabled {
+  cursor: not-allowed;
+  color: rgba(0, 0, 0, 0.25);
+  background-color: #f5f5f5;
+  border-color: #d9d9d9;
+}
+.weui-keyboard .submit-btn.loading {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

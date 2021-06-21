@@ -189,7 +189,7 @@ function Search(props: SearchProps) {
         className="cancel-btn"
         ref={saveBtn}
         style={{
-          marginRight: focus ? 0 : -btnWidth,
+          marginRight: focus ? undefined : -(btnWidth + 10),
         }}
         onClick={handleCancel}
       >
