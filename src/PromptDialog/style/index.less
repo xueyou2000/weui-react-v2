@@ -1,0 +1,29 @@
+@import '../../style/themes/index.less';
+
+.weui-prompt {
+  .weui-dialog-bd {
+    min-width: auto;
+  }
+}
+.prompt-body {
+  .prompt-message {
+    margin-bottom: 20px;
+  }
+  .prompt-input {
+    border-radius: 12px;
+    background: #f6f6f6;
+    padding: 10px 20px;
+    box-sizing: border-box;
+  }
+  .prompt-error {
+    font-size: 30px;
+    color: #ff4d4f;
+    margin: 20px 0 0 0;
+  }
+
+  &.valid-fail {
+    .weui-input-inner {
+      color: #ff4d4f;
+    }
+  }
+}

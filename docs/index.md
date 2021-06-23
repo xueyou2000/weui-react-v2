@@ -121,6 +121,7 @@ export default defineConfig({
 - [x] `DatePicker` 日期选择
 - [x] `Rate`评级
 - [x] `AmountKeyboard` 金额键盘
+- [x] `PromptDialog` 输入对话框
 
 ### 布局
 

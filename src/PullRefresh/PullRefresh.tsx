@@ -200,9 +200,9 @@ function PullRefresh(props: PullRefreshProps) {
         changeAction(PullRefreshAction.loading);
       }
 
-      if (direction !== Direction.middle) {
-        event.preventDefault();
-      }
+      // if (direction !== Direction.middle) {
+      //   event.preventDefault();
+      // }
     },
     {
       enabled: enableLoadMore,

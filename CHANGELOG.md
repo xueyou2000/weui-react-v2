@@ -1,5 +1,10 @@
 # Change Log
 
+## 3.2.0 (Wed Jun 23 2021)
+
+- 增加`PromptDialog`弹框输入组件
+- 优化`Search`组件`onCancel`事件触发逻辑
+
 ## 3.1.9 (Fri Jun 18 2021)
 
 - 修复`shortTime`的选择 BUG,修复时分秒从 0 开始

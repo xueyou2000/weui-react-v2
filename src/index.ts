@@ -42,6 +42,7 @@ export * from './Form';
 export * from './Upload';
 export * from './Picker';
 export * from './DatePicker';
+export * from './PromptDialog';
 
 // 导航
 export * from './Tabs';
