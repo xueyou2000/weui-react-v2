@@ -104,7 +104,7 @@ function Swiper(props: SwiperProps) {
   const sizeRef = useRef({ width: 0, height: 0 });
   const start = useRef(offset.get());
   const isMove = useRef(false);
-  const hideOther = autoHeight || !vertical;
+  const hideOther = autoHeight && !vertical;
   const [displays, setDisplays] = useSprings(items.length, (i) => ({
     display: index === i ? 'block' : 'none',
     top: 0,

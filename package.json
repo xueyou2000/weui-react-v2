@@ -1,6 +1,6 @@
 {
   "name": "weui-react-v2",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "weui的react实现",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -79,8 +79,8 @@
     "@umijs/test": "^3.2.24",
     "chalk": "^4.1.0",
     "cross-env": "^7.0.2",
-    "dumi": "1.1.0-beta.27",
-    "dumi-theme-mobile": "^1.0.0-beta.5",
+    "dumi": "1.1.23",
+    "dumi-theme-mobile": "^1.1.6",
     "express": "^4.17.1",
     "father-build": "^1.18.5",
     "file-loader": "^6.2.0",
