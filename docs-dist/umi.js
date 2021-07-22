@@ -53851,7 +53851,7 @@
       N =
         '.safearea-demo {\n  .block {\n    font-size: 60px;\n    color: #fff;\n    display: block;\n    width: 100%;\n    text-align: center;\n    height: 600px;\n    line-height: 600px;\n    background-color: #009a61;\n    background-image: linear-gradient(\n      -45deg,\n      rgba(255, 255, 255, 0.2) 25%,\n      transparent 25%,\n      transparent 50%,\n      rgba(255, 255, 255, 0.2) 50%,\n      rgba(255, 255, 255, 0.2) 75%,\n      transparent 75%,\n      transparent\n    );\n\n    &:nth-child(odd) {\n      background: repeating-linear-gradient(135deg, #ffeb3b, #ffeb3b 0.25em, #0092b7 0, #0092b7 0.75em);\n    }\n  }\n}',
       H =
-        "import React from 'react';\nimport { SafeArea, Search } from 'weui-react-v2';\n\nexport default () => {\n  return (\n    <SafeArea style={{ margin: '-0.16rem' }}>\n      <Search\n        placeholder=\"\u641c\u7d22\"\n        onConfirm={(val) => console.log('\u786e\u8ba4\u8f93\u5165: ', val)}\n        onSearch={(val) => console.log('search: ', val)}\n        onCancel={() => console.log('\u53d6\u6d88\u641c\u7d22')}\n      />\n    </SafeArea>\n  );\n};",
+        "import React from 'react';\nimport { SafeArea, Search } from 'weui-react-v2';\n\nexport default () => {\n  return (\n    <SafeArea>\n      <Search\n        placeholder=\"\u8bf7\u8f93\u5165\u7528\u6237\u540d/\u90ae\u7bb1\"\n        onConfirm={(val) => console.log('\u786e\u8ba4\u8f93\u5165: ', val)}\n        onSearch={(val) => console.log('search: ', val)}\n        onCancel={() => console.log('\u53d6\u6d88\u641c\u7d22')}\n      />\n    </SafeArea>\n  );\n};",
       R = '.skeleton-demo {\n  .weui-item-bd {\n    flex: 0 0 160px;\n  }\n\n  .weui-item-ft {\n    flex: 1;\n  }\n}',
       L =
         'import React, { useState } from \'react\';\nimport { Spin, Button } from \'weui-react-v2\';\nimport \'./index.less\';\n\nexport default () => {\n  const [inline, setInline] = useState(false);\n\n  return (\n    <div className="spin-demo">\n      <Spin spinning={true} inline={inline} tips="\u52a0\u8f7d\u4e2d...">\n        <div className="alert-box">\n          <span className="ant-alert-message">title</span>\n          <span className="ant-alert-description">\n            context of this alert.\n            <br />\n            \u5c0f\u7684\u7528\u4e8e\u6587\u672c\u52a0\u8f7d\u3002\n            <br />\n            \u66f4\u591a\u6587\u672c\n            <br />\n            \u66f4\u591a\u6587\u672c\n            <br />\n            \u66f4\u591a\u6587\u672c\n            <br />\n            \u66f4\u591a\u6587\u672c\n            <br />\n            \u66f4\u591a\u6587\u672c\n          </span>\n        </div>\n      </Spin>\n      <br />\n      <Button type="primary" onClick={() => setInline((pre) => !pre)}>\n        \u5207\u6362\u5185\u8054\u72b6\u6001\n      </Button>\n    </div>\n  );\n};',
@@ -53934,7 +53934,7 @@
           },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u914d\u7f6e\u83dc\u5355',
           description:
@@ -53948,7 +53948,7 @@
           sources: { _: { tsx: i }, 'index.less': { import: './index.less', content: c } },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u91d1\u989d\u952e\u76d8',
           description:
@@ -53962,7 +53962,7 @@
           sources: { _: { tsx: o }, 'btn-demo.less': { import: './btn-demo.less', content: l } },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u6309\u94ae\u7c7b\u578b',
           description:
@@ -53976,7 +53976,7 @@
           sources: { _: { tsx: s }, 'btn-demo.less': { import: './btn-demo.less', content: l } },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u4e0d\u53ef\u7528\u72b6\u6001',
           description:
@@ -53990,7 +53990,7 @@
           sources: { _: { tsx: u }, 'btn-demo.less': { import: './btn-demo.less', content: l } },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u957f\u6309\u94ae',
           description:
@@ -54065,7 +54065,7 @@
           },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u4e0d\u540c\u5c3a\u5bf8',
           identifier: 'checkbox-demo',
@@ -54077,7 +54077,7 @@
           sources: { _: { tsx: d } },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
             'utils-dom': { version: '0.0.71' },
           },
           title: '\u65e5\u671f\u9009\u62e9\u5668',
@@ -54092,7 +54092,7 @@
           sources: { _: { tsx: f } },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u6a21\u6001\u5bf9\u8bdd\u6846',
           description:
@@ -54106,7 +54106,7 @@
           sources: { _: { tsx: h }, 'index.less': { import: './index.less', content: p } },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u5c01\u88c5\u8f93\u5165\u6846',
           description:
@@ -54120,7 +54120,7 @@
           sources: { _: { tsx: m }, 'flex-demo.less': { import: './flex-demo.less', content: v } },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u5bf9\u5176\u65b9\u5f0f',
           description:
@@ -54138,7 +54138,7 @@
           },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u8868\u5355\u9a8c\u8bc1',
           description:
@@ -54220,7 +54220,7 @@
           },
           dependencies: {
             react: { version: '16.x' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
             '@ant-design/icons': { version: '4.2.2' },
           },
           title: '\u4e5d\u5bab\u683c\u6bcf\u884c3\u5217',
@@ -54233,7 +54233,7 @@
           sources: { _: { tsx: w }, 'demo.less': { import: './demo.less', content: E } },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u786e\u5b9a\u6309\u94ae',
           description:
@@ -54247,7 +54247,7 @@
           sources: { _: { tsx: O } },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u53d7\u63a7\u5c55\u793a',
           description:
@@ -54262,7 +54262,7 @@
           dependencies: {
             '@ant-design/icons': { version: '4.2.2' },
             react: { version: '16.x' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u8f93\u5165\u6846\u5404\u79cd\u6837\u5f0f\u7ec4\u5408',
           identifier: 'input-demo',
@@ -54376,7 +54376,7 @@
           },
           dependencies: {
             react: { version: '16.x' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
             '@ant-design/icons': { version: '4.2.2' },
           },
           title: '\u5217\u8868\u7ec4\u5408\u5c55\u793a',
@@ -54428,7 +54428,7 @@
           },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u52a0\u8f7d\u4e2d',
           identifier: 'loading-demo',
@@ -54462,7 +54462,7 @@
           },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u52a0\u8f7d\u66f4\u591a',
           identifier: 'loadmore-demo',
@@ -54474,7 +54474,7 @@
           sources: { _: { tsx: z } },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u7ec4\u5408\u6837\u5f0f',
           identifier: 'number-input-demo',
@@ -54556,7 +54556,7 @@
           },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u56fe\u6587\u7ec4\u5408\u9762\u677f',
           identifier: 'panel-demo',
@@ -54568,7 +54568,7 @@
           sources: { _: { tsx: k }, 'picker-data.ts': { import: '../../picker/demo/picker-data', content: b } },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: 'Picker\u9009\u62e9\u5668',
           identifier: 'picker-picker',
@@ -54580,7 +54580,7 @@
           sources: { _: { tsx: M }, 'picker-data.ts': { import: '../../picker/demo/picker-data', content: b } },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: 'Picker\u9762\u677f',
           identifier: 'picker-demo',
@@ -54592,7 +54592,7 @@
           sources: { _: { tsx: j } },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u5f02\u6b65\u8bbe\u7f6e\u6570\u636e\u6e90',
           identifier: 'picker-async',
@@ -54684,7 +54684,7 @@
           },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u9884\u89c8\u5185\u5bb9',
           identifier: 'preview-demo',
@@ -54696,7 +54696,7 @@
           sources: { _: { tsx: C } },
           dependencies: {
             react: { version: '16.x' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
             '@ant-design/icons': { version: '4.2.2' },
           },
           title: '\u5e38\u7528\u7c7b\u578b',
@@ -54709,7 +54709,7 @@
           sources: { _: { tsx: S }, 'index.less': { import: './index.less', content: A } },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u4e0b\u62c9\u5237\u65b0',
           description:
@@ -54744,7 +54744,7 @@
           },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: 'count\u53ef\u4ee5\u81ea\u5b9a\u4e49\u661f\u661f\u6570\u91cf',
           identifier: 'rate-demo',
@@ -54782,7 +54782,7 @@
           },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u56db\u5468\u4fdd\u7559\u5b89\u5168\u8fb9\u8ddd',
           identifier: 'safe-area-demo',
@@ -54794,7 +54794,7 @@
           sources: { _: { tsx: H } },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u641c\u7d22\u680f',
           identifier: 'search-demo',
@@ -54834,7 +54834,7 @@
           },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u5206\u6bb5\u5668',
           identifier: 'segmented-control-demo',
@@ -54884,7 +54884,7 @@
           },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u5207\u6362\u52a0\u8f7d\u72b6\u6001',
           identifier: 'skeleton-demo',
@@ -54927,7 +54927,7 @@
           },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: 'Stripe\u7528\u4e8e\u884c\u5185\u6570\u636e',
           identifier: 'skeleton-demo-1',
@@ -54972,7 +54972,7 @@
           },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u4e0d\u540c\u5c3a\u5bf8',
           description:
@@ -54986,7 +54986,7 @@
           sources: { _: { tsx: L }, 'index.less': { import: './index.less', content: T } },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: 'inline/block\u6a21\u5f0f\u5207\u6362',
           description:
@@ -55045,7 +55045,7 @@
           },
           dependencies: {
             react: { version: '16.x' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
             '@ant-design/icons': { version: '4.2.2' },
           },
           title: '\u81ea\u5b9a\u4e49\u6307\u793a\u7b26',
@@ -55060,7 +55060,7 @@
           sources: { _: { tsx: V }, 'index.less': { import: './index.less', content: P } },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u5de6\u53f3\u6ed1\u52a8\u663e\u793a\u6309\u94ae',
           description: '<div class="markdown"><p>\u53ef\u8bbe\u7f6e\u6ed1\u52a8\u6253\u5f00\u8ddd\u79bb</p></div>',
@@ -55111,7 +55111,7 @@
           },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u81ea\u52a8\u8f6e\u64ad',
           description: '<div class="markdown"><p>scaleMode\u5f00\u542f\u62d6\u62fd\u7f29\u653e\u6548\u679c</p></div>',
@@ -55169,7 +55169,7 @@
           },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u5782\u76f4\u6eda\u52a8',
           description:
@@ -55241,7 +55241,7 @@
           },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u4e0d\u540c\u5c3a\u5bf8',
           identifier: 'switch-demo',
@@ -55300,7 +55300,7 @@
           },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u61d2\u52a0\u8f7d',
           description:
@@ -55396,7 +55396,7 @@
           },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u52a8\u6001\u589e\u51cf',
           description:
@@ -55415,7 +55415,7 @@
           dependencies: {
             classnames: { version: '2.2.6' },
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u5782\u76f4\u663e\u793a',
           description:
@@ -55429,7 +55429,7 @@
           sources: { _: { tsx: U } },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u6587\u672c\u57df',
           description: '<div class="markdown"><p>\u9ed8\u8ba4\u6700\u5927\u5b57\u7b26\u6570\u4e3a200</p></div>',
@@ -55442,7 +55442,7 @@
           sources: { _: { tsx: q }, 'demo.less': { import: './demo.less', content: W } },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u8f7b\u63d0\u793a',
           description:
@@ -55506,7 +55506,7 @@
           },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u4e24\u79cd\u63d0\u793a',
           description:
@@ -55520,7 +55520,7 @@
           sources: { _: { tsx: G } },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u4e0a\u4f20\u7ec4\u5408',
           identifier: 'upload-demo',
@@ -55558,7 +55558,7 @@
           },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u4e0d\u540c\u5c3a\u5bf8',
           identifier: 'white-space-demo',
@@ -55603,7 +55603,7 @@
           },
           dependencies: {
             react: { version: '17.0.2' },
-            'weui-react-v2': { version: '3.3.0', css: 'weui-react-v2/dist/index.css' },
+            'weui-react-v2': { version: '3.3.1', css: 'weui-react-v2/dist/index.css' },
           },
           title: '\u4e0d\u540c\u5c3a\u5bf8',
           identifier: 'wing-blank-demo',
@@ -63443,9 +63443,9 @@
     t['default'] = () =>
       a.a.createElement(
         i['SafeArea'],
-        { style: { margin: '-0.16rem' } },
+        null,
         a.a.createElement(i['Search'], {
-          placeholder: '\u641c\u7d22',
+          placeholder: '\u8bf7\u8f93\u5165\u7528\u6237\u540d/\u90ae\u7bb1',
           onConfirm: (e) => console.log('\u786e\u8ba4\u8f93\u5165: ', e),
           onSearch: (e) => console.log('search: ', e),
           onCancel: () => console.log('\u53d6\u6d88\u641c\u7d22'),
@@ -65630,71 +65630,52 @@
         N = Object(r['default'])(A, 2),
         H = N[0],
         R = N[1],
-        L = Object(c['useState'])(0),
-        T = Object(r['default'])(L, 2),
-        V = T[0],
-        P = T[1],
-        I = Object(c['useRef'])(null),
-        B = Object(c['useRef'])(!1);
-      function F(e) {
-        e && R(e.clientWidth);
-      }
-      function _(e) {
-        if (e) {
-          I.current = e;
+        L = Object(c['useRef'])(!1);
+      function T(e) {
+        if (e && 0 === H) {
           var t = e.style.transition;
-          (e.style.transition = 'none'), 0 !== e.clientWidth && P(e.clientWidth), (e.style.transition = t);
+          (e.style.transition = 'none'), 0 !== e.offsetWidth && R(e.offsetWidth + 50), (e.style.transition = t);
         }
       }
-      function D(e) {
-        return b && b(x), (B.current = !0), K(), e.stopPropagation(), e.preventDefault(), !1;
+      function V(e) {
+        return b && b(x), (L.current = !0), _(), e.stopPropagation(), e.preventDefault(), !1;
       }
-      function U(e) {
+      function P(e) {
         x || S(!1);
       }
-      function q(e) {
+      function I(e) {
         S(!0);
       }
-      function W() {
-        z(''), K(), S(!1), B.current && ((B.current = !1), v && v());
+      function B() {
+        z(''), _(), S(!1), L.current && ((L.current = !1), v && v());
       }
-      function G() {
+      function F() {
         var e = k.current;
         if (e) {
           var t = document.createEvent('MouseEvent');
           t.initEvent('click', !0, !0), e.dispatchEvent(t);
         }
       }
-      function K() {
+      function _() {
         var e = k.current;
         e && e.blur();
       }
       return (
         Object(c['useEffect'])(() => {
-          C && G();
+          C && F();
         }, [C]),
-        Object(c['useLayoutEffect'])(() => {
-          var e = window.setTimeout(() => {
-            var e = I.current;
-            if (e) {
-              var t = e.style.transition;
-              (e.style.transition = 'none'), 0 !== e.clientWidth && P(e.clientWidth), (e.style.transition = t);
-            }
-          }, 60);
-          return () => window.clearTimeout(e);
-        }, [I.current]),
         o.a.createElement(
           'div',
           { className: i()(n, a, { focus: C, 'has-value': !!x }), style: d },
           o.a.createElement(
             'form',
-            { className: ''.concat(n, '__form'), onSubmit: D },
+            { className: ''.concat(n, '__form'), onSubmit: V },
             o.a.createElement(
               'div',
               { className: ''.concat(n, '__synthetic-ph'), onClick: () => S(!0), style: { width: C ? H : '100%' } },
               o.a.createElement(
                 'div',
-                { className: 'synthetic-ph__inner', ref: F },
+                { className: 'synthetic-ph__inner', ref: T },
                 o.a.createElement(u['a'], { className: 'search-icon' }),
                 o.a.createElement('span', { className: 'search_txt' }, f),
               ),
@@ -65706,15 +65687,11 @@
               onChange: z,
               onSearch: m,
               delay: g,
-              onFocus: q,
-              onBlur: U,
+              onFocus: I,
+              onBlur: P,
             }),
           ),
-          o.a.createElement(
-            'a',
-            { className: 'cancel-btn', ref: _, style: { marginRight: C ? void 0 : -(V + 10) }, onClick: W },
-            '\u53d6\u6d88',
-          ),
+          o.a.createElement('a', { className: 'cancel-btn', onClick: B }, '\u53d6\u6d88'),
         )
       );
     }

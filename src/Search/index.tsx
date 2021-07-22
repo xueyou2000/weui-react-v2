@@ -77,28 +77,33 @@ function Search(props: SearchProps) {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [focus, setFocus] = useState(autoFocus);
   const [phWidth, setPhWidth] = useState(0);
-  const [btnWidth, setBtnWidth] = useState(0);
-  const btnRef = useRef<HTMLElement | null>(null);
+  // const [btnWidth, setBtnWidth] = useState(0);
+  // const btnRef = useRef<HTMLElement | null>(null);
   const isChange = useRef(false);
 
   function savePh(ins: HTMLDivElement | null) {
-    if (ins) {
-      setPhWidth(ins.clientWidth);
-    }
-  }
-
-  function saveBtn(ins: HTMLElement | null) {
-    if (ins) {
-      btnRef.current = ins;
-      // 去除transition才能及时获取正确宽度
+    if (ins && phWidth === 0) {
       const backup = ins.style.transition;
       ins.style.transition = 'none';
-      if (ins.clientWidth !== 0) {
-        setBtnWidth(ins.clientWidth);
+      if (ins.offsetWidth !== 0) {
+        setPhWidth(ins.offsetWidth + 50);
       }
       ins.style.transition = backup;
     }
   }
+
+  // function saveBtn(ins: HTMLElement | null) {
+  //   if (ins) {
+  //     btnRef.current = ins;
+  //     // 去除transition才能及时获取正确宽度
+  //     const backup = ins.style.transition;
+  //     ins.style.transition = 'none';
+  //     if (ins.clientWidth !== 0) {
+  //       setBtnWidth(ins.clientWidth);
+  //     }
+  //     ins.style.transition = backup;
+  //   }
+  // }
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     if (onConfirm) {
@@ -156,22 +161,22 @@ function Search(props: SearchProps) {
     }
   }, [focus]);
 
-  useLayoutEffect(() => {
-    // 修复btn尺寸一开始不正确的问题
-    const time = window.setTimeout(() => {
-      const btn = btnRef.current as HTMLElement;
-      if (btn) {
-        // 去除transition才能及时获取正确宽度
-        const backup = btn.style.transition;
-        btn.style.transition = 'none';
-        if (btn.clientWidth !== 0) {
-          setBtnWidth(btn.clientWidth);
-        }
-        btn.style.transition = backup;
-      }
-    }, 60);
-    return () => window.clearTimeout(time);
-  }, [btnRef.current]);
+  // useLayoutEffect(() => {
+  //   // 修复btn尺寸一开始不正确的问题
+  //   const time = window.setTimeout(() => {
+  //     const btn = btnRef.current as HTMLElement;
+  //     if (btn) {
+  //       // 去除transition才能及时获取正确宽度
+  //       const backup = btn.style.transition;
+  //       btn.style.transition = 'none';
+  //       if (btn.clientWidth !== 0) {
+  //         setBtnWidth(btn.clientWidth);
+  //       }
+  //       btn.style.transition = backup;
+  //     }
+  //   }, 60);
+  //   return () => window.clearTimeout(time);
+  // }, [btnRef.current]);
 
   return (
     <div className={classNames(prefixCls, className, { focus, 'has-value': !!value })} style={style}>
@@ -199,10 +204,10 @@ function Search(props: SearchProps) {
       </form>
       <a
         className="cancel-btn"
-        ref={saveBtn}
-        style={{
-          marginRight: focus ? undefined : -(btnWidth + 10),
-        }}
+        // ref={saveBtn}
+        // style={{
+        //   marginRight: focus ? undefined : -(btnWidth + 10),
+        // }}
         onClick={handleCancel}
       >
         取消

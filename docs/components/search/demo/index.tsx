@@ -7,9 +7,9 @@ import { SafeArea, Search } from 'weui-react-v2';
 
 export default () => {
   return (
-    <SafeArea style={{ margin: '-0.16rem' }}>
+    <SafeArea>
       <Search
-        placeholder="搜索"
+        placeholder="请输入用户名/邮箱"
         onConfirm={(val) => console.log('确认输入: ', val)}
         onSearch={(val) => console.log('search: ', val)}
         onCancel={() => console.log('取消搜索')}
