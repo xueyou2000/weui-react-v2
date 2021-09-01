@@ -45,7 +45,7 @@ export interface MultiUploadProps<T = any>
   length?: number;
 }
 
-function MultiUpload<T>(props: MultiUploadProps<T>) {
+export default React.forwardRef<HTMLDivElement, MultiUploadProps>((props, ref) => {
   const {
     prefixCls = 'weui-multi-upload',
     className,
@@ -123,7 +123,7 @@ function MultiUpload<T>(props: MultiUploadProps<T>) {
     changeFileInfos([...files, { thumbnail: URL.createObjectURL(file), file, percent: 0, status: 'uploading' }]);
   }
 
-  function handleSuccess(file: File, response: T, xhr: XMLHttpRequest) {
+  function handleSuccess(file: File, response: any, xhr: XMLHttpRequest) {
     const files = fileInfosRef.current;
     const index = files.findIndex((fileInfo) => fileInfo.file === file);
     if (index === -1) {
@@ -144,7 +144,7 @@ function MultiUpload<T>(props: MultiUploadProps<T>) {
     }
   }
 
-  function handleError(file: File, error: Error, response?: T) {
+  function handleError(file: File, error: Error, response?: any) {
     const files = fileInfosRef.current;
     const index = files.findIndex((fileInfo) => fileInfo.file === file);
     if (index === -1) {
@@ -205,7 +205,7 @@ function MultiUpload<T>(props: MultiUploadProps<T>) {
             {(fileInfo as any) === 'btn'
               ? fileInfos.length < max &&
                 !disabled && (
-                  <Upload<T>
+                  <Upload
                     {...uploadProps}
                     multiple={max <= 1 ? false : multiple}
                     disabled={disabled}
@@ -236,10 +236,8 @@ function MultiUpload<T>(props: MultiUploadProps<T>) {
   }
 
   return (
-    <div className={classNames(prefixCls, className)} style={style}>
+    <div className={classNames(prefixCls, className)} style={style} ref={ref}>
       <div className={`${prefixCls}-list`}>{renderItems()}</div>
     </div>
   );
-}
-
-export default React.memo(MultiUpload);
+});

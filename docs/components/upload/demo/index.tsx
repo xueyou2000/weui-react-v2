@@ -22,13 +22,13 @@ export default function () {
     <SafeArea style={{ margin: '-0.16rem', minHeight: '100vh', backgroundColor: '#f4f4f4', padding: '5px 0 10px' }}>
       <List title="单文件上传">
         <ListItem hd="上传成功" alignItems="flex-start">
-          <SingleUpload<Res> style={{ marginLeft: '30px' }} action="/upload" getResponse={getResponse} />
+          <SingleUpload style={{ marginLeft: '30px' }} action="/upload" getResponse={getResponse} />
         </ListItem>
         <ListItem hd="上传失败" alignItems="flex-start">
-          <SingleUpload<Res> style={{ marginLeft: '30px' }} action="/upload2" getResponse={getResponse} />
+          <SingleUpload style={{ marginLeft: '30px' }} action="/upload2" getResponse={getResponse} />
         </ListItem>
         <ListItem hd="静态显示" alignItems="flex-start">
-          <SingleUpload<Res>
+          <SingleUpload
             style={{ marginLeft: '30px' }}
             value="https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg"
             disabled={true}
@@ -39,7 +39,7 @@ export default function () {
       </List>
       <List title="多文件上传">
         <ListItem hd="图片上传" alignItems="flex-start">
-          <MultiUpload<Res>
+          <MultiUpload
             style={{ marginLeft: '30px' }}
             action="/upload"
             maxSize={10}
@@ -49,7 +49,7 @@ export default function () {
           />
         </ListItem>
         <ListItem hd="静态显示" alignItems="flex-start">
-          <MultiUpload<Res>
+          <MultiUpload
             style={{ marginLeft: '30px' }}
             disabled={true}
             value={[

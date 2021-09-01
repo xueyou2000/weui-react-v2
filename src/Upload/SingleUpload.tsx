@@ -40,7 +40,7 @@ export interface SingleUploadProps<T = any> extends UploadProps<T> {
   onImageRemove?: (fileInfo: FileInfo) => void;
 }
 
-function SingleUpload<T>(props: SingleUploadProps<T>) {
+export default React.forwardRef<HTMLDivElement, SingleUploadProps>((props, ref) => {
   const {
     prefixCls = 'weui-single-upload',
     className,
@@ -82,7 +82,7 @@ function SingleUpload<T>(props: SingleUploadProps<T>) {
     setFileInfo({ thumbnail: URL.createObjectURL(file), file, percent: 0, status: 'uploading' });
   }
 
-  function handleSuccess(file: File, response: T, xhr: XMLHttpRequest) {
+  function handleSuccess(file: File, response: any, xhr: XMLHttpRequest) {
     if (onSuccess) {
       onSuccess(file, response, xhr);
     }
@@ -97,7 +97,7 @@ function SingleUpload<T>(props: SingleUploadProps<T>) {
     }
   }
 
-  function handleError(file: File, error: Error, response?: T) {
+  function handleError(file: File, error: Error, response?: any) {
     if (onError) {
       onError(file, error, response);
     }
@@ -143,7 +143,7 @@ function SingleUpload<T>(props: SingleUploadProps<T>) {
   }
 
   return (
-    <div className={classNames(prefixCls, className)} style={style}>
+    <div className={classNames(prefixCls, className)} style={style} ref={ref}>
       {fileInfo.status === 'init' ? (
         <Upload
           {...uploadProps}
@@ -167,6 +167,4 @@ function SingleUpload<T>(props: SingleUploadProps<T>) {
       )}
     </div>
   );
-}
-
-export default React.memo(SingleUpload);
+});

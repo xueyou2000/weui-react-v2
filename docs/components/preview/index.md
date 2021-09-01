@@ -41,7 +41,9 @@ export default () => (
         </PreviewButton>,
       ]}
     >
-      <PreviewItem title="商品">电动打单机</PreviewItem>
+      <PreviewItem title="商品" arrow={true}>
+        电动打单机
+      </PreviewItem>
       <PreviewItem title="标题标题">名字名字名字</PreviewItem>
       <PreviewItem title="标题标题">很长很长的名字很长很长的名字很长很长的名字很长很长的名字很长很长的名字</PreviewItem>
     </Preview>

@@ -27,15 +27,30 @@ export interface PreviewItemProps {
    * 点击事件
    */
   onClick?: () => void;
+  /**
+   * 箭头方向
+   */
+  arrow?: 'horizontal' | 'up' | 'down' | boolean;
+  /**
+   * 右侧扩展内容
+   */
+  extra?: React.ReactNode;
 }
 
 function PreviewItem(props: PreviewItemProps) {
-  const { prefixCls = 'weui-preview', className, style, children, title, onClick } = props;
+  const { prefixCls = 'weui-preview', className, style, children, title, onClick, arrow, extra } = props;
 
   return (
-    <div className={classNames('preview-item', className)} style={style} onClick={onClick}>
+    <div
+      className={classNames('preview-item', className, { [`preview-item-arrow-${arrow}`]: arrow })}
+      style={style}
+      onClick={onClick}
+    >
       <label className={`${prefixCls}__label`}>{title}</label>
-      <span className={`${prefixCls}__value`}>{children}</span>
+      <span className={`${prefixCls}__value`}>
+        {children}
+        {(extra || arrow) && <span className={`${prefixCls}-ft`}>{extra}</span>}
+      </span>
     </div>
   );
 }

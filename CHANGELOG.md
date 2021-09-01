@@ -1,5 +1,10 @@
 # Change Log
 
+## 3.3.2 (Wed Sep 01 2021)
+
+- `PreviewItem`组件增加`arrow`属性显示箭头
+- `SingleUpload`和`MultiUpload`上传组件取消泛型，增加 ref,避免与表单配合使用时没有 ref 的警告
+
 ## 3.3.1 (Thu Jul 22 2021)
 
 - 修复`Search`在小米等特殊机型下堆栈循环调用的 BUG

@@ -86,7 +86,7 @@ function Search(props: SearchProps) {
       const backup = ins.style.transition;
       ins.style.transition = 'none';
       if (ins.offsetWidth !== 0) {
-        setPhWidth(ins.offsetWidth + 50);
+        setPhWidth(ins.offsetWidth + 1);
       }
       ins.style.transition = backup;
     }

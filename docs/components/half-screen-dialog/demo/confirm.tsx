@@ -10,7 +10,7 @@ export default () => {
   const [visible, setVisible] = useState(true);
 
   function handleConfirm() {
-    return new Promise((resovle, reject) => {
+    return new Promise<void>((resovle, reject) => {
       setTimeout(() => {
         resovle();
       }, 2000);
