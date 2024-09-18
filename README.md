@@ -17,7 +17,10 @@
 
 # weui-react-v2
 
-`weui`的`React`实现, 快速编写移动端页面, 包含很多常用组件。[在线例子](http://xueyou2000.gitee.io/weui-react-v2)
+`weui`的`React`实现, 快速编写移动端页面, 包含很多常用组件。
+
+- [gitee 在线例子(gitee的pages服务已关闭)](http://xueyou2000.gitee.io/weui-react-v2)
+- [github](https://xueyou2000.github.io/weui-react-v2)
 
 推荐使用`postcss-px-to-viewport`做高清适应，将`px`编译成`vw`运行，设计稿是`750px`
 
